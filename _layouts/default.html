@@ -15,6 +15,31 @@
         DUST ET LUMINA
     </header>
 </head>
+<div id="loading-screen">
+    <div class="loader-content">
+        <div class="scanner-line"></div>
+        <p class="system-msg">DATABASE LOADING...</p>
+        <p class="system-msg">DECRYPTING SECTORS...</p>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const loader = document.getElementById('loading-screen');
+        
+        // Check if "hasLoaded" exists in this tab's session memory
+        if (!sessionStorage.getItem('hasLoaded')) {
+            // First time opening/refreshing: Show animation for 2 seconds
+            setTimeout(() => {
+                loader.classList.add('fade-out');
+                // Set the memory so it doesn't show again on internal clicks
+                sessionStorage.setItem('hasLoaded', 'true');
+            }, 2000);
+        } else {
+            // User is just navigating: Hide loader immediately
+            loader.style.display = 'none';
+        }
+    });
+</script>
 <body>
     {{ content }}
 </body>

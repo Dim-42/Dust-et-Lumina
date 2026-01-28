@@ -1,0 +1,26 @@
+// body
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 2rem;
+}
+
+// hyperlinks
+a {
+    color: var(--accent-dim);
+    text-decoration: none;
+    transition: 0.3s;
+
+    &:hover {
+        color: var(--accent);
+    }
+}
+
+// list styles
+ul {
+    list-style-type: ">> ";
+    padding-left: 20px;
+}

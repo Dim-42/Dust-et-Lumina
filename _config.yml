@@ -8,7 +8,7 @@ url: "https://dim-42.github.io"
 
 # Build Settings
 markdown: kramdown
-theme: minima # You can change this later when we do styling
+## theme: minima # You can change this later when we do styling
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

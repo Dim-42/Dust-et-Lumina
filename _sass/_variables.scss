@@ -1,0 +1,20 @@
+$color-bg: #0a0b10;
+$color-panel: #161b22;
+$color-text: #e6edf3;
+$color-accent: #00d4e0;
+$color-accent-dim: #00d5e0a3;
+$color-secondary: #ec365d;
+
+$font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-mono: 'Agency FB', monospace;
+
+:root {
+    --bg-color: #{$color-bg};
+    --panel-bg: #{$color-panel};
+    --text-main: #{$color-text};
+    --accent: #{$color-accent};
+    --accent-dim: #{$color-accent-dim};
+    --accent-secondary: #{$color-secondary};
+    --font-mono: #{$font-mono};
+    --font-main: #{$font-main};
+}
