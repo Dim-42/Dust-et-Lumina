@@ -35,3 +35,13 @@ collections:
   regions:
     output: true
     permalink: /regions/:path/
+
+navigation:
+  - title: "Terminal"
+    url: /
+  - title: "Basics"
+    url: /basics/
+  - title: "Personnel"
+    url: /characters/
+  - title: "Regions"
+    url: /regions/

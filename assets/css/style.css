@@ -20,17 +20,28 @@ header {
     font-weight: normal;
     letter-spacing: 3px;        /* Spaced out letters for a tech feel */
     color: var(--accent);
-    text-shadow: 0 0 5px rgba(0, 242, 255, 0.5); /* Subtle neon glow */
 }
 
-/* nagivation panel */
-nav {
+
+/* naviagtion panel */
+.nav-interface {
+    background-color: var(--panel-bg);
+    padding: 5px 10px;
+    margin-top: 10px;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
     font-family: var(--font-mono);
     font-size: 1rem;
-    font-weight: normal;
     letter-spacing: 0.1rem;
-    color: var(--accent-dim);   
-    text-shadow: 0 0 5px rgba(0, 242, 255, 0.5);
+    color: var(--accent-dim); /* Dimmest when not active */
+    text-transform: uppercase;
+}
+
+.nav-link:hover {
+    color: var(--accent);
 }
 
 /* main panel */
@@ -53,14 +64,23 @@ h1, h2, h3 {
     padding-left: 15px;
 }
 
-.portal-section {
-    background: var(--panel-bg);
-    border: 1px solid var(--accent-dim);
-    border-radius: 4px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.05);
+/* paragraph */
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    line-height: 1.5;             /* Extra spacing for readability */
+    margin-bottom: 1.5rem;        /* Space between paragraphs */
+    text-align: justify;          /* Creates a blocky, "data-log" look */
+    max-width: 75ch;              /* Prevents lines from getting too long to read */
 }
+
+.warning-text {
+    color: var(--accent-secondary);
+    font-weight: normal;
+    text-align: center;
+}
+
 
 /* hyperlink */
 a {
@@ -69,12 +89,11 @@ a {
     transition: 0.3s;
 }
 
-/* hyperlink hover*/
 a:hover {
     color: var(--accent);
-    text-shadow: 0 0 10px var(--accent); /* Adds a 0.3s glowing fade-in */
 }
 
+/* list */
 ul {
     list-style-type: ">> ";
     padding-left: 20px;
