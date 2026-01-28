@@ -1,0 +1,24 @@
+title: "Dust et Lumina"
+description: "...descriptions..."
+
+# Project Settings
+# If your site is at username.github.io/my-world/, set baseurl to "/my-world"
+baseurl: "" 
+url: "dim-42.github.io/" 
+
+# Build Settings
+markdown: kramdown
+theme: minima # You can change this later when we do styling
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Folder Exclusion
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
