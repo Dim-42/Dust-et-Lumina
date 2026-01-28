@@ -22,3 +22,16 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+
+collections_dir: _lore
+
+collections:
+  concepts:
+    output: true
+    permalink: /concepts/:path/
+  characters:
+    output: true
+    permalink: /characters/:path/
+  regions:
+    output: true
+    permalink: /regions/:path/
