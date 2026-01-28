@@ -286,7 +286,6 @@ PLATFORMS
   ruby
   x64-mingw-ucrt
   x86_64-linux
-  x86_64-unknown
 
 DEPENDENCIES
   github-pages (= 232)
