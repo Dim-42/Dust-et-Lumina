@@ -1,7 +1,10 @@
 source "https://rubygems.org"
 
-# This gem ensures your local environment matches GitHub Pages
-gem "github-pages", group: :jekyll_plugins
+# Force the specific version of github-pages Jekyll uses
+gem "github-pages", "232", group: :jekyll_plugins
 
-# Windows-specific fix for fast site reloading
+# Windows-specific support
 gem "wdm", ">= 0.1.0" if Gem.win_platform?
+
+# Add this to resolve a common Ruby 3.4 conflict with Jekyll 3.x
+gem "webrick"
