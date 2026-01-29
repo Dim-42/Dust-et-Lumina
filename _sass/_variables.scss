@@ -9,8 +9,9 @@ $color-secondary: #ec365d;
 $font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $font-mono: 'Agency FB', monospace;
 
-$text-size: 16px;
+$text-size: 18px;
 $msg-size: 20px;
+$main-header-size: 30px;
 
 :root {
     // color
@@ -29,4 +30,5 @@ $msg-size: 20px;
     // format
     --text-size: #{$text-size};
     --msg-size: #{$msg-size};
+    --main-header-size: #{$main-header-size}
 }

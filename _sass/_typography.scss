@@ -6,16 +6,38 @@ h1, h2, h3 {
     color: var(--accent);
     border-left: 4px solid var(--accent);
     padding-left: 15px;
+    margin-left: 1rem;
+    margin-right: 1rem;
     font-weight: lighter;
 }
 
-// paragraphs
+/**** texts ****/
 p {
     font-family: var(--font-main);
     color: var(--text-main);
     font-size: var(--text-size);
-    margin-left: 1rem;
+    margin: 1rem 1rem;
     text-align: justify;
+}
+
+// main headered, big, centered
+.main-header {
+    font-family: var(--font-mono);
+    font-size: var(--main-header-size);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    border-left: 4px solid var(--accent);
+    border-right: 4px solid var(--accent);
+    text-align: center;
+}
+
+// centered text
+.poetry {
+    font-family: var(--font-mono);
+    font-size: var(--text-size);
+    color: var(--text-main);
+    text-align: center;
 }
 
 // regular system message
@@ -35,9 +57,32 @@ p {
     font-size: var(--msg-size);
 }
 
+
+
+
+
+// md divider
 hr {
-  border: none;
-  background-color: var(--color-note);
-  height: 1px;
-  margin: 1.5em 0;
+    border: none;
+    background-color: var(--color-note);
+    height: 1px;
+    margin: 2em 0;
+}
+
+// hyperlinks
+a {
+    color: var(--accent-dim);
+    text-decoration: none;
+    transition: 0.3s;
+
+    &:hover {
+        color: var(--accent);
+    }
+}
+
+// list styles
+ul {
+    list-style-type: ">> ";
+    padding-left: 20px;
+    margin: 0 1rem;
 }
