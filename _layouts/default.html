@@ -10,6 +10,7 @@
                     {{ link.title | upcase }}
                 </a>
             {% endfor %}
+            <a href="{{ '/about/' | relative_url }}" class="nav-link">About</a>
     </nav>
     <header style="border-bottom: 1px solid var(--accent-dim); margin-bottom: 2rem; padding-bottom: 1rem;">
         DUST ET LUMINA
@@ -18,21 +19,28 @@
 <div id="loading-screen">
     <div class="loader-content">
         <div class="scanner-line"></div>
-        <p class="system-msg">DATABASE LOADING...</p>
+        <p class="system-msg">ENTERING DATABASE...</p>
         <p class="system-msg">DECRYPTING...</p>
     </div>
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const loader = document.getElementById('loading-screen');
-        // Check if "hasLoaded" exists in this tab's session memory
-        if (!sessionStorage.getItem('hasLoaded')) {
+
+        const now = Date.now();
+        const lastLoad = localStorage.getItem('last_boot_time');
+        const loadThreshold= 10 * 60 * 1000;
+
+        // Check if "hasLoaded" exists in this tab's session memory 
+        // or if the tab has not been refreshed for 10 min
+        if (!sessionStorage.getItem('hasLoaded') || (now - lastLoad) > loadThreshold) {
             // First time opening: Show animation
             setTimeout(() => {
                 loader.classList.add('fade-out');
                 // Set the memory so it doesn't show again on internal clicks
                 sessionStorage.setItem('hasLoaded', 'true');
-            }, 2000);
+                localStorage.setItem('last_boot_time', now);
+            }, 1200);
         } else {
             loader.style.display = 'none';
         }

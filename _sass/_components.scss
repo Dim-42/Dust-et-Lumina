@@ -13,7 +13,6 @@
     flex-direction: column;
     transition: opacity 0.5s ease-out;
 
-    // transition
     &.fade-out {
         opacity: 0;
         pointer-events: none;
@@ -21,21 +20,29 @@
 
     .loader-content {
         text-align: center;
-        width: 300px;
+        width: 100%;
     }
 
     .scanner-line {
         width: 100%;
         height: 2px;
         background-color: var(--accent);
-        box-shadow: 0 0 15px var(--accent);
-        position: relative;
-        animation: scan 1.5s infinite ease-in-out;
+        box-shadow: 0 0 0px var(--accent);
+        position: center;
+        animation: expand-line 0.8s ease-out forwards;
     }
 }
 
-@keyframes scan {
-    0% { transform: translateY(-20px); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(20px); opacity: 0; }
+@keyframes expand-line {
+    0% {
+        transform: scaleX(0); // Starts as a tiny dot/point in the center
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scaleX(1); // Expands to fill the 100% width
+        opacity: 1;
+    }
 }
