@@ -8,13 +8,23 @@ $color-secondary: #ec365d;
 $font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $font-mono: 'Agency FB', monospace;
 
+$text-size: 16px;
+$msg-size: 20px;
+
 :root {
+    // color
     --bg-color: #{$color-bg};
     --panel-bg: #{$color-panel};
     --text-main: #{$color-text};
     --accent: #{$color-accent};
     --accent-dim: #{$color-accent-dim};
     --accent-secondary: #{$color-secondary};
+
+    // font
     --font-mono: #{$font-mono};
     --font-main: #{$font-main};
+
+    // format
+    --text-size: #{$text-size};
+    --msg-size: #{$msg-size};
 }

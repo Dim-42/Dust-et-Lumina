@@ -3,9 +3,24 @@ layout: default
 title: Dust et Lumina
 ---
 
-## 尘与辉光
+# Header 1 标题
 
-欢迎来到原创世界观——**「尘与辉光」**。 
+## Header 2
 
-> 愿我们在繁星尽头相会。
+### Header 3
 
+> quote 引用
+
+normal text 1 正文
+normal text 2
+
+normal text 3
+
+<p>
+    normal html text 1 正文
+    normal html text 2 normal html text 2 normal html text 2 normal html text 2
+</p>
+
+<p>normal html text 3</p>
+
+<p class = "warning-text">Warning警告</p>

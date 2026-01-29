@@ -6,24 +6,16 @@ h1, h2, h3 {
     color: var(--accent);
     border-left: 4px solid var(--accent);
     padding-left: 15px;
+    font-weight: lighter;
 }
 
 // paragraphs
 p {
-    font-family: $font-main;
-    font-size: 1.1rem;
+    font-family: var(--font-main);
     color: var(--text-main);
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
+    font-size: var(--text-size);
+    margin-left: 1rem;
     text-align: justify;
-    max-width: 75ch;
-}
-
-// warning text
-.warning-text {
-    color: var(--accent-secondary);
-    font-weight: normal;
-    text-align: center;
 }
 
 // regular system message
@@ -31,4 +23,14 @@ p {
     color: var(--text-main);
     font-family: var(--font-mono);
     text-align: center;
+    font-size: var(--msg-size);
 }
+
+// warning text
+.warning-text {
+    color: var(--accent-secondary);
+    font-family: var(--font-mono);
+    text-align: center;
+    font-size: var(--msg-size);
+}
+

@@ -21,7 +21,7 @@ header {
 
 .nav-link {
     font-family: var(--font-mono);
-    font-size: 1rem;
+    font-size: var(--system-msg);
     letter-spacing: 0.1rem;
     color: var(--accent-dim);
     text-transform: uppercase;
