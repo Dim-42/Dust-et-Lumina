@@ -1,6 +1,7 @@
 $color-bg: #0a0b10;
 $color-panel: #161b22;
 $color-text: #e6edf3;
+$color-note: #3a3a44; 
 $color-accent: #00d4e0;
 $color-accent-dim: #00d5e0a3;
 $color-secondary: #ec365d;
@@ -16,6 +17,7 @@ $msg-size: 20px;
     --bg-color: #{$color-bg};
     --panel-bg: #{$color-panel};
     --text-main: #{$color-text};
+    --color-note: #{$color-note};
     --accent: #{$color-accent};
     --accent-dim: #{$color-accent-dim};
     --accent-secondary: #{$color-secondary};

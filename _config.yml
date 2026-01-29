@@ -45,3 +45,5 @@ navigation:
     url: /characters/
   - title: "Regions"
     url: /regions/
+  - title: "About"
+    url: /about/

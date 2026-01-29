@@ -6,6 +6,12 @@ permalink: /about/
 
 ## About 尘与辉光
 
-如你所见，这是
-
 感谢观看！
+
+---
+
+### Contact 联系方式
+
+- [小红书] 42维度
+- [Lof] 42维度
+- [Email] eleanorez1922@gmail.com

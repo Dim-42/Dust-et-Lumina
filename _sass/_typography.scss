@@ -35,3 +35,9 @@ p {
     font-size: var(--msg-size);
 }
 
+hr {
+  border: none;
+  background-color: var(--color-note);
+  height: 1px;
+  margin: 1.5em 0;
+}
