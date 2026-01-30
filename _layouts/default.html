@@ -2,91 +2,95 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <title>{{ page.title }} | Dust et Lumina</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    <nav class="nav-interface">
-            {% for link in site.navigation %}
-                <a href="{{ link.url | relative_url }}" class="nav-link">
-                    {{ link.title | upcase }}
-                </a>
-            {% endfor %}
-    </nav>
-    <header style="font-size: var(--page-title-size); border-bottom: 1px solid var(--accent-dim); margin-bottom: 2rem; padding-bottom: 1rem;">
-        {{ page.title }}
-    </header>
 </head>
-<div id="loading-screen">
-    <div class="loader-content">
-        <div class="scanner-line"></div>
-        <p class="system-msg">ENTERING DATABASE...</p>
-        <p class="system-msg">DECRYPTING...</p>
-    </div>
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const loader = document.getElementById('loading-screen');
 
-        const now = Date.now();
-        const lastLoad = localStorage.getItem('last_boot_time');
-        const loadThreshold= 10 * 60 * 1000;
-
-        // Check if "hasLoaded" exists in this tab's session memory 
-        // or if the tab has not been refreshed for 10 min
-        if (!sessionStorage.getItem('hasLoaded') || (now - lastLoad) > loadThreshold) {
-            // First time opening: Show animation
-            setTimeout(() => {
-                loader.classList.add('fade-out');
-                // Set the memory so it doesn't show again on internal clicks
-                sessionStorage.setItem('hasLoaded', 'true');
-                localStorage.setItem('last_boot_time', now);
-            }, 1200);
-        } else {
-            loader.style.display = 'none';
-        }
-    });
-</script>
 <body>
-    <div id="obsidian-content">
-        {{ content }}
-    </div>
-</body>
-<footer>
-    <a href="{{ '/' | relative_url }}" class="back-link">RETURN</a>
-    <div class="footer-div"></div>
-    <div class="footer-grid">
-        <div class="footer-item">
-            <span class="label">SYSTEM_TIME:</span>
-            <span class="value" id="current-time">00:00:00</span>
-        </div>
-        <div class="footer-item">
-            <span class="label">OPERATOR:</span>
-            <span class="value">GUEST_USER</span>
-        </div>
-        <div class="footer-item">
-            <span class="label">ENCRYPTION:</span>
-            <span class="value">AES-256</span>
+    <div id="loading-screen">
+        <div class="loader-content">
+            <div class="scanner-line"></div>
+            <p class="system-msg">ENTERING DATABASE...</p>
+            <p class="system-msg">DECRYPTING...</p>
         </div>
     </div>
-</footer>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const contentArea = document.getElementById('obsidian-content');
-        if (contentArea) {
-            // This regex finds %% and everything in between, then deletes it
-            const regex = /%%[\s\S]*?%%/g;
-            contentArea.innerHTML = contentArea.innerHTML.replace(regex, '');
-        }
-    });
-</script>
-</html>
 
-<script>
-    function updateClock() {
-        const now = new Date();
-        const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
-                        now.getMinutes().toString().padStart(2, '0') + ":" + 
-                        now.getSeconds().toString().padStart(2, '0');
-        document.getElementById('current-time').textContent = timeStr;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-</script>
+    <nav class="nav-interface">
+        {% for link in site.navigation %}
+            <a href="{{ link.url | relative_url }}" class="nav-link">
+                {{ link.title | upcase }}
+            </a>
+        {% endfor %}
+    </nav>
+
+    <main id="obsidian-content">
+        <header style="font-size: var(--page-title-size); border-bottom: 1px solid var(--accent-dim); margin-bottom: 2rem; padding-bottom: 1rem;">
+            {{ page.title }}
+        </header>
+        
+        {{ content }}
+    </main>
+
+    <footer>
+        <a href="{{ '/' | relative_url }}" class="back-link">RETURN</a>
+        <div class="footer-div"></div>
+        <div class="footer-grid">
+            <div class="footer-item">
+                <span class="label">SYSTEM_TIME:</span>
+                <span class="value" id="current-time">00:00:00</span>
+            </div>
+            <div class="footer-item">
+                <span class="label">OPERATOR:</span>
+                <span class="value">GUEST_USER</span>
+            </div>
+            <div class="footer-item">
+                <span class="label">ENCRYPTION:</span>
+                <span class="value">AES-256</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Loader Logic ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const loader = document.getElementById('loading-screen');
+            const now = Date.now();
+            const lastLoad = localStorage.getItem('last_boot_time');
+            const loadThreshold = 10 * 60 * 1000;
+
+            if (!sessionStorage.getItem('hasLoaded') || (now - lastLoad) > loadThreshold) {
+                setTimeout(() => {
+                    loader.classList.add('fade-out');
+                    sessionStorage.setItem('hasLoaded', 'true');
+                    localStorage.setItem('last_boot_time', now);
+                }, 1200);
+            } else {
+                loader.style.display = 'none';
+            }
+        });
+
+        // --- Obsidian Comment Filter ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const contentArea = document.getElementById('obsidian-content');
+            if (contentArea) {
+                const regex = /%%[\s\S]*?%%/g;
+                contentArea.innerHTML = contentArea.innerHTML.replace(regex, '');
+            }
+        });
+
+        // --- Clock Logic ---
+        function updateClock() {
+            const timeEl = document.getElementById('current-time');
+            if (timeEl) {
+                const now = new Date();
+                const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
+                                now.getMinutes().toString().padStart(2, '0') + ":" + 
+                                now.getSeconds().toString().padStart(2, '0');
+                timeEl.textContent = timeStr;
+            }
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>

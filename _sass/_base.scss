@@ -1,4 +1,13 @@
+* {
+    box-sizing: border-box; /* Makes sure padding doesn't add to width/height */
+}
+
 // body
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
@@ -8,11 +17,19 @@ body {
     max-width: var(--content-width);
     margin-left:auto;
     margin-right:auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#obsidian-content,
+main,
+.main-content {
+    flex: 1;
 }
 
 header {
     border-bottom: 1px solid var(--accent-dim);
-    margin-bottom: 2rem;
     text-transform: uppercase;
     padding: 1rem 0;
     font-family: var(--font-mono);
@@ -23,11 +40,11 @@ header {
 }
 
 footer {
-    max-width: var(--content-width);
+    width: 100%;
     margin-left:auto;
     margin-right:auto;
-    margin-top: 4rem;
     padding-top: 1rem;
+    padding-bottom: 1rem;
     font-family: var(--font-mono);
 
     .back-link {
@@ -35,10 +52,39 @@ footer {
         text-align: center;
         letter-spacing: 0.1rem;
         font-family: var(--font-mono);
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         padding-bottom: 5px;
         color: var(--accent-dim);
-        &:hover { color: var(--accent); }
+        position: relative;
+        text-decoration: none;
+    }
+
+    .back-link::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 15px; 
+        width: 0;
+        height: 1px;
+        background: linear-gradient(to right, 
+            var(--accent) 0%, 
+            var(--accent) calc(50% - 45px), 
+            transparent calc(50% - 45px), 
+            transparent calc(50% + 45px), 
+            var(--accent) calc(50% + 45px), 
+            var(--accent) 100%
+        );
+        transition: width 0.2s ease-in-out;
+        pointer-events: none;
+    }
+
+    .back-link:hover::after {
+        width: 95%; 
+    }
+
+    .back-link:hover {
+        color: var(--accent);
     }
     
     .footer-grid {
