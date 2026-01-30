@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<div class="hub-container">
+    <section class="hub-body">
+        {{ content }}    
+        <ul class="data-list">
+            {% assign collection_name = page.collection_type %}
+            {% for entry in site[collection_name] %}
+                <li>
+                    <a href="{{ entry.url | relative_url }}">
+                        <span class="entry-title">{{ entry.title }}</span>
+                        {% if entry.status %}
+                            <span class="entry-status">[{{ entry.status }}]</span>
+                        {% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>

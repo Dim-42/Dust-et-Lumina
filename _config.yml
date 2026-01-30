@@ -39,11 +39,13 @@ collections:
 navigation:
   - title: "Terminal"
     url: /
-  - title: "Basics"
-    url: /basics/
+  - title: "Concept"
+    url: /concepts/
   - title: "Personnel"
     url: /characters/
-  - title: "Regions"
+  - title: "Region"
     url: /regions/
   - title: "About"
     url: /about/
+
+

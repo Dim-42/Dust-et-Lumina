@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>{{ page.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <nav class="nav-interface">
             {% for link in site.navigation %}
@@ -11,8 +10,8 @@
                 </a>
             {% endfor %}
     </nav>
-    <header style="border-bottom: 1px solid var(--accent-dim); margin-bottom: 2rem; padding-bottom: 1rem;">
-        DUST ET LUMINA
+    <header style="font-size: var(--page-title-size); border-bottom: 1px solid var(--accent-dim); margin-bottom: 2rem; padding-bottom: 1rem;">
+        {{ page.title }}
     </header>
 </head>
 <div id="loading-screen">
@@ -46,6 +45,48 @@
     });
 </script>
 <body>
-    {{ content }}
+    <div id="obsidian-content">
+        {{ content }}
+    </div>
 </body>
+<footer>
+    <a href="{{ '/' | relative_url }}" class="back-link">RETURN</a>
+    <div class="footer-div"></div>
+    <div class="footer-grid">
+        <div class="footer-item">
+            <span class="label">SYSTEM_TIME:</span>
+            <span class="value" id="current-time">00:00:00</span>
+        </div>
+        <div class="footer-item">
+            <span class="label">OPERATOR:</span>
+            <span class="value">GUEST_USER</span>
+        </div>
+        <div class="footer-item">
+            <span class="label">ENCRYPTION:</span>
+            <span class="value">AES-256</span>
+        </div>
+    </div>
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const contentArea = document.getElementById('obsidian-content');
+        if (contentArea) {
+            // This regex finds %% and everything in between, then deletes it
+            const regex = /%%[\s\S]*?%%/g;
+            contentArea.innerHTML = contentArea.innerHTML.replace(regex, '');
+        }
+    });
+</script>
 </html>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
+                        now.getMinutes().toString().padStart(2, '0') + ":" + 
+                        now.getSeconds().toString().padStart(2, '0');
+        document.getElementById('current-time').textContent = timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>

@@ -1,20 +1,26 @@
+// color
 $color-bg: #0a0b10;
 $color-panel: #161b22;
-$color-text: #e6edf3;
+$color-text: #c4ccd2;
 $color-note: #3a3a44; 
 $color-accent: #00d4e0;
 $color-accent-dim: #00d5e0a3;
 $color-secondary: #ec365d;
 
+// font
 $font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $font-mono: 'Agency FB', monospace;
 
+// font size
 $text-size: 18px;
 $msg-size: 20px;
 $main-header-size: 30px;
+$page-title-size: 35px;
+
+// padding & margin
+$content-width: 1000px;
 
 :root {
-    // color
     --bg-color: #{$color-bg};
     --panel-bg: #{$color-panel};
     --text-main: #{$color-text};
@@ -23,12 +29,13 @@ $main-header-size: 30px;
     --accent-dim: #{$color-accent-dim};
     --accent-secondary: #{$color-secondary};
 
-    // font
     --font-mono: #{$font-mono};
     --font-main: #{$font-main};
 
-    // format
     --text-size: #{$text-size};
     --msg-size: #{$msg-size};
-    --main-header-size: #{$main-header-size}
+    --main-header-size: #{$main-header-size};
+    --page-title-size: #{$page-title-size};
+
+    --content-width: #{$content-width};
 }
