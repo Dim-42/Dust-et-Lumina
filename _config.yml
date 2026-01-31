@@ -29,22 +29,32 @@ collections:
   concepts:
     output: true
     permalink: /concepts/:path/
+  organizations:
+    output: true
+    permalink: /organizations/:path/
   characters:
     output: true
     permalink: /characters/:path/
   regions:
     output: true
     permalink: /regions/:path/
+  stories:
+    output: true
+    permalink: /stories/:path/
 
 navigation:
   - title: "Terminal"
     url: /
   - title: "Concept"
     url: /concepts/
+  - title: "Organization"
+    url: /organizations/
   - title: "Personnel"
     url: /characters/
   - title: "Region"
     url: /regions/
+  - title: "Record"
+    url: /stories/
   - title: "About"
     url: /about/
 

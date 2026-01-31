@@ -32,7 +32,26 @@
     </main>
 
     <footer>
-        <a href="{{ '/' | relative_url }}" class="back-link">RETURN</a>
+        <div class="nav-wrapper">
+            {% if page.collection %}
+                {% if page.previous %}
+                    <a href="{{ page.previous.url | relative_url }}" class="nav-arrow">&lt;</a>
+                {% else %}
+                    <span class="nav-arrow disabled">&lt;</span>
+                {% endif %}
+            {% endif %}
+
+            <a href="/" onclick="history.back(); return false;" class="back-link">RETURN</a>
+
+            {% if page.collection %}
+                {% if page.next %}
+                    <a href="{{ page.next.url | relative_url }}" class="nav-arrow">&gt;</a>
+                {% else %}
+                    <span class="nav-arrow disabled">&gt;</span>
+                {% endif %}
+            {% endif %}
+        </div>
+
         <div class="footer-div"></div>
         <div class="footer-grid">
             <div class="footer-item">
