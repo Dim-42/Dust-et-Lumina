@@ -59,9 +59,10 @@
 
 .nav-link {
     font-family: var(--font-mono);
-    font-size: var(--text-size);
+    font-size: var(--text-size) - 1px;
     letter-spacing: 0.1rem;
-    color: var(--accent-dim);
+    color: var(--text-main);
+    opacity: 0.8;
     text-transform: uppercase;
     white-space: nowrap;
     &:hover {
@@ -69,15 +70,15 @@
     }
 }
 
-// Index page grid - Changed to 1 column for full-width bars
-.index-grid {
+// concept page grid - Changed to 1 column for full-width bars
+.concept-grid {
     display: flex;
     flex-direction: column;
     gap: 1.5rem; 
     padding: 1rem 0;
 }
 
-.index-card {
+.concept-card {
     background: var(--panel-bg);
     border: 1px solid var(--accent-dim);
     text-decoration: none;
@@ -95,27 +96,24 @@
 
     &:hover {    
         border-color: var(--accent);
-        background: rgba(0, 212, 224, 0.03);
+        background: rgba(0, 213, 224, 0.001);
         
         img {
             filter: grayscale(0%) sepia(0%);
             opacity: 1;
         }
 
-        .index-title { 
+        .concept-title { 
             color: var(--accent);
         }
     }
 }
 
-.index-thumb {
-    flex: 2; // Ratio: Image is twice as wide as text (adjust as needed)
-    height: 120px; // Fixed height for a "bar" look
+.concept-thumb {
+    flex: 3; // Ratio: Image is twice as wide as text (adjust as needed)
+    height: 110px; // Fixed height for a "bar" look
     background: #000;
     overflow: hidden;
-    // Removed border-bottom, added side borders based on card direction
-    border-left: 1px solid var(--accent-dim);
-    border-right: 1px solid var(--accent-dim);
 
     img {
         width: 100%;
@@ -145,12 +143,12 @@
     }
 }
 
-.index-text {
+.concept-text {
     flex: 1; // Ratio: Title section is narrower
     padding: 0.8rem 1.5rem;
     text-align: center; // Centers text within its section
     
-    .index-title {
+    .concept-title {
         font-family: var(--font-mono);
         font-size: var(--text-size);
         color: var(--text-main);
@@ -162,7 +160,7 @@
         display: inline-block; // Necessary for the underline width
     }
     
-    .index-title::after {
+    .concept-title::after {
         content: '';
         position: absolute;
         width: 0;
@@ -174,20 +172,86 @@
         transform: translateX(-50%);
     }
 
-    // Hover effect already handled by parent .index-card:hover, 
+    // Hover effect already handled by parent .concept-card:hover, 
     // but kept this for individual title hover if needed.
-    &:hover .index-title::after {
+    &:hover .concept-title::after {
         width: 100%; 
     }
 }
 
 // Mobile responsiveness: stack them back to columns on small screens
 @media (max-width: 600px) {
-    .index-card, .index-card:nth-child(even) {
-        flex-direction: column;
+    .concept-grid {
+        gap: 2rem; // Give bars more breathing room when stacked
     }
-    .index-thumb {
+
+    .concept-card, 
+    .concept-card:nth-child(even) {
+        flex-direction: column !important; // Force stack
+        align-items: stretch; // Ensure content fills the width evenly
+    }
+
+    .concept-thumb {
         width: 100%;
-        height: 180px;
+        height: 80px;
+        flex: none; // Reset the flex: 2 from desktop
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid var(--accent-dim);
+
+        img {
+            display: block; // Removes the inline "ghost" padding at the bottom
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .concept-text {
+        flex: none; // Reset the flex: 1 from desktop
+        width: 100%;
+        padding: 1.2rem 1rem;
+    }
+}
+
+// image bracket frame
+.image-frame {
+    position: relative;
+    display: flex; // Fits the width of the image
+    line-height: 0;
+    margin: 2rem auto;
+    max-width: 90%;
+    padding: 10px;
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: auto;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 20px; // How far down the "L" shape goes
+        border-left: 1px solid var(--accent);
+        border-right: 1px solid var(--accent);
+        background: linear-gradient(to right, var(--accent) 20px, transparent 20px, transparent calc(100% - 20px), var(--accent) calc(100% - 20px)) top / 100% 1px no-repeat;
+        pointer-events: none;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 20px;
+        border-left: 1px solid var(--accent);
+        border-right: 1px solid var(--accent);
+        background: linear-gradient(to right, var(--accent) 20px, transparent 20px, transparent calc(100% - 20px), var(--accent) calc(100% - 20px)) bottom / 100% 1px no-repeat;
+        pointer-events: none;
     }
 }

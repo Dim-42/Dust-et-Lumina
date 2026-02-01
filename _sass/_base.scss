@@ -106,7 +106,7 @@ footer {
     }
 
     .back-link:hover::after {
-        width: 70vw; // Set a fixed width or 95% to ensure it clears the "RETURN" text
+        width: 50vw;
     }
 
     .back-link:hover {
@@ -135,7 +135,8 @@ footer {
 
         .label {
             font-size: 0.6rem;
-            color: var(--accent-dim);
+            color: var(--text-main);
+            opacity: 0.8;
             letter-spacing: 0.1rem;
         }
 

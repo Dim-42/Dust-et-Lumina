@@ -10,19 +10,19 @@ title: Dust et Lumina
 ---
 
 ## 核心概念 // CORE_CONCEPTS
-<div class="index-grid">
+<div class="concept-grid">
   {% assign concepts = site.concepts | where: "featured", true %}
   {% for item in concepts %}
-  <a href="{{ item.url | relative_url }}" class="index-card">
-    <div class="index-thumb">
+  <a href="{{ item.url | relative_url }}" class="concept-card">
+    <div class="concept-thumb">
         {% if item.image %}
             <img src="{{ item.image | relative_url }}" alt="{{ item.title }}">
         {% else %}
             <div class="no-image">NOT_FOUND</div>
         {% endif %}
     </div>
-    <div class="index-text">
-        <span class="index-title">{{ item.title }}</span>
+    <div class="concept-text">
+        <span class="concept-title">{{ item.title }}</span>
     </div>
   </a>
   {% endfor %}
