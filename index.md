@@ -32,19 +32,6 @@ title: Dust et Lumina
 
 <p class = "warning-text">404 Not Found</p>
 
+## 人物档案 // PERSONNEL_PROFILES
 
-
-%%
-## 近期记录 // RECENT_LOGS
-<ul class="data-list">
-  {% comment %} This pulls the 3 most recent entries from all collections {% endcomment %}
-  {% assign all_entries = site.characters | concat: site.concepts | sort: 'date' | reverse %}
-  {% for entry in all_entries limit:3 %}
-    <li>
-        <a href="{{ entry.url | relative_url }}">
-            <span class="entry-title">{{ entry.title }}</span>
-        </a>
-    </li>
-  {% endfor %}
-</ul>
-%%
+<p class = "warning-text">404 Not Found</p>

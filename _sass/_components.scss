@@ -80,27 +80,25 @@
 
 .concept-card {
     background: var(--panel-bg);
-    border: 1px solid var(--accent-dim);
+    border: 1px solid var(--accent);
     text-decoration: none;
     display: flex;
-    flex-direction: row; // Horizontal bar
+    flex-direction: row; 
     align-items: center;
     transition: all 0.2s ease;
     overflow: hidden;
 
-
-    // Alternating logic: Concept Title | Image vs Image | Concept Title
     &:nth-child(even) {
         flex-direction: row-reverse;
     }
 
     &:hover {    
         border-color: var(--accent);
-        background: rgba(0, 213, 224, 0.001);
+        background: var(--bg-color);
         
         img {
             filter: grayscale(0%) sepia(0%);
-            opacity: 1;
+            opacity: 0.8;
         }
 
         .concept-title { 
@@ -111,7 +109,7 @@
 
 .concept-thumb {
     flex: 3; // Ratio: Image is twice as wide as text (adjust as needed)
-    height: 110px; // Fixed height for a "bar" look
+    height: 105px; // Fixed height for a "bar" look
     background: #000;
     overflow: hidden;
 
