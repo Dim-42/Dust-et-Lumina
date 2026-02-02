@@ -12,6 +12,7 @@ $font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $font-mono: 'Agency FB', monospace;
 
 // font size
+$note-size: 14px;
 $text-size: 18px;
 $msg-size: 20px;
 $main-header-size: 30px;
@@ -23,7 +24,7 @@ $content-width: 1000px;
 :root {
     --bg-color: #{$color-bg};
     --panel-bg: #{$color-panel};
-    --text-main: #{$color-text};
+    --color-text: #{$color-text};
     --color-note: #{$color-note};
     --accent: #{$color-accent};
     --accent-dim: #{$color-accent-dim};
@@ -32,6 +33,7 @@ $content-width: 1000px;
     --font-mono: #{$font-mono};
     --font-main: #{$font-main};
 
+    --note-size: #{$note-size};
     --text-size: #{$text-size};
     --msg-size: #{$msg-size};
     --main-header-size: #{$main-header-size};

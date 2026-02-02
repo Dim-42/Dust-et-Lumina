@@ -15,7 +15,7 @@ h2, h3 {
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--text-main);
+    color: var(--color-text);
     border-left: 4px solid var(--accent);
     padding-left: 15px;
     margin-left: 1rem;
@@ -27,7 +27,7 @@ h2, h3 {
 /**** texts ****/
 p {
     font-family: var(--font-main);
-    color: var(--text-main);
+    color: var(--color-text);
     font-size: var(--text-size);
     margin: 1rem 1rem;
     text-align: justify;
@@ -42,6 +42,7 @@ p {
     color: var(--accent);
     border-left: 4px solid var(--accent);
     border-right: 4px solid var(--accent);
+    padding: 0 5rem;
     text-align: center;
 }
 
@@ -49,17 +50,25 @@ p {
 .poetry {
     font-family: var(--font-mono);
     font-size: var(--text-size);
-    color: var(--text-main);
+    color: var(--color-text);
     text-align: center;
 }
 
 // regular system message
 .system-msg {
-    color: var(--text-main);
+    color: var(--color-text);
     font-family: var(--font-mono);
     text-align: center;
     font-size: var(--msg-size);
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.2rem;
+}
+
+.system-msg-note {
+    color: var(--color-note);
+    font-family: var(--font-mono);
+    text-align: center;
+    font-size: var(--note-size);
+    letter-spacing: 0.2rem;
 }
 
 // warning text
@@ -90,7 +99,7 @@ a {
 }
 
 .entry-title {
-    color: var(--text-main);
+    color: var(--color-text);
     text-decoration: none;
     position: relative;
 }
@@ -124,7 +133,7 @@ ul {
     li {
         position: relative;
         margin-bottom: 0.5rem;
-        color: var(--text-main);
+        color: var(--color-text);
 
         &::before {
             content: ">";

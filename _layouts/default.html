@@ -7,11 +7,41 @@
 </head>
 
 <body>
+    <canvas id="network-canvas"></canvas>    
     <div id="loading-screen">
-        <div class="loader-content">
-            <div class="scanner-line"></div>
-            <p class="system-msg">ENTERING DATABASE...</p>
-            <p class="system-msg">DECRYPTING...</p>
+        <div id="phase-login" class="loader-phase">
+            <p class = "main-header">LogiX Predictive Computation SYSTEM</p>
+            <p class="system-msg visible">SYSTEM_ACCESS_REQUIRED</p>
+            <div class="login-input-wrapper">
+                <span class="system-msg">></span>
+                <input type="password" id="db-password" autocomplete="off" autofocus>
+            </div>
+            <p class="system-msg-note">PRESS ENTER TO AUTHENTICATE</p>
+            <p class="system-msg-note" style = "position:fixed; bottom: 0; padding-bottom: 1rem;">PROPERTY OF TURRIS GRISEA // CONFIDENTIAL // ALL RIGHTS RESERVED </p>
+        </div>
+
+        <div id="phase-scan" class="loader-phase" style="display: none;">
+            <p class = "main-header" style = "font-size: 20px; position: fixed; top: 0; margin-top: 50px;">LogiX Predictive Computation SYSTEM</p>
+            <div class="fui-scanner">
+                <div class="ring outer-dashed"></div>
+                <div class="ring middle-data"></div>
+                <div class="ring inner-steady"></div>
+                <div class="ring inner-notch"></div>
+                <div class="scan-sweep"></div>
+                <div class="core-point"></div>
+                <div class="fui-label top">SCANNING_BIO_SIG</div>
+                <div class="fui-label bottom" style = "color: var(--accent-secondary);">THREAT_LEVEL: 0%</div>
+            </div>
+            <p class="system-msg">IDENTITY_VERIFICATION_IN_PROGRESS...</p>
+            <p class="system-msg-note" style = "position:fixed; bottom: 0; padding-bottom: 1rem;">PROPERTY OF TURRIS GRISEA // CONFIDENTIAL // ALL RIGHTS RESERVED </p>
+        </div>
+
+        <div id="phase-decrypt" class="loader-phase" style="display: none;">
+            <div class="loader-content">
+                <div class="scanner-line"></div>
+                <p class="system-msg">ENTERING DATABASE...</p>
+                <p class="system-msg">DECRYPTING...</p>
+            </div>
         </div>
     </div>
 
@@ -73,18 +103,56 @@
         // --- Loader Logic ---
         document.addEventListener("DOMContentLoaded", function() {
             const loader = document.getElementById('loading-screen');
-            const now = Date.now();
-            const lastLoad = localStorage.getItem('last_boot_time');
-            const loadThreshold = 10 * 60 * 1000;
+            const passInput = document.getElementById('db-password');
+            const p1 = document.getElementById('phase-login');
+            const p2 = document.getElementById('phase-scan');
+            const p3 = document.getElementById('phase-decrypt');
+            const canvas = document.getElementById('network-canvas');
 
-            if (!sessionStorage.getItem('hasLoaded') || (now - lastLoad) > loadThreshold) {
+            const lastLoad = localStorage.getItem('last_boot_time');
+            const now = Date.now();
+            const refresh_threshold = 10*60*1000;
+
+            // Check if we should skip the animation
+            if (sessionStorage.getItem('hasLoaded') && (now - lastLoad) < refresh_threshold) {
+                loader.style.display = 'none';
+                canvas.classList.add('visible'); 
+                canvas.style.opacity = "0.4";
+                return;
+            }
+            
+            // Phase 1 Logic: Password Entry
+            passInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    // Add a "processing" feel
+                    p1.style.opacity = '0.5';
+                    passInput.disabled = true;
+
+                    setTimeout(() => {
+                        p1.style.display = 'none';
+                        startPhase2();
+                    }, 600);
+                }
+            });
+
+            function startPhase2() {
+                p2.style.display = 'flex';
+                // Simulate a 2-second biometric scan
+                setTimeout(() => {
+                    p2.style.display = 'none';
+                    startPhase3();
+                }, 2500);
+            }
+
+            function startPhase3() {
+                p3.style.display = 'flex';
+                // Final decryption delay before entering site
                 setTimeout(() => {
                     loader.classList.add('fade-out');
+                    showBackgroundNetwork();
                     sessionStorage.setItem('hasLoaded', 'true');
-                    localStorage.setItem('last_boot_time', now);
-                }, 1200);
-            } else {
-                loader.style.display = 'none';
+                    localStorage.setItem('last_boot_time', Date.now());
+                }, 1000);
             }
         });
 
@@ -110,6 +178,76 @@
         }
         setInterval(updateClock, 1000);
         updateClock();
+
+        // --- Canvas Background---
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const maxDist = 150; // Distance at which lines appear
+        const pointCount = 80; // Number of dots
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            points = [];
+            for (let i = 0; i < pointCount; i++) {
+                points.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim();
+            ctx.fillStyle = accentColor;
+            ctx.strokeStyle = accentColor;
+
+            for (let i = 0; i < points.length; i++) {
+                let p = points[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Bounce off edges
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                // Draw point
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Check distances to draw lines
+                for (let j = i + 1; j < points.length; j++) {
+                    let p2 = points[j];
+                    let dx = p.x - p2.x;
+                    let dy = p.y - p2.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < maxDist) {
+                        ctx.beginPath();
+                        ctx.lineWidth = 1 - (dist / maxDist); // Lines fade as they get further
+                        ctx.globalAlpha = 1 - (dist / maxDist);
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        animate();
+        
+        function showBackgroundNetwork() {
+            canvas.classList.add('visible');
+        }
     </script>
 </body>
 </html>

@@ -33,6 +33,172 @@
     }
 }
 
+/* Phase Visibility */
+.loader-phase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Phase 1: Login Styles */
+#db-password {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--accent);
+    color: var(--accent);
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    outline: none;
+    padding: 5px;
+    width: 200px;
+    text-align: center;
+}
+
+.login-input-wrapper { margin: 20px 0; }
+
+/* Phase 2: Circular Scanner */
+.fui-scanner {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--color-text);
+    opacity: 0.9;
+}
+
+/* Outer rotating dashed ring */
+.outer-dashed {
+    width: 100%;
+    height: 100%;
+    border-style: dashed;
+    border-width: 2px;
+    animation: rotate-cw 10s linear infinite;
+}
+
+/* Middle ring with "notches" */
+.middle-data {
+    width: 75%;
+    height: 75%;
+    border: 4px double var(--accent);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%, 0% 70%, 100% 70%, 100% 100%, 0% 100%);
+    animation: rotate-ccw 5s linear infinite;
+}
+
+/* Inner steady ring */
+.inner-steady {
+    width: 40%;
+    height: 40%;
+    opacity: 0.5;
+}
+
+.inner-notch {
+    width: 50%;
+    height: 50%;
+    border: 4px solid var(--accent);
+    /*clip-path: polygon(0% 0%, 100% 0%, 
+                        100% 30%, 0% 30%, 
+                        0% 70%, 100% 70%, 
+                        100% 100%, 0% 100%);*/
+    mask: conic-gradient(
+        transparent 0deg 60deg,
+        black 60deg 120deg,
+        transparent 120deg 180deg,
+        black 180deg 240deg,
+        transparent 240deg 300deg,
+        black 300deg
+    );
+
+    //animation: rotate-ccw 10s linear infinite;
+}
+
+.scan-sweep {
+    position: absolute;
+    /* width is the 'length' of the needle (50% of parent) */
+    width: 50%; 
+    /* height is the thickness of the line */
+    height: 1px; 
+    
+    /* Position it exactly in the middle of the circle */
+    top: 50%;
+    left: 50%;
+    
+    /* The line color and a slight glow for that FUI look */
+    background: var(--accent);
+    box-shadow: 0 0 5px var(--accent);
+    
+    /* Rotate around the very start of the line (the center of the circle) */
+    transform-origin: left center;
+    
+    opacity: 0.8;
+    animation: rotate-cw 2s linear infinite;
+}
+.scan-sweep::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px; /* The 'width' of the trailing shadow */
+    background: linear-gradient(to top, var(--accent) 0%, transparent 100%);
+    opacity: 0.2;
+    transform: translateY(-100%); /* Position it behind the line */
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%); /* Triangular trail */
+}
+
+/* Central pulsing core */
+.core-point {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--accent-secondary);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* Decorative Labels */
+.fui-label {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+    color: var(--color-text);
+    letter-spacing: 1px;
+    width: 100px;
+    text-align: center;
+}
+.fui-label.top { top: -25px; }
+.fui-label.bottom { bottom: -25px; }
+
+/* Animations */
+@keyframes rotate-cw {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-ccw {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+@keyframes radar-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 @keyframes expand-line {
     0% {
         transform: scaleX(0); // Starts as a tiny dot/point in the center
@@ -61,7 +227,7 @@
     font-family: var(--font-mono);
     font-size: var(--text-size) - 1px;
     letter-spacing: 0.1rem;
-    color: var(--text-main);
+    color: var(--color-text);
     opacity: 0.8;
     text-transform: uppercase;
     white-space: nowrap;
@@ -79,8 +245,9 @@
 }
 
 .concept-card {
-    background: var(--panel-bg);
-    border: 1px solid var(--accent);
+    background: var(--bg-color);
+    border: 1px solid var(--color-note);
+    padding: 10px;
     text-decoration: none;
     display: flex;
     flex-direction: row; 
@@ -149,7 +316,7 @@
     .concept-title {
         font-family: var(--font-mono);
         font-size: var(--text-size);
-        color: var(--text-main);
+        color: var(--color-text);
         text-transform: uppercase;
         margin: 0;
         transition: color 0.2s ease;
@@ -187,6 +354,7 @@
     .concept-card:nth-child(even) {
         flex-direction: column !important; // Force stack
         align-items: stretch; // Ensure content fills the width evenly
+        padding: 10px 10px 0px 10px;
     }
 
     .concept-thumb {
@@ -195,7 +363,6 @@
         flex: none; // Reset the flex: 2 from desktop
         border-right: none;
         border-left: none;
-        border-bottom: 1px solid var(--accent-dim);
 
         img {
             display: block; // Removes the inline "ghost" padding at the bottom
