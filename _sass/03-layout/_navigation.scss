@@ -1,0 +1,21 @@
+.nav-interface {
+    background-color: var(--panel-bg);
+    padding: 8px 10px;
+    margin-top: 10px;
+    display: flex;
+    gap: 10px 20px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-size) - 1px;
+    letter-spacing: 0.1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    text-transform: uppercase;
+    white-space: nowrap;
+    &:hover {
+        color: var(--accent);
+    }
+}

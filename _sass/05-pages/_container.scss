@@ -1,0 +1,10 @@
+.hub-container {
+    max-width: var(--content-width);
+}
+
+.character-container {
+    max-width: var(--content-width);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}

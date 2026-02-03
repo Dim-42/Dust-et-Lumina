@@ -1,0 +1,15 @@
+
+$note-size: 14px;
+$text-size: 18px;
+$msg-size: 20px;
+$main-header-size: 30px;
+$page-title-size: 35px;
+
+
+:root {
+    --text-size: #{$text-size};
+    --note-size: #{$note-size};
+    --msg-size: #{$msg-size};
+    --main-header-size: #{$main-header-size};
+    --page-title-size: #{$page-title-size};
+}

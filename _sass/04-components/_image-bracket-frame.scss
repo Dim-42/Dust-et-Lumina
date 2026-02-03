@@ -1,0 +1,41 @@
+.image-frame {
+    position: relative;
+    display: flex; // Fits the width of the image
+    line-height: 0;
+    margin: 2rem auto;
+    max-width: 90%;
+    padding: 10px;
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: auto;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 20px; // How far down the "L" shape goes
+        border-left: 1px solid var(--accent);
+        border-right: 1px solid var(--accent);
+        background: linear-gradient(to right, var(--accent) 20px, transparent 20px, transparent calc(100% - 20px), var(--accent) calc(100% - 20px)) top / 100% 1px no-repeat;
+        pointer-events: none;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 20px;
+        border-left: 1px solid var(--accent);
+        border-right: 1px solid var(--accent);
+        background: linear-gradient(to right, var(--accent) 20px, transparent 20px, transparent calc(100% - 20px), var(--accent) calc(100% - 20px)) bottom / 100% 1px no-repeat;
+        pointer-events: none;
+    }
+}

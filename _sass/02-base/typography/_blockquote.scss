@@ -1,0 +1,8 @@
+blockquote {
+    font-size: var(--text-size);
+    border-left: solid 2px var(--accent);
+}
+
+blockquote p {
+    font-family: var(--font-main) !important;
+}

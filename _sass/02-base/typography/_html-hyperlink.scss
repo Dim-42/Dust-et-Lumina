@@ -1,0 +1,35 @@
+a {
+    color: var(--accent-dim);
+    text-decoration: none;
+    transition: 0.3s;
+
+    &:hover {
+        color: var(--accent);
+    }
+}
+
+.entry-title {
+    color: var(--color-text);
+    text-decoration: none;
+    position: relative;
+}
+
+.entry-title::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 50%;
+    background: var(--accent-dim);
+    transition: all 0.2s ease;
+    transform: translateX(-50%);
+}
+
+.entry-title:hover::after {
+    width: 100%; 
+}
+
+.entry-title:hover {
+    color: var(--accent);
+}

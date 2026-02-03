@@ -1,0 +1,17 @@
+$color-bg: #0c0d0f;
+$color-panel: #16191f;
+$color-text: #c4ccd2;
+$color-note: #535361; 
+$color-accent: #14bec7;
+$color-accent-dim: #00c2e077;
+$color-secondary: #ec365d;
+
+:root {
+    --bg-color: #{$color-bg};
+    --panel-bg: #{$color-panel};
+    --color-text: #{$color-text};
+    --color-note: #{$color-note};
+    --accent: #{$color-accent};
+    --accent-dim: #{$color-accent-dim};
+    --accent-secondary: #{$color-secondary};
+}

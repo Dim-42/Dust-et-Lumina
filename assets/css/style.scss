@@ -1,7 +1,36 @@
 ---
+
 ---
-@import "variables";
-@import "base";
-@import "typography";
-@import "layout";
-@import "components";
+
+// ---- abstracts ---- //
+@import "01-abstracts/fonts";
+@import "01-abstracts/colors";
+@import "01-abstracts/font-sizes";
+@import "01-abstracts/other";
+
+// ---- base ---- //
+@import "02-base/animations";
+@import "02-base/typography/blockquote";
+@import "02-base/typography/html-hyperlink";
+@import "02-base/typography/html-paragraph";
+@import "02-base/typography/list";
+@import "02-base/typography/md-divider";
+@import "02-base/typography/md-header";
+
+// ---- layout ---- //
+@import "03-layout/body";
+@import "03-layout/navigation";
+@import "03-layout/header";
+@import "03-layout/footer";
+
+// ---- components ---- //
+@import "04-components/loading-screen";
+@import "04-components/concept-card";
+@import "04-components/image-bracket-frame";
+@import "04-components/canvas-bg";
+@import "04-components/web-scrollbar";
+
+// ---- pages ---- //
+@import "05-pages/general";
+@import "05-pages/container";
+@import "05-pages/obsidian";

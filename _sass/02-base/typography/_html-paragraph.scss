@@ -1,0 +1,53 @@
+p {
+    font-family: var(--font-main);
+    color: var(--color-text);
+    font-size: var(--text-size);
+    margin: 1rem 1rem;
+    text-align: justify;
+}
+
+// main headered, big, centered
+.main-header {
+    font-family: var(--font-mono);
+    font-size: var(--main-header-size);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    border-left: 4px solid var(--accent);
+    border-right: 4px solid var(--accent);
+    padding: 0 5rem;
+    text-align: center;
+}
+
+// centered text
+.poetry {
+    font-family: var(--font-mono);
+    font-size: var(--text-size);
+    color: var(--color-text);
+    text-align: center;
+}
+
+// regular system message
+.system-msg {
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    text-align: center;
+    font-size: var(--msg-size);
+    letter-spacing: 0.2rem;
+}
+
+.system-msg-note {
+    color: var(--color-note);
+    font-family: var(--font-mono);
+    text-align: center;
+    font-size: var(--note-size);
+    letter-spacing: 0.2rem;
+}
+
+// warning text
+.warning-text {
+    color: var(--accent-secondary);
+    font-family: var(--font-mono);
+    text-align: center;
+    font-size: var(--msg-size);
+}

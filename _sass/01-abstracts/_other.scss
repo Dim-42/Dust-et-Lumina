@@ -1,0 +1,5 @@
+$content-width: 1000px;
+
+:root {
+    --content-width: #{$content-width};
+}

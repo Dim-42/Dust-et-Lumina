@@ -1,0 +1,140 @@
+.concept-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+    padding: 1rem 0;
+}
+
+.concept-card {
+    background: var(--bg-color);
+    border: 1px solid var(--color-note);
+    padding: 10px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    transition: all 0.2s ease;
+    overflow: hidden;
+
+    &:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    &:hover {    
+        border-color: var(--accent);
+        background: var(--bg-color);
+        
+        img {
+            filter: grayscale(0%) sepia(0%);
+            opacity: 0.8;
+        }
+
+        .concept-title { 
+            color: var(--accent);
+        }
+    }
+}
+
+.concept-thumb {
+    flex: 3; // Ratio: Image is twice as wide as text (adjust as needed)
+    height: 105px; // Fixed height for a "bar" look
+    background: #000;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(80%) sepia(20%);
+        opacity: 0.8;
+        transition: all 0.5s ease;
+    }
+
+    .no-image {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-mono);
+        color: var(--accent-secondary);
+        opacity: 60%;
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(0,0,0,1),
+            rgba(0,0,0,1) 2px,
+            rgba(22,27,34,1) 4px
+        );
+    }
+}
+
+.concept-text {
+    flex: 1; // Ratio: Title section is narrower
+    padding: 0.8rem 1.5rem;
+    text-align: center; // Centers text within its section
+    
+    .concept-title {
+        font-family: var(--font-mono);
+        font-size: var(--text-size);
+        color: var(--color-text);
+        text-transform: uppercase;
+        margin: 0;
+        transition: color 0.2s ease;
+        letter-spacing: 0.1rem;
+        position: relative;
+        display: inline-block; // Necessary for the underline width
+    }
+    
+    .concept-title::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -4px;
+        left: 50%;
+        background: var(--accent-dim);
+        transition: all 0.2s ease;
+        transform: translateX(-50%);
+    }
+
+    // Hover effect already handled by parent .concept-card:hover, 
+    // but kept this for individual title hover if needed.
+    &:hover .concept-title::after {
+        width: 100%; 
+    }
+}
+
+// Mobile responsiveness: stack them back to columns on small screens
+@media (max-width: 600px) {
+    .concept-grid {
+        gap: 2rem; // Give bars more breathing room when stacked
+    }
+
+    .concept-card, 
+    .concept-card:nth-child(even) {
+        flex-direction: column !important; // Force stack
+        align-items: stretch; // Ensure content fills the width evenly
+        padding: 10px 10px 0px 10px;
+    }
+
+    .concept-thumb {
+        width: 100%;
+        height: 80px;
+        flex: none; // Reset the flex: 2 from desktop
+        border-right: none;
+        border-left: none;
+
+        img {
+            display: block; // Removes the inline "ghost" padding at the bottom
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .concept-text {
+        flex: none; // Reset the flex: 1 from desktop
+        width: 100%;
+        padding: 1.2rem 1rem;
+    }
+}
