@@ -9,6 +9,26 @@
     pointer-events: none; /* Allows you to click links through the canvas */
     opacity: 0; /* Hidden by default */
     transition: opacity 2s ease-in; /* Smooth fade-in after loading */
+    
+    /* --- THE MASK --- */
+    /* Standard syntax */
+    mask-image: linear-gradient(
+        to right, 
+        transparent 0%, 
+        var(--bg-color) 15%, 
+        var(--bg-color) 85%, 
+        transparent 100%
+    );
+
+    /* Webkit prefix for Safari/older Chrome */
+    -webkit-mask-image: linear-gradient(
+        to right, 
+        transparent 0%, 
+        var(--bg-color) 25%, 
+        var(--bg-color) 75%, 
+        transparent 100%
+    );
+
 }
 
 #network-canvas.visible {

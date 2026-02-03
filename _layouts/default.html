@@ -186,13 +186,27 @@
         const pointCount = 80; // Number of dots
 
         function initCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            const dpr = window.devicePixelRatio || 1; // Get the screen's pixel density
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            // 1. Scale the actual drawing surface
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+
+            // 2. Scale the CSS display size back down
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+
+            // 3. Scale all drawing operations automatically
+            ctx.scale(dpr, dpr);
+
             points = [];
             for (let i = 0; i < pointCount; i++) {
                 points.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
+                    // Use width/height (not canvas.width/height) for coordinate math
+                    x: Math.random() * width,
+                    y: Math.random() * height,
                     vx: (Math.random() - 0.5) * 0.5,
                     vy: (Math.random() - 0.5) * 0.5
                 });
@@ -200,7 +214,7 @@
         }
 
         function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
             const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim();
             ctx.fillStyle = accentColor;
             ctx.strokeStyle = accentColor;

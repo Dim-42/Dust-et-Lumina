@@ -2,6 +2,6 @@ $font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $font-mono: 'Agency FB', monospace;
 
 :root {
-    --font-mono: #{inspect($font-mono)};
+    --font-mono: #{$font-mono};
     --font-main: #{$font-main};
 }

@@ -9,37 +9,43 @@ layout: default
 
     <aside class="character-sidebar">
         <div class="infobox-header">
-            {{ page.name | default: page.title | upcase }}
+            {{page.name[0]}}
+            <br>
+            {{page.name[1]}}
         </div>
-        
+
         {% if page.image %}
         <div class="infobox-image">
-            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+            <img src="{{ page.image | relative_url }}">
         </div>
         {% endif %}
 
         <table class="infobox-table">
             <tr>
-                <th colspan="2" class="infobox-section">BIOGRAPHICAL DATA</th>
+                <th colspan="2" class="infobox-section">// BIOGRAPHICAL DATA</th>
             </tr>
             <tr>
-                <td class="label">SPECIES</td>
-                <td class="value">{{ page.species | default: "UNKNOWN" }}</td>
+                <td class="label">FULL NAME</td>
+                <td class="value">{{ page.fullname | default: "■■■" }}</td>
             </tr>
+
+            {% if page.alias %}
             <tr>
-                <td class="label">HOMELAND</td>
-                <td class="value">{{ page.homeland | default: "CLASSIFIED" }}</td>
-            </tr>
-            <tr>
-                <td class="label">STATUS</td>
-                <td class="value">{{ page.status | default: "ACTIVE" }}</td>
-            </tr>
-            {% if page.affiliation %}
-            <tr>
-                <td class="label">AFFILIATION</td>
-                <td class="value">{{ page.affiliation }}</td>
+                <td class="label">ALIAS</td>
+                <td class="value">{{ page.alias | join: "<br>"}}</td>
             </tr>
             {% endif %}
+
+            <tr>
+                <td class="label">AGE</td>
+                <td class="value">{{ page.age | default: "■■" }}</td>
+            </tr>
+
+            <tr>
+                <td class="label">HOMELAND</td>
+                <td class="value">{{ page.homeland | default: "■■■" }}</td>
+            </tr>
+
         </table>
     </aside>
 </div>

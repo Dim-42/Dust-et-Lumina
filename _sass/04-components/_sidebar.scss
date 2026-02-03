@@ -1,0 +1,70 @@
+.character-sidebar {
+    width: 35%;
+}
+
+.infobox-image {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    min-width: 0;
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.infobox-header {
+    font-family: var(--font-mono);
+    color: var(--main-text);
+    font-size: var(--text-size);
+    text-align: center;
+    padding: 0.5rem;
+    letter-spacing: 0.1rem;
+    border-top: 1px solid var(--color-note);
+    border-bottom: 1px solid var(--color-note);
+    font-weight: bold;
+}
+
+.infobox-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.infobox-section {
+    border-top: 1px solid var(--color-note);
+    padding: 0.5rem 0;
+    font-size: 12px;
+    color: var(--accent-secondary);
+    text-align: left;
+    font-family: var(--font-mono);
+    letter-spacing: 0.1rem;
+    font-weight: normal;
+}
+
+.infobox-table td {
+    padding: 4px 4px 8px 4px;
+    border-bottom: 0.5px solid var(--color-note);
+}
+
+.infobox-table .label {
+    font-family: var(--font-mono);
+    letter-spacing: 0.1rem;
+    color: var(--accent);
+    font-size: var(--note-size);
+    width: 40%;
+}
+
+.infobox-table .value {
+    font-family: var(--font-main);
+    font-size: var(--note-size);
+}
+
+@media (max-width: 768px) {
+    .character-container {
+        flex-direction: column-reverse;
+    }
+    .character-sidebar {
+        width: 100%;
+    }
+}
