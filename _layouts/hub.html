@@ -6,14 +6,24 @@ layout: default
         {{ content }}    
         <ul class="data-list">
             {% assign collection_name = page.collection_type %}
-            {% for entry in site[collection_name] %}
-                {% if entry.draft != true %}
+            
+            {% comment %} 
+                1. Filter out drafts first 
+            {% endcomment %}
+            {% assign all_items = site[collection_name] | where_exp: "item", "item.draft != true" %}
+
+            {% comment %} 
+                2. Use sort_natural. It is much more forgiving than 'sort'.
+                If 'order' is missing, we use 'title' as a fallback.
+            {% endcomment %}
+            {% assign sorted_entries = all_items | sort_natural: "order" %}
+
+            {% for entry in sorted_entries %}
                 <li>
                     <a href="{{ entry.url | relative_url }}">
                         <span class="entry-title">{{ entry.title }}</span>
                     </a>
                 </li>
-                {% endif %}
             {% endfor %}
         </ul>
     </section>

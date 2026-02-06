@@ -8,3 +8,24 @@ header {
     letter-spacing: 3px;
     color: var(--accent);
 }
+
+.page-subtitle {
+    font-size: 12px; 
+    position: relative;
+    top: -2.2rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase; 
+    color: var(--color-note);
+    letter-spacing: 2px;
+    text-align: right;
+    
+}
+
+.page-subtitle::after {
+    content: ""; 
+    display: inline-block;
+    width: 9px; 
+    height: 9px;
+    background-color: var(--accent-secondary);
+    margin-left: 3px;
+}
