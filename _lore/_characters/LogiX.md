@@ -1,16 +1,15 @@
 ---
 layout: character
-title: 艾洛伊斯
+title: LogiX
 draft: false
 collection: characters
 
-name: [艾洛伊斯·格雷, Eloise Grey]
-fullname: [Eloise Adelaide ▇▇▇, 艾洛伊斯·阿德莱德·▇▇▇]
-alias: [E.A.G]
-# birthday: 
-homeland: 奥德维克协和星区
-image: assets/image/eloise.png
-
+name: [LogiX]
+fullname: ['"LogiX" Personified Interactive Terminal', “LogiX”人格化交互终端]
+# alias: [Chloe]
+#birthday: 
+homeland: "NULL"
+image: assets/image/logix.png
 ---
 
 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本

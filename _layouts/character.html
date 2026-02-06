@@ -24,9 +24,10 @@ layout: default
             <tr>
                 <th colspan="2" class="infobox-section">// BIOGRAPHICAL DATA</th>
             </tr>
+            
             <tr>
                 <td class="label">FULL NAME</td>
-                <td class="value">{{ page.fullname | default: "■■■" }}</td>
+                <td class="value">{{ page.fullname | default: "▇▇▇" | join: "<br>" }}</td>
             </tr>
 
             {% if page.alias %}
@@ -37,13 +38,13 @@ layout: default
             {% endif %}
 
             <tr>
-                <td class="label">AGE</td>
-                <td class="value">{{ page.age | default: "■■" }}</td>
+                <td class="label">BIRTHDATE</td>
+                <td class="value">{{ page.birthday | default: "▇▇" }}</td>
             </tr>
 
             <tr>
                 <td class="label">HOMELAND</td>
-                <td class="value">{{ page.homeland | default: "■■■" }}</td>
+                <td class="value">{{ page.homeland | default: "▇▇▇" }}</td>
             </tr>
 
         </table>
