@@ -22,7 +22,7 @@ title: Dust et Lumina
         {% endif %}
     </div>
     <div class="concept-text">
-        <span class="concept-title">{{ item.title }}</span>
+        <span class="concept-title">{{ item.title }} <br> {{ item.subtitle }} </span>
     </div>
   </a>
   {% endfor %}

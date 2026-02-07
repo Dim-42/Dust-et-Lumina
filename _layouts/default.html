@@ -9,7 +9,10 @@
 </head>
 
 <body>
-    <canvas id="network-canvas"></canvas>    
+    <!-- canvas backrgound-->
+    <canvas id="network-canvas"></canvas>
+
+    <!-- loading screen -->
     <div id="loading-screen">
         <div id="phase-login" class="loader-phase">
             <p class = "main-header">LogiX Predictive Computation SYSTEM</p>
@@ -21,7 +24,7 @@
             <p class="system-msg-note">PRESS ENTER TO AUTHENTICATE</p>
             <p class="system-msg-note" style = "position:fixed; bottom: 0; padding-bottom: 1rem;">PROPERTY OF TURRIS GRISEA // CONFIDENTIAL // ALL RIGHTS RESERVED </p>
         </div>
-
+        
         <div id="phase-scan" class="loader-phase" style="display: none;">
             <p class = "main-header" style = "font-size: 20px; position: fixed; top: 0; margin-top: 50px;">LogiX Predictive Computation SYSTEM</p>
             <div class="fui-scanner">
@@ -47,6 +50,7 @@
         </div>
     </div>
 
+    <!-- nagivation bar-->
     <nav class="nav-interface">
         {% for link in site.navigation %}
             <a href="{{ link.url | relative_url }}" class="nav-link">
@@ -55,15 +59,16 @@
         {% endfor %}
     </nav>
 
+    <!--main content-->
     <main id="obsidian-content">
-        <header style="font-size: var(--page-title-size); border-bottom: 1px solid var(--accent-dim); margin-bottom: 0.5rem; padding-bottom: 0.5rem;">
-            {{ page.title }}
+        <header class="page-header">
+            <div class="header-main">
+                <span class="title-text">{{ page.title }}</span>
+                {% if page.subtitle %}
+                    <span class="page-subtitle">{{ page.subtitle }}</span>
+                {% endif %}
+            </div>
         </header>
-        {% if page.subtitle %}
-                <div class="page-subtitle">
-                    {{ page.subtitle }}
-                </div>
-        {% endif %}
         {{ content }}
     </main>
 

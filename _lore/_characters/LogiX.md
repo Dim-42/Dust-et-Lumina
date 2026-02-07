@@ -1,9 +1,10 @@
 ---
 layout: character
+collection: characters
+
 title: LogiX
 subtitle: '"LogiX" Personified Interactive Terminal'
 draft: false
-collection: characters
 order: 60
 
 name: [LogiX]

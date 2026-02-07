@@ -1,31 +1,40 @@
-header {
+.page-header {
     border-bottom: 1px solid var(--accent-dim);
     text-transform: uppercase;
-    padding: 1rem 0;
+    padding: 1rem 0 0.5rem 0;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
     font-family: var(--font-mono);
-    font-size: 2rem;
-    font-weight: normal;
-    letter-spacing: 3px;
     color: var(--accent);
-}
 
-.page-subtitle {
-    font-size: 12px; 
-    position: relative;
-    top: -2.2rem;
-    font-family: var(--font-mono);
-    text-transform: uppercase; 
-    color: var(--color-note);
-    letter-spacing: 2px;
-    text-align: right;
-    
-}
+    .header-main {
+        display: flex;
+        justify-content: space-between; // Title on left, Subtitle on right
+        align-items: flex-end;         // Aligns both to the bottom border line
+        width: 100%;
+    }
 
-.page-subtitle::after {
-    content: ""; 
-    display: inline-block;
-    width: 9px; 
-    height: 9px;
-    background-color: var(--accent-secondary);
-    margin-left: 3px;
+    .title-text {
+        font-size: var(--page-title-size);
+        letter-spacing: 3px;
+        line-height: 1; // Prevents title's descenders from pushing the line
+    }
+
+    .page-subtitle {
+        font-size: 12px;
+        color: var(--color-note);
+        letter-spacing: 2px;
+        padding-bottom: 2px; // Tiny nudge to keep text from touching the line
+        line-height: 1;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            background-color: var(--accent-secondary);
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+    }
 }

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "About"
+title: About
 permalink: /about/
 ---
 
-## About 有关项目
+## About
 
 如你所见，这是我的个人原创世界观【尘与辉光】。
 
