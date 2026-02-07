@@ -15,14 +15,16 @@
     <!-- loading screen -->
     <div id="loading-screen">
         <div id="phase-login" class="loader-phase">
-            <p class = "main-header">LogiX Predictive Computation SYSTEM</p>
+            <p class="main-header">LogiX Predictive Computation SYSTEM</p>
             <p class="system-msg visible">SYSTEM_ACCESS_REQUIRED</p>
             <div class="login-input-wrapper">
                 <span class="system-msg">></span>
-                <input type="password" id="db-password" autocomplete="off" autofocus>
+                <input type="text" id="db-password" readonly autocomplete="off">
             </div>
-            <p class="system-msg-note">PRESS ENTER TO AUTHENTICATE</p>
-            <p class="system-msg-note" style = "position:fixed; bottom: 0; padding-bottom: 1rem;">PROPERTY OF TURRIS GRISEA // CONFIDENTIAL // ALL RIGHTS RESERVED </p>
+            <p id="auth-status" class="system-msg-note">INITIALIZING AUTHENTICATION...</p>
+            <p class="system-msg-note" style="position:fixed; bottom: 0; padding-bottom: 1rem;">
+                PROPERTY OF TURRIS GRISEA // CONFIDENTIAL
+            </p>
         </div>
         
         <div id="phase-scan" class="loader-phase" style="display: none;">
@@ -133,7 +135,7 @@
             }
             
             // Phase 1 Logic: Password Entry
-            passInput.addEventListener('keypress', function (e) {
+            /** passInput.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
                     // Add a "processing" feel
                     p1.style.opacity = '0.5';
@@ -144,7 +146,41 @@
                         startPhase2();
                     }, 600);
                 }
-            });
+            }); **/
+
+            startAutoLogin();
+
+            // --- Updated Auto-Login Logic ---
+            function startAutoLogin() {
+                const passInput = document.getElementById('db-password');
+                const authStatus = document.getElementById('auth-status');
+                const p1 = document.getElementById('phase-login');
+                
+                const passwordLength = 12; // How many dots to "type"
+                let typedCount = 0;
+
+                // Simulate typewriter dots
+                const typingInterval = setInterval(() => {
+                    passInput.value += "•"; 
+                    typedCount++;
+
+                    if (typedCount >= passwordLength) {
+                        clearInterval(typingInterval);
+                        
+                        // Wait a moment, then show "Granted"
+                        setTimeout(() => {
+                            authStatus.textContent = "ACCESS_GRANTED. VERIFYING IDENTITY...";
+                            authStatus.style.color = "var(--accent-secondary)"; // Assuming accent is your theme color
+                            
+                            // Transition to Phase 2
+                            setTimeout(() => {
+                                p1.style.display = 'none';
+                                startPhase2();
+                            }, 1000);
+                        }, 500);
+                    }
+                }, 150); // Speed of typing (ms per dot)
+            }
 
             function startPhase2() {
                 p2.style.display = 'flex';
