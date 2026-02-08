@@ -29,6 +29,21 @@ layout: default
                 <td class="label">Type</td>
                 <td class="value">{{ page.type | default: "未归档" | join: "<br>" }}</td>
             </tr>
+
+            {% if page.leader %}
+            <tr>
+                <td class="label">Leader</td>
+                <td class="value">{{ page.leader | join: "<br>" }}</td>
+            </tr>
+            {% endif %}
+
+            {% if page.hq %}
+            <tr>
+                <td class="label">Headquarters</td>
+                <td class="value">{{ page.hq | join: "<br>" }}</td>
+            </tr>
+            {% endif %}
+
         </table>
     </aside>
 

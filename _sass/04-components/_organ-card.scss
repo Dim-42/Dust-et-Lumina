@@ -1,20 +1,21 @@
-.featured-chars {
+.featured-organs {
     display: flex;
     justify-content: center;
     margin: 0rem 0;
     padding: 1rem 0;
 }
 
-.char-grid {
+.organ-grid {
     display: flex;
     justify-content: safe center;
+    padding: 1rem 0;
     gap: 1.5rem;
     overflow-x: auto;
     &::-webkit-scrollbar { display: none; }
     scrollbar-width: none;
 }
 
-.char-card {
+.organ-card {
     flex: 0 0 180px; 
     background: var(--bg-color);
     border: 1px solid var(--color-note);
@@ -24,12 +25,13 @@
     flex-direction: column;
     transition: all 0.2s ease;
     overflow: hidden;
+    height: auto;
 
     &:hover {
         border-color: var(--accent);
         background: var(--bg-color);
         
-        .char-overlay span { 
+        .organ-overlay span { 
             color: var(--accent);
             &::after {
                 width: 100%; // Expands the underline on hover
@@ -38,12 +40,13 @@
     }
 }
 
-.char-portrait {
+.organ-portrait {
     width: 100%;
-    aspect-ratio: 3 / 3.5; 
+    aspect-ratio: 3 / 3; 
     overflow: hidden;
     margin-bottom: 10px;
     position: relative;
+
 
     img {
         width: 100%;
@@ -73,7 +76,7 @@
     }
 }
 
-.char-card:hover {
+.organ-card:hover {
     img {
         // Fully clear the filters to 0 on hover
         filter: grayscale(0%) sepia(0%) hue-rotate(0deg) brightness(1) contrast(1);
@@ -81,9 +84,18 @@
     }
 }
 
-.char-overlay {
+.organ-overlay {
     padding: 0.5rem 0;
     text-align: center;
+    border-top: 1px solid var(--color-note);
+    height: 80px;
+    // --- Vertical Centering Logic ---
+    display: flex;
+    flex-direction: column;   // Keeps the span and underline stacked
+    justify-content: center;  // Centers content on the Y-Axis
+    align-items: center;      // Centers content on the X-Axis
+    min-height: 60px;         // Adjust this height to fit your design
+    // --------------------------------
 
     span {
         font-family: var(--font-mono);
@@ -95,7 +107,6 @@
         display: inline-block;
         transition: color 0.2s ease;
 
-        // Animated underline matching concept-title::after
         &::after {
             content: '';
             position: absolute;

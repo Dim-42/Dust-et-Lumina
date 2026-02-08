@@ -30,7 +30,31 @@ title: Dust et Lumina
 
 ## 组织与势力 // KEY_PARTIES
 
-<p class = "warning-text">404 Not Found</p>
+<div class="featured-organ">
+    <div class="organ-grid">
+        {% assign featured_organ = site.organizations | where: "featured", true %}
+        {% assign sorted_organ = featured_organ | sort_natural: "order" %}
+        {% for organ in sorted_organ %}
+        <a href="{{ organ.url | relative_url }}" class="organ-card">
+            <div class="organ-portrait">
+                {% if organ.image %}
+                    <img src="{{ organ.image | relative_url }}" alt="{{ organ.title }}">
+                {% else %}
+                    <div class="no-portrait">NO_DATA</div>
+                {% endif %}
+            </div> <div class="organ-overlay">
+                <span>{{ organ.title }} <br> {{ organ.subtitle }} </span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<div style="text-align: right; padding-right: 1rem;">
+    <a href="{{ '/organizations/' | relative_url }}" style = "font-family: var(--font-mono);">
+        ACCESS ORGANIZATION PROFILES >
+    </a>
+</div>
 
 ## 人物档案 // PERSONNEL_PROFILES
 

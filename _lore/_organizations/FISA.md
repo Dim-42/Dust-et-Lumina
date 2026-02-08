@@ -3,6 +3,8 @@ layout: organization
 collection: organizations
 
 draft: false
+featured: true
+order: 60
 
 title: 联邦情报与安全局
 subtitle: Federal Intelligence & Security Agency
@@ -10,6 +12,8 @@ subtitle: Federal Intelligence & Security Agency
 name: [联邦情报与安全局, Federal Intelligence & Security Agency]
 type: [政府机构]
 motto: ["For there is nothing hid, that shall not be known.", 凡所隐匿，无不显形。]
+leader: [▇▇▇]
+hq: [慕洛里斯特别行政星区]
 image: assets/image/fisa.png
 ---
 
