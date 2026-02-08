@@ -1,5 +1,14 @@
-.character-sidebar {
-    width: 35%;
+.wiki-sideber {
+    float: right; 
+    width: 35%; /* Your preferred width */
+    margin-left: 2rem; /* Gap between text and sidebar */
+    margin-bottom: 1rem; /* Gap for when text flows underneath */
+    
+    /* Keep your existing aesthetic styles */
+    //background: rgba(255, 255, 255, 0.01);
+    //border: 1px solid var(--accent-dim);
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .infobox-image {
@@ -43,7 +52,7 @@
 }
 
 .infobox-table td {
-    padding: 4px 4px 8px 4px;
+    padding: 4px 4px 4px 4px;
     border-bottom: 0.5px solid var(--color-note);
 }
 
@@ -52,19 +61,20 @@
     letter-spacing: 0.1rem;
     color: var(--accent);
     font-size: var(--note-size);
-    width: 40%;
+    width: 30%;
+    text-transform: uppercase;
 }
 
 .infobox-table .value {
     font-family: var(--font-main);
-    font-size: var(--note-size);
+    font-size: 13px;
 }
 
 @media (max-width: 768px) {
-    .character-container {
+    .main-container {
         flex-direction: column-reverse;
     }
-    .character-sidebar {
+    .wiki-sideber {
         width: 100%;
     }
 }

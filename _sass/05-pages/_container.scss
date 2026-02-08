@@ -6,15 +6,17 @@
     max-width: var(--content-width);
 }
 
-.character-container {
+.main-container {
     max-width: var(--content-width);
-    display: flex;
-    flex-wrap: nowrap; 
-    gap: 2rem; 
-    align-items: flex-start;
+    display: block;
 }
 
-.character-main {
-    flex: 1;
+.content-main {
     min-width: 0; 
+}
+
+.main-container::after {
+    content: "";
+    display: table;
+    clear: both;
 }

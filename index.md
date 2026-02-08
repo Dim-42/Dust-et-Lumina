@@ -4,7 +4,7 @@ title: Dust et Lumina
 ---
 
 <p class = "main-header">尘与辉光</p>
-<p class = "poetry" style = "letter-spacing: 0.05rem;"> At the end of time, the stars are but dust.
+<p class = "motto" style = "letter-spacing: 0.05rem;"> At the end of time, the stars are but dust.
 <br>时间的尽头，繁星若尘。</p>
 
 ---
@@ -34,4 +34,28 @@ title: Dust et Lumina
 
 ## 人物档案 // PERSONNEL_PROFILES
 
-<p class = "warning-text">404 Not Found</p>
+<div class="featured-chars">
+    <div class="char-grid">
+        {% assign featured_chars = site.characters | where: "featured", true %}
+        {% assign sorted_chars = featured_chars | sort_natural: "order" %}
+        {% for char in sorted_chars %}
+        <a href="{{ char.url | relative_url }}" class="char-card">
+            <div class="char-portrait">
+                {% if char.image %}
+                    <img src="{{ char.image | relative_url }}" alt="{{ char.title }}">
+                {% else %}
+                    <div class="no-portrait">NO_DATA</div>
+                {% endif %}
+            </div> <div class="char-overlay">
+                <span>{{ char.title }} <br> {{ char.subtitle }} </span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<div style="text-align: right; padding-right: 1rem;">
+    <a href="{{ '/characters/' | relative_url }}" style = "font-family: var(--font-mono);">
+        ACCESS PERSONNEL PROFILES >
+    </a>
+</div>

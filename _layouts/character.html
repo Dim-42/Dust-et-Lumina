@@ -2,12 +2,8 @@
 layout: default
 ---
 
-<div class="character-container">
-    <article class="character-main">
-        {{ content }}
-    </article>
-
-    <aside class="character-sidebar">
+<div class="main-container">
+    <aside class="wiki-sideber">
         <div class="infobox-header">
             {{page.name[0]}}
             <br>
@@ -49,4 +45,9 @@ layout: default
 
         </table>
     </aside>
+    
+    <article class="content-main">
+        {{ content }}
+    </article>
+
 </div>

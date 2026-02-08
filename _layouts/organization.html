@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<p class = "motto"> {{ page.motto | join: "<br>"}} </p>
+<hr></hr>
+
+<div class="main-container">
+
+    <aside class="wiki-sideber">
+        <div class="infobox-header">
+            {{page.name[0]}}
+            <br>
+            {{page.name[1]}}
+        </div>
+
+        {% if page.image %}
+        <div class="infobox-image">
+            <img src="{{ page.image | relative_url }}">
+        </div>
+        {% endif %}
+
+        <table class="infobox-table">
+            <tr>
+                <th colspan="2" class="infobox-section">// BASIC INFO </th>
+            </tr>
+            
+            <tr>
+                <td class="label">Type</td>
+                <td class="value">{{ page.type | default: "未归档" | join: "<br>" }}</td>
+            </tr>
+        </table>
+    </aside>
+
+    <article class="content-main">
+        {{ content }}
+    </article>
+</div>
