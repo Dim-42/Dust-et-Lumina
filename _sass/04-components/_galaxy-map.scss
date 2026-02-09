@@ -1,0 +1,7 @@
+#galaxy-3d-container {
+    width: 100% !important;
+    height: 500px !important;
+    display: block !important;
+    position: relative; /* Essential for absolute positioning of markers */
+    overflow: hidden;
+}
