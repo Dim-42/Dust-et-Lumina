@@ -43,6 +43,11 @@ layout: default
                 <td class="value">{{ page.homeland | default: "▇▇▇" }}</td>
             </tr>
 
+            <tr>
+                <td class="label">FACTION</td>
+                <td class="value">{{ page.faction | default: "未归档" | join: "<br>" }}</td>
+            </tr>
+
         </table>
     </aside>
     

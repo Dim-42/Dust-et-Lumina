@@ -10,7 +10,7 @@ h1 {
     font-weight: lighter;
 }
 
-h2, h3 {
+h2 {
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -20,4 +20,15 @@ h2, h3 {
     margin-left: 1rem;
     margin-right: 1rem;
     font-weight: lighter;
-}
+};
+
+h3 {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-text);
+    padding-top: 15px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-weight: lighter;
+};

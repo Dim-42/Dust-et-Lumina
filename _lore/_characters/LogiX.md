@@ -12,6 +12,7 @@ fullname: ['"LogiX" Personified Interactive Terminal', “LogiX”人格化交�
 # alias: [Chloe]
 #birthday: 
 homeland: "NULL"
+faction: 灰塔
 image: assets/image/logix.png
 ---
 

@@ -105,12 +105,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const mouse = new THREE.Vector2();
         let hoveredSector = null;
 
-        function addSector(x, y, z, name, url) {
+        function addSector(x, y, z, r, name, url) {
             const group = new THREE.Group();
             group.position.set(x, y, z);
 
             const dot = new THREE.Mesh(
-                new THREE.SphereGeometry(0.2, 16, 16),
+                new THREE.SphereGeometry(r, 16, 16),
                 new THREE.MeshBasicMaterial({ color: 0xffffff }) 
             );
 
@@ -131,8 +131,12 @@ document.addEventListener("DOMContentLoaded", function() {
             clickableSectors.push(group);
         }
 
-        addSector(0, 0.5, 0, "星系核\nGalactic Core", "{{ '/regions/core' | relative_url }}");
-        addSector(0, 0.5, 5, "猎户大星区\nMegasector of Orion", "{{ '/regions/猎户大星区' | relative_url }}");
+        addSector(0, 0.5, 0, 0.1, "星系核\nGalactic Core", "{{ '/regions/星系核' | relative_url }}");
+        addSector(0, 0.5, 5, 0.15, "猎户大星区\nMegasector of Orion", "{{ '/regions/猎户大星区' | relative_url }}");
+        addSector(2, 0.5, 4.3, 0.15, "慕洛里斯特别行政星区\nMeurloris District", "{{ '/regions/慕洛里斯特别行政星区' | relative_url }}");
+        addSector(-6, 0.5, 2, 0.15, "拉文科尔星区\nLavencole Sector", "{{ '/regions/拉文科尔星区' | relative_url }}");
+        addSector(1, 0.5, 4, 0.1, "奥德维克协和星区\nThe Aldwych Concordance", "{{ '/regions/奥德维克协和星区' | relative_url }}");
+        addSector(7.5, 0.5, -0.5, 0.1, "埃尔泽兰独立星区\nEllzerand Independent Sector", "{{ '/regions/埃尔泽兰独立星区' | relative_url }}");
 
         camera.position.set(0, 15, 15);
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -141,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
         controls.autoRotate = true;
         controls.autoRotateSpeed = -0.1;
         controls.minDistance = 10;       
-        controls.maxDistance = 20;      
+        controls.maxDistance = 17;      
         controls.maxPolarAngle = Math.PI / 2 - 0.5; 
 
         container.addEventListener('mousemove', (e) => {
