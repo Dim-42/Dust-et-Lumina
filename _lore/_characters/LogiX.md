@@ -3,12 +3,12 @@ layout: character
 collection: characters
 
 title: LogiX
-subtitle: '"LogiX" Personified Interactive Terminal'
+subtitle: LogiX Personified Interactive Terminal
 draft: false
 order: 60
 
 name: [LogiX]
-fullname: ['"LogiX" Personified Interactive Terminal', “LogiX”人格化交互终端]
+fullname: ['LogiX Personified Interactive Terminal', “LogiX”人格化交互终端]
 # alias: [Chloe]
 #birthday: 
 homeland: "NULL"

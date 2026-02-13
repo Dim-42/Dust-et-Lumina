@@ -30,9 +30,6 @@ exclude:
 collections_dir: _lore
 
 collections:
-  concepts:
-    output: true
-    permalink: /concepts/:path/
   organizations:
     output: true
     permalink: /organizations/:path/
@@ -45,21 +42,27 @@ collections:
   stories:
     output: true
     permalink: /stories/:path/
-
+  culture:
+    output: true
+    permalink: /culture/:path/
+  histories:
+    output: true
+    permalink: /histories/:path/
+    
 navigation:
   - title: "Terminal"
     url: /
-  - title: "Concept"
-    url: /concepts/
   - title: "Organization"
     url: /organizations/
   - title: "Personnel"
     url: /characters/
   - title: "Region"
     url: /regions/
-  - title: "Record"
-    url: /stories/
+  - title: "Encyclopedia"
+    url: /culture/
+  - title: "History"
+    url: /histories/
   - title: "About"
     url: /about/
-
-
+  - title: "Record"
+    url: /stories/

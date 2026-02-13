@@ -9,27 +9,35 @@ title: Dust et Lumina
 
 ---
 
-## 核心概念 // CORE_CONCEPTS
-<div class="concept-grid">
-  {% assign concepts = site.concepts | where: "featured", true %}
-  {% for item in concepts %}
-  <a href="{{ item.url | relative_url }}" class="concept-card">
-    <div class="concept-thumb">
-        {% if item.image %}
-            <img src="{{ item.image | relative_url }}" alt="{{ item.title }}">
-        {% else %}
-            <div class="no-image">NOT_FOUND</div>
-        {% endif %}
-    </div>
-    <div class="concept-text">
-        <span class="concept-title">{{ item.title }} <br> {{ item.subtitle }} </span>
-    </div>
-  </a>
-  {% endfor %}
+<div class = "image-frame">
+    <img src="{{ '/assets/image/title.png' | relative_url }}">
 </div>
 
 
-## 星系地理 // GALACTIC_GEOGRAPHY
+## 核心概念 // CORE_CONCEPTS
+
+<div class="concept-grid">
+  {% assign selected_slugs = "星系,晶尘,超空间" | split: "," %}
+  {% for slug in selected_slugs %}
+    {% assign item = site.culture | where: "slug", slug | first %}
+    {% if item %}
+      <a href="{{ item.url | relative_url }}" class="concept-card">
+        <div class="concept-thumb">
+            {% if item.image %}
+                <img src="{{ item.image | relative_url }}" alt="{{ item.title }}">
+            {% else %}
+                <div class="no-image">NOT_FOUND</div>
+            {% endif %}
+        </div>
+        <div class="concept-text">
+            <span class="concept-title">{{ item.title }} <br> {{ item.subtitle }} </span>
+        </div>
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+## 星系地理 // ATLAS
 
 <div id="galaxy-3d-container" style="width: 95%; height: 70vh; min-height: 500px; position: relative; overflow: hidden;">
     <div id="sector-info" style="position: absolute; top: 20px; left: 20px; color: var(--color-text); font-family: var(--font-mono); letter-spacing: 0.1rem; pointer-events: none; z-index: 10;">
@@ -79,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
             map: colorTexture, 
             alphaMap: alphaMask,
             transparent: true, 
-            opacity: 0.9,
+            opacity: 1.0,
             side: THREE.DoubleSide,
             depthWrite: false, 
             blending: THREE.AdditiveBlending
@@ -207,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-## 组织与势力 // KEY_PARTIES
+## 组织与势力 // FACTIONS
 
 <div class="featured-organ">
     <div class="organ-grid">

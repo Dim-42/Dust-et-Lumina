@@ -6,10 +6,15 @@ layout: default
         {{ content }}    
         <ul class="data-list">
             {% assign collection_name = page.collection_type %}
-            {% assign all_items = site[collection_name] | where_exp: "item", "item.draft != true" %}
-            {% assign sorted_entries = all_items | sort_natural: "order" %}
+            
+            {% case collection_name %}
+                {% when 'histories' %}
+                    {% assign sorted_items = site[collection_name] | where_exp: "item", "item.draft != true" | sort: "abs_time" %}
+                {% else %}
+                    {% assign sorted_items = site[collection_name] | where_exp: "item", "item.draft != true" | sort: "subtitle" %}
+            {% endcase %}
 
-            {% for entry in sorted_entries %}
+            {% for entry in sorted_items %}
                 <li>
                     <a href="{{ entry.url | relative_url }}">
                         <span class="entry-title">{{ entry.title }}</span>

@@ -77,23 +77,47 @@
     <footer>
         <div class="nav-wrapper">
             {% if page.collection %}
-                {% if page.previous %}
-                    <a href="{{ page.previous.url | relative_url }}" class="nav-arrow">&lt;</a>
-                {% else %}
-                    <span class="nav-arrow disabled">&lt;</span>
-                {% endif %}
-            {% endif %}
 
-            <a href="/" onclick="history.back(); return false;" class="back-link">RETURN</a>
+                {% case page.collection %}
+                    {% when 'histories' %}
+                        {% assign items = site[page.collection] | sort: "abs_time" %}
+                    {% else %}
+                        {% assign items = site[page.collection] | sort: "subtitle" %}
+                {% endcase %}
 
-            {% if page.collection %}
-                {% if page.next %}
-                    <a href="{{ page.next.url | relative_url }}" class="nav-arrow">&gt;</a>
-                {% else %}
-                    <span class="nav-arrow disabled">&gt;</span>
-                {% endif %}
-            {% endif %}
-        </div>
+                {% for item in items %}
+                    {% if item.url == page.url %}
+                        {% assign curr_idx = forloop.index0 %}
+                        {% assign prev_idx = curr_idx | minus: 1 %}
+                        {% assign next_idx = curr_idx | plus: 1 %}
+                        
+                        {% if prev_idx >= 0 %}
+                            {% assign prev_page = items[prev_idx] %}
+                        {% endif %}
+                
+                        {% if next_idx < items.size %}
+                            {% assign next_page = items[next_idx] %}
+                        {% endif %}
+                        {% break %}
+                    {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if prev_page %}
+            <a href="{{ prev_page.url | relative_url }}" class="nav-arrow">&lt;</a>
+        {% else %}
+            <span class="nav-arrow disabled">&lt;</span>
+        {% endif %}
+            
+        <a href="/" onclick="history.back(); return false;" class="back-link">RETURN</a>
+
+        {% if next_page %}
+            <a href="{{ next_page.url | relative_url }}" class="nav-arrow">&gt;</a>
+        {% else %}
+            <span class="nav-arrow disabled">&gt;</span>
+        {% endif %}
+        
+    </div>
 
         <div class="footer-div"></div>
         <div class="footer-grid">

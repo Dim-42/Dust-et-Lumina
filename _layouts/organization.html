@@ -2,8 +2,10 @@
 layout: default
 ---
 
-<p class = "motto"> {{ page.motto | join: "<br>"}} </p>
-<hr></hr>
+{% if page.motto %}
+    <p class = "motto"> {{ page.motto | join: "<br>"}} </p>
+    <hr></hr>
+{% endif %}
 
 <div class="main-container">
 

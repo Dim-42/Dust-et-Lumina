@@ -10,27 +10,25 @@
     opacity: 0; /* Hidden by default */
     transition: opacity 2s ease-in; /* Smooth fade-in after loading */
     
-    /* --- THE MASK --- */
-    /* Standard syntax */
+    /*
     mask-image: linear-gradient(
         to right, 
-        transparent 0%, 
-        var(--bg-color) 15%, 
-        var(--bg-color) 85%, 
-        transparent 100%
+        var(--bg-color) 0%, 
+        transparent 30%, 
+        transparent 70%, 
+        var(--bg-color) 100%
     );
 
-    /* Webkit prefix for Safari/older Chrome */
     -webkit-mask-image: linear-gradient(
         to right, 
-        transparent 0%, 
-        var(--bg-color) 25%, 
-        var(--bg-color) 75%, 
-        transparent 100%
+        var(--bg-color) 0%, 
+        transparent 30%, 
+        transparent 70%, 
+        var(--bg-color) 100%
     );
-
+    */
 }
 
 #network-canvas.visible {
-    opacity: 0.4; /* Subtle enough not to distract from reading */
+    opacity: 0.3; /* Subtle enough not to distract from reading */
 }
