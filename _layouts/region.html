@@ -37,6 +37,12 @@ layout: default
                 <td class="value">{{ page.type | default: "未归档" | join: "<br>" }}</td>
             </tr>
 
+            {% if page.governance %}
+            <tr>
+                <td class="label">Governance</td>
+                <td class="value">{{ page.governance | join: "<br>" }}</td>
+            </tr>
+            {% endif %}
 
 
         </table>

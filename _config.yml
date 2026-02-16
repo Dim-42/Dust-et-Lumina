@@ -33,36 +33,43 @@ collections:
   organizations:
     output: true
     permalink: /organizations/:path/
+    display_name: [Faction, 组织势力]
   characters:
     output: true
     permalink: /characters/:path/
+    display_name: [Personnel,人物档案]
   regions:
     output: true
     permalink: /regions/:path/
+    display_name: [Galactic Atlas,世界地理]
   stories:
     output: true
     permalink: /stories/:path/
+    display_name: [Record,故事]
   culture:
     output: true
     permalink: /culture/:path/
+    display_name: [Encyclopedia,百科]
   histories:
     output: true
     permalink: /histories/:path/
+    display_name: [History,历史]
     
 navigation:
   - title: "Terminal"
     url: /
-  - title: "Organization"
+  - title: "Faction"
     url: /organizations/
   - title: "Personnel"
     url: /characters/
-  - title: "Region"
+  - title: "Atlas"
     url: /regions/
   - title: "Encyclopedia"
     url: /culture/
   - title: "History"
     url: /histories/
-  - title: "About"
-    url: /about/
   - title: "Record"
     url: /stories/
+  - title: "About"
+    url: /about/
+

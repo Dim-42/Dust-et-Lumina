@@ -40,7 +40,7 @@
                 <div class="fui-label bottom" style = "color: var(--accent-secondary);">THREAT_LEVEL: 0%</div>
             </div>
             <p class="system-msg">IDENTITY_VERIFICATION_IN_PROGRESS...</p>
-            <p class="system-msg-note" style = "position:fixed; bottom: 0; padding-bottom: 1rem;">PROPERTY OF TURRIS GRISEA // CONFIDENTIAL // ALL RIGHTS RESERVED </p>
+            <p class="system-msg-note" style = "position:fixed; bottom: 0; padding-bottom: 1rem;">PROPERTY OF TURRIS GRISEA // CONFIDENTIAL</p>
         </div>
 
         <div id="phase-decrypt" class="loader-phase" style="display: none;">
@@ -61,6 +61,39 @@
         {% endfor %}
     </nav>
 
+    <aside class="sidebar-directory" id = "sidebar-directory">
+        <div class="sidebar-handle">
+            <span class="handle-text">/ / / / / / /</span>
+        </div>
+
+        <nav class="sidebar-content">
+            <div class="sidebar-header">SYSTEM INDEX</div>
+
+            <ul class="directory-list">
+                {% for collection in site.collections %}
+                    {% if collection.label != "posts" %} 
+                    <li class="directory-link">
+                        <a href="{{ '/' | append: collection.label | relative_url }}" class = "link-text">
+
+
+                            <div class="link-text">
+                            <span class="title">
+                                {{ collection.display_name[0] | upcase }}
+                            </span>
+                            <span class="subtitle">{{ collection.display_name[1] | upcase }}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <div class = "sidebar-footer">AUTH_LEVEL: GUEST</div>
+            <div class = "sidebar-footer">
+                <a href="{{ '/' | relative_url }}" class="sidebar-homelink">RETURN TO TERMINAL</a>
+            </div>
+        </nav>
+    </aside>    
+
     <!--main content-->
     <main id="obsidian-content">
         <header class="page-header">
@@ -71,7 +104,15 @@
                 {% endif %}
             </div>
         </header>
-        {{ content }}
+        {% assign b = site.baseurl | append: "/" %}
+
+        {{ content 
+            | replace: 'href="@/', 'href="SH_PLACEHOLDER/'
+            | replace: '[[', '<a class="obsidian-link" href="SH_PLACEHOLDER/' 
+            | replace: ']]', '">' 
+            | replace: 'SH_PLACEHOLDER/', b 
+            | replace: '//', '/'
+        }}
     </main>
 
     <footer>
@@ -155,6 +196,7 @@
                 loader.style.display = 'none';
                 canvas.classList.add('visible'); 
                 canvas.style.opacity = "0.4";
+                showDirectory();
                 return;
             }
             
@@ -221,6 +263,7 @@
                 setTimeout(() => {
                     loader.classList.add('fade-out');
                     showBackgroundNetwork();
+                    showDirectory();
                     sessionStorage.setItem('hasLoaded', 'true');
                     localStorage.setItem('last_boot_time', Date.now());
                 }, 1000);
@@ -332,6 +375,11 @@
         
         function showBackgroundNetwork() {
             canvas.classList.add('visible');
+        }
+
+        function showDirectory(){
+            const sidebar = document.getElementById('sidebar-directory');
+            sidebar.classList.add('visible');
         }
     </script>
 </body>
