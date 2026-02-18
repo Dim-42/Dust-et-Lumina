@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         {{ page.title }} | Dust et Lumina
     </title>
@@ -104,16 +105,21 @@
                 {% endif %}
             </div>
         </header>
-        {% assign b = site.baseurl | append: "/" %}
-
-        {{ content 
-            | replace: 'href="@/', 'href="SH_PLACEHOLDER/'
-            | replace: '[[', '<a class="obsidian-link" href="SH_PLACEHOLDER/' 
-            | replace: ']]', '">' 
-            | replace: 'SH_PLACEHOLDER/', b 
-            | replace: '//', '/'
-        }}
+        {{ content }}
     </main>
+
+    <aside class="sidebar-toc" id="sidebar-toc">
+        <div class="toc-handle">
+            <span class="handle-text">/ / / / / / /</span>
+        </div>
+
+        <nav class="toc-container">
+            <div class="sidebar-header">TABLE OF CONETNT</div>
+            <div id="auto-toc" class="toc-content-body">
+                </div>
+            <div class="sidebar-footer">READ_ONLY</div>
+        </nav>
+    </aside>
 
     <footer>
         <div class="nav-wrapper">
@@ -293,6 +299,52 @@
         setInterval(updateClock, 1000);
         updateClock();
 
+        // --- Automatic TOC Extraction ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const tocContainer = document.getElementById('auto-toc');
+            const contentArea = document.getElementById('obsidian-content');
+            const tocSidebar = document.getElementById('sidebar-toc');
+
+            if (!contentArea || !tocContainer) return;
+
+            // Grab H2 and H3 from your main content
+            const headers = contentArea.querySelectorAll('h2, h3');
+
+            // If no headers, hide the whole sidebar including handle
+            if (headers.length === 0) {
+                tocSidebar.style.display = 'none';
+                return;
+            }
+
+            const list = document.createElement('ul');
+            headers.forEach((header, index) => {
+                if (!header.id) {
+                    // Create a slug from text or use index
+                    header.id = 'sec-' + index;
+                }
+
+                const li = document.createElement('li');
+                li.className = 'toc-item ' + (header.tagName === 'H2' ? 'toc-h2' : 'toc-h3');
+
+                // Indent H3s
+                if(header.tagName === 'H3') 
+                {
+                    li.style.paddingLeft = "10px";
+                    li.setAttribute('data-no-prompt', 'true');
+                }
+
+                const a = document.createElement('a');
+                a.href = '#' + header.id;
+                a.textContent = header.textContent.toUpperCase();
+                a.className = 'toc-link';
+                
+                li.appendChild(a);
+                list.appendChild(li);
+            });
+            
+            tocContainer.appendChild(list);
+        });
+
         // --- Canvas Background---
         const canvas = document.getElementById('network-canvas');
         const ctx = canvas.getContext('2d');
@@ -380,6 +432,9 @@
         function showDirectory(){
             const sidebar = document.getElementById('sidebar-directory');
             sidebar.classList.add('visible');
+
+            const toc = document.getElementById('sidebar-toc');
+            if(toc) toc.classList.add('visible');
         }
     </script>
 </body>

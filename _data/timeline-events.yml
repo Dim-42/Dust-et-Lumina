@@ -2,6 +2,7 @@
   abs_time: -570
   time: ▇▇▇
   excerpts: LogiX初代模型开始运行。
+  link: 灰塔
 
 - title: 星轨航线公司成立
   abs_time: -159
@@ -13,6 +14,7 @@
   abs_time: -112
   time: 112 B.U.
   excerpts: 标志着高效的远距离星际航行成为现实。
+  link: 超空间
 
 - title: 人马-猎户联邦成立
   abs_time: 1
@@ -30,7 +32,7 @@
   abs_time: 672
   time: 672 A.U.
   excerpts: 标志着联邦情报体系的制度化，联邦情报与安全局、军方情报处等一系列情报机构正式诞生。
-  link: 联邦情报与安全局
+  link: 联邦情报与安全局,军方情报处,内务调查处,战略咨询委员会
 
 - title: 埃癸斯医疗成立
   abs_time: 1002
@@ -43,7 +45,6 @@
   time: 1524 A.U.
   link: 第三炬火
 
-
 - title: 密涅瓦天文台成立
   abs_time: 1527
   time: 1527 A.U.
@@ -55,3 +56,8 @@
   time: 1531 A.U.
   excerpts: 联邦新历1531年末，拉文科尔星区宣布独立，联邦试图夺回控制权未果。
   link: 拉文科尔星区
+
+- title: 密涅瓦天文台正式开始运转
+  abs_time: 1539
+  time: 1539 A.U.
+  link: 密涅瓦天文台

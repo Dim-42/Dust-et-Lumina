@@ -12,7 +12,7 @@
 }
 
 .infobox-image {
-    width: 100%;
+    width: 95%;
     box-sizing: border-box;
     padding: 10px 0;
     min-width: 0;
@@ -20,8 +20,10 @@
         display: block;
         width: 100%;
         height: auto;
+        filter: grayscale(15%);
     }
 }
+
 
 .infobox-header {
     font-family: var(--font-mono);

@@ -1,0 +1,116 @@
+.sidebar-toc {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    /* Start hidden to the right (Width of content = 280px) */
+    transform: translateY(-50%) translateX(280px); 
+    width: 320px; /* 280px content + 40px handle */
+    height: auto;
+    z-index: 10000;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease;
+    display: flex;
+    flex-direction: row; /* Content on the right, handle on the left */
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Visibility state triggered by your loader logic */
+#sidebar-toc.visible {
+    opacity: 0.9;
+    pointer-events: auto;
+}
+
+/* Slide in on hover */
+.sidebar-toc.visible:hover {
+    transform: translateY(-50%) translateX(0);
+}
+
+/* The Vertical Handle for TOC */
+.toc-handle {
+    width: 40px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent; /* Or a slight tint if you prefer */
+}
+
+/* Reusing your handle-text style */
+.sidebar-toc .handle-text {
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: color-mix(in srgb, var(--color-text), transparent 50%);
+    letter-spacing: 2px;
+    pointer-events: none;
+}
+
+/* The TOC Content Box */
+.toc-container {
+    width: 280px;
+    background-color: color-mix(in srgb, var(--bg-color), transparent 10%);
+    border: 1px solid var(--accent-dim);
+    border-right: none; /* Clean edge against screen */
+    padding: 2rem;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar for TOC */
+.toc-container::-webkit-scrollbar { display: none; }
+
+/* Auto-TOC List Styling */
+.toc-content-body ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 15px;
+}
+
+.toc-link {
+    display: block;
+    padding: 5px;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    text-decoration: none;
+    font-family: var(--font-main);
+    transition: 0.2s;
+}
+
+.toc-link:hover {
+    color: var(--accent);
+
+}
+
+/* 1. Ensure the TOC H2 keeps the prompt */
+.toc-item.toc-h2 {
+    position: relative;
+    /* This ensures it inherits or reapplies your existing li styling */
+}
+
+.toc-item.toc-h2::before {
+    content: ">";
+    position: absolute;
+    left: -20px; /* Adjust based on your TOC padding */
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* 2. Specifically REMOVE the prompt for TOC H3 */
+.toc-item.toc-h3::before {
+    content: none !important;
+}
+
+/* 3. Adjust H3 layout since it no longer has the '>' icon */
+.toc-item.toc-h3 {
+    margin-left: 10px; /* Indent to show hierarchy */
+    border-left: 1px solid var(--accent-dim); /* Optional: visual guide */
+    padding-left: 10px;
+}
+
+.toc-h3 .toc-link {
+    opacity: 0.7;
+    font-size: 0.8rem;
+}

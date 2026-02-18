@@ -14,7 +14,7 @@ title: Dust et Lumina
 </div>
 
 
-## 核心概念 // CORE_CONCEPTS
+## 核心概念
 
 <div class="concept-grid">
   {% assign selected_slugs = "星系,晶尘,超空间" | split: "," %}
@@ -37,7 +37,7 @@ title: Dust et Lumina
   {% endfor %}
 </div>
 
-## 星系地理 // ATLAS
+## 星系地理
 
 <div id="galaxy-3d-container" style="width: 95%; height: 70vh; min-height: 500px; position: relative; overflow: hidden;">
     <div id="sector-info" style="position: absolute; top: 20px; left: 20px; color: var(--color-text); font-family: var(--font-mono); letter-spacing: 0.1rem; pointer-events: none; z-index: 10;">
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-## 组织与势力 // FACTIONS
+## 组织与势力
 
 <div class="featured-organ">
     <div class="organ-grid">
@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </a>
 </div>
 
-## 人物档案 // PERSONNEL_PROFILES
+## 人物档案
 
 <div class="featured-chars">
     <div class="char-grid">

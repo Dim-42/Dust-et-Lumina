@@ -27,8 +27,10 @@ h3 {
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--color-text);
-    padding-top: 15px;
+    border-left: 3px solid var(--accent);
+    padding-left: 15px;
     margin-left: 1rem;
     margin-right: 1rem;
     font-weight: lighter;
+    font-size: 22px;
 };

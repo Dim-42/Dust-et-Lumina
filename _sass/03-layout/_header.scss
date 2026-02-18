@@ -26,6 +26,7 @@
         letter-spacing: 2px;
         padding-bottom: 2px; // Tiny nudge to keep text from touching the line
         line-height: 1;
+        text-align: right;
 
         &::after {
             content: "";

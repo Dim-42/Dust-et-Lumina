@@ -32,3 +32,9 @@
 #network-canvas.visible {
     opacity: 0.3; /* Subtle enough not to distract from reading */
 }
+
+@media screen and (max-width: 768px) {
+    #network-canvas {
+        display: none; /* Saves battery and performance on old phones */
+    }
+}

@@ -15,14 +15,14 @@
 
 
 #sidebar-directory.visible {
-    opacity: 0.9;
+    opacity: 1;
     pointer-events: auto;
 }
 
 /* On hover, move the whole thing to 0 so the content is visible */
 .sidebar-directory.visible:hover {
     transform: translateY(-50%) translateX(0);
-    opacity: 0.9;
+    opacity: 1;
 }
 
 
@@ -50,8 +50,12 @@
     pointer-events: none;
 }
 
+.sidebar-content::-webkit-scrollbar { display: none; }
+
 .sidebar-content {
     width: 280px;
+    max-height: 70vh;
+    overflow-y: auto;
     background-color: color-mix(in srgb, var(--bg-color), transparent 10%);
     border: 1px solid var(--accent-dim);
     border-left: none;

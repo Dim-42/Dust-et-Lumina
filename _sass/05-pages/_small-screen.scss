@@ -1,0 +1,181 @@
+@media screen and (max-width: 768px) {
+    /* 1. Reset the Page Wrapper */
+    /* If you used display: flex for the sidebars, switch to block */
+    .page-wrapper {
+        display: block; 
+        padding: 1rem; /* Reduce padding for more text space */
+    }
+
+    /* 2. Main Content Adaptation */
+    #obsidian-content {
+        width: 100% !important;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    /* 3. Typography Adjustments */
+    .title-text {
+        font-size: 1.5rem; /* Scale down large headers */
+        line-height: 1.2;
+    }
+
+    .main-header {
+        font-size: 1.5rem !important; 
+        padding: 0 1rem !important; 
+        border-width: 2px; 
+        letter-spacing: 1px;
+    }
+
+    #obsidian-content h2 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    #obsidian-content p, #obsidian-content li {
+        font-size: 16px; /* Standard readable mobile size */
+        line-height: 1.6;
+    }
+
+    /* 4. Images and Media */
+    /* #obsidian-content img, */
+    #obsidian-content video, 
+    #obsidian-content iframe {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 5. Handle Lists with Prompts */
+    /* Ensure the ">" prompts don't push text off the screen */
+    ul {
+        padding-left: 15px;
+    }
+    
+    ul li::before {
+        left: -15px;
+    }
+
+    #obsidian-content, 
+    .sidebar-content, 
+    .toc-container,
+    body {
+        /* Hide scrollbar for Chrome, Safari and newer Edge */
+        &::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        /* Hide scrollbar for Firefox */
+        scrollbar-width: none !important;
+
+        /* Hide scrollbar for IE and old Edge */
+        -ms-overflow-style: none !important;
+        
+        /* Optional: Ensure smooth scrolling is still active on touch */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* timeline */
+
+    .timeline-container {
+        padding: 0 0.5rem;
+    }
+    /* 1. Move the central line to the left edge */
+    .timeline-line {
+        left: 20px; /* Aligned to the left instead of center */
+        transform: none;
+    }
+
+    /* 2. Make all items full width and aligned to the left line */
+    .timeline-item {
+        width: 100%;
+        margin-top: 2rem !important; /* Remove the heavy negative overlap for mobile readability */
+        padding-left: 45px !important; /* Space for the line and dots */
+        padding-right: 0 !important;
+        align-self: flex-start !important; /* Force all to left */
+    }
+
+    /* 3. Standardize the Dots */
+    .timeline-dot {
+        left: 7px !important; /* Centered on the 20px line */
+        right: auto !important;
+        top: 15px !important; /* Align with the top of the card */
+    }
+
+    /* 4. Reset Card Decorations (The Square) */
+    /* Put the accent square on the top-left of every card */
+    .timeline-content::before {
+        right: -4px !important;
+        left: auto !important;
+        top: -4px;
+    }
+
+    /* 5. Standardize Hover Animations */
+    /* On mobile, we slide all cards in the same direction */
+    .timeline-item:nth-child(odd) .timeline-content:hover,
+    .timeline-item:nth-child(even) .timeline-content:hover {
+        transform: translateX(5px);
+    }
+
+    /* 6. Fix Padding for the even items */
+    /* Remove the extra top-padding you had for the zig-zag look */
+    .timeline-item:nth-child(even) {
+        padding-top: 0 !important;
+    }
+
+    /* 7. Hide Scrollbars for Mobile */
+    .timeline-container {
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .timeline-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .page-header {
+        margin-bottom: 2rem; /* Reduce spacing slightly for mobile */
+
+        .header-main {
+            /* 1. Change direction to stack vertically */
+            flex-direction: column;
+            
+            /* 2. Align everything to the left instead of stretching/bottom */
+            align-items: flex-start; 
+            justify-content: flex-start;
+            gap: 10px; /* Add some space between the Title and Subtitle */
+        }
+
+        .title-text {
+            /* 3. Scale down the title size so it doesn't wrap awkwardly */
+            font-size: 1.8rem !important; 
+            width: 100%;
+        }
+
+        .page-subtitle {
+            /* 4. Reset alignment and remove the right-side push */
+            text-align: left;
+            width: 100%;
+            padding-bottom: 5px;
+
+            /* 5. Optional: Swap the square to the left or keep it as an end-cap */
+            &::after {
+                display: none;
+            }
+
+            /* 2. Add the square to the front */
+            &::before {
+                content: "";
+                display: inline-block;
+                width: 9px;
+                height: 9px;
+                background-color: var(--accent-secondary);
+                margin-right: 5px; /* Space between square and text */
+                margin-left: 0;    /* Reset desktop margin */
+            }
+        }
+    }
+}

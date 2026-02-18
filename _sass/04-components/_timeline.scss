@@ -14,7 +14,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: var(--accent);
+    background: var(--color-note);
     z-index: 1;
 }
 
@@ -38,6 +38,8 @@
     background: var(--accent);
     z-index: 3;
 }
+
+
 .timeline-item:nth-child(odd) .timeline-dot { right: -5px; top: 15px; }
 .timeline-item:nth-child(even) .timeline-dot { left: -5px; top: calc(8rem + 15px); }
 
@@ -52,8 +54,6 @@
     transition: all 0.3s ease;
     pointer-events: auto;
 }
-
-
 
 
 /* THE GHOST LINK - Now restricted so it doesn't overlap the footer */
@@ -74,11 +74,18 @@
     width: 8px;
     height: 8px;
     background-color: var(--accent-secondary);
-    top: -2px;
+    top: -4px;
     z-index: 10;
+    transition: all 0.3s ease;
 }
-.timeline-item:nth-child(odd) .timeline-content::before { left: -2px; }
-.timeline-item:nth-child(even) .timeline-content::before { right: -2px; }
+
+.timeline-item:nth-child(odd) .timeline-content::before { left: -4px; }
+.timeline-item:nth-child(even) .timeline-content::before { right: -4px; }
+
+.timeline-content:hover::before {
+    width: 15px;
+    height: 15px;
+}
 
 /* CONTENT ELEMENTS */
 .timeline-date, .timeline-info, .timeline-excerpts {
