@@ -1,3 +1,7 @@
+/* ============================================================
+   LOGIX TIMELINE CORE STRUCTURE
+   ============================================================ */
+
 .timeline-container {
     position: relative;
     max-width: 900px;
@@ -23,11 +27,13 @@
     width: 50%; 
     z-index: 2;
     margin-top: -5rem; 
-    pointer-events: none;
+    pointer-events: none; /* Allows clicks to pass to the line/canvas unless over a card */
+    transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .timeline-item:first-child { margin-top: 0; }
 
+/* Desktop Zig-Zag Alignment */
 .timeline-item:nth-child(odd) { align-self: flex-start; padding-right: 35px; }
 .timeline-item:nth-child(even) { align-self: flex-end; padding-left: 35px; padding-top: 8rem; }
 
@@ -39,35 +45,33 @@
     z-index: 3;
 }
 
-
 .timeline-item:nth-child(odd) .timeline-dot { right: -5px; top: 15px; }
 .timeline-item:nth-child(even) .timeline-dot { left: -5px; top: calc(8rem + 15px); }
 
-/* --- THE CARD --- */
+/* ============================================================
+   THE DATA CARDS
+   ============================================================ */
+
 .timeline-content {
     position: relative; 
-    display: flex; /* Change to flex */
+    display: flex;
     flex-direction: column;
     background-color: color-mix(in srgb, var(--bg-color), transparent 20%);
     border: 1px solid var(--accent-dim);
     padding: 1.5rem;
     transition: all 0.3s ease;
-    pointer-events: auto;
+    pointer-events: auto; /* Re-enables clicking for the actual card */
 }
 
-
-/* THE GHOST LINK - Now restricted so it doesn't overlap the footer */
-.main-card-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 45px; /* Adjust this to match the height of your timeline-links footer */
-    z-index: 5;
-    cursor: pointer;
+.timeline-content:hover { 
+    border-color: var(--accent);
+    box-shadow: 0 0 15px color-mix(in srgb, var(--accent), transparent 90%);
 }
 
-/* DECORATION SQUARE */
+.timeline-item:nth-child(odd) .timeline-content:hover { transform: translateX(10px); }
+.timeline-item:nth-child(even) .timeline-content:hover { transform: translateX(-10px); }
+
+/* Card Decoration Square */
 .timeline-content::before {
     content: "";
     position: absolute;
@@ -75,23 +79,35 @@
     height: 8px;
     background-color: var(--accent-secondary);
     top: -4px;
+    /* Use variables that JS will control */
+    left: var(--square-left, auto);
+    right: var(--square-right, auto);
     z-index: 10;
     transition: all 0.3s ease;
 }
-
+/*
 .timeline-item:nth-child(odd) .timeline-content::before { left: -4px; }
 .timeline-item:nth-child(even) .timeline-content::before { right: -4px; }
+*/
 
 .timeline-content:hover::before {
     width: 15px;
     height: 15px;
+
 }
 
-/* CONTENT ELEMENTS */
-.timeline-date, .timeline-info, .timeline-excerpts {
-    position: relative;
-    z-index: 4; 
-    pointer-events: none; /* Allows click to reach .main-card-link */
+/* ============================================================
+   CARD CONTENT & LINKS
+   ============================================================ */
+
+.main-card-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 45px; /* Ends above the link tags footer */
+    z-index: 5;
+    cursor: pointer;
 }
 
 .timeline-date { font-family: var(--font-mono); color: var(--accent); font-size: 0.8rem; margin-bottom: 0.5rem; letter-spacing: 2px; }
@@ -99,40 +115,154 @@
 .timeline-subtitle { font-size: 0.9rem; color: var(--color-note); }
 .timeline-excerpts { margin-top: 1rem; font-size: 0.9rem; line-height: 1.6; color: color-mix(in srgb, var(--color-text), transparent 30%); }
 
-/* --- THE FOOTER LINKS (NOW FULLY CLICKABLE) --- */
 .timeline-links {
     position: relative;
-    z-index: 30 !important; /* Higher than any padding from cards below */
+    z-index: 30 !important;
     margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: inherit; 
     border-top: 1px dotted var(--accent-dim);
     padding-top: 10px;
-    pointer-events: auto !important; /* Force capture mouse events */
+    pointer-events: auto !important;
 }
 
-/* 2. Make sure the link tags themselves are high-priority targets */
 .timeline-link-tag {
     position: relative;
     z-index: 31 !important;
-    display: inline-block;
-    font-family: var(--font-mono);
     font-size: 12px;
     color: var(--accent) !important;
     text-decoration: none !important;
     cursor: pointer !important;
 }
 
-.timeline-link-tag:hover {
-    color: var(--color-text) !important;
-}
-
+.timeline-link-tag:hover { color: var(--color-text) !important; }
 .tag-bracket { color: var(--accent-dim); pointer-events: none; }
 
-/* HOVER EFFECTS */
-.timeline-content:hover { border-color: var(--accent); }
-.timeline-item:nth-child(odd) .timeline-content:hover { transform: translateX(-10px); }
-.timeline-item:nth-child(even) .timeline-content:hover { transform: translateX(10px); }
+/* ============================================================
+   RIGHT SIDEBAR FILTER
+   ============================================================ */
+#timeline-filter {
+    position: fixed !important;
+    right: 0 !important;
+    top: 50% !important;
+    /* Show exactly 40px (the handle) and hide the rest (280px) */
+    transform: translateY(-50%) translateX(280px);
+    width: 320px;
+    z-index: 999999 !important;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+    pointer-events: auto !important;
+}
 
+#timeline-filter:hover {
+    transform: translateY(-50%) translateX(0);
+}
+
+.filter-handle {
+    width: 40px;
+    height: 140px;
+    border-right: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filter-handle .handle-text {
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: color-mix(in srgb, var(--color-text), transparent 50%);
+}
+
+.filter-container::-webkit-scrollbar { display: none; }
+
+.filter-container {
+    width: 280px;
+    background: color-mix(in srgb, var(--bg-color), transparent 5%);
+    border: 1px solid var(--accent-dim);
+    border-right: none;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+.filter-header {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-dim);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    text-align: left;
+    cursor: pointer !important;
+    padding: 5px 0;
+    pointer-events: auto !important;
+}
+
+.filter-btn .prompt {
+    color: var(--accent);
+    margin-right: 8px;
+    visibility: hidden;
+}
+
+.filter-btn.active { color: var(--accent); font-weight: bold; }
+.filter-btn.active .prompt { visibility: visible; }
+
+.filter-footer {
+    margin-top: 20px;
+    font-size: 0.6rem;
+    color: var(--accent-secondary);
+    font-family: var(--font-mono);
+}
+
+/* Logic for hiding items */
+.timeline-item.hidden {
+    display: none !important;
+}
+
+/* ============================================================
+   SYSTEM OVERRIDES
+   ============================================================ */
+
+#network-canvas {
+    pointer-events: none !important; /* Clicks must pass through canvas to hit buttons */
+}
+
+@media screen and (max-width: 768px) {
+    /* Reset the Dot position for mobile */
+    .timeline-dot {
+        left: 15px !important; /* Align with the 20px spine line */
+        right: auto !important;
+        /* Force the dot to align with the top of the card's text */
+        top: 30px !important; 
+        transform: translateY(-50%); /* Perfectly centers the 10px dot on the 30px mark */
+    }
+
+    /* Remove the desktop-only top padding that causes the 'Even' gap */
+    .timeline-item:nth-child(even),
+    .timeline-item {
+        padding-top: 0 !important;
+        margin-top: 1.5rem !important; /* Consistent spacing between mobile cards */
+    }
+}

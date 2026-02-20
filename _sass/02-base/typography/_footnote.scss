@@ -1,0 +1,48 @@
+/* 1. Reduce footnote text size and style */
+.footnotes {
+    font-size: 1rem; /* Smaller, briefing-style text */
+    line-height: 2;
+    color: var(--color-note);
+}
+
+.footnotes ol li p {
+    font-size: 1.1rem !important; /* Adjust this to your preferred small size */
+    line-height: 1.4;
+    margin: 0; /* Prevents double-spacing between references */
+}
+
+/* 2. Style the footnote list items */
+.footnotes li {
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+/* 3. The Auto-Fading Highlight */
+.footnotes li:target {
+    animation: highlight-fade 2s ease-out forwards;
+}
+
+@keyframes highlight-fade {
+    0% {
+        background-color: color-mix(in srgb, var(--accent), transparent 70%);
+        color: var(--accent);
+    }
+    100% {
+        background-color: transparent;
+        padding-left: 0px;
+        color: color-mix(in srgb, var(--color-note), transparent 0%);
+    }
+}
+
+/* 4. Style the back-link arrow */
+.reversefootnote {
+    color: var(--accent-dim);
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin-left: 3px;
+    opacity: 0.5;
+}
+
+.reversefootnote:hover {
+    opacity: 1;
+}
