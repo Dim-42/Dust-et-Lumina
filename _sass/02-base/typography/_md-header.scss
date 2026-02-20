@@ -34,3 +34,17 @@ h3 {
     font-weight: lighter;
     font-size: 22px;
 };
+
+
+
+h4 {
+    font-family: var(--font-main);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 18px;
+};
