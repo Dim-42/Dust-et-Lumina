@@ -1,0 +1,41 @@
+/* 1. The Container */
+#markdown-toc {
+    list-style: none;
+    padding: 1rem;
+}
+
+/* 2. Top-level links */
+#markdown-toc > li > a {
+    color: var(--color-text);
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+}
+
+/* 3. Nested (Sub-header) links */
+#markdown-toc ul {
+    list-style: none;
+    padding-left: 1.5rem; /* Indent sub-items */
+    color: var(-color-note);
+}
+
+#markdown-toc ul li a {
+    color: var(--color-text);
+    opacity: 0.9; 
+}
+
+/* 4. The "Prompt" prefix for every link */
+#markdown-toc li a::before {
+    content: none;
+    opacity: 0.5;
+    margin-right: 8px;
+}
+
+#markdown-toc ul ul {
+    display: none;
+}
+
+/* 5. Hover state */
+#markdown-toc a:hover {
+    color: var(--accent);
+}

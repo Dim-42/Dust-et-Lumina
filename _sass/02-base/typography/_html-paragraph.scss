@@ -7,7 +7,7 @@ p {
 }
 
 u {
-  padding-bottom: 1px;
+  padding-bottom: 0.5px;
   text-decoration:none;
   border-bottom: 1px solid var(--color-text);
 }
@@ -57,4 +57,14 @@ u {
     font-family: var(--font-mono);
     text-align: center;
     font-size: var(--msg-size);
+}
+
+/* Global: applies to everything on the page */
+::selection {
+    background-color: #00e5ff29; /* The highlight color */         /* The text color when selected */
+}
+
+/* Specific: only applies to paragraphs */
+p::selection {
+    background-color: #00e5ff29;
 }

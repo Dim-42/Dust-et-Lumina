@@ -17,13 +17,14 @@
 
 /* Visibility state triggered by your loader logic */
 #sidebar-toc.visible {
-    opacity: 0.9;
+    opacity: 1;
     pointer-events: auto;
 }
 
 /* Slide in on hover */
 .sidebar-toc.visible:hover {
     transform: translateY(-50%) translateX(0);
+    opacity: 1;
 }
 
 /* The Vertical Handle for TOC */
@@ -51,7 +52,7 @@
 /* The TOC Content Box */
 .toc-container {
     width: 280px;
-    background-color: color-mix(in srgb, var(--bg-color), transparent 10%);
+    background-color: color-mix(in srgb, var(--bg-color), transparent 5%);
     border: 1px solid var(--accent-dim);
     border-right: none; /* Clean edge against screen */
     padding: 2rem;

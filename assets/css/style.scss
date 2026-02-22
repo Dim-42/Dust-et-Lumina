@@ -17,6 +17,8 @@
 @import "02-base/typography/md-divider";
 @import "02-base/typography/md-header";
 @import "02-base/typography/footnote";
+@import "02-base/detail";
+@import "02-base/markdown-toc";
 
 // ---- layout ---- //
 @import "03-layout/body";
@@ -36,7 +38,7 @@
 @import "04-components/galaxy-map";
 @import "04-components/sidebar-toc";
 @import "04-components/timeline";
-@import "04-components/markdown-toc";
+@import "04-components/side-markdown-toc";
 
 // ---- pages ---- //
 @import "05-pages/container";
