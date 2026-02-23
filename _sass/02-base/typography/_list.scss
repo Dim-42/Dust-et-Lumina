@@ -18,3 +18,10 @@ ul {
         }
     }
 }
+
+ol {
+    font-size: var(--text-size);
+    li {
+        margin-bottom: 0.5rem;
+    }
+}
