@@ -32,3 +32,7 @@ details[open] summary::before {
     font-weight: bold;
     color: var(--accent); /* Change color when active */
 }
+
+details p{
+    padding: 0 20px;
+}

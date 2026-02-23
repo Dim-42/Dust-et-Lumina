@@ -41,7 +41,7 @@ collections:
   regions:
     output: true
     permalink: /regions/:path/
-    display_name: [Galactic Atlas,世界地理]
+    display_name: [Atlas,世界地理]
   stories:
     output: true
     permalink: /stories/:path/

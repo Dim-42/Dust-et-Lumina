@@ -51,6 +51,11 @@ u {
     letter-spacing: 0.2rem;
 }
 
+.note {
+    color: var(--color-note);
+    text-align: left;
+}
+
 // warning text
 .warning-text {
     color: var(--accent-secondary);
