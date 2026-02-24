@@ -1,9 +1,30 @@
+/* TEKO - Light (300) */
+@font-face {
+    font-family: 'Teko';
+    src: url('/Dust-et-Lumina/assets/fonts/teko-v23-latin-300.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* CINZEL - Regular (400) */
+@font-face {
+    font-family: 'Cinzel';
+    src: url('/Dust-et-Lumina/assets/fonts/cinzel-v26-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 $font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-$font-mono: 'Agency FB', "Times New Roman", Times, "Source Han Serif CN", "Source Han Serif SC", "Songti SC", "SimSun", serif, monospace;
+$font-mono: 'Teko', 'Source Han Serif CN', monospace;
 $font-sans: 'Segoe UI', sans-serif;
+$font-serif: 'Cinzel', 'Source Han Serif CN', serif;
 
 :root {
     --font-mono: #{$font-mono};
     --font-main: #{$font-main};
     --font-sans: #{$font-sans};
+    --font-serif: #{$font-serif};
 }

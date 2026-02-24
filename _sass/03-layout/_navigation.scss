@@ -1,7 +1,8 @@
 .nav-interface {
-    background-color: var(--panel-bg);
-    padding: 8px 10px;
+    //background-color: var(--panel-bg);
+    padding: 5px 5px;
     margin-top: 10px;
+    border-bottom: 1px solid var(--color-note);
     display: flex;
     gap: 10px 20px;
     flex-wrap: wrap;
@@ -9,7 +10,7 @@
 
 .nav-link {
     font-family: var(--font-mono);
-    font-size: var(--text-size) - 1px;
+    font-size: var(--text-size);
     letter-spacing: 0.1rem;
     color: var(--color-text);
     opacity: 0.8;

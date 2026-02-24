@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 <div style="text-align: right; padding-right: 1rem;">
-    <a href="{{ '/organizations/' | relative_url }}" style = "font-family: var(--font-mono);">
+    <a href="{{ '/organizations/' | relative_url }}" style = "font-family: var(--font-mono); letter-spacing: 0.1rem;">
         ACCESS ORGANIZATION PROFILES >
     </a>
 </div>
@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 <div style="text-align: right; padding-right: 1rem;">
-    <a href="{{ '/characters/' | relative_url }}" style = "font-family: var(--font-mono);">
+    <a href="{{ '/characters/' | relative_url }}" style = "font-family: var(--font-mono); letter-spacing: 0.1rem;">
         ACCESS PERSONNEL PROFILES >
     </a>
 </div>

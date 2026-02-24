@@ -12,7 +12,7 @@ u {
   border-bottom: 1px solid var(--color-text);
 }
 
-// main headered, big, centered
+// main header, big, centered
 .main-header {
     font-family: var(--font-mono);
     font-size: var(--main-header-size);
@@ -27,19 +27,20 @@ u {
 
 // centered text
 .motto {
-    font-family: var(--font-mono);
+    font-family: var(--font-serif);
     font-size: var(--text-size);
     color: var(--color-text);
     text-align: center;
-
+    line-height: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
 }
 
-// regular system message
 .system-msg {
     color: var(--color-text);
     font-family: var(--font-mono);
     text-align: center;
-    font-size: var(--msg-size);
+    font-size: 18px;
     letter-spacing: 0.2rem;
 }
 
@@ -47,7 +48,7 @@ u {
     color: var(--color-note);
     font-family: var(--font-mono);
     text-align: center;
-    font-size: var(--note-size);
+    font-size: 16px;
     letter-spacing: 0.2rem;
 }
 

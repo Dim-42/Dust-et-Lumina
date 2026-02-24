@@ -29,7 +29,7 @@
         </div>
         
         <div id="phase-scan" class="loader-phase" style="display: none;">
-            <p class = "main-header" style = "font-size: 20px; position: fixed; top: 0; margin-top: 50px;">LogiX Predictive Computation SYSTEM</p>
+            <p class = "main-header" style = "position: fixed; top: 0; margin-top: 50px;">LogiX Predictive Computation SYSTEM</p>
             <div class="fui-scanner">
                 <div class="ring outer-dashed"></div>
                 <div class="ring middle-data"></div>
@@ -37,7 +37,7 @@
                 <div class="ring inner-notch"></div>
                 <div class="scan-sweep"></div>
                 <div class="core-point"></div>
-                <div class="fui-label top">SCANNING_BIO_SIG</div>
+                <div class="fui-label top">SCANNING_BIO_SIGNAL</div>
                 <div class="fui-label bottom" style = "color: var(--accent-secondary);">THREAT_LEVEL: 0%</div>
             </div>
             <p class="system-msg">IDENTITY_VERIFICATION_IN_PROGRESS...</p>
@@ -47,8 +47,8 @@
         <div id="phase-decrypt" class="loader-phase" style="display: none;">
             <div class="loader-content">
                 <div class="scanner-line"></div>
-                <p class="system-msg">ENTERING DATABASE...</p>
-                <p class="system-msg">DECRYPTING...</p>
+                <p class="system-msg" style="font-size: 22px;">ENTERING DATABASE...</p>
+                <p class="system-msg-note">DECRYPTING...</p>
             </div>
         </div>
     </div>

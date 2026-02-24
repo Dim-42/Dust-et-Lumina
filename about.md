@@ -20,4 +20,4 @@ DUST ET LUMINA想要描摹的是一个星海废土之中危险混沌但又熠熠
 - [Lof] 42维度
 - [Email] eleanorez1922@gmail.com
 
-<p class= "system-msg" style = "font-size: 16px;">欢迎来找我玩~！</p>
+欢迎来找我玩！

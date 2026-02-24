@@ -15,6 +15,55 @@
     scrollbar-width: none;
 }
 
+
+.organ-overlay {
+    padding: 0 10px;
+    border-top: 1px solid var(--color-note);
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        font-family: var(--font-mono);
+        color: var(--color-text);
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        font-size: 16px;
+        position: relative;
+        display: block;
+        text-align: center;
+        
+        // --- THE TRUNCATION FIX ---
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;         // This stays here to cut the text
+        text-overflow: ellipsis;  
+        
+        // Add padding at the bottom so the line isn't cut off by 'overflow: hidden'
+        padding-bottom: 6px; 
+        margin-bottom: -6px; // Offset the padding so centering remains perfect
+        /* -------------------------- */
+
+        transition: color 0.2s ease;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0px; // Adjusted to sit within the padding area
+            left: 50%;
+            background: var(--accent-dim);
+            transition: all 0.2s ease;
+            transform: translateX(-50%);
+            // Ensure the line is visible even inside an overflow:hidden parent
+            z-index: 1; 
+        }
+    }
+}
+
 .organ-card {
     flex: 0 0 180px; 
     background: var(--bg-color);
@@ -37,6 +86,11 @@
                 width: 100%; // Expands the underline on hover
             }
         }
+
+        img {
+        filter: grayscale(0%) sepia(0%) hue-rotate(0deg) brightness(1) contrast(1);
+        opacity: 1;
+    }
     }
 }
 
@@ -73,50 +127,5 @@
             rgba(0,0,0,1) 2px,
             rgba(22,27,34,1) 4px
         );
-    }
-}
-
-.organ-card:hover {
-    img {
-        // Fully clear the filters to 0 on hover
-        filter: grayscale(0%) sepia(0%) hue-rotate(0deg) brightness(1) contrast(1);
-        opacity: 1;
-    }
-}
-
-.organ-overlay {
-    padding: 0.5rem 0;
-    text-align: center;
-    border-top: 1px solid var(--color-note);
-    height: 80px;
-    // --- Vertical Centering Logic ---
-    display: flex;
-    flex-direction: column;   // Keeps the span and underline stacked
-    justify-content: center;  // Centers content on the Y-Axis
-    align-items: center;      // Centers content on the X-Axis
-    min-height: 60px;         // Adjust this height to fit your design
-    // --------------------------------
-
-    span {
-        font-family: var(--font-mono);
-        font-size: 0.9rem;
-        color: var(--color-text);
-        text-transform: uppercase;
-        letter-spacing: 0.1rem;
-        position: relative;
-        display: inline-block;
-        transition: color 0.2s ease;
-
-        &::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -4px;
-            left: 50%;
-            background: var(--accent-dim);
-            transition: all 0.2s ease;
-            transform: translateX(-50%);
-        }
     }
 }
