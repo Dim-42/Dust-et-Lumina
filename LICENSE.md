@@ -6,7 +6,7 @@ The functional code and logic (Jekyll structure, Liquid templates, and basic HTM
 
 ## Content and Media, and Visual Design
 
-**© 2026 [Dimension 42nd]. All Rights Reserved.**
+**© 2026 Dimension 42nd. All Rights Reserved.**
 
 **Strictly Protected:**
 
@@ -22,7 +22,7 @@ No part of the content or media may be used, reproduced, or distributed for comm
 
 **Note:** This license applies strictly to the functional code (Liquid, HTML, and logic) of the project. It does NOT apply to the Lore, Media, or Proprietary Visual Identity defined above.
 
-Copyright (c) [2026] [Dimension 42nd]
+Copyright (c) 2026 Dimension 42nd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
