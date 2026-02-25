@@ -18,7 +18,9 @@ No part of the content or media may be used, reproduced, or distributed for comm
 
 ---
 
-## MIT License (for Code only)
+## MIT License (for Software and Logic only)
+
+**Note:** This license applies strictly to the functional code (Liquid, HTML, and logic) of the project. It does NOT apply to the Lore, Media, or Proprietary Visual Identity defined above.
 
 Copyright (c) [2026] [Dimension 42nd]
 
