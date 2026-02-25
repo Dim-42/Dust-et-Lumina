@@ -10,7 +10,7 @@ title: Dust et Lumina
 ---
 
 <div class = "image-frame">
-    <img src="{{ '/assets/image/title.png' | relative_url }}">
+    <img src="{{ '/assets/images/title.png' | relative_url }}">
 </div>
 
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const galaxyGeo = new THREE.CircleGeometry(12, 64); 
         const textureLoader = new THREE.TextureLoader();
-        const colorTexture = textureLoader.load("{{ '/assets/image/Top-down_view_of_the_Milky_Way_annotated.jpg' | relative_url }}");
+        const colorTexture = textureLoader.load("{{ '/assets/images/Top-down_view_of_the_Milky_Way_annotated.jpg' | relative_url }}");
         const alphaMask = createSoftEdgeTexture();
 
         const galaxyMat = new THREE.MeshBasicMaterial({ 

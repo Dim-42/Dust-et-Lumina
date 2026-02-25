@@ -1,0 +1,85 @@
+.culture-archive {
+    .class-section {
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+
+        .class-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            list-style: none;
+            padding: 0.5rem 0;
+            outline: none;
+
+            // Hide the default browser triangle
+            &::-webkit-details-marker { display: none; } 
+
+            .header-text {
+                font-family: var(--font-mono); // Teko 300
+                font-size: 1.5rem;
+                letter-spacing: 0.15rem;
+                text-transform: uppercase;
+                color: var(--color-text);
+            }
+
+            .entry-count {
+                font-family: var(--font-mono);
+                margin-left: 10px;
+                font-size: 1rem;
+                color: var(--color-note);
+            }
+
+            .ui-arrow {
+                margin-left: auto;
+                margin-right: 20px;
+                width: 10px;
+                height: 10px;
+                border-right: 1px solid var(--accent);
+                border-bottom: 1px solid var(--accent);
+                transform: rotate(45deg); 
+                transition: transform 0.3s ease;
+            }
+        }
+
+        // Arrow flips up when details is open
+        &[open] .ui-arrow {
+            transform: rotate(-135deg); 
+        }
+    }
+
+    .subclass-container {
+        padding: 10px 20px;
+    }
+
+    .subclass-group {
+        
+        .subclass-header {
+            font-family: var(--font-mono); 
+            font-size: 1.5rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            color: var(--color-note);
+            padding-left: 10px;
+            position: relative;
+            display: block;
+            border-bottom: 0.5px solid var(--color-note);
+            margin: 0 0 15px 0;
+            padding-top: 10px;
+        }
+    }
+
+    .entry-list {
+        list-style: none;
+        padding: 0 35px;
+        margin: 0;
+
+        .entry-item {
+            margin: 0.6rem 0;
+
+            .entry-link {
+                text-decoration: none;
+                display: inline-block;
+            }
+        }
+    }
+}
