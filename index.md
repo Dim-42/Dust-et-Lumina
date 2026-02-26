@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 ## 组织与势力
 
-<div class="featured-organ">
+<div class="featured-organs">
     <div class="organ-grid">
         {% assign featured_organ = site.organizations | where: "featured", true %}
         {% assign sorted_organ = featured_organ | sort_natural: "order" %}
