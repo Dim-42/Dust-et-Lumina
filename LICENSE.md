@@ -1,3 +1,9 @@
+---
+permalink: /license
+title: 许可证
+subtitle: License
+---
+
 # License
 
 ## Software and Logic

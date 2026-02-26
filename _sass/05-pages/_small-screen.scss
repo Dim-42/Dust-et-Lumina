@@ -6,6 +6,10 @@
         padding: 1rem; /* Reduce padding for more text space */
     }
 
+    blockquote {
+        overflow-x: hidden;
+    }
+
     /* 2. Main Content Adaptation */
     #obsidian-content {
         width: 100% !important;

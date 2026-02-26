@@ -74,3 +74,19 @@ u {
 p::selection {
     background-color: #00e5ff29;
 }
+
+/* Inline code target */
+p code, li code {
+    color: var(--accent);                           /* Your theme's bright color */
+    padding: 0 2px;
+    font-family: var(--font-mono);                  /* Keep it monospace */
+    letter-spacing: 0.2rem;
+    word-break: break-word;
+}
+
+//strikethroughs
+
+del {
+  color: var(--color-note); 
+  text-decoration-thickness: 2px;
+}
