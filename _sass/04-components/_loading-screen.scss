@@ -168,14 +168,17 @@
 /* Decorative Labels */
 .fui-label {
     position: absolute;
+    left: 50%; /* Move the left edge to the center */
+    transform: translateX(-50%); /* Pull it back by half its own width */
+    
     font-family: var(--font-mono);
     font-size: 1rem;
     color: var(--color-text);
     letter-spacing: 1px;
-    width: 100px;
+    width: 200px; /* Increased width to prevent text wrapping */
     text-align: center;
-    margin: -20px 0;
 }
-.fui-label.top { top: -25px; }
-.fui-label.bottom { bottom: -25px; }
+
+.fui-label.top { top: -40px; }
+.fui-label.bottom { bottom: -40px; }
 
