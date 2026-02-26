@@ -438,6 +438,59 @@
             const toc = document.getElementById('sidebar-toc');
             if(toc) toc.classList.add('visible');
         }
+
+
+        // --- Smooth Horizontal Mouse Scroll for Multiple Grids ---
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select both grid classes (you can add more here separated by commas)
+            const scrollableGrids = document.querySelectorAll('.organ-grid, .char-grid');
+            
+            // --- CUSTOMIZATION ---
+            const ease = 0.25; 
+            const scrollSpeed = 1.5; 
+
+            // Loop through every grid found on the page
+            scrollableGrids.forEach(grid => {
+                
+                // These variables are kept private for EACH grid
+                let targetScroll = grid.scrollLeft;
+                let currentScroll = targetScroll;
+                let isAnimating = false;
+
+                grid.addEventListener('wheel', function(e) {
+                    // Only take over if they are scrolling vertically
+                    if (e.deltaY !== 0) {
+                        e.preventDefault();
+                        
+                        // Update target based on wheel movement
+                        targetScroll += (e.deltaY * scrollSpeed);
+                        
+                        // Keep target within the boundaries of this specific grid
+                        const maxScroll = grid.scrollWidth - grid.clientWidth;
+                        targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+                        // Start animation loop for this grid if not already running
+                        if (!isAnimating) {
+                            isAnimating = true;
+                            requestAnimationFrame(smoothScroll);
+                        }
+                    }
+                }, { passive: false });
+
+                function smoothScroll() {
+                    currentScroll += (targetScroll - currentScroll) * ease;
+                    
+                    if (Math.abs(targetScroll - currentScroll) < 0.5) {
+                        currentScroll = targetScroll;
+                        grid.scrollLeft = currentScroll;
+                        isAnimating = false;
+                    } else {
+                        grid.scrollLeft = currentScroll;
+                        requestAnimationFrame(smoothScroll);
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
