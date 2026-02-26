@@ -15,6 +15,8 @@ details summary {
     margin: 0 10px;
     font-size: 22px;
     letter-spacing: 0.1rem;
+    display: flow-root;
+
 }
 
 /* The 'Closed' state */
@@ -35,4 +37,12 @@ details[open] summary::before {
 
 details p{
     padding: 0 20px;
+    display: block;
+    overflow: hidden;
+    display: flow-root
+}
+
+details > *:not(summary) {
+    overflow: hidden;   /* Forces the element to respect the sidebar boundary */
+    display: flow-root; /* Modern way to ensure it stays in its own 'box' */
 }
