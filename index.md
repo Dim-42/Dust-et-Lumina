@@ -3,7 +3,7 @@ layout: default
 title: Dust et Lumina
 ---
 
-<p class = "main-header">尘与辉光</p>
+<p class = "main-header" style = "font-family: var(--font-serif);">尘与辉光</p>
 <p class = "motto" style = "letter-spacing: 0.05rem;"> At the end of time, the stars are but dust.
 <br>时间的尽头，繁星若尘。</p>
 
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
         addSector(0, 0.5, 0, 0.1, "星系核\nGalactic Core", "{{ '/atlas/galactic-core' | relative_url }}");
         addSector(0, 0.5, 5, 0.15, "猎户大星区\nMegasector of Orion", "{{ '/atlas/megasector-of-orion' | relative_url }}");
         addSector(2, 0.5, 4.3, 0.15, "慕洛里斯特别行政星区\nMeurloris District", "{{ '/atlas/meurloris-district' | relative_url }}");
-        addSector(-6, 0.5, 2, 0.15, "拉文科尔星区\nLavencole Sector", "{{ '/regions/lavencole-sector' | relative_url }}");
+        addSector(-6, 0.5, 2, 0.15, "拉文科尔星区\nLavencole Sector", "{{ '/atlas/lavencole-sector' | relative_url }}");
         addSector(1, 0.5, 4, 0.1, "奥德维克协和星区\nThe Aldwych Concordance", "{{ '/atlas/aldwych-concordance' | relative_url }}");
         addSector(7.5, 0.5, -0.5, 0.1, "埃尔泽兰独立星区\nEllzerand Independent Sector", "{{ '/atlas/ellzerand-independent-sector' | relative_url }}");
 

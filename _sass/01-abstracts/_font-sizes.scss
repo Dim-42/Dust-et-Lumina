@@ -4,7 +4,6 @@ $text-size-small: 16px;
 $text-size: 18px;
 $msg-size: 16px;
 $main-header-size: 30px;
-$page-title-size: 35px;
 
 
 :root {
@@ -13,5 +12,4 @@ $page-title-size: 35px;
     --text-size-small: #{$text-size-small};
     --msg-size: #{$msg-size};
     --main-header-size: #{$main-header-size};
-    --page-title-size: #{$page-title-size};
 }

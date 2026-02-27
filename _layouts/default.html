@@ -123,33 +123,75 @@
 
     <footer>
         <div class="nav-wrapper">
-            {% if page.collection %}
+        {% if page.collection %}
+        {% comment %} 1. Filter out drafts and get collection {% endcomment %}
+        {% assign all_items = site[page.collection] | where_exp: "item", "item.draft != true" %}
 
-                {% case page.collection %}
-                    {% when 'histories' %}
-                        {% assign items = site[page.collection] | sort: "abs_time" %}
-                    {% else %}
-                        {% assign items = site[page.collection] | sort: "subtitle" %}
-                {% endcase %}
+        {% comment %} 2. Re-create the folder-based sequence {% endcomment %}
+        {% comment %} We need to build a single linear array that matches your visual UI order {% endcomment %}
+        {% assign sorted_items = "" | split: "" %}
 
-                {% for item in items %}
-                    {% if item.url == page.url %}
-                        {% assign curr_idx = forloop.index0 %}
-                        {% assign prev_idx = curr_idx | minus: 1 %}
-                        {% assign next_idx = curr_idx | plus: 1 %}
-                        
-                        {% if prev_idx >= 0 %}
-                            {% assign prev_page = items[prev_idx] %}
-                        {% endif %}
-                
-                        {% if next_idx < items.size %}
-                            {% assign next_page = items[next_idx] %}
-                        {% endif %}
-                        {% break %}
-                    {% endif %}
+        {% if page.collection == 'stories' %}
+            {% comment %} Define the same order as your Archive {% endcomment %}
+            {% assign preferred_order = "Main,Branch,Change Log" | split: "," %}
+            
+            {% comment %} Add Preferred Folders {% endcomment %}
+            {% for folder_name in preferred_order %}
+            {% assign folder_files = all_items | where_exp: "item", "item.path contains folder_name" | sort: "order" %}
+            {% for f in folder_files %}{% assign sorted_items = sorted_items | push: f %}{% endfor %}
             {% endfor %}
+
+            {% comment %} Add Unclassified (Root) items {% endcomment %}
+            {% for item in all_items %}
+            {% assign path_parts = item.path | split: "/" %}
+            {% if path_parts.size <= 2 %}
+                {% assign sorted_items = sorted_items | push: item %}
+            {% endif %}
+            {% endfor %}
+
+        {% elsif page.collection == 'culture' %}
+            {% comment %} --- CULTURE: NESTED FOLDERS (MATCHING YOUR ARCHIVE) --- {% endcomment %}
+            {% assign items = all_items | sort: "path" %}
+            {% assign culture_groups = items | group_by_exp: "item", "item.path | split: '/' | slice: 1 | first" | sort: "name" %}
+            
+            {% for group in culture_groups %}
+            {% comment %} Group by Sub-folders (slice 2) {% endcomment %}
+            {% assign sub_groups = group.items | group_by_exp: "item", "item.path | split: '/' | slice: 2 | first" %}
+            {% for sub in sub_groups %}
+                {% comment %} Sort files within the sub-folder by 'order' or title {% endcomment %}
+                {% assign sub_sorted = sub.items | sort: "order" %}
+                {% for f in sub_sorted %}{% assign sorted_items = sorted_items | push: f %}{% endfor %}
+            {% endfor %}
+            {% endfor %}
+
+        {% else %}
+            {% comment %} Fallback for other collections (like Histories) {% endcomment %}
+            {% if page.collection == 'histories' %}
+            {% assign sorted_items = all_items | sort: "abs_time" %}
+            {% else %}
+            {% assign sorted_items = all_items | sort: "subtitle" %}
+            {% endif %}
         {% endif %}
 
+        {% comment %} 3. Find Prev/Next based on the NEW sequence {% endcomment %}
+        {% for item in sorted_items %}
+            {% if item.url == page.url %}
+            {% assign curr_idx = forloop.index0 %}
+            {% assign prev_idx = curr_idx | minus: 1 %}
+            {% assign next_idx = curr_idx | plus: 1 %}
+            
+            {% if prev_idx >= 0 %}
+                {% assign prev_page = sorted_items[prev_idx] %}
+            {% endif %}
+            {% if next_idx < sorted_items.size %}
+                {% assign next_page = sorted_items[next_idx] %}
+            {% endif %}
+            {% break %}
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+
+        {% comment %} UI Rendering {% endcomment %}
         {% if prev_page %}
             <a href="{{ prev_page.url | relative_url }}" class="nav-arrow">&lt;</a>
         {% else %}
@@ -163,7 +205,6 @@
         {% else %}
             <span class="nav-arrow disabled">&gt;</span>
         {% endif %}
-        
     </div>
 
         <div class="footer-div"></div>

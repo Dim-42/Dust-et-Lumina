@@ -78,8 +78,54 @@
 
             .entry-link {
                 text-decoration: none;
-                display: inline-block;
+                display: flex;       // Changed to flex
+                align-items: left; // Vertical centering
+                width: 100%;
+
+                .entry-data {
+                    font-family: var(--font-mono);
+                    font-size: 0.85rem;
+                    color: var(--accent-seondary);
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    margin-left: auto; // Pushes this to the right
+                }
             }
         }
     }
+}
+
+.commit-main {
+    display: flex;
+    justify-content: space-between; // Title on left, Subtitle on right
+    align-items: flex-end;         // Aligns both to the bottom border line
+    width: 100%;
+
+    .commit-number {
+        font-size: 14px;
+        font-family: var(--font-mono);
+        color: var(--accent-secondary);
+        padding-bottom: 2px; // Tiny nudge to keep text from touching the line
+        text-align: right;
+        letter-spacing: 0.1rem;
+
+        white-space: nowrap;
+        line-height: 1;
+
+        &::after {
+            content: "+";
+            font-size: 22px;
+            margin-left: 5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}
+
+
+.class-description {
+    font-family: var(--font-mono);
+    color: var(--color-note); // Dimmer than the main text
+    padding: 5px 10px;
+    letter-spacing: 0.1rem;
 }
