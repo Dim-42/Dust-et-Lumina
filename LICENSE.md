@@ -17,7 +17,7 @@ The functional code and logic (Jekyll structure, Liquid templates, and basic HTM
 **Strictly Protected:**
 
 - **Lore:** All original text content and world-building data (including the `_lore/` directory, its subdirectories like `_culture/`, and `_data/`).
-- **Media:** All original images, icons, illustrations, and custom graphic assets.
+- **Media:** All original images, icons, illustrations, and custom graphic assets (including the `assets` directory and its subdirectories)
 - **Visual Design:** The unique Graphical User Interface (GUI) and visual language of this site, including but not limited to custom SCSS-defined styling, specific layout architecture, color systems, and brand-specific decorative elements.
 
 No part of the content or media may be used, reproduced, or distributed for commercial or non-commercial purposes without explicit written permission from the author.
