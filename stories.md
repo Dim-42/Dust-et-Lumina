@@ -61,7 +61,9 @@ collection_type: "stories"
                         <span class="entry-title">{{ item.title }}</span>
                     </a>
                     {% if item.commit %}
-                            <span class="commit-number">[COMMIT] {{ item.commit }}</span>
+                        <span class="commit-number">
+                            [COMMIT] <span class="hash">{{ item.commit | slice: 0, 8 }}</span>
+                        </span>
                     {% endif %}
                 </div>
             </li>

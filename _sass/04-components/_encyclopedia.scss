@@ -97,27 +97,30 @@
 
 .commit-main {
     display: flex;
-    justify-content: space-between; // Title on left, Subtitle on right
-    align-items: flex-end;         // Aligns both to the bottom border line
+    justify-content: space-between;
+    align-items: flex-end;
     width: 100%;
 
     .commit-number {
         font-size: 14px;
-        font-family: var(--font-mono);
+        font-family: 'Teko', sans-serif;
         color: var(--accent-secondary);
-        padding-bottom: 2px; // Tiny nudge to keep text from touching the line
-        text-align: right;
-        letter-spacing: 0.1rem;
+        white-space: nowrap; // Prevents the whole block from wrapping
+        display: flex;       // Uses flex to keep [COMMIT], hash, and + aligned
+        align-items: center;
 
-        white-space: nowrap;
-        line-height: 1;
+        .hash {
+            display: inline-block;
+            width: 55px; 
+            letter-spacing: 1px; /* This is often more reliable for short strings like hashes */
+            text-align: center;
+        }
 
         &::after {
             content: "+";
             font-size: 22px;
             margin-left: 5px;
-            display: inline-block;
-            vertical-align: middle;
+            line-height: 0;        /* Prevents the large + from pushing the line height up */
         }
     }
 }
