@@ -11,7 +11,7 @@ collection_type: "stories"
 
 {% assign ordered_items = site.stories | where_exp: "item", "item.order" | where_exp: "item", "item.draft != true" | sort: "order" %}
 {% assign unordered_items = site.stories | where_exp: "item", "item.order == nil" |  where_exp: "item", "item.draft != true"  | sort: "title" %}
-{% assign all_items = ordered_items | concat: unordered_items %}
+{% assign all_items = ordered_items | concat: unordered_items | where_exp: "item", "item.type == chapter" %}
 
 {% assign root_items = "" | split: "" %}
 {% assign folder_items = "" | split: "" %}
