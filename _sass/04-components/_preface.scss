@@ -1,0 +1,181 @@
+.preface-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 40px;
+
+    .preface-header {
+        display: flex;
+        gap: 40px;
+    }
+
+    // --- VERTICAL LOGIC ---
+    &.layout-vertical .preface-header {
+        flex-direction: row;
+        align-items: flex-start;
+
+        .cover-wrapper {
+            flex: 0 0 40%; 
+            position: relative;
+            img { width: 100%; display: block; }
+            margin-bottom: 50px;
+
+            /* offset rectangle shadow */
+            &::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                width: 100px;
+                height: 100px;
+                background-color: var(--color-note);
+                z-index: -1;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                width: 100%;
+                height: 100%;
+                border: 2px solid var(--color-note);
+                z-index: -1;
+            }
+        }
+        .preface-metadata { flex: 1; }
+    }
+
+    // --- HORIZONTAL LOGIC ---
+    &.layout-horizontal .preface-header {
+        flex-direction: column;
+
+        .cover-wrapper {
+            width: 100%;
+            position: relative;
+            margin-bottom: 10px;
+
+            img { 
+                width: 100%; 
+                max-height: 480px; 
+                object-fit: cover; 
+            }
+
+            /* offset rectangle shadow */
+            &::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                width: 100px;
+                height: 100px;
+                background-color: var(--color-note);
+                z-index: -1;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                width: 100%;
+                height: 100%;
+                border: 2px solid var(--color-note);
+                z-index: -1;
+            }
+        }
+        .preface-metadata { width: 100%; }
+    }
+
+    // --- FUI ELEMENTS ---
+    .story-title {
+        font-family: var(--font-mono);
+        font-size: 3rem;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+        line-height: 1;
+    }
+
+    .story-subtitle {
+        font-family: var(--font-mono);
+        color: var(--color-note);
+        margin-bottom: 0.5rem;
+        margin-left: 10px;
+        font-weight: bold;
+    }
+
+    .story-stats {
+        display: flex;
+        gap: 30px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--color-note);
+        color: var(--color-text);
+        opacity: 0.9;
+        font-size: 0.9rem;
+        font-family: var(--font-mono);
+        .label { color: var(--color-note); margin-right: 8px; }
+    }
+
+    .story-description {
+        margin: 30px 0;
+    }
+}
+
+.toc-header {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 2rem;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 5px 10px;
+
+    .toc-empty {
+        font-family: var(--font-mono);
+        color: var(--color-note);
+        letter-spacing: 0.1rem;
+
+        &::before {
+            content: "";
+            display: inline-block;
+            height: 9px;
+            width: 9px;
+            background-color: var(--accent-secondary);
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+    }
+
+    .toc-link {
+        display: flex; /* ensure flex for consistent sizing */
+        align-items: center;
+        text-decoration: none;
+        color: var(--color-text);
+        transition: all 0.2s ease;
+        font-size: 1.1rem; /* slightly larger overall */
+        line-height: 1;
+        
+        &:hover {
+            .chapter-title { color: var(--accent); }
+        }
+
+        .chapter-num { 
+            display: flex;
+            align-items: center;
+            font-family: var(--font-mono); 
+            color: var(--color-note); 
+            width: 60px; 
+        }
+
+        .chapter-title {
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+            padding: 0 15px;
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+            line-height: 1.5;
+            &:hover {
+                border-left-color: var(--accent);
+            }
+        }
+    }
+}

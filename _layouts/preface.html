@@ -1,0 +1,71 @@
+---
+layout: default
+---
+
+<div class="preface-container layout-{{ page.img-orientation | default: 'vertical' }}">
+    <header class="preface-header">
+        {% if page.image %}
+        <div class="cover-wrapper">
+            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+        </div>
+        {% endif %}
+
+        <div class="preface-metadata">
+            <div class="title-block">
+                <span class="story-title">{{ page.subtitle | upcase }}</span>
+                <span class="story-subtitle">{{ page.title }}</span>
+            </div>
+
+            <div class="story-stats">
+                <div class="stat-item"><span class="label">STATUS:</span> {{ page.status | default: "ACTIVE" }}</div>
+                <div class="stat-item"><span class="label">COMMIT:</span> {{ page.commit | default: "0.0.0" }}</div>
+                <div class="stat-item"><span class="label">TIMESTAMP:</span> {{ page.story-time | default: "▇▇" }}</div>
+                <div class="stat-item"><span class="label">GEOPOS:</span> {{ page.story-loc | default: "▇▇" }}</div>
+            </div>
+            
+            <div class="story-description">
+                {{ content }}
+            </div>
+        </div>
+    </header>
+
+
+    <section class="entry-list">
+        <span class="toc-header">DATA_INDEX</span>
+        <ul class="toc-list">
+
+        {% assign current_dir = page.path | split: "/" %}
+        {% assign dir_size = current_dir.size | minus: 1 %}
+        {% assign story_folder = current_dir | slice: 0, dir_size | join: "/" %}
+
+        {% assign chapters = site.stories 
+            | where_exp: "item", "item.path contains story_folder"
+            | where_exp: "item", "item.url != page.url" 
+            | where_exp: "item", "item.draft != true"
+            | sort: "order" %}
+            {% if chapters.size > 0 %}
+                {% for chapter in chapters %}
+                    <li class="entry-item">
+                        
+                        <div class="commit-main">
+                            <a href="{{ chapter.url | relative_url }}" class="toc-link">
+                                <span class="chapter-num">CH_{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                                <span class="chapter-title">{{ chapter.title | upcase }}</span>
+                            </a>
+
+                            <a href="{{ chapter.url | relative_url }}" class="toc-link">
+                                <span class="commit-number">
+                                    [COMMIT] <span class="hash">{{ chapter.commit | slice: 0, 8 | default: "UNKNOWN" }}</span>
+                                </span>
+                                </a>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <div class="toc-empty">NO_EVENT_DATA_FOUND</div>
+            {% endif %}
+        </ul>
+
+        
+    </section>
+</div>
