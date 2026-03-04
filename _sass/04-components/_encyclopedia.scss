@@ -77,17 +77,9 @@
             .entry-link {
                 text-decoration: none;
                 display: flex;       // Changed to flex
-                align-items: left; // Vertical centering
+                align-items: flex-start; // Vertical centering
                 width: 100%;
-
-                .entry-data {
-                    font-family: var(--font-mono);
-                    font-size: 0.85rem;
-                    color: var(--accent-seondary);
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
-                    margin-left: auto; // Pushes this to the right
-                }
+                color: var(--color-text);
             }
         }
     }
@@ -95,17 +87,57 @@
 
 .commit-main {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-end;
     width: 100%;
 
+    .chapter-num { 
+            font-family: var(--font-mono); 
+            color: var(--color-note); 
+            font-size: 16px;
+            white-space: nowrap; // Prevents the whole block from wrapping
+            display: flex;       // Uses flex to keep [COMMIT], hash, and + aligned
+            align-items: center;
+            margin: 0 20px;
+        }
+    
+    .chapter-title {
+        color: var(--color-text);
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+        margin: 0 20px;
+        text-decoration: none;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 50%;
+            background: var(--accent-dim);
+            transition: all 0.2s ease;
+            transform: translateX(-50%);
+        }
+
+        &:hover::after {
+            width: 100%; 
+        }
+
+        &:hover {
+            color: var(--accent);
+        }
+    }
+
     .commit-number {
         font-size: 14px;
-        font-family: 'Teko', sans-serif;
+        font-family: var(--font-mono); 
         color: var(--accent-secondary);
         white-space: nowrap; // Prevents the whole block from wrapping
         display: flex;       // Uses flex to keep [COMMIT], hash, and + aligned
         align-items: center;
+        margin-left: auto;
 
         .hash {
             display: inline-block;

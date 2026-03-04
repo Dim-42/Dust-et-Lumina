@@ -50,7 +50,9 @@
     pointer-events: none;
 }
 
-.sidebar-content::-webkit-scrollbar { display: none; }
+.sidebar-content {
+    @include hide-scrollbar;
+}
 
 .sidebar-content {
     width: 280px;

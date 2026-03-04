@@ -5,8 +5,15 @@ layout: default
 <div class="preface-container layout-{{ page.img-orientation | default: 'vertical' }}">
     <header class="preface-header">
         {% if page.image %}
-        <div class="cover-wrapper">
-            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+        <div class="cover-wrapper" style="cursor: zoom-in;">
+            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" onclick="openModal(this)">
+        </div>
+
+        <div id="imageModal" class="system-modal" onclick="closeModal()">
+            <span class="close-modal">&times;</span>
+            <img class="modal-content" id="fullImage">
+            
+            <div id="modalCaption" class="modal-caption">{{ page.subtitle }}</div>
         </div>
         {% endif %}
 
@@ -30,9 +37,9 @@ layout: default
     </header>
 
 
-    <section class="entry-list">
+    <div class="culture-archive">
         <span class="toc-header">DATA_INDEX</span>
-        <ul class="toc-list">
+        <ul class="chapter-list">
 
         {% assign current_dir = page.path | split: "/" %}
         {% assign dir_size = current_dir.size | minus: 1 %}
@@ -42,30 +49,49 @@ layout: default
             | where_exp: "item", "item.path contains story_folder"
             | where_exp: "item", "item.url != page.url" 
             | where_exp: "item", "item.draft != true"
-            | sort: "order" %}
+            | sort: "ch" %}
+            
             {% if chapters.size > 0 %}
                 {% for chapter in chapters %}
                     <li class="entry-item">
-                        
                         <div class="commit-main">
-                            <a href="{{ chapter.url | relative_url }}" class="toc-link">
-                                <span class="chapter-num">CH_{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-                                <span class="chapter-title">{{ chapter.title | upcase }}</span>
+                            <span class="chapter-num">CH_{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                            <a href="{{ chapter.url | relative_url }}" class="entry-link">
+                                <span class="chapter-title">{{ chapter.title }}</span>
                             </a>
-
-                            <a href="{{ chapter.url | relative_url }}" class="toc-link">
-                                <span class="commit-number">
-                                    [COMMIT] <span class="hash">{{ chapter.commit | slice: 0, 8 | default: "UNKNOWN" }}</span>
-                                </span>
-                                </a>
+                            <span class="commit-number">
+                                [COMMIT] <span class="hash">{{ chapter.commit | slice: 0, 8 | default: "UNKNOWN" }}</span>
+                            </span>
                         </div>
                     </li>
                 {% endfor %}
             {% else %}
-                <div class="toc-empty">NO_EVENT_DATA_FOUND</div>
+                <div class="chapter-empty">NO_EVENT_DATA_FOUND</div>
             {% endif %}
         </ul>
-
-        
-    </section>
+    </div>
 </div>
+
+<script>
+function openModal(imgElement) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("fullImage");
+    const captionText = document.getElementById("modalCaption");
+    const storyTitle = document.getElementById("modalCaption").innerText;
+
+    modal.style.display = "flex";
+    modalImg.src = imgElement.src;
+    captionText.innerHTML = "FILE: " + storyTitle + " // VIEWPORT_MODE_ON";
+}
+
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+// Close on 'Esc' key
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        closeModal();
+    }
+});
+</script>

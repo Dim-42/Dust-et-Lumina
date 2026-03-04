@@ -8,6 +8,7 @@
         gap: 40px;
     }
 
+
     // --- VERTICAL LOGIC ---
     &.layout-vertical .preface-header {
         flex-direction: row;
@@ -118,17 +119,72 @@
     }
 }
 
+/* The Overlay Background */
+.system-modal {
+    display: none; // Hidden by default
+    position: fixed;
+    z-index: 9999; // Above everything else
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); // Deep black background
+    backdrop-filter: blur(5px);
+    cursor: zoom-out;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* The Image itself */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85%;
+    animation: zoomIn 0.3s ease-out;
+}
+
+/* Metadata Caption */
+.modal-caption {
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+    color: var(--color-note);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* X Close Button */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: var(--color-note);
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover { color: var(--accent); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
 .toc-header {
     color: var(--accent);
     font-family: var(--font-mono);
     font-size: 2rem;
 }
 
-.toc-list {
+.chapter-list {
     list-style: none;
-    padding: 5px 10px;
+    padding: 0 35px;
+    margin: 0;
+    
 
-    .toc-empty {
+    .chapter-empty {
         font-family: var(--font-mono);
         color: var(--color-note);
         letter-spacing: 0.1rem;
@@ -141,41 +197,6 @@
             background-color: var(--accent-secondary);
             margin-right: 10px;
             vertical-align: middle;
-        }
-    }
-
-    .toc-link {
-        display: flex; /* ensure flex for consistent sizing */
-        align-items: center;
-        text-decoration: none;
-        color: var(--color-text);
-        transition: all 0.2s ease;
-        font-size: 1.1rem; /* slightly larger overall */
-        line-height: 1;
-        
-        &:hover {
-            .chapter-title { color: var(--accent); }
-        }
-
-        .chapter-num { 
-            display: flex;
-            align-items: center;
-            font-family: var(--font-mono); 
-            color: var(--color-note); 
-            width: 60px; 
-        }
-
-        .chapter-title {
-            display: flex;
-            align-items: center;
-            margin: 0 20px;
-            padding: 0 15px;
-            border-left: 2px solid transparent;
-            transition: all 0.2s ease;
-            line-height: 1.5;
-            &:hover {
-                border-left-color: var(--accent);
-            }
         }
     }
 }
