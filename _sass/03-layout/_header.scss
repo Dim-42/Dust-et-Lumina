@@ -31,11 +31,11 @@
         &::after {
             content: "";
             display: inline-block;
-            width: 9px;
-            height: 9px;
+            width: 8px;
+            height: 8px;
             background-color: var(--accent-secondary);
-            margin-left: 8px;
-            vertical-align: middle;
+            margin-left: 5px;
+            vertical-align: auto;
         }
     }
 }

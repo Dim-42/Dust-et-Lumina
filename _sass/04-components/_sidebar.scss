@@ -2,11 +2,7 @@
     float: right; 
     width: 35%; /* Your preferred width */
     margin-left: 2rem; /* Gap between text and sidebar */
-    margin-bottom: 1rem; /* Gap for when text flows underneath */
-    
-    /* Keep your existing aesthetic styles */
-    //background: rgba(255, 255, 255, 0.01);
-    //border: 1px solid var(--accent-dim);
+    margin-bottom: 0.5rem; /* Gap for when text flows underneath */
     padding: 1rem;
     box-sizing: border-box;
 }
@@ -14,8 +10,8 @@
 .infobox-image {
     width: 95%;
     box-sizing: border-box;
-    padding: 10px 0;
     min-width: 0;
+    padding-top: 10px;
     img {
         display: block;
         width: 100%;
@@ -24,13 +20,12 @@
     }
 }
 
-
 .infobox-header {
     font-family: var(--font-mono);
     color: var(--main-text);
     font-size: var(--text-size);
+    padding: 10px 0 5px 0;
     text-align: center;
-    padding: 0.5rem;
     letter-spacing: 0.1rem;
     border-top: 1px solid var(--color-note);
     border-bottom: 1px solid var(--color-note);
@@ -55,6 +50,7 @@
 .infobox-table td {
     padding: 4px 4px 4px 4px;
     border-bottom: 0.5px solid var(--color-note);
+    vertical-align: baseline;
 }
 
 .infobox-table .label {
@@ -68,7 +64,7 @@
 
 .infobox-table .value {
     font-family: var(--font-main);
-    font-size: 13px;
+    font-size: 12px;
 }
 
 @media (max-width: 768px) {
