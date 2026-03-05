@@ -10,7 +10,7 @@ title: Dust et Lumina
 ---
 
 <div class = "image-frame">
-    <img src="{{ '/assets/images/title.png' | relative_url }}">
+    <img src="{{ '/assets/images/title-main.png' | relative_url }}">
 </div>
 
 

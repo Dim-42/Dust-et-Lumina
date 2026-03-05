@@ -6,3 +6,4 @@ vendor/
 .bundle/
 .obsidian/
 hash-generator.py
+templates/

@@ -47,7 +47,8 @@
     border: none;
     border-bottom: 2px solid var(--accent);
     color: var(--accent);
-    font-family: 'Courier New', monospace;
+    font-family: var(--font-mono);
+    letter-spacing: 0.1rem;
     font-size: 1.2rem;
     outline: none;
     padding: 5px;
