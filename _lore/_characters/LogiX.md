@@ -4,7 +4,7 @@ collection: characters
 
 title: LogiX
 subtitle: LogiX Personified Interactive Terminal
-draft: false
+draft: true
 order: 60
 
 name: [LogiX]

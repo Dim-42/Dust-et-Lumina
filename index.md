@@ -199,11 +199,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 const dot = group.children[0]; 
                 const isHovered = (group === hoveredSector);
                 
-                // 1. Color Lerp
                 const targetColor = isHovered ? colorCyan : colorWhite;
                 dot.material.color.lerp(targetColor, 0.1);
                 
-                // 2. Scale Animation (Grows on hover)
                 const targetScale = isHovered ? 1.5 : 1.0;
                 dot.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
             });
