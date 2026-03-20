@@ -1,8 +1,7 @@
 ---
-layout: preface
+layout: 404
 collection: stories
 draft: false
 
-story_type: preface
 title: "![error] failed to push some refs to LogiX-Database main"
 ---
