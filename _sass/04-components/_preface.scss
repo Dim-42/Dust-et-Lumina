@@ -13,14 +13,14 @@
     &.layout-vertical .preface-header {
         flex-direction: row;
         align-items: flex-start;
-
         .cover-wrapper {
             flex: 0 0 40%; 
             position: relative;
+            --dynamic-hue: var(--color-note);
             img { width: 100%; display: block; }
             margin-bottom: 50px;
 
-            /* offset rectangle shadow */
+
             &::before {
                 content: '';
                 position: absolute;
@@ -28,8 +28,10 @@
                 left: -10px;
                 width: 100px;
                 height: 100px;
-                background-color: var(--color-note);
+                //background-color: var(--color-note);
+                background-color: var(--dynamic-hue);
                 z-index: -1;
+                opacity: 0.5;
             }
             &::after {
                 content: '';
@@ -38,8 +40,10 @@
                 left: 15px;
                 width: 100%;
                 height: 100%;
-                border: 2px solid var(--color-note);
+                //border: 2px solid var(--color-note);
+                border: 2px solid var(--dynamic-hue);
                 z-index: -1;
+                opacity: 0.5;
             }
         }
         .preface-metadata { flex: 1; }
@@ -60,7 +64,6 @@
                 object-fit: cover; 
             }
 
-            /* offset rectangle shadow */
             &::before {
                 content: '';
                 position: absolute;
@@ -68,8 +71,10 @@
                 left: -10px;
                 width: 100px;
                 height: 100px;
-                background-color: var(--color-note);
+                //background-color: var(--color-note);
+                background-color: var(--dynamic-hue);
                 z-index: -1;
+                opacity: 0.5;
             }
             &::after {
                 content: '';
@@ -78,14 +83,16 @@
                 left: 15px;
                 width: 100%;
                 height: 100%;
-                border: 2px solid var(--color-note);
+                //border: 2px solid var(--color-note);
+                border: 2px solid var(--dynamic-hue);
                 z-index: -1;
+                opacity: 0.5;
             }
         }
         .preface-metadata { width: 100%; }
     }
 
-    // --- FUI ELEMENTS ---
+    // --- UI ELEMENTS ---
     .story-title {
         font-family: var(--font-mono);
         font-size: 3rem;

@@ -1,5 +1,4 @@
 ---
-layout: default
+layout: chapter
 title: 测试
-type: chapter
 ---
