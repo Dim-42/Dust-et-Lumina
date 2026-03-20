@@ -3,8 +3,8 @@
     right: 0;
     top: 50%;
     /* Start hidden to the right (Width of content = 280px) */
-    transform: translateY(-50%) translateX(280px); 
-    width: 320px; /* 280px content + 40px handle */
+    transform: translateY(-50%) translateX(240px); 
+    width: 280px; /* content + 40px handle */
     height: auto;
     z-index: 10000;
     transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease;
@@ -35,10 +35,9 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: transparent; /* Or a slight tint if you prefer */
+    background-color: transparent;
 }
 
-/* Reusing your handle-text style */
 .sidebar-toc .handle-text {
     writing-mode: vertical-rl;
     text-transform: uppercase;
@@ -51,11 +50,11 @@
 
 /* The TOC Content Box */
 .toc-container {
-    width: 280px;
+    width: 240px;
     background-color: color-mix(in srgb, var(--bg-color), transparent 5%);
     border: 1px solid var(--accent-dim);
-    border-right: none; /* Clean edge against screen */
-    padding: 2rem;
+    border-right: none;
+    padding: 2rem 10px 2rem 30px;
     max-height: 70vh;
     overflow-y: auto;
 }
@@ -64,16 +63,15 @@
     @include hide-scrollbar;
 }
 
-/* Auto-TOC List Styling */
 .toc-content-body ul {
     list-style: none;
     padding: 0;
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .toc-link {
     display: block;
-    padding: 5px;
+    padding: 2px 5px;
     font-size: 0.9rem;
     color: var(--color-text);
     text-decoration: none;
@@ -83,29 +81,26 @@
 
 .toc-link:hover {
     color: var(--accent);
-
 }
 
-/* 1. Ensure the TOC H2 keeps the prompt */
 .toc-item.toc-h2 {
     position: relative;
-    /* This ensures it inherits or reapplies your existing li styling */
 }
 
 .toc-item.toc-h2::before {
     content: ">";
     position: absolute;
-    left: -20px; /* Adjust based on your TOC padding */
+    align-items: center;
+    left: -20px;
     color: var(--accent);
     font-weight: bold;
 }
 
-/* 2. Specifically REMOVE the prompt for TOC H3 */
+
 .toc-item.toc-h3::before {
     content: none !important;
 }
 
-/* 3. Adjust H3 layout since it no longer has the '>' icon */
 .toc-item.toc-h3 {
     margin-left: 10px; /* Indent to show hierarchy */
     border-left: 1px solid var(--accent-dim); /* Optional: visual guide */

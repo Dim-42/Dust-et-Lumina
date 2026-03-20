@@ -6,13 +6,16 @@ layout: default
     <header class="preface-header">
         {% if page.image %}
         <div class="cover-wrapper" style="cursor: zoom-in;">
-            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" onclick="openModal(this)">
+            <img src="{{ page.image | relative_url }}" 
+                 alt="{{ page.title }}" 
+                 id="cover-image"
+                 crossorigin="anonymous"
+                 onclick="openModal(this)">
         </div>
 
         <div id="imageModal" class="system-modal" onclick="closeModal()">
             <span class="close-modal">&times;</span>
             <img class="modal-content" id="fullImage">
-            
             <div id="modalCaption" class="modal-caption">{{ page.subtitle }}</div>
         </div>
         {% endif %}
@@ -73,25 +76,59 @@ layout: default
 </div>
 
 <script>
-function openModal(imgElement) {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("fullImage");
-    const captionText = document.getElementById("modalCaption");
-    const storyTitle = document.getElementById("modalCaption").innerText;
+window.addEventListener('load', function() {
+    const img = document.getElementById('cover-image');
+    const wrapper = document.querySelector('.cover-wrapper');
 
-    modal.style.display = "flex";
-    modalImg.src = imgElement.src;
-    captionText.innerHTML = "FILE: " + storyTitle + " // VIEWPORT_MODE_ON";
-}
+    if (img && wrapper) {
+        if (img.complete) { extractColor(); } 
+        else { img.addEventListener('load', extractColor); }
+    }
 
-function closeModal() {
-    document.getElementById("imageModal").style.display = "none";
-}
+    // Helper: Convert RGB to HSL
+    function rgbToHsl(r, g, b) {
+        r /= 255, g /= 255, b /= 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
 
-// Close on 'Esc' key
-document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape") {
-        closeModal();
+        if (max === min) {
+            h = s = 0; // achromatic
+        } else {
+            const d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch (max) {
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+            }
+            h /= 6;
+        }
+        return [h * 360, s * 100, l * 100];
+    }
+
+    function extractColor() {
+        try {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = 1;
+            canvas.height = 1;
+
+            context.drawImage(img, 0, 0, 1, 1);
+            const d = context.getImageData(0, 0, 1, 1).data;
+
+            let [h, s, l] = rgbToHsl(d[0], d[1], d[2]);
+
+            s = Math.max(s, 30); 
+
+            l = Math.min(Math.max(l, 40), 60);
+
+            const dynamicColor = `hsl(${h}, ${s}%, ${l}%)`;
+            wrapper.style.setProperty('--dynamic-hue', dynamicColor);
+            
+            console.log(`LOGIX_SATURATION_BOOST: ${dynamicColor}`);
+        } catch (e) {
+            console.error("LOGIX_IMG_ERR: Pixel read blocked.", e);
+        }
     }
 });
 </script>

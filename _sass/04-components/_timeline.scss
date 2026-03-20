@@ -147,8 +147,8 @@
     right: 0 !important;
     top: 50% !important;
     /* Show exactly 40px (the handle) and hide the rest (280px) */
-    transform: translateY(-50%) translateX(280px);
-    width: 320px;
+    transform: translateY(-50%) translateX(200px);
+    width: 240px;
     z-index: 999999 !important;
     display: flex !important;
     flex-direction: row;
@@ -183,7 +183,7 @@
 .filter-container::-webkit-scrollbar { display: none; }
 
 .filter-container {
-    width: 280px;
+    width: 200px;
     background: color-mix(in srgb, var(--bg-color), transparent 5%);
     border: 1px solid var(--accent-dim);
     border-right: none;
@@ -194,30 +194,52 @@
 }
 
 .filter-header {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono);  
     color: var(--accent);
     border-bottom: 1px solid var(--accent-dim);
     padding-bottom: 5px;
     margin-bottom: 15px;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
+    font-size: 12px;
+    letter-spacing: 0.1rem;
 }
 
 .filter-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 20px 0;
 }
 
 .filter-btn {
+    position: relative;
     background: transparent;
-    border: none;
-    color: var(--color-text);
-    font-size: 0.9rem;
+    border: 1px solid rgba(var(--accent-rgb), 0.2);
+    color: var(--color-note);
+    padding: 4px 15px;
     text-align: left;
-    cursor: pointer !important;
-    padding: 5px 0;
-    pointer-events: auto !important;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    .prompt { margin-right: 10px; color: var(--color-note); }
+
+    &.active {
+        color: var(--accent);
+        border-color: var(--accent);
+        background: rgba(var(--accent-rgb), 0.1);
+        box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.1);
+        
+        .prompt { color: var(--accent); animation: flicker 2s infinite; }
+    }
+
+    &:hover {
+        border-color: var(--accent-secondary);
+        color: var(--color-text);
+    }
+}
+
+@keyframes flicker {
+    0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; }
 }
 
 .filter-btn .prompt {
@@ -226,17 +248,16 @@
     visibility: hidden;
 }
 
-.filter-btn.active { color: var(--accent); font-weight: bold; }
 .filter-btn.active .prompt { visibility: visible; }
 
 .filter-footer {
     margin-top: 20px;
-    font-size: 0.6rem;
+    font-size: 12px;
     color: var(--accent-secondary);
     font-family: var(--font-mono);
+    letter-spacing: 0.1rem;
 }
 
-/* Logic for hiding items */
 .timeline-item.hidden {
     display: none !important;
 }
@@ -246,23 +267,20 @@
    ============================================================ */
 
 #network-canvas {
-    pointer-events: none !important; /* Clicks must pass through canvas to hit buttons */
+    pointer-events: none !important;
 }
 
 @media screen and (max-width: 768px) {
-    /* Reset the Dot position for mobile */
     .timeline-dot {
-        left: 15px !important; /* Align with the 20px spine line */
+        left: 15px !important;
         right: auto !important;
-        /* Force the dot to align with the top of the card's text */
         top: 30px !important; 
-        transform: translateY(-50%); /* Perfectly centers the 10px dot on the 30px mark */
+        transform: translateY(-50%);
     }
 
-    /* Remove the desktop-only top padding that causes the 'Even' gap */
     .timeline-item:nth-child(even),
     .timeline-item {
         padding-top: 0 !important;
-        margin-top: 1.5rem !important; /* Consistent spacing between mobile cards */
+        margin-top: 1.5rem !important;
     }
 }

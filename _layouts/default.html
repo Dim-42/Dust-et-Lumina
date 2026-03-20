@@ -75,8 +75,6 @@
                     {% if collection.label != "posts" %} 
                     <li class="directory-link">
                         <a href="{{ '/' | append: collection.label | relative_url }}" class = "link-text">
-
-
                             <div class="link-text">
                             <span class="title">
                                 {{ collection.display_name[0] | upcase }}
@@ -532,6 +530,28 @@
                 }
             });
         });
+
+        // expand image
+        function openModal(imgElement) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("fullImage");
+            const captionText = document.getElementById("modalCaption");
+            const storyTitle = document.getElementById("modalCaption").innerText;
+
+            modal.style.display = "flex";
+            modalImg.src = imgElement.src;
+            captionText.innerHTML = "FILE: " + storyTitle + " // VIEWPORT_MODE_ON";
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
     </script>
+
 </body>
 </html>

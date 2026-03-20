@@ -4,17 +4,22 @@ title: Dust et Lumina
 ---
 
 <p class = "main-header" style = "font-family: var(--font-serif);">尘与辉光</p>
-<p class = "motto" style = "letter-spacing: 0.05rem;"> At the end of time, the stars are but dust.
+<p class = "motto" style = "letter-spacing: 0.05rem;"> At the end of time, the stars are all but dust.
 <br>时间的尽头，繁星若尘。</p>
 
 ---
 
-<div class = "image-frame">
-    <img src="{{ '/assets/images/title-main.png' | relative_url }}">
+<div class = "image-frame" style="cursor: zoom-in;">
+    <img src="{{ '/assets/images/title-main.png' | relative_url }}" onclick="openModal(this)">
 </div>
 
+<div id="imageModal" class="system-modal" onclick="closeModal()">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="fullImage">
+    <div id="modalCaption" class="modal-caption">{{ page.subtitle }}</div>
+</div>
 
-## 核心概念
+---
 
 <div class="concept-grid">
   {% assign selected_slugs = "星系,晶尘,超空间" | split: "," %}
