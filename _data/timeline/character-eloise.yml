@@ -1,37 +1,41 @@
-# 塞浦里安
-- title: 塞浦里安·贝诺维茨出生
+- title: 艾洛伊斯·▇▇▇出生
   subtitle: 
-  abs_time: 1502
-  time: 1502 A.U.
+  abs_time: -601
+  time: ▇▇▇
   excerpts: 
   link: 
-  type: 人物纪传
+  type: 个人档案
+  note: 
+  url: 
+  class: 次要
 
-# 艾洛伊斯
 - title: 艾洛伊斯加入FISA
   subtitle: 
   abs_time: 1529
   time: 1529 A.U.
   excerpts: 任职于情报行动中心
   link: 
-  type: 人物纪传
+  type: 个人档案
+  class: 次要
 
 - title: 艾洛伊斯接任FISA情报行动中心主任
   subtitle: 
   abs_time: 1532.0126
   time: 1532-01-26 A.U.
-  excerpts: 
+  excerpts: 备注：▇▇▇▇▇▇非最高优先级▇▇权衡▇▇▇。
   link: 
-  type: 人物纪传
+  type: 个人档案
   note: 
   url: 
-
+  class: 次要
+  
 # - title: 
 #   subtitle: 
 #   abs_time: 
-#   time: 
+#   time: ▇▇▇
 #   excerpts: 
 #   link: 
-#   type: 人物纪传
+#   type: 个人档案
 #   note: 
 #   url: 
+#   class: 次要

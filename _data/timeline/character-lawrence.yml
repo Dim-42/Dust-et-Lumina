@@ -4,7 +4,8 @@
   time: 1506 A.U.
   excerpts: 
   link: 
-  type: 人物纪传
+  type: 个人档案
+  class: 次要
 
 - title: 劳伦斯加入AIM
   subtitle: 
@@ -12,18 +13,31 @@
   time: 1526 A.U.
   excerpts: 担任第二外勤小队现场调度，隶属猎户大星区指挥部。
   link: 
-  type: 人物纪传
+  type: 个人档案
   note: 20岁
+  class: 次要
 
 - title: 劳伦斯接任AIM第三外勤小队队长
   subtitle: 
-  abs_time: 1529.4
-  time: 1529 A.U.
+  abs_time: 1532.4
+  time: 1532 A.U.
   excerpts: 
   link: 
-  type: 人物纪传
-  note: 23岁
+  type: 个人档案
+  note: 26岁
   url: 
+  class: 次要
+
+- title: 劳伦斯从AIM外勤小队退役
+  subtitle: 
+  abs_time: 1536
+  time: 1536 A.U.
+  excerpts: 随后转向晶尘医疗学研究。
+  link: 
+  type: 个人档案
+  note: 
+  url: 
+  class: 次要
 
 # - title: 
 #   subtitle: 
@@ -31,6 +45,14 @@
 #   time: 
 #   excerpts: 
 #   link: 
-#   type: 人物纪传
+#   type: 个人档案
 #   note: 
 #   url: 
+
+- title: 塞浦里安·贝诺维茨出生
+  subtitle: 
+  abs_time: 1502
+  time: 1502 A.U.
+  excerpts: 
+  link: 
+  type: 个人档案

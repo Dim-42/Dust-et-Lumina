@@ -4,7 +4,8 @@
   time: 1504 A.U.
   excerpts: 
   link: 
-  type: 人物纪传
+  type: 个人档案
+  class: 次要
 
 - title: 弗洛伦丝入读北十字大学工程系
   subtitle: 
@@ -13,8 +14,9 @@
   excerpts: 期间获得BASE计划荣誉奖学金
   link: 
   note: 16岁
-  type: 人物纪传
+  type: 个人档案
   url: 
+  class: 次要
 
 - title: 弗洛伦丝加入星轨公司
   subtitle: 
@@ -23,5 +25,6 @@
   excerpts: 任职于超空间航道测绘项目
   link: 
   note: 20岁
-  type: 人物纪传
-  url: 
+  type: 个人档案
+  url:
+  class: 次要

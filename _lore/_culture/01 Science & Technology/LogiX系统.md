@@ -6,14 +6,14 @@ draft: false
 featured: true
 
 title: LogiX演算系统
-subtitle: LogiX Predictive Computation System
+subtitle: LogiX Predictive Computational System
 
 ---
 
 
 ## 概述
 
-LogiX演算设施（LogiX Predictive Computation System），是以【逻辑】命名，庞大的数据库、数据分析、推衍计算系统，本体位于埃尔泽兰独立星区I-[α]-1，是灰塔最重要的资产。它的输入端连接着遍布星系的情报网络，输出端则指向那些“需要知道”真相的人。
+LogiX演算设施（LogiX Predictive Computational System），是以【逻辑】命名，庞大的数据库、数据分析、推衍计算系统，本体位于埃尔泽兰独立星区I-[α]-1，是灰塔最重要的资产。它的输入端连接着遍布星系的情报网络，输出端则指向那些“需要知道”真相的人。
 
 由埃尔泽兰内的三个行星系的能源以及正在试验中的恒星工程供能，LogiX日夜不停地收集来自星系各地的信息——自然、政治、经济、乃至人心——通过对无数因子的分析，计算着未来的【可能性】。
 

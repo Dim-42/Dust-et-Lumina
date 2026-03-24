@@ -1,11 +1,33 @@
-- title: 灰塔成立
+- title: LogiX试运行机上线。
   subtitle: 
-  abs_time: -570
+  abs_time: -568
   time: ▇▇▇
-  excerpts: LogiX初代模型正式上线。
+  excerpts: 同年，灰塔成立。
   link: LogiX系统
   type: 组织志
   url: /faction/turris-grisea
+
+- title: ReLink研究所成立
+  subtitle: 
+  abs_time: -521
+  time: 521 B.U.
+  excerpts: 致力于研究超空间的物理性质。
+  link: 
+  type: 组织志
+  note: 
+  url: 
+  class:
+
+- title: 星轨物流成立
+  subtitle: 
+  abs_time: -330
+  time: 330 B.U.
+  excerpts: 区域性大型物流、运输企业，其技术部门负责研发超空间相关技术。
+  link: 
+  type: 组织志
+  note: 
+  url: 
+  class:
 
 - title: 星轨航线公司成立
   subtitle: 
@@ -20,7 +42,7 @@
   subtitle: 
   abs_time: 1002
   time: 1002 A.U.
-  excerpts: 一次惨烈的地域性冲突后，来自星系各地的救援人员成立了埃癸斯。
+  excerpts: 一次地域性冲突和晶尘事故同时段爆发，事后，来自星系各地的救援小队人员成立了AIM。
   link: 
   type: 组织志
   url: /faction/aigis
@@ -28,7 +50,7 @@
 - title: 第三炬火成立
   subtitle: 
   abs_time: 1522
-  time: 1524 A.U.
+  time: 1522 A.U.
   excerpts: 
   link: 
   type: 组织志
@@ -38,12 +60,12 @@
   subtitle: 
   abs_time: 1527
   time: 1527 A.U.
-  excerpts: 通过多方集资和捐赠，密涅瓦天文台作为独立科研机构成立，由克洛伊·德奈尔担任代理台长。
+  excerpts: 通过多方集资和捐赠，密涅瓦天文台作为独立科研机构注册成立。
   link: 
   type: 组织志
   url: /faction/minerva
   
-- title: 密涅瓦天文台正式开始运转
+- title: 密涅瓦天文台正式启动
   subtitle: 
   abs_time: 1539.0130
   time: 1539 A.U.
@@ -60,3 +82,4 @@
 #   type: 组织志
 #   note: 
 #   url: 
+#   class:
