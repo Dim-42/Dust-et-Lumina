@@ -5,7 +5,7 @@ layout: default
 collection_type: "histories"
 ---
 
-{% assign hidden_types_string = "人物纪传" %}
+{% assign hidden_types_string = "次要" %}
 {% assign hidden_types = hidden_types_string | split: "," %}
 <div class="timeline-container">
     <div class="timeline-line"></div>
@@ -18,9 +18,9 @@ collection_type: "histories"
 
     {% assign all_entries = all_entries | sort: "abs_time" | reverse %}
 
-    {% comment %} --- TIMELINE RENDER --- {% endcomment %}
+
     {% for entry in all_entries %}
-        {% assign entry_types = entry.type | replace: ',', ' ' | downcase | split: ' ' %}
+        {% assign entry_types = entry.class | replace: ',', ' ' | downcase | split: ' ' %}
         
         {% assign is_default_hidden = false %}
         {% for h_type in hidden_types %}
@@ -76,18 +76,23 @@ collection_type: "histories"
                         {% endfor %}
                     </div>
                 {% endif %}
+                
+                {% if entry.tag %}
+                    <div class="timeline-tag">
+                    {{ entry.tag | join: " " }}
+                    </div>
+                {% endif %}
             </div>
         </div>
     {% endfor %}
 </div>
 
-{% comment %} --- FILTER SIDEBAR --- {% endcomment %}
 <aside id="timeline-filter">
     <div class="filter-handle">
         <span class="handle-text">/ / / / / / /</span>
     </div>
     <div class="filter-container">
-        <div class="filter-header">EVENT_PARAMETERS</div>
+        <div class="filter-header">EVENT_FILTER</div>
         <div class="filter-list">
     <button class="filter-btn active" id="btn-default" onclick="resetFilters(this)">
         <span class="prompt">></span> DEFAULT
@@ -119,14 +124,13 @@ collection_type: "histories"
 
 <script>
 let activeFilters = new Set();
-let fullStreamMode = false; // New state tracker
+let fullStreamMode = false;
 
-// 1. Toggle individual filters
 window.toggleFilter = function(targetType, btnElement) {
     const defaultBtn = document.getElementById('btn-default');
     const fullBtn = document.getElementById('btn-full');
     
-    fullStreamMode = false; // Toggling a tag exits Full Stream mode
+    fullStreamMode = false;
 
     if (activeFilters.has(targetType)) {
         activeFilters.delete(targetType);
@@ -136,7 +140,6 @@ window.toggleFilter = function(targetType, btnElement) {
         btnElement.classList.add('active');
     }
 
-    // UI Logic for top buttons
     fullBtn.classList.remove('active');
     if (activeFilters.size > 0) {
         defaultBtn.classList.remove('active');
@@ -147,7 +150,6 @@ window.toggleFilter = function(targetType, btnElement) {
     applyFilters();
 };
 
-// 2. DEFAULT VIEW (Respects default hides)
 window.resetFilters = function(allBtn) {
     activeFilters.clear();
     fullStreamMode = false;
@@ -156,7 +158,6 @@ window.resetFilters = function(allBtn) {
     applyFilters();
 };
 
-// 3. FULL STREAM VIEW (Shows absolutely everything)
 window.showFullStream = function(fullBtn) {
     activeFilters.clear();
     fullStreamMode = true;
@@ -175,13 +176,10 @@ function applyFilters() {
         let shouldShow = false;
 
         if (fullStreamMode) {
-            // FULL_STREAM: Show everything
             shouldShow = true;
         } else if (activeFilters.size === 0) {
-            // DEFAULT: Hide sensitive types
             shouldShow = !isDefaultHidden;
         } else {
-            // SPECIFIC TAGS: Show if matches ANY selected filter (reveals hidden if tagged)
             shouldShow = Array.from(activeFilters).some(f => cardTypes.includes(f));
         }
 
@@ -190,8 +188,6 @@ function applyFilters() {
 
     realignTimeline();
 }
-
-// ... Keep your existing realignTimeline() function exactly as it is ...
 
 function realignTimeline() {
     const visible = Array.from(document.querySelectorAll('.timeline-item'))

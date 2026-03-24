@@ -1,12 +1,53 @@
-- title: 埃尔泽兰科考项目结束
+- title: “群星背面”▇▇▇▇
   subtitle: 
-  abs_time: -579
-  time: 579 B.U.
-  excerpts: 一次对“群星背面”的考察。
+  abs_time: -582
+  time: ▇▇▇
+  excerpts: ▇▇▇▇▇▇
   link: 
   type: 文明史
   url: 
 
+- title: 《开放空间条例》签订
+  subtitle: 
+  abs_time: -245
+  time: 245 B.U.
+  excerpts: 规定了超空间主航道的共有权，成立超空间交通公约组织——超空间交通管理控制中心的前身。
+  link: 
+  type: 文明史
+  note: 
+  url: 
+  class:
+
+- title: 《晶尘贸易协定》签订
+  subtitle: 
+  abs_time: -170
+  time: 170 B.U.
+  excerpts: 确立了晶尘的计量标准，并将晶尘确立为跨星区贸易的计价基准。
+  link: 
+  type: 文明史
+  note: 
+  url: 
+  class:
+
+- title: 非线性即时通讯技术诞生
+  subtitle: 
+  abs_time: -98
+  time: 98 B.U.
+  excerpts: 由ReLink研究所与星轨公司合作开发，实现了在两个特定点之间瞬时的信息传输通道。
+  link: 
+  type: 文明史
+  url: 
+
+- title: 塔拉尼星毁灭
+  subtitle: 
+  abs_time: 975
+  time: 975 A.U.
+  excerpts: 
+  link: 
+  type: 文明史
+  note: 
+  url: 
+  class:
 
 # - title: 
 #   subtitle: 
@@ -15,4 +56,6 @@
 #   excerpts: 
 #   link: 
 #   type: 文明史
+#   note: 
 #   url: 
+#   class:

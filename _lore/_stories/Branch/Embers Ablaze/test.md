@@ -1,6 +1,6 @@
 ---
 layout: chapter
-title: 测试
+title: 02
 story_type: chapter
-ch: 01
+ch: 2
 ---

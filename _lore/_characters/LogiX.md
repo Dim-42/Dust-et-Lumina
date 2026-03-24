@@ -6,6 +6,7 @@ title: LogiX
 subtitle: LogiX Personified Interactive Terminal
 draft: true
 order: 60
+draft: true
 
 name: [LogiX]
 fullname: ['LogiX Personified Interactive Terminal', “LogiX”人格化交互终端]

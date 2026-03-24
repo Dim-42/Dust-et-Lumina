@@ -4,7 +4,8 @@
   time: 1505 A.U.
   excerpts: 
   link: 
-  type: 人物纪传
+  type: 个人档案
+  class: 次要
 
 - title: 瑞杰娜加入拉文科尔警署
   subtitle: 
@@ -12,9 +13,10 @@
   time: 1525 A.U.
   excerpts: 随后调任至重大案件科
   link: 
-  type: 人物纪传
+  type: 个人档案
   note: 20岁
   url: 
+  class: 次要
 
 # - title: 
 #   subtitle: 
@@ -22,6 +24,6 @@
 #   time: 
 #   excerpts: 
 #   link: 
-#   type: 人物纪传
+#   type: 个人档案
 #   note: 
 #   url: 

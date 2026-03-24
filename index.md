@@ -16,7 +16,7 @@ title: Dust et Lumina
 <div id="imageModal" class="system-modal" onclick="closeModal()">
     <span class="close-modal">&times;</span>
     <img class="modal-content" id="fullImage">
-    <div id="modalCaption" class="modal-caption">{{ page.subtitle }}</div>
+    <!--<div id="modalCaption" class="modal-caption">{{ page.subtitle }}</div> -->
 </div>
 
 ---

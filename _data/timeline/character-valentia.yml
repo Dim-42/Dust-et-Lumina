@@ -4,7 +4,9 @@
   time: ▇▇▇
   excerpts: 
   link: 
-  type: 人物纪传
+  type: 个人档案
+  class: 次要
+
 
 - title: 维纶蒂娅去世
   subtitle: 
@@ -12,5 +14,6 @@
   time: ▇▇▇
   excerpts: 
   link: 
-  type: 人物纪传
+  type: 个人档案
   note: 37岁
+  class: 次要
