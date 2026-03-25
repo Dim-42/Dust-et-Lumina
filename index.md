@@ -42,7 +42,11 @@ title: Dust et Lumina
   {% endfor %}
 </div>
 
-## 星系地理
+<div markdown="0">
+  <a href="{{ '/regions/' | relative_url }}" style="text-decoration: none; color: inherit;">
+    <h2>星系地理</h2>
+  </a>
+</div>
 
 <div id="galaxy-3d-container" style="width: 95%; height: 70vh; min-height: 500px; position: relative; overflow: hidden;">
     <div id="sector-info" style="position: absolute; top: 20px; left: 20px; color: var(--color-text); font-family: var(--font-mono); letter-spacing: 0.1rem; pointer-events: none; z-index: 10;">
@@ -219,9 +223,13 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-## 组织与势力
+<div markdown="0">
+  <a href="{{ '/organizations/' | relative_url }}" style="text-decoration: none; color: inherit;">
+    <h2>组织与势力</h2>
+  </a>
+</div>
 
-<div class="featured-organs">
+<!-- <div class="featured-organs">
     <div class="organ-grid">
         {% assign featured_organ = site.organizations | where: "featured", true %}
         {% assign sorted_organ = featured_organ | sort_natural: "order" %}
@@ -245,9 +253,48 @@ document.addEventListener("DOMContentLoaded", function() {
     <a href="{{ '/organizations/' | relative_url }}" style = "font-family: var(--font-mono); letter-spacing: 0.1rem;">
         ACCESS ORGANIZATION PROFILES >
     </a>
+</div> -->
+
+<div class="org-carousel-container" id="orgCarousel">
+  <div class="org-carousel-track">
+    {% assign featured_orgs = site.organizations | where: "featured", true %}
+    {% assign sorted_organ = featured_organ | sort_natural: "order" %}
+    {% for org in sorted_organ %}
+        <div class="org-slide">
+        <a class="org-inner" href="{{ org.url | relative_url }}">
+            <div class="org-logo">
+            {% if org.image %}
+            <img src="{{ org.image | relative_url }}" alt="{{ organ.title }}">
+            {% else %}
+                <div class="no-portrait">NO_DATA</div>
+            {% endif %}
+            </div>
+            <div class="org-content">
+            <div class="org-title">{{ org.title }}</div>
+            <div class="org-subtitle"> {{ org.subtitle }}</div> 
+            <p class="org-description">{{ org.description }}</p>
+            <div style = "text-align: right;"><span class="motto" style="margin: 0px; font-size: 16px">— {{ org.motto[0]}}</span><br><span class="motto" style="margin: 0px; color: var(--color-note); font-size: 16px">{{ org.motto[1]}}</span></div>
+            </div>
+        </a>
+        </div>
+    {% endfor %}
+  </div>
 </div>
 
-## 人物档案
+<p class="system-msg-note" style="padding: 2px; margin: 0;">Scroll to view</p>
+
+<div style="text-align: right; padding-right: 1rem;">
+    <a href="{{ '/organizations/' | relative_url }}" style = "font-family: var(--font-mono); letter-spacing: 0.1rem;">
+        ACCESS ORGANIZATION PROFILES >
+    </a>
+</div>
+
+
+<div markdown="0">
+  <a href="{{ '/characters/' | relative_url }}" style="text-decoration: none; color: inherit;">
+    <h2>人物档案</h2>
+  </a>
+</div>
 
 <div class="featured-chars">
     <div class="char-grid">
