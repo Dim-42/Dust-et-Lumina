@@ -177,11 +177,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 const target = intersects[0].object.parent || intersects[0].object;
                 hoveredSector = target;
                 info.innerText = target.userData.name;
-                container.style.cursor = 'pointer';
+                //container.style.cursor = 'pointer';
+                container.style.cursor = 'url("{{ "/assets/icons/target-2-svgrepo-com.svg" | relative_url }}") 12 12, pointer';
             } else {
                 hoveredSector = null;
                 info.innerText = null;
-                container.style.cursor = 'default';
+                //container.style.cursor = 'default';
+                container.style.cursor = 'url("{{ "/assets/icons/target-2-svgrepo-com.svg" | relative_url }}") 12 12, default';
             }
         });
 
