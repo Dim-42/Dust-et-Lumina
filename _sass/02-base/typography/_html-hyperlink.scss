@@ -1,11 +1,17 @@
 a {
-    color: var(--accent-dim);
+    color: var(--color-text);
     text-decoration: none;
     transition: 0.3s;
-
+    
     &:hover {
         color: var(--accent);
     }
+}
+
+#obsidian-content > p a,
+#obsidian-content > ul > li a, 
+#obsidian-content > ol > li a{
+    border-bottom: 0.5px solid var(--color-text);
 }
 
 .entry-title {
