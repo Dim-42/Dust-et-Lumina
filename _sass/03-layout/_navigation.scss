@@ -1,5 +1,4 @@
 .nav-interface {
-    //background-color: var(--panel-bg);
     padding: 5px 5px;
     margin-top: 10px;
     border-bottom: 1px solid var(--color-note);
@@ -20,5 +19,9 @@
     &:hover {
         color: var(--accent);
         cursor: var(--pointer);
+    }
+
+    &.nav-right {
+        margin-left: auto; 
     }
 }

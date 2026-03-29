@@ -33,15 +33,15 @@ collections:
   organizations:
     output: true
     permalink: /organizations/:path/
-    display_name: [Faction, 组织势力]
+    display_name: [Faction, 势力]
   characters:
     output: true
     permalink: /characters/:path/
-    display_name: [Personnel,人物档案]
+    display_name: [Personnel,档案]
   regions:
     output: true
     permalink: /regions/:path/
-    display_name: [Atlas,世界地理]
+    display_name: [Atlas,地理]
   stories:
     output: true
     permalink: /stories/:path/
@@ -54,6 +54,10 @@ collections:
     output: true
     permalink: /histories/:path/
     display_name: [History,历史]
+  gallery:
+    output: true
+    permalink: /gallery/:path/
+    display_name: [Gallery,影像]
     
 navigation:
   - title: "Terminal"
@@ -70,6 +74,8 @@ navigation:
     url: /histories/
   - title: "Record"
     url: /stories/
+  - title: "Gallery"
+    url: /gallery/
   - title: "About"
     url: /about/
 
