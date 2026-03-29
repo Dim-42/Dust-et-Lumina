@@ -28,10 +28,17 @@ layout: default
 
         <div class="preface-metadata">
             <div class="story-stats" style = "padding-left: 20px;">
-                <div class="stat-item"><span class="label">STATUS:</span> {{ display_item.status | default: "ACTIVE" }}</div>
-                <div class="stat-item"><span class="label">COMMIT:</span> {{ display_item.commit | default: "UNKNOWN" | slice: 0, 8 }}</div>
-                <div class="stat-item"><span class="label">TIMESTAMP:</span> {{ display_item.image-time | default: "▇▇" }}</div>
-                <div class="stat-item"><span class="label">GEOPOS:</span> {{ display_item.image-loc | default: "▇▇" }}</div>
+                <div class="stat-item"><span class="label">TIMESTAMP:</span> {{ display_item.image-time | default: "▇▇" | upcase }}</div>
+                <div class="stat-item"><span class="label">GEOPOS:</span> {{ display_item.image-loc | default: "▇▇" | upcase }}</div>
+                {% if display_item.link %}
+                <div class="stat-item">
+                    <span class="label">SOURCE:</span>
+                    {% assign linked_page = site.documents | where: "permalink", display_item.link | first %}
+                    <a href="{{ linked_page.url | relative_url }}" class="entry-title">
+                        {{ linked_page.subtitle | upcase }}
+                    </a>
+                </div>
+                {% endif %}
             </div>
 
             <div class="asset-description">
@@ -43,18 +50,46 @@ layout: default
     <aside class="hub-sidebar">
         <div class="sidebar-header">
             <span class="header-text">Gallery Index</span>
-            <span class="header-count">[{{ gallery_list.size }}]</span>
+            <span class="header-count">[{{ site.gallery.size }}]</span>
         </div>
+
         <nav class="hub-toc">
-            {% for entry in gallery_list %}
-                <a href="{{ entry.url | relative_url }}" 
-                    class="toc-entry {% if entry.url == display_item.url %}active{% endif %}">
-                    <span class="entry-hex">{% if entry.url == display_item.url %} > {% else %}⬡{% endif %}</span>
-                    <div class="entry-info">
-                        <span class="entry-header">{{ entry.title }}</span>
-                        <span class="entry-commit">{{ entry.commit | slice: 0, 8 | default: "UNKNOWN" }}</span>
-                    </div>
-                </a>
+            {% comment %} 1. Group the gallery items as we did before {% endcomment %}
+            {% assign grouped_gallery = site.gallery | group_by_exp: "item", "item.image | remove: '/assets/images/' | lstrip | split: '/' | first" %}
+
+            {% comment %} 2. Loop through your CUSTOM ORDER from the data file {% endcomment %}
+            {% for cat_name in site.data.gallery-settings.category_order %}
+                
+                {% comment %} Find the group that matches this specific category name {% endcomment %}
+                {% assign current_group = grouped_gallery | where: "name", cat_name | first %}
+                
+                {% if current_group %}
+                    {% assign is_current_group = false %}
+                    {% for entry in current_group.items %}
+                        {% if entry.url == display_item.url %}{% assign is_current_group = true %}{% endif %}
+                    {% endfor %}
+
+                    <details class="toc-category" open>
+                        <summary class="category-header">
+                            <span class="category-name">{{ current_group.name | upcase }}</span>
+                            <span class="category-count">[{{ current_group.items.size }}]</span>
+                        </summary>
+
+                        <div class="category-items">
+                            {% assign sorted_items = current_group.items | sort: 'title' %}
+                            {% for entry in sorted_items %}
+                                <a href="{{ entry.url | relative_url }}" 
+                                class="toc-entry {% if entry.url == display_item.url %}active{% endif %}">
+                                    <span class="entry-hex">{% if entry.url == display_item.url %} > {% else %}⬡{% endif %}</span>
+                                    <div class="entry-info">
+                                        <span class="entry-header">{{ entry.title }}</span>
+                                        <span class="entry-commit">{{ entry.commit | slice: 0, 8 | default: "UNKNOWN" }}</span>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </details>
+                {% endif %}
             {% endfor %}
         </nav>
     </aside>

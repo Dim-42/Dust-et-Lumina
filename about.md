@@ -20,6 +20,8 @@ DUST ET LUMINA想要描摹的是一个星海废土之中危险混沌但又熠熠
 
 欢迎来找我玩！
 
+<br>
+
 <details markdown = "1">
 <summary style = "font-size: 18px;">授权说明</summary>
 

@@ -7,7 +7,6 @@
 
     .hub-viewport {
         flex: 1;
-        padding: 10px;
         overflow-y: auto;
         border-right: 1px solid var(--color-note);
         @include HIDE-SCROLLBAR;
@@ -15,7 +14,7 @@
         .no-image {
             @include NO-IMAGE;
             width: 98%;
-            aspect-ratio: 4 / 2;
+            aspect-ratio: 4 / 1;
         }
     }
 
@@ -44,14 +43,49 @@
             overflow-y: auto;
             // border-left: 1px solid rgba(var(--color-note), 0.1);
 
-            /* Custom Scrollbar for the TOC */
             &::-webkit-scrollbar { width: 4px; }
             &::-webkit-scrollbar-track { background: transparent; }
             &::-webkit-scrollbar-thumb { background: var(--accent); }
 
+            user-select: none;
+
+            .toc-category {
+
+                .category-header {
+                    padding: 12px 20px;
+                    cursor: pointer;
+                    list-style: none; // Hide default arrow
+                    font-family: var(--font-mono);
+                    font-size: 1rem;
+                    color: var(--color-text);
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid var(--color-note);
+                    transition: all 0.2s;
+
+                    &:hover { 
+                        background: rgba(var(--accent-rgb), 0.05); 
+                    }
+
+                    &::-webkit-details-marker { display: none; } // Chrome/Safari fix
+
+                    .category-name { flex: 1; letter-spacing: 1px; }
+                    .category-count { color: var(--color-note); font-size: 0.75rem; }
+                }
+
+                &[open] .category-header {
+                    border-bottom: 1px solid var(--color-note);
+                }
+
+                .category-items {
+                    padding-left: 10px; // Indent nested items
+                }
+            }
+
             .toc-entry {
                 display: flex;
-                padding: 10px 15px;
+                padding: 0 15px;
+                margin: 10px 0;
                 text-decoration: none;
                 color: var(--color-text);
                 transition: all 0.2s ease;

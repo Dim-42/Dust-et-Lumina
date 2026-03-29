@@ -10,7 +10,7 @@ title: Dust et Lumina
 ---
 
 <div class = "image-frame" style="cursor: zoom-in;">
-    <img src="{{ '/assets/images/title-main.png' | relative_url }}" onclick="openModal(this)">
+    <img src="{{ '/assets/images/titles/main.png' | relative_url }}" onclick="openModal(this)">
 </div>
 
 <div id="imageModal" class="system-modal" onclick="closeModal()">
