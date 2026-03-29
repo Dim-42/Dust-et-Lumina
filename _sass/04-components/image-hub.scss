@@ -1,0 +1,63 @@
+.hub-interface {
+    display: flex;
+    border: 1px solid var(--color-note);
+    margin: 20px auto;
+    height: 80vh;
+    overflow: hidden;
+
+    .hub-viewport {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        border-right: 1px solid var(--color-note);
+        @include HIDE-SCROLLBAR;
+    }
+
+    .hub-sidebar {
+        flex: 0 0 25%;
+        display: flex;
+        flex-direction: column; // Stack header and nav
+        background: rgba(0, 0, 0, 0.2);
+
+        .sidebar-header {
+            padding: 15px 20px;
+            background: var(--color-note);
+            color: #000;
+            font-family: var(--font-mono);
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+
+        .hub-toc {
+            flex: 1; // Take up remaining space
+            overflow-y: auto; // THIS ENABLES THE SCROLLING
+            border-left: 1px solid rgba(var(--color-note-rgb), 0.1);
+
+            /* Custom Scrollbar for the TOC */
+            &::-webkit-scrollbar { width: 4px; }
+            &::-webkit-scrollbar-track { background: transparent; }
+            &::-webkit-scrollbar-thumb { background: var(--accent); }
+
+            .toc-entry {
+                display: flex;
+                padding: 15px 20px;
+                text-decoration: none;
+                color: var(--color-text);
+                border-bottom: 1px solid rgba(var(--color-note-rgb), 0.1);
+                transition: all 0.2s ease;
+
+                .entry-hex { margin-right: 12px; color: var(--color-note); }
+                .entry-title { display: block; font-family: var(--font-mono); font-size: 0.9rem; }
+                .entry-date { display: block; font-size: 0.7rem; opacity: 0.5; font-family: var(--font-mono); }
+
+                &:hover { background: rgba(var(--accent-rgb), 0.05); }
+                &.active {
+                    background: rgba(var(--accent-rgb), 0.1);
+                    border-left: 3px solid var(--accent);
+                    .entry-hex, .entry-title { color: var(--accent); }
+                }
+            }
+        }
+    }
+}

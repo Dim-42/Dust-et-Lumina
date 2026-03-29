@@ -1,6 +1,6 @@
 ---
 permalink: /regions/
 title: Region
-layout: hub
+layout: atlas
 collection_type: "regions"
 ---
