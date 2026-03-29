@@ -12,7 +12,7 @@
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    @include hide-scrollbar;
+    @include HIDE-SCROLLBAR;
 }
 
 .org-slide {
@@ -43,25 +43,15 @@
             opacity: 0.8;
             filter: grayscale(1);
             transition: all 0.3s ease;
+            &:hover {
+                cursor: var(--target);
+            }
         }
 
         .no-portrait {
+            @include NO-IMAGE;
             width: 90%;
             aspect-ratio: 1/1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-mono);
-            color: var(--accent-secondary);
-            opacity: 60%;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0,0,0,1),
-                rgba(0,0,0,1) 2px,
-                rgba(22,27,34,1) 4px
-            );
         }
     }
 

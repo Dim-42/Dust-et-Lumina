@@ -25,34 +25,9 @@
     opacity: 1;
 }
 
+.sidebar-handle { @include SIDE-HANDLE; }
 
-/* The vertical handle */
-.sidebar-handle {
-    width: 40px;
-    height: 140px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    /* Keeps the handle visible when the rest is at -260px */
-    // clip-path: polygon(0 0, 100% 15%, 100% 85%, 0 100%);
-
-}
-
-.handle-text {
-    writing-mode: vertical-rl;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    font-weight: bold;
-    color: color-mix(in srgb, var(--color-text), transparent 50%);
-    letter-spacing: 2px;
-    pointer-events: none;
-}
-
-.sidebar-content {
-    @include hide-scrollbar;
-}
+.sidebar-content { @include HIDE-SCROLLBAR; }
 
 .sidebar-content {
     width: 200px;

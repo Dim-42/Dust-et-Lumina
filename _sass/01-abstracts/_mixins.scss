@@ -1,0 +1,80 @@
+@mixin NO-IMAGE {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    color: var(--accent-secondary);
+    font-size: 1rem;
+    opacity: 0.8;
+    letter-spacing: 3px;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,1),
+        rgba(0,0,0,1) 2px,
+        rgba(22,27,34,1) 4px
+    );
+    border: 1px solid var(--color-note);
+}
+
+@mixin HIDE-SCROLLBAR {
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    &::-webkit-scrollbar {
+        display: none;  /* Chrome, Safari */
+    }
+}
+
+@mixin HEADERS ($font-size: 1.5rem, $color: var(--color-text), $border-width: 4px) {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    color: $color;
+    font-weight: lighter;
+    font-size: $font-size;
+    letter-spacing: 2px;
+    border-left: $border-width solid var(--accent);
+    padding-left: 15px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+@mixin SIDE-HANDLE {
+    width: 40px;
+    height: 140px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+
+    .handle-text {
+        writing-mode: vertical-rl;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        color: color-mix(in srgb, var(--color-text), transparent 50%);
+        pointer-events: none;
+    }
+}
+
+@mixin INTERACTIVE-CARD {
+    background: var(--bg-color);
+    border: 1px solid var(--color-note);
+    transition: all 0.2s ease;
+    
+    &:hover {
+        border-color: var(--accent);
+        
+        img { 
+            filter: grayscale(0%) sepia(0%) hue-rotate(0deg) brightness(1) contrast(1); 
+            opacity: 1; 
+        }
+
+        .title, span { 
+            color: var(--accent); 
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}

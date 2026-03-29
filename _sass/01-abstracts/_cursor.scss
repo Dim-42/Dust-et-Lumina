@@ -1,11 +1,13 @@
-html {
-    cursor: url('/Dust-et-Lumina/assets/icons/cursor-svgrepo-com.svg'), auto;
+$pointer: url('/Dust-et-Lumina/assets/icons/cursor-svgrepo-com.svg'), auto;
+$zoom: url("/Dust-et-Lumina/assets/icons/plus-1469-svgrepo-com.svg") 10 10, zoom-in;
+$target: url('/Dust-et-Lumina/assets/icons/target-2-svgrepo-com.svg') 10 10, pointer;
+
+:root {
+    --pointer: #{$pointer};
+    --zoom: #{$zoom};
+    --target: #{$target};
 }
 
-a:hover {
-    cursor: url('/Dust-et-Lumina/assets/icons/target-2-svgrepo-com.svg') 10 10, pointer;
-}
-
-img {
-    cursor: url("/Dust-et-Lumina/assets/icons/plus-1469-svgrepo-com.svg") 10 10, zoom-in;
-}
+html { cursor: var(--pointer); }
+a:hover { cursor: var(--target); }
+img { cursor: var(--zoom); }

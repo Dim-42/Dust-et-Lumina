@@ -231,36 +231,11 @@ document.addEventListener("DOMContentLoaded", function() {
   </a>
 </div>
 
-<!-- <div class="featured-organs">
-    <div class="organ-grid">
-        {% assign featured_organ = site.organizations | where: "featured", true %}
-        {% assign sorted_organ = featured_organ | sort_natural: "order" %}
-        {% for organ in sorted_organ %}
-        <a href="{{ organ.url | relative_url }}" class="organ-card">
-            <div class="organ-portrait">
-                {% if organ.image %}
-                    <img src="{{ organ.image | relative_url }}" alt="{{ organ.title }}">
-                {% else %}
-                    <div class="no-portrait">NO_DATA</div>
-                {% endif %}
-            </div> <div class="organ-overlay">
-                <span>{{ organ.title }} <br> {{ organ.subtitle }} </span>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
-</div>
-
-<div style="text-align: right; padding-right: 1rem;">
-    <a href="{{ '/organizations/' | relative_url }}" style = "font-family: var(--font-mono); letter-spacing: 0.1rem;">
-        ACCESS ORGANIZATION PROFILES >
-    </a>
-</div> -->
 
 <div class="org-carousel-container" id="orgCarousel">
   <div class="org-carousel-track">
     {% assign featured_orgs = site.organizations | where: "featured", true %}
-    {% assign sorted_organ = featured_organ | sort_natural: "order" %}
+    {% assign sorted_organ = featured_orgs | sort_natural: "order" %}
     {% for org in sorted_organ %}
         <div class="org-slide">
         <a class="org-inner" href="{{ org.url | relative_url }}">

@@ -6,6 +6,8 @@ $color-accent: #00f2ff;
 $color-accent-dim: #00c2e077;
 $color-secondary: #ec365d;
 
+$content-width: 1000px;
+
 :root {
     --bg-color: #{$color-bg};
     --panel-bg: #{$color-panel};
@@ -14,4 +16,6 @@ $color-secondary: #ec365d;
     --accent: #{$color-accent};
     --accent-dim: #{$color-accent-dim};
     --accent-secondary: #{$color-secondary};
+
+    --content-width: #{$content-width};
 }
