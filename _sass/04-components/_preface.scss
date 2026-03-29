@@ -91,8 +91,8 @@
         }
         .preface-metadata { width: 100%; }
     }
+}
 
-    // --- UI ELEMENTS ---
     .story-title {
         font-family: var(--font-mono);
         font-size: 3rem;
@@ -124,7 +124,6 @@
     .story-description {
         margin: 30px 0;
     }
-}
 
 /* The Overlay Background */
 .system-modal {

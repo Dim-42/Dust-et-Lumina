@@ -28,7 +28,7 @@ layout: default
 
             <div class="story-stats">
                 <div class="stat-item"><span class="label">STATUS:</span> {{ page.status | default: "ACTIVE" }}</div>
-                <div class="stat-item"><span class="label">COMMIT:</span> {{ page.commit | default: "0.0.0" }}</div>
+                <div class="stat-item"><span class="label">COMMIT:</span> {{ page.commit | default: "UNKNOWN" }}</div>
                 <div class="stat-item"><span class="label">TIMESTAMP:</span> {{ page.story-time | default: "▇▇" }}</div>
                 <div class="stat-item"><span class="label">GEOPOS:</span> {{ page.story-loc | default: "▇▇" }}</div>
             </div>

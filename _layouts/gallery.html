@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign gallery_list = site.gallery | sort: 'date' | reverse %}
+{% assign gallery_list = site.gallery | sort: 'title' %}
 {% assign display_item = page %}
 
 {% if page.url == "/gallery/" %}
@@ -11,10 +11,10 @@ layout: default
 
 <div class="hub-interface">
     <main class="hub-viewport">
-        <section class="image-display">
-            <div class="image-frame" style = "margin: 1rem auto; max-width: 95%;">
+        <div class="image-display">
+            <div class="image-frame" style = "margin: 1rem auto; max-width: 95%; ">
                 {% if display_item.image %}
-                    <img src="{{ display_item.image | relative_url }}" onclick="openModal(this)" alt="{{ display_item.title }}" >
+                    <img src="{{ display_item.image | relative_url }}" onclick="openModal(this)" alt="{{ display_item.title }}" style = "max-height: 50vh;">
                 {% else %}
                     <div class="no-image">NO_IMAGE_DATA_FOUND</div>
                 {% endif %}
@@ -24,39 +24,35 @@ layout: default
                 <span class="close-modal">&times;</span>
                 <img class="modal-content" id="fullImage">
             </div>
-        </section>
+        </div>
 
-        <section class="image-metadata">
-            <div class="meta-header">
-                <h1 class="asset-title">{{ display_item.title | upcase }}</h1>
-                <span class="asset-status">{{ display_item.status | default: "ARCHIVED" }}</span>
-            </div>
-
-            <div class="meta-grid">
-                <div class="meta-item"><span class="label">TIMESTAMP:</span> {{ display_item.date_captured }}</div>
-                <div class="meta-item"><span class="label">COORDINATES:</span> {{ display_item.coordinates }}</div>
-                <div class="meta-item"><span class="label">FILE_SIZE:</span> {{ display_item.image | file_size }}</div>
+        <div class="preface-metadata">
+            <div class="story-stats" style = "padding-left: 20px;">
+                <div class="stat-item"><span class="label">STATUS:</span> {{ display_item.status | default: "ACTIVE" }}</div>
+                <div class="stat-item"><span class="label">COMMIT:</span> {{ display_item.commit | default: "UNKNOWN" | slice: 0, 8 }}</div>
+                <div class="stat-item"><span class="label">TIMESTAMP:</span> {{ display_item.image-time | default: "▇▇" }}</div>
+                <div class="stat-item"><span class="label">GEOPOS:</span> {{ display_item.image-loc | default: "▇▇" }}</div>
             </div>
 
             <div class="asset-description">
                 {{ display_item.content }}
             </div>
-        </section>
+        </div>
     </main>
 
     <aside class="hub-sidebar">
         <div class="sidebar-header">
-            <span class="header-text">ARCHIVE_INDEX</span>
+            <span class="header-text">Gallery Index</span>
             <span class="header-count">[{{ gallery_list.size }}]</span>
         </div>
         <nav class="hub-toc">
             {% for entry in gallery_list %}
                 <a href="{{ entry.url | relative_url }}" 
-                   class="toc-entry {% if entry.url == display_item.url %}active{% endif %}">
-                    <span class="entry-hex">{% if entry.url == display_item.url %}⬢{% else %}⬡{% endif %}</span>
+                    class="toc-entry {% if entry.url == display_item.url %}active{% endif %}">
+                    <span class="entry-hex">{% if entry.url == display_item.url %} > {% else %}⬡{% endif %}</span>
                     <div class="entry-info">
-                        <span class="entry-title">{{ entry.title }}</span>
-                        <span class="entry-date">{{ entry.date_captured | slice: 2, 8 }}</span>
+                        <span class="entry-header">{{ entry.title }}</span>
+                        <span class="entry-commit">{{ entry.commit | slice: 0, 8 | default: "UNKNOWN" }}</span>
                     </div>
                 </a>
             {% endfor %}
