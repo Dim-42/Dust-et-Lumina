@@ -35,7 +35,7 @@ layout: default
             <div class="meta-grid">
                 <div class="meta-item"><span class="label">TIMESTAMP:</span> {{ display_item.date_captured }}</div>
                 <div class="meta-item"><span class="label">COORDINATES:</span> {{ display_item.coordinates }}</div>
-                <div class="meta-item"><span class="label">FILE_SIZE:</span> {{ display_item.file_size }}</div>
+                <div class="meta-item"><span class="label">FILE_SIZE:</span> {{ display_item.image | file_size }}</div>
             </div>
 
             <div class="asset-description">
