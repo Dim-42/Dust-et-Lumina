@@ -1,9 +1,0 @@
----
-layout: gallery
-title: "NEON_STREETS_01"
-image: "/assets/images/title-ad-astra.png"
-coordinates: "34.0522° N, 118.2437° W"
-commit: 345367865432454676587rfs
----
-
-This visual log captures the atmospheric interference in the lower sectors during the midnight shift. Note the chromatic aberration on the edges.
