@@ -12,8 +12,8 @@ Functional logic is MIT.
 @import "01-abstracts/fonts";
 @import "01-abstracts/colors";
 @import "01-abstracts/font-sizes";
-@import "01-abstracts/other";
 @import "01-abstracts/cursor";
+@import "01-abstracts/mixins";
 
 // ---- base ---- //
 @import "02-base/animations";
@@ -22,7 +22,6 @@ Functional logic is MIT.
 @import "02-base/typography/html-paragraph";
 @import "02-base/typography/list";
 @import "02-base/typography/md-divider";
-@import "02-base/typography/md-header";
 @import "02-base/typography/footnote";
 @import "02-base/detail";
 @import "02-base/markdown-toc";
@@ -49,6 +48,7 @@ Functional logic is MIT.
 @import "04-components/side-markdown-toc";
 @import "04-components/encyclopedia";
 @import "04-components/preface";
+
 
 // ---- pages ---- //
 @import "05-pages/container";

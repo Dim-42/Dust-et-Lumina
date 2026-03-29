@@ -1,12 +1,9 @@
-/* Remove the default arrow in Chrome/Edge/Safari */
 details summary::-webkit-details-marker {
     display: none;
 }
 
-/* Remove the default arrow in Firefox */
 details summary {
     list-style: none;
-    cursor: pointer;
     outline: none;
     font-family: var(--font-mono);
     padding: 10px;
@@ -16,6 +13,7 @@ details summary {
     font-size: 20px;
     letter-spacing: 0.1rem;
     display: flow-root;
+    cursor: var(--target);
 }
 
 /* The 'Closed' state */

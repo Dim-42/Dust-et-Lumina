@@ -23,13 +23,12 @@
     width: 50%; 
     z-index: 2;
     margin-top: -5rem; 
-    pointer-events: none; /* Allows clicks to pass to the line/canvas unless over a card */
+    pointer-events: none;
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .timeline-item:first-child { margin-top: 0; }
 
-/* Desktop Zig-Zag Alignment */
 .timeline-item:nth-child(odd) { align-self: flex-start; padding-right: 35px; }
 .timeline-item:nth-child(even) { align-self: flex-end; padding-left: 35px; padding-top: 8rem; }
 
@@ -56,7 +55,7 @@
     border: 1px solid var(--accent-dim);
     padding: 1.5rem;
     transition: all 0.3s ease;
-    pointer-events: auto; /* Re-enables clicking for the actual card */
+    pointer-events: auto;
 }
 
 .timeline-content:hover { 
@@ -67,7 +66,6 @@
 .timeline-item:nth-child(odd) .timeline-content:hover { transform: translateX(10px); }
 .timeline-item:nth-child(even) .timeline-content:hover { transform: translateX(-10px); }
 
-
 .timeline-content::before {
     content: "";
     position: absolute;
@@ -75,17 +73,11 @@
     height: 8px;
     background-color: var(--accent-secondary);
     top: -4px;
-    /* Use variables that JS will control */
     left: var(--square-left, auto);
     right: var(--square-right, auto);
     z-index: 10;
     transition: all 0.3s ease;
 }
-
-/*
-.timeline-item:nth-child(odd) .timeline-content::before { left: -4px; }
-.timeline-item:nth-child(even) .timeline-content::before { right: -4px; }
-*/
 
 .timeline-content:hover::before {
     width: 15px;
@@ -157,6 +149,7 @@
 /* ============================================================
    RIGHT SIDEBAR FILTER
    ============================================================ */
+
 #timeline-filter {
     position: fixed !important;
     right: 0 !important;
@@ -176,26 +169,9 @@
     transform: translateY(-50%) translateX(0);
 }
 
-.filter-handle {
-    width: 40px;
-    height: 140px;
-    border-right: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
+.filter-handle { @include SIDE-HANDLE; }
 
-.filter-handle .handle-text {
-    writing-mode: vertical-rl;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    color: color-mix(in srgb, var(--color-text), transparent 50%);
-}
-
-.filter-container::-webkit-scrollbar { display: none; }
+.filter-container::-webkit-scrollbar { @include HIDE-SCROLLBAR; }
 
 .filter-container {
     width: 200px;
@@ -232,7 +208,7 @@
     color: var(--color-note);
     padding: 4px 15px;
     text-align: left;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     transition: all 0.2s ease;
 
