@@ -98,7 +98,9 @@
                 .entry-header { 
                     display: block; 
                     font-family: var(--font-mono); 
-                    font-size: 1.2rem; 
+                    font-size: 1rem; 
+                    text-transform: uppercase;
+                    letter-spacing: 0.1rem;
                 }
 
                 .entry-commit { 

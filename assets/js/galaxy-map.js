@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const galaxyGeo = new THREE.CircleGeometry(12, 64); 
         const textureLoader = new THREE.TextureLoader();
-        const colorTexture = textureLoader.load("{{ '/assets/images/Top-down_view_of_the_Milky_Way_annotated.jpg' | relative_url }}");
+        const colorTexture = textureLoader.load("{{ '/assets/images/The_best_Milky_Way_map_by_Gaia.jpg' | relative_url }}");
         const alphaMask = createSoftEdgeTexture();
 
         const galaxyMat = new THREE.MeshBasicMaterial({ 
             map: colorTexture, 
             alphaMap: alphaMask,
             transparent: true, 
-            opacity: 1.0,
+            opacity: 0.95,
             side: THREE.DoubleSide,
             depthWrite: false, 
             blending: THREE.AdditiveBlending
@@ -70,9 +70,11 @@ document.addEventListener("DOMContentLoaded", function() {
             group.position.set(x, y, z);
 
             const dot = new THREE.Mesh(
-                new THREE.SphereGeometry(r, 16, 16),
+                new THREE.TorusGeometry(r*1.25, r/4, 2, 4),
                 new THREE.MeshBasicMaterial({ color: 0xffffff }) 
             );
+
+            dot.rotation.x = Math.PI / 2;
 
             const hitbox = new THREE.Mesh(
                 new THREE.SphereGeometry(0.8, 16, 16), 
@@ -143,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         const colorCyan = new THREE.Color(0x00cccc);
-        const colorWhite = new THREE.Color(0xffffff);
+        const colorWhite = new THREE.Color(0xe9eef5);
 
         function animate() {
             requestAnimationFrame(animate);

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign gallery_list = site.gallery | sort: 'title' %}
+{% assign gallery_list = site.gallery | gallery_sort  %}
 {% assign display_item = page %}
 
 {% if page.url == "/gallery/" %}
@@ -54,14 +54,14 @@ layout: default
         </div>
 
         <nav class="hub-toc">
-            {% comment %} 1. Group the gallery items as we did before {% endcomment %}
+            {% comment %} 1. Group the gallery items based on the asset folder path {% endcomment %}
             {% assign grouped_gallery = site.gallery | group_by_exp: "item", "item.image | remove: '/assets/images/' | lstrip | split: '/' | first" %}
 
-            {% comment %} 2. Loop through your CUSTOM ORDER from the data file {% endcomment %}
-            {% for cat_name in site.data.gallery-settings.category_order %}
+            {% comment %} 2. Loop through the CUSTOM ORDER (expecting 'folder' and 'display' keys) {% endcomment %}
+            {% for cat in site.data.gallery-settings.category_order %}
                 
-                {% comment %} Find the group that matches this specific category name {% endcomment %}
-                {% assign current_group = grouped_gallery | where: "name", cat_name | first %}
+                {% comment %} Find the group that matches the folder name defined in your YAML {% endcomment %}
+                {% assign current_group = grouped_gallery | where: "name", cat.folder | first %}
                 
                 {% if current_group %}
                     {% assign is_current_group = false %}
@@ -71,12 +71,13 @@ layout: default
 
                     <details class="toc-category" open>
                         <summary class="category-header">
-                            <span class="category-name">{{ current_group.name | upcase }}</span>
+                            {% comment %} Display the custom name from the 'display' key {% endcomment %}
+                            <span class="category-name">{{ cat.display | upcase }}</span>
                             <span class="category-count">[{{ current_group.items.size }}]</span>
                         </summary>
 
                         <div class="category-items">
-                            {% assign sorted_items = current_group.items | sort: 'title' %}
+                            {% assign sorted_items = current_group.items | gallery_sort %}
                             {% for entry in sorted_items %}
                                 <a href="{{ entry.url | relative_url }}" 
                                 class="toc-entry {% if entry.url == display_item.url %}active{% endif %}">

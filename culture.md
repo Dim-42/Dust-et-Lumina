@@ -5,7 +5,7 @@ layout: default
 collection_type: "culture"
 ---
 
-<div class="concept-grid">
+<!-- <div class="concept-grid">
   {% assign selected_slugs = "星系,晶尘,超空间" | split: "," %}
   {% for slug in selected_slugs %}
     {% assign item = site.culture | where: "slug", slug | first %}
@@ -26,7 +26,7 @@ collection_type: "culture"
   {% endfor %}
 </div>
 
-<br>
+<br> -->
 
 {% assign items = site.culture | sort: "path" %}
 

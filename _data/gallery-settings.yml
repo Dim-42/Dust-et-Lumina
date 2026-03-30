@@ -1,5 +1,9 @@
 category_order:
-  - titles
-  - standees
-  - backgrounds
-  - logos
+  - folder: "titles"
+    display: "插图"
+  - folder: "standees"
+    display: "设定集"
+  - folder: "bg"
+    display: "场景概念"
+  - folder: "logos"
+    display: "标志"
