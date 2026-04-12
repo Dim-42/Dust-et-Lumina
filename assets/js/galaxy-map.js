@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const galaxyGeo = new THREE.CircleGeometry(12, 64); 
         const textureLoader = new THREE.TextureLoader();
-        const colorTexture = textureLoader.load("{{ '/assets/images/The_best_Milky_Way_map_by_Gaia.jpg' | relative_url }}");
+        const colorTexture = textureLoader.load("{{ '/assets/images/The_best_Milky_Way_map_by_Gaia.png' | relative_url }}");
         const alphaMask = createSoftEdgeTexture();
 
         const galaxyMat = new THREE.MeshBasicMaterial({ 
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
             starPos[i] = (Math.random() - 0.5) * 300; 
         }
         starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-        const starMat = new THREE.PointsMaterial({ size: 0.1, color: 0xffffff, transparent: true, opacity: 0.6 });
+        const starMat = new THREE.PointsMaterial({ size: 0.1, color: 0xffffff, transparent: true, opacity: 0.5 });
         const starfield = new THREE.Points(starGeo, starMat);
         scene.add(starfield);
 

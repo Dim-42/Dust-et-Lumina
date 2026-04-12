@@ -1,9 +1,10 @@
 ---
 layout: default
 title: Dust et Lumina
+last-update: 1539-02-01 A.U.
 ---
 
-<p class = "main-header" style = "font-family: var(--font-serif);">尘与辉光</p>
+<div class = "main-header" style = "font-family: var(--font-serif);">尘与辉光</div>
 <p class = "motto" style = "letter-spacing: 0.05rem;"> At the end of time, the stars are all but dust.
 <br>时间的尽头，繁星若尘。</p>
 
@@ -87,7 +88,7 @@ title: Dust et Lumina
 <p class="system-msg-note" style="padding: 2px; margin: 0;">Scroll to view</p>
 
 <div style="text-align: right; padding-right: 1rem;">
-    <a href="{{ '/organizations/' | relative_url }}" style = "font-family: var(--font-mono); letter-spacing: 0.1rem;">
+    <a href="{{ '/organizations/' | relative_url }}" class = "system-msg">
         ACCESS ORGANIZATION PROFILES >
     </a>
 </div>
@@ -120,7 +121,7 @@ title: Dust et Lumina
 </div>
 
 <div style="text-align: right; padding-right: 1rem;">
-    <a href="{{ '/characters/' | relative_url }}" style = "font-family: var(--font-mono); letter-spacing: 0.1rem;">
+    <a href="{{ '/characters/' | relative_url }}" class = "system-msg">
         ACCESS PERSONNEL PROFILES >
     </a>
 </div>

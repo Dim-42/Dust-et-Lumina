@@ -5,29 +5,6 @@ layout: default
 collection_type: "culture"
 ---
 
-<!-- <div class="concept-grid">
-  {% assign selected_slugs = "星系,晶尘,超空间" | split: "," %}
-  {% for slug in selected_slugs %}
-    {% assign item = site.culture | where: "slug", slug | first %}
-    {% if item %}
-      <a href="{{ item.url | relative_url }}" class="concept-card">
-        <div class="concept-thumb">
-            {% if item.image %}
-                <img src="{{ item.image | relative_url }}" alt="{{ item.title }}">
-            {% else %}
-                <div class="no-image">NOT_FOUND</div>
-            {% endif %}
-        </div>
-        <div class="concept-text">
-            <span class="concept-title">{{ item.title }} <br> {{ item.subtitle }} </span>
-        </div>
-      </a>
-    {% endif %}
-  {% endfor %}
-</div>
-
-<br> -->
-
 {% assign items = site.culture | sort: "path" %}
 
 <div class="culture-archive">
@@ -60,17 +37,27 @@ collection_type: "culture"
           <div class="subclass-group">
             {% unless sub.name contains ".md" or sub.name == nil or sub.name == "" %}
               <span class="subclass-header">{{ sub.name | replace: "-", " " | capitalize }}</span>
+                <ul class="entry-list" style = "padding-left: 50px;">
+                {% for item in sub.items %}
+                    <li class="entry-item">
+                    <a href="{{ item.url | relative_url }}" class="entry-link">
+                        <span class="entry-title">{{ item.title }}</span>
+                    </a>
+                    </li>
+                {% endfor %}
+                </ul>
+                <hr class="subclass-div">
+                {% else %}
+                <ul class="entry-list">
+                {% for item in sub.items %}
+                    <li class="entry-item">
+                    <a href="{{ item.url | relative_url }}" class="entry-link">
+                        <span class="entry-title">{{ item.title }}</span>
+                    </a>
+                    </li>
+                {% endfor %}
+                </ul>
             {% endunless %}
-
-            <ul class="entry-list">
-              {% for item in sub.items %}
-                <li class="entry-item">
-                  <a href="{{ item.url | relative_url }}" class="entry-link">
-                    <span class="entry-title">{{ item.title }}</span>
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
           </div>
         {% endfor %}
       </div>

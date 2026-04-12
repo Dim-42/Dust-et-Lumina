@@ -8,6 +8,7 @@ featured: false
 
 title: Ω现象（存疑）
 subtitle: Phenomenon Omega
+access-level: classified
 ---
 
 > 在标准模型下，希格斯场可能处于假真空（False Vacuum），也就是一种亚稳定状态。若其能量谷底不是真正最低点，量子隧穿会导致真空泡形成，并以光速扩张，也就是真空衰变（False Vacuum Decay）。一旦坍缩发生，低能态的真空泡会以光速膨胀，吞没旧宇宙，改变所有物理常数，物质结构瓦解，一切有序变为无序。

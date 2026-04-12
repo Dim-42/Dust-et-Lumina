@@ -16,15 +16,38 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Long Cang';
+    src: url('/Dust-et-Lumina/assets/fonts/long-cang-v21-chinese-simplified-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Moon Dance';
+    src: url('/Dust-et-Lumina/assets/fonts/long-cang-v21-chinese-simplified-regular.woff2') format('woff2');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mr Saint Delafield';
+    src: url('/Dust-et-Lumina/assets/fonts/mrs-saint-delafield-v14-latin-regular.woff2') format('woff2');
+    font-style: normal;
+    font-display: swap;
+}
 
 $font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $font-mono: 'Teko', 'Source Han Serif CN', monospace;
 $font-sans: 'Segoe UI', sans-serif;
 $font-serif: 'Cinzel', 'Source Han Serif CN', serif;
+$font-script: 'Moon Dance', 'Long Cang', serif;
 
 :root {
     --font-mono: #{$font-mono};
     --font-main: #{$font-main};
     --font-sans: #{$font-sans};
     --font-serif: #{$font-serif};
+    --font-script: #{$font-script};
 }

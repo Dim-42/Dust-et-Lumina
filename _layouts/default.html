@@ -17,12 +17,12 @@
     <div id="loading-screen">
         <div id="phase-login" class="loader-phase">
             <p class="main-header">LogiX Predictive Computational SYSTEM</p>
-            <p class="system-msg visible">SYSTEM_ACCESS_REQUIRED</p>
+            <p class="system-msg visible">SYSTEM_ACCESS REQUIRED</p>
             <div class="login-input-wrapper">
                 <span class="system-msg">></span>
                 <input type="text" id="db-password" readonly autocomplete="off">
             </div>
-            <p id="auth-status" class="system-msg-note">INITIALIZING_AUTHENTICATION...</p>
+            <p id="auth-status" class="system-msg-note">INITIALIZING AUTHENTICATION...</p>
             <p class="system-msg-note" style="position:fixed; bottom: 0; padding-bottom: 1rem;">
                 PROPERTY OF TURRIS GRISEA // CONFIDENTIAL
             </p>
@@ -37,17 +37,18 @@
                 <div class="ring inner-notch"></div>
                 <div class="scan-sweep"></div>
                 <div class="core-point"></div>
-                <div class="fui-label top" style =  "align-items: center;">SCANNING_BIO_SIGNAL</div>
-                <div class="fui-label bottom" style = "color: var(--accent-secondary);">THREAT_LEVEL: 0%</div>
+                <div class="fui-label top" style =  "align-items: center;">SCANNING BIO SIGNAL</div>
+                <div class="fui-label bottom" style = "color: var(--accent-secondary);">THREAT LEVEL: 0%</div>
             </div>
-            <p class="system-msg">IDENTITY_VERIFICATION_IN_PROGRESS...</p>
+            <p class="system-msg">IDENTITY VERIFICATION IN PROGRESS...</p>
             <p class="system-msg-note" style = "position:fixed; bottom: 0; padding-bottom: 1rem;">PROPERTY OF TURRIS GRISEA // CONFIDENTIAL</p>
         </div>
 
         <div id="phase-decrypt" class="loader-phase" style="display: none;">
             <div class="loader-content">
+                <p class="system-msg" style="font-size: 22px;">ACCESS LEVEL: ■□□□□ [PUBLIC]</p>
                 <div class="scanner-line"></div>
-                <p class="system-msg" style="font-size: 22px;">ENTERING DATABASE...</p>
+                <p class="system-msg" style="font-size: 18px;">ENTERING DATABASE...</p>
                 <p class="system-msg-note">DECRYPTING...</p>
             </div>
         </div>
@@ -104,6 +105,11 @@
                 {% endif %}
             </div>
         </header>
+        <div class="page-meta">
+                <div class="meta-info"><span class="label">Last Updated:</span>{{ page.last_modified | default: "NA" }}</div>
+                <div class="meta-info"><span class="label">Access Level:</span>{{ page.access-level | default: "PUBLIC" }}</div>
+        </div>
+        <br>
         {{ content }}
     </main>
 
@@ -212,7 +218,6 @@
             {% endif %}
             {% endfor %}
 
-            {% comment %} --- UI RENDERING --- {% endcomment %}
             {% if prev_page %}
                 <a href="{{ prev_page.url | relative_url }}" class="nav-arrow">&lt;</a>
             {% else %}

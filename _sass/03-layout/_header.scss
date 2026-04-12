@@ -34,7 +34,7 @@ h4 {
     text-transform: uppercase;
     padding: 1rem 0 0.5rem 0;
     margin-top: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     font-family: var(--font-mono);
     color: var(--accent);
 
@@ -67,5 +67,21 @@ h4 {
             margin-left: 5px;
             vertical-align:auto;
         }
+    }
+}
+
+.page-meta {
+    display: flex;
+    .meta-info {
+        display: flex;
+        gap: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+        color: var(--color-text);
+        opacity: 0.9;
+        font-size: 0.9rem;
+        font-family: var(--font-mono);
+        margin-right: 50px;
+        .label { color: var(--color-note); margin-right: 5px; }
     }
 }

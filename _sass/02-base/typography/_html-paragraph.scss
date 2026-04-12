@@ -12,7 +12,6 @@ u {
   border-bottom: 1px solid var(--color-text);
 }
 
-// main header, big, centered
 .main-header {
     font-family: var(--font-mono);
     font-size: var(--main-header-size);
@@ -25,7 +24,6 @@ u {
     text-align: center;
 }
 
-// centered text
 .motto {
     font-family: var(--font-serif);
     font-size: var(--text-size);
@@ -36,56 +34,75 @@ u {
     letter-spacing: 0.1rem;
 }
 
+/* System Message */
+
 .system-msg {
-    color: var(--color-text);
-    font-family: var(--font-mono);
-    text-align: center;
-    font-size: 18px;
-    letter-spacing: 0.2rem;
+    @include SYSTEM-MESSAGE($font-size: 16px);
+}
+
+.system-msg-warning {
+    @include SYSTEM-MESSAGE($font-size: 16px, $color: var(--accent-secondary));
 }
 
 .system-msg-note {
-    color: var(--color-note);
-    font-family: var(--font-mono);
-    text-align: center;
-    font-size: 16px;
-    letter-spacing: 0.2rem;
+    @include SYSTEM-MESSAGE($color: var(--color-note), $font-size: 14px);
 }
 
-.note {
-    color: var(--color-note);
-    text-align: left;
+/* Scripted Annotation */
+
+.annotation {
+    @include ANNOTATION;
 }
 
-// warning text
-.warning-text {
-    color: var(--accent-secondary);
-    font-family: var(--font-mono);
-    text-align: center;
-    font-size: var(--msg-size);
+/* Redacted Text */
+
+//use this: <span class="redacted" onclick="this.classList.toggle('revealed')"></span>
+
+.redacted {
+    background-color: var(--color-text, #000);
+    color: transparent;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 0 2px;
+    border-radius: 1px;
 }
 
-/* Global: applies to everything on the page */
+.redacted.revealed {
+    background-color: rgba(var(--accent-rgb), 0.1);
+    color: inherit;
+    user-select: text;
+}
+
+.redacted:not(.revealed):hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 5px var(--accent-secondary);
+}
+
+/* Cursor selected text */
+
 ::selection {
-    background-color: #00e5ff29; /* The highlight color */         /* The text color when selected */
+    background-color: #00e5ff29;
 }
 
-/* Specific: only applies to paragraphs */
 p::selection {
     background-color: #00e5ff29;
 }
 
-/* Inline code target */
+/* Inline code */
+
 p code, li code {
-    color: var(--accent);                           /* Your theme's bright color */
+    color: var(--accent);
     padding: 0 2px;
-    font-family: var(--font-mono);                  /* Keep it monospace */
+    font-family: var(--font-mono);
     letter-spacing: 0.2rem;
     word-break: break-word;
 }
 
-//strikethroughs
+/* strikethroughs */
+
 del {
   color: var(--color-note); 
   text-decoration-thickness: 2px;
 }
+

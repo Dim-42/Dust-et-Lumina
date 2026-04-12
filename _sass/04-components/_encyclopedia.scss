@@ -55,7 +55,7 @@
         
         .subclass-header {
             font-family: var(--font-mono); 
-            font-size: 1.5rem;
+            font-size: 18px;
             letter-spacing: 0.2rem;
             text-transform: uppercase;
             color: var(--color-note);
@@ -67,7 +67,13 @@
             padding-top: 10px;
         }
     }
-
+    .subclass-div {
+        border: none;
+        margin: 1rem auto;
+        background-color: var(--color-note);
+        height: 0.25px;
+        width: 50%;
+    }
     .entry-list {
         list-style: none;
         padding: 0 35px;
