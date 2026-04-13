@@ -7,16 +7,12 @@ featured: true
 
 title: LogiX演算系统
 subtitle: LogiX Predictive Computational System
-last-update: 1538-12-21 A.U.
-access-level: Classified
+last-updated: 1538-12-21 A.U.
+access-level: Top Secret
 ---
 
+LogiX演算设施（LogiX Predictive Computational System），是综合性数据库、数据分析、推衍计算系统，本体位于埃尔泽兰独立星区I-[α]-1，是灰塔最重要的资产。其核心功能为推演未来的可能性，它的输入端连接着遍布星系的情报网络，输出端则指向那些“需要知道”的人。
 
-## 概述
-
-LogiX演算设施（LogiX Predictive Computational System），是以【逻辑】命名，庞大的数据库、数据分析、推衍计算系统，本体位于埃尔泽兰独立星区I-[α]-1，是灰塔最重要的资产。它的输入端连接着遍布星系的情报网络，输出端则指向那些“需要知道”真相的人。
-
-由埃尔泽兰内的三个行星系的能源以及正在试验中的恒星工程供能，LogiX日夜不停地收集来自星系各地的信息——自然、政治、经济、乃至人心——通过对无数因子的分析，计算着未来的【可能性】。
 
 > ...Under such context, traditionally defined "absolute rationality" may prove to be irrational--or, at the very least, flawed. If our objective were to predict human behaviours, then the framework of our rationality shall not reject the human nature, sensibility, and stochasticity carried inherently within our species. Conversely, acknowledging such phenomena is a prerequisite of our work; the core of our work, on the other hand, lies in the estimation of and response to such behaviours. For further technical specifications, refer to Chapter 8, Section 4: Non-Absolute Models.
 >

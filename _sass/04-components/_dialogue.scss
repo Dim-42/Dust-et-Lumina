@@ -1,0 +1,78 @@
+// {% capture redacted_msg %}
+// <span class="redacted" onclick="this.classList.toggle('revealed')"></span>
+// {% endcapture %}
+
+
+.comm-log {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    border: 1px solid var(--color-note);
+    margin: 2rem auto;
+    overflow-y: scroll;
+    @include HIDE-SCROLLBAR;
+    max-height: 350px;
+}
+
+.msg-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    padding: 20px 0;
+}
+
+.msg-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 10px auto;
+    box-sizing: border-box;
+}
+
+.msg-time {
+    letter-spacing: 0.2rem;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    text-align: right;
+    margin: 0 20px;
+}
+
+.msg-meta {
+    width: 100px;
+    letter-spacing: 0.1rem;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+}
+
+.speaker-label {
+    display: block;
+    color: var(--color-note);
+}
+
+.speaker-name {
+    display: block;
+    color: var(--accent);
+}
+
+.msg-content {
+    background: rgba(var(--accent-rgb), 0.05);
+    border-left: 2px solid var(--accent);
+    & > p:first-child { margin-top: 0; }
+    & > p:last-child { margin-bottom: 0; }
+    p a {
+        border-bottom: 0.5px solid var(--color-text);
+    }
+}
+
+.msg-container:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    width: 75%;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--color-note); 
+}

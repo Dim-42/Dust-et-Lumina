@@ -1,0 +1,29 @@
+.split-passage {
+    display: flex;
+    align-items: flex-start; /* Keeps tops aligned */
+    gap: 1rem;               /* Space between image and text */
+    margin: 1.5rem 0;
+}
+
+.split-passage .split-part {
+    flex: 1;
+    font-size: 18px;
+    p a {
+        border-bottom: 0.5px solid var(--color-text);
+    }
+
+}
+
+/* Mobile Responsive: Stack them vertically on small screens */
+@media (max-width: 768px) {
+    .split-passage {
+        flex-direction: column;
+    }
+    .split-passage .split-part {
+        max-width: 100%;
+    }
+}
+
+.split-passage.reverse {
+    flex-direction: row-reverse;
+}

@@ -12,7 +12,7 @@ layout: default
 <div class="hub-interface">
     <main class="hub-viewport">
         <div class="image-display">
-            <div class="image-frame" style = "margin: 1rem auto; max-width: 95%; ">
+            <div class="image-bracket-frame" style = "margin: 1rem auto; max-width: 95%; ">
                 {% if display_item.image %}
                     <img src="{{ display_item.image | relative_url }}" onclick="openModal(this)" alt="{{ display_item.title }}" style = "max-height: 50vh;">
                 {% else %}

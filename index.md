@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Dust et Lumina
-last-update: 1539-02-01 A.U.
+last-updated: 1539-02-01 A.U.
 ---
 
 <div class = "main-header" style = "font-family: var(--font-serif);">尘与辉光</div>
@@ -10,7 +10,7 @@ last-update: 1539-02-01 A.U.
 
 ---
 
-<div class = "image-frame" style="cursor: zoom-in;">
+<div class = "image-bracket-frame" style="cursor: zoom-in;">
     <img src="{{ '/assets/images/titles/main.png' | relative_url }}" onclick="openModal(this)">
 </div>
 

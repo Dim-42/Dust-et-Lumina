@@ -26,6 +26,7 @@ Functional logic is MIT.
 @import "02-base/detail";
 @import "02-base/markdown-toc";
 @import "02-base/table";
+@import "02-base/split-passage";
 
 // ---- layout ---- //
 @import "03-layout/body";
@@ -49,7 +50,8 @@ Functional logic is MIT.
 @import "04-components/encyclopedia";
 @import "04-components/preface";
 @import "04-components/image-hub";
-
+@import "04-components/button";
+@import "04-components/dialogue";
 
 // ---- pages ---- //
 @import "05-pages/container";

@@ -106,11 +106,56 @@
             </div>
         </header>
         <div class="page-meta">
-                <div class="meta-info"><span class="label">Last Updated:</span>{{ page.last_modified | default: "NA" }}</div>
+                <div class="meta-info"><span class="label">Last Updated:</span>{{ page.last-updated | default: "NA" }}</div>
                 <div class="meta-info"><span class="label">Access Level:</span>{{ page.access-level | default: "PUBLIC" }}</div>
         </div>
         <br>
-        {{ content }}
+        {% assign access = page.access-level | downcase%}
+        {% if access == "top secret" or access == "classified" %}
+        <div class="classified-warning">
+            <div class = "system-msg" style="text-align: left;">
+                This document is the property of TURRIS GRISEA.
+                <br>
+                Any Unauthorized access, reproduction, or dissemination will result in immediate revocation of clearance and internal measures.
+            </div>
+            <hr>
+            <div class="system-msg-warning" style="font-weight: bold;">
+                You have been warned.
+            </div>
+            <button id="reveal-btn" class="btn-classified" onclick="toggleFile()">
+                Access 
+            </button>
+        </div>
+            
+            <div id="classified-content" class="classified-hide">
+                {{ content }}
+                {% include linked-pages.html links=page.link %}
+            </div>
+
+            <script>
+                function toggleFile() {
+                    const content = document.getElementById("classified-content");
+                    const btn = document.getElementById("reveal-btn");
+                    
+                    const isHidden = content.style.display === "none" || content.style.display === "";
+
+                    if (isHidden) {
+                        content.style.display = "block";
+                        btn.innerText = "Lock";
+                        btn.classList.add("active");
+                    } else {
+                        content.style.display = "none";
+                        btn.innerText = "Access";
+                        btn.classList.remove("active");
+                    }
+                }
+            </script>
+            
+        {% else %}
+            {{ content }}
+            {% include linked-pages.html links=page.link %}
+        {% endif %}
+        
     </main>
 
     <aside class="sidebar-toc" id="sidebar-toc">

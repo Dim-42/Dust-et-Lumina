@@ -86,10 +86,3 @@
     color: $color;
     font-size: $font-size;
 }
-
-@mixin ANNOTATION ($font-family: var(--font-script), $font-size: 18px, $color: var(--color-text)) {
-    font-family: $font-family;
-    font-size: $font-size;
-    color: $color;
-    letter-spacing: 0.1rem;
-}

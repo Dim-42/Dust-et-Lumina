@@ -1,0 +1,14 @@
+<div class="msg-container">
+    <div class="msg-wrap">
+        <div class="msg-meta">
+            <span class="speaker-label"> {{ include.id | upcase }} </span>
+            <span class="speaker-name">{{ include.p | upcase }}</span>
+        </div>
+        <div class="msg-content">
+            {{ include.msg | markdownify }}
+        </div>
+    </div>
+    {% if include.time %}
+        <div class="msg-time">{{ include.time }}</div>
+    {% endif %}
+</div>

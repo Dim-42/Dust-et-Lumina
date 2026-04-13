@@ -1,0 +1,31 @@
+{% comment %}
+  Usage: {% include linked-tags.html links=page.link %}
+  Optional: Pass 'class' to override the default container class
+{% endcomment %}
+
+{% assign links_to_process = include.links %}
+{% assign container_class = include.class | default: "timeline-links" %}
+
+{% if links_to_process %}
+    <div class="{{ container_class }}" style="border: none; padding: 25px 25px;">
+        {% assign linked_keys = links_to_process | replace: " ", "" | split: "," %}
+        {% for key in linked_keys %}
+            {% comment %} Search across all collections and posts {% endcomment %}
+            {% assign linked_page = site.documents | where: "permalink", key | first %}
+            
+            {% if linked_page == nil %}
+                {% assign linked_page = site.documents | where: "slug", key | first %}
+            {% endif %}
+            
+            {% if linked_page %}
+                <a href="{{ linked_page.url | relative_url }}" class="timeline-link-tag" style="background-color: #53536150;">
+                    <span class="tag-bracket">[</span>{{ linked_page.title | upcase }}<span class="tag-bracket">]</span>
+                </a>
+            {% else %}
+                <span class="timeline-link-tag unknown">
+                    <span class="tag-bracket">[</span>{{ key | upcase }}<span class="tag-bracket">]</span>
+                </span>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}

@@ -1,0 +1,47 @@
+.classified-warning {
+    text-transform: uppercase;
+    margin: 20px auto;
+    font-family: var(--font-mono);
+    width: 80%;
+    text-align: center;
+
+}
+
+.btn-classified {
+    background: var(--accent-secondary);
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    border: 2px solid var(--accent-secondary);
+    margin: 15px auto;
+    padding: 5px 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    text-align: center;
+    min-width: 100px;
+}
+
+.btn-classified:hover {
+    background: transparent;
+    border: 2px solid var(--accent-secondary);
+}
+
+.btn-classified.active {
+    background: var(--color-note);
+    border: 2px solid var(--color-note);
+}
+
+.btn-classified.active:hover {
+    background: transparent;
+    border: 2px solid var(--color-note);
+}
+
+.classified-hide {
+    margin-top: 30px;
+    display: none;
+    p a {
+        border-bottom: 0.5px solid var(--color-text);
+    }
+}
