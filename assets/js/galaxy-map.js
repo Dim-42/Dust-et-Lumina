@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const galaxyGeo = new THREE.CircleGeometry(12, 64); 
         const textureLoader = new THREE.TextureLoader();
-        const colorTexture = textureLoader.load("{{ '/assets/images/The_best_Milky_Way_map_by_Gaia.png' | relative_url }}");
+        const colorTexture = textureLoader.load("{{ '/assets/images/map.png' | relative_url }}");
         const alphaMask = createSoftEdgeTexture();
 
         const galaxyMat = new THREE.MeshBasicMaterial({ 
