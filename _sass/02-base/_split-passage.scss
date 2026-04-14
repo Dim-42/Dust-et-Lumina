@@ -14,16 +14,17 @@
 
 }
 
-/* Mobile Responsive: Stack them vertically on small screens */
+.split-passage.reverse {
+    flex-direction: row-reverse;
+}
+
+
 @media (max-width: 768px) {
     .split-passage {
         flex-direction: column;
+        margin: 0.5rem 0;
     }
     .split-passage .split-part {
         max-width: 100%;
     }
-}
-
-.split-passage.reverse {
-    flex-direction: row-reverse;
 }

@@ -59,7 +59,7 @@
         transition: color 0.2s ease;
         letter-spacing: 0.1rem;
         position: relative;
-        display: inline-block; // Necessary for the underline width
+        display: inline-block;
     }
     
     .concept-title::after {
@@ -73,30 +73,24 @@
         transition: all 0.2s ease;
         transform: translateX(-50%);
     }
-
-    // Hover effect already handled by parent .concept-card:hover, 
-    // but kept this for individual title hover if needed.
+    
     &:hover .concept-title::after {
         width: 100%; 
     }
 }
 
-// Mobile responsiveness: stack them back to columns on small screens
 @media (max-width: 600px) {
-    .concept-grid {
-        gap: 2rem; // Give bars more breathing room when stacked
-    }
 
     .concept-card, 
     .concept-card:nth-child(even) {
-        flex-direction: column !important; // Force stack
-        align-items: stretch; // Ensure content fills the width evenly
+        flex-direction: column !important; 
+        align-items: stretch;
         padding: 10px 10px 0px 10px;
     }
 
     .concept-thumb {
         width: 100%;
-        height: 80px;
+        height: 60px;
         flex: none; // Reset the flex: 2 from desktop
         border-right: none;
         border-left: none;
@@ -111,6 +105,6 @@
     .concept-text {
         flex: none; // Reset the flex: 1 from desktop
         width: 100%;
-        padding: 1.2rem 1rem;
+        padding: 10px;
     }
 }
