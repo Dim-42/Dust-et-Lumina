@@ -46,10 +46,17 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Source Han Serif';
+    src: url('/Dust-et-Lumina/assets/fonts/SourceHanSerifSC-VF.otf.woff2') format('woff2');
+    font-style: normal;
+    font-display: swap;
+}
+
 $font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-$font-mono: 'Teko', 'Source Han Serif CN', monospace;
+$font-mono: 'Teko', 'Source Han Serif', monospace;
 $font-sans: 'Segoe UI', sans-serif;
-$font-serif: 'Cinzel', 'Source Han Serif CN', serif;
+$font-serif: 'Cinzel', 'Source Han Serif', serif;
 $font-script: 'QianTuXianMoTi', 'Long Cang', serif;
 
 :root {
