@@ -1,0 +1,22 @@
+//use this: <span class="redacted" onclick="this.classList.toggle('revealed')"></span>
+
+.redacted {
+    background-color: currentColor;
+    color: currentColor;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0 2px;
+    border-radius: 1px;
+}
+
+.redacted.revealed {
+    color: inherit;
+    background-color: transparent;
+    user-select: text;
+}
+
+.redacted:not(.revealed):hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 5px currentColor;
+}

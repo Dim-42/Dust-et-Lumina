@@ -1,33 +1,10 @@
 ---
-layout: default
+layout: hub
 ---
 
 <div class = "main-container">
-    {{ content }}    
-    <aside class = "hub-container" style = "float: right; width: 26%;">
-        <section class="hub-body">
-            <ul class="data-list" style = "font-size: 16px;">
-                {% assign collection_name = page.collection_type %}
-                {% case collection_name %}
-                    {% when 'histories' %}
-                        {% assign sorted_items = site[collection_name] | where_exp: "item", "item.draft != true" | sort: "abs_time" %}
-                    {% else %}
-                        {% assign sorted_items = site[collection_name] | where_exp: "item", "item.draft != true" | sort: "subtitle" %}
-                {% endcase %}
 
-                {% for entry in sorted_items %}
-                    <li>
-                        <a href="{{ entry.url | relative_url }}">
-                            <span class="entry-title">{{ entry.title }}</span>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </section>
-        
-    </aside>
+    {{ content }}
 
-    <article class="content-main" style = "float: left; width: 72%;">
-        {% include galaxy-map.html %}
-    </article>
+    {% include galaxy-map.html %}
 </div>

@@ -17,12 +17,12 @@ Functional logic is MIT.
 
 // ---- base ---- //
 @import "02-base/animations";
-@import "02-base/typography/blockquote";
 @import "02-base/typography/html-hyperlink";
 @import "02-base/typography/html-paragraph";
 @import "02-base/typography/list";
 @import "02-base/typography/md-divider";
 @import "02-base/typography/footnote";
+@import "02-base/typography/redacted-text";
 @import "02-base/detail";
 @import "02-base/markdown-toc";
 @import "02-base/table";
@@ -52,8 +52,4 @@ Functional logic is MIT.
 @import "04-components/image-hub";
 @import "04-components/button";
 @import "04-components/dialogue";
-
-// ---- pages ---- //
-@import "05-pages/container";
-@import "05-pages/obsidian";
-@import "05-pages/small-screen";
+@import "04-components/scripted-annotations";

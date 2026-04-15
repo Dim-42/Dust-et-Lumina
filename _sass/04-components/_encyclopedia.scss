@@ -167,3 +167,41 @@
     padding: 5px 10px;
     letter-spacing: 0.1rem;
 }
+
+@media screen and (max-width: 768px) {
+    .header-text {
+            font-size: 22px !important;
+        }
+    .class-section {
+        margin-bottom: 1rem !important;
+    }
+
+    .commit-main {
+        flex-direction: column;   // Stack items vertically
+        align-items: flex-start;  // Align everything to the left edge
+        gap: 5px;                // Vertical spacing between elements
+
+        .chapter-num,
+        .chapter-title {
+            margin: 0;            // Remove those 20px horizontal margins
+        }
+
+        .chapter-title {
+            &::after {
+                left: 0;          // Align hover line to start from left
+                transform: none;  // Remove the 50% shift
+            }
+        }
+
+        .commit-number {
+            margin-left: 0;       // OVERRIDE the 'auto' that pushes it right
+            font-size: 12px;      // Slightly smaller to keep the "meta" feel
+            
+            .hash {
+                text-align: left; // Align hash text within its 55px width
+                width: auto;      // Or keep 55px if you want fixed width
+                margin-left: 5px;
+            }
+        }
+    }
+}

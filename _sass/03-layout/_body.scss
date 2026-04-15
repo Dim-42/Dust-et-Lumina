@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     height: 100%;
     margin: 0px;
@@ -16,3 +20,41 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+#obsidian-content {
+    flex: 1;
+}
+
+.main-container {
+    max-width: var(--content-width);
+    display: block;
+    &::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #obsidian-content, 
+    .sidebar-content, 
+    .toc-container,
+    body {
+        @include HIDE-SCROLLBAR;
+        -ms-overflow-style: none !important;        
+        -webkit-overflow-scrolling: touch;
+        padding: 15px 30px;
+    }
+
+    #obsidian-content {
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    #obsidian-content video, 
+    #obsidian-content iframe {
+        max-width: 100%;
+        height: auto;
+    }
+}
+

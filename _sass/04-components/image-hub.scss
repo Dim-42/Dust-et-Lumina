@@ -124,3 +124,57 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .hub-interface {
+        flex-direction: column; // Stack Viewport and Sidebar vertically
+        height: auto;           // Let the page flow naturally
+        overflow: visible;      // Avoid "scroll-inside-scroll" on mobile
+        margin: 10px auto;
+
+        .hub-viewport {
+            border-right: none;
+            border-bottom: 1px solid var(--color-note);
+            order: 2;           // Move content below the navigation (optional)
+            
+            .no-image {
+                width: 100%;
+                aspect-ratio: 16 / 9; // Square/taller images look better on phones
+            }
+        }
+
+        .hub-sidebar {
+            flex: none;         // Reset the 25% width
+            width: 100%;
+            order: 1;           // Place TOC at the top for easy navigation
+            max-height: 50vh;   // Limit TOC height so it doesn't bury the content
+
+
+            .sidebar-header {
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+
+            .hub-toc {
+                .category-header {
+                    padding: 10px 15px;
+                    font-size: 0.9rem;
+                }
+
+                .toc-entry {
+                    padding: 0 10px;
+                    margin: 5px 0;
+
+                    .entry-hex {
+                        margin-right: 8px;
+                        font-size: 0.8rem;
+                    }
+
+                    .entry-header {
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+}

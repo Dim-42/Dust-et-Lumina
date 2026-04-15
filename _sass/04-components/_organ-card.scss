@@ -83,3 +83,37 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .org-inner {
+        flex-direction: column; // Stack logo above content
+        gap: 1rem;            // Reduce the large 4rem gap
+        padding: 30px 20px;     // Slightly tighter padding
+        align-items: center;    // Center items for a cleaner mobile look
+        text-align: center;     // Optional: centers text for mobile aesthetics
+
+        .org-logo {
+            flex: 0 0 auto;     // Release the 30% width constraint
+            width: 140px;       // Set a specific size for the logo on mobile
+            
+            .no-portrait {
+                width: 100%;    // Ensure fallback takes full width of container
+            }
+        }
+
+        .org-content {
+            .org-title {
+                font-size: 20px; // Slightly smaller heading
+            }
+
+            .org-description {
+                font-size: 16px; // More comfortable reading size
+                border-left: none;
+                border-top: 1px solid var(--accent); // Move border to top
+                padding-left: 0;
+                padding-top: 10px;
+                margin: 0.5rem 0;
+            }
+        }
+    }
+}

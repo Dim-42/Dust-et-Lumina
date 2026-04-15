@@ -56,12 +56,22 @@
 
     <!-- nagivation bar-->
     <nav class="nav-interface">
-        {% for link in site.navigation %}
-            <a href="{{ link.url | relative_url }}" 
-            class="nav-link {% if link.title == 'About' %}nav-right{% endif %}">
-                {{ link.title | upcase }}
-            </a>
-        {% endfor %}
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-btn">
+            <span class="icon"></span>
+        </label>
+
+        <div class="nav-links-wrapper">
+            {% for link in site.navigation %}
+                <a href="{{ link.url | relative_url }}" 
+                class="nav-link {% if link.title == 'About' %}nav-right{% endif %}">
+                    <span class="nav-link-content">
+                        <span class="nav-title">{{ link.title | upcase }}</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;{{ link.subtitle | upcase }}</span>
+                    </span>
+                </a>
+            {% endfor %}
+        </div>
     </nav>
 
     <aside class="sidebar-directory" id = "sidebar-directory">
@@ -106,8 +116,12 @@
             </div>
         </header>
         <div class="page-meta">
+                {% if page.last-updated %}
                 <div class="meta-info"><span class="label">Last Updated:</span>{{ page.last-updated | default: "NA" }}</div>
+                {% endif %}
+                {% if page.access-level %}
                 <div class="meta-info"><span class="label">Access Level:</span>{{ page.access-level | default: "PUBLIC" }}</div>
+                {% endif %}
         </div>
         <br>
         {% assign access = page.access-level | downcase%}
@@ -159,12 +173,17 @@
     </main>
 
     <aside class="sidebar-toc" id="sidebar-toc">
+        <input type="checkbox" id="toc-toggle" class="toc-toggle">
+        <label for="toc-toggle" class="toc-btn">
+            <span class="toc-label">Table of Contents</span>
+        </label>
+
         <div class="toc-handle">
             <span class="handle-text">/ / / / / / /</span>
         </div>
 
         <nav class="toc-container">
-            <div class="sidebar-header">TABLE OF CONETNT</div>
+            <div class="sidebar-header">TABLE OF CONTENT</div>
             <div id="auto-toc" class="toc-content-body">
                 </div>
             <div class="sidebar-footer">READ_ONLY</div>
@@ -294,7 +313,7 @@
                 <span class="value">AES-256</span>
             </div>
         </div>
-        <p class = "system-msg-note">&copy; {{ "now" | date: "%Y" }} Dimension 42nd. All Rights Reserved.</p>
+        <p class = "footer-credit">&copy; {{ "now" | date: "%Y" }} Dimension 42nd. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -316,7 +335,7 @@
             if (sessionStorage.getItem('hasLoaded') && (now - lastLoad) < refresh_threshold) {
                 loader.style.display = 'none';
                 canvas.classList.add('visible'); 
-                canvas.style.opacity = "0.4";
+                canvas.style.opacity = "0.3";
                 showDirectory();
                 return;
             }
@@ -459,6 +478,19 @@
             
             tocContainer.appendChild(list);
         });
+
+        document.addEventListener('click', function(event) {
+        const tocWrapper = document.getElementById('sidebar-toc');
+        const checkbox = document.getElementById('toc-toggle');
+
+        // Only run this logic if the checkbox exists and is checked
+        if (checkbox && checkbox.checked) {
+            // If the click happened OUTSIDE the sidebar-toc element
+            if (!tocWrapper.contains(event.target)) {
+                checkbox.checked = false;
+            }
+        }
+    });
 
         // --- Canvas Background---
         const canvas = document.getElementById('network-canvas');
@@ -624,6 +656,24 @@
             if (event.key === "Escape") {
                 closeModal();
             }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            function collapseMetadata() {
+                if (window.innerWidth <= 768) {
+                    // Find all <details> elements in your hub sidebar
+                    const categories = document.querySelectorAll('.toc-category');
+                    categories.forEach(category => {
+                        category.removeAttribute('open');
+                    });
+                }
+            }
+
+            // Run on load
+            collapseMetadata();
+            
+            // Optional: Run on resize if you want it to snap shut when shrinking the window
+            window.addEventListener('resize', collapseMetadata);
         });
     </script>
 

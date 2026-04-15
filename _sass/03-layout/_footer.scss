@@ -105,3 +105,17 @@ footer {
         }
     }
 }
+
+.footer-credit {
+    @include SYSTEM-MESSAGE($color: var(--color-note), $font-size: 14px);
+    letter-spacing: 2px;
+    margin: 8px 0;
+}
+
+@media screen and (max-width: 767px) {
+    footer {
+        padding: 0.5rem 0;
+    }
+}
+
+

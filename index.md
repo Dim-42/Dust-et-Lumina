@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Dust et Lumina
-last-updated: 1539-02-01 A.U.
 ---
 
 <div class = "main-header" style = "font-family: var(--font-serif);">尘与辉光</div>

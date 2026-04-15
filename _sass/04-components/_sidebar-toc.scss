@@ -111,3 +111,10 @@
     color: var(--accent);
     transition: all 0.2s ease;
 }
+
+
+@media screen and (max-width: 768px){
+    .sidebar-directory {
+        display: none;
+    }
+}

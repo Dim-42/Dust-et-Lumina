@@ -59,21 +59,30 @@ collections:
     
 navigation:
   - title: "Terminal"
+    subtitle: "首页"
     url: /
   - title: "Faction"
+    subtitle: "势力"
     url: /organizations/
   - title: "Personnel"
+    subtitle: "档案"
     url: /characters/
   - title: "Atlas"
+    subtitle: "地理"
     url: /regions/
   - title: "Encyclopedia"
+    subtitle: "百科"
     url: /culture/
   - title: "History"
+    subtitle: "历史"
     url: /histories/
   - title: "Record"
+    subtitle: "故事"
     url: /stories/
   - title: "Gallery"
+    subtitle: "影像"
     url: /gallery/
   - title: "About"
+    subtitle: "关于"
     url: /about/
 

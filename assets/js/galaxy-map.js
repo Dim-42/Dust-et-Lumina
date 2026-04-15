@@ -111,10 +111,20 @@ document.addEventListener("DOMContentLoaded", function() {
         controls.maxDistance = 17;      
         controls.maxPolarAngle = Math.PI / 2 - 0.5; 
 
-        container.addEventListener('mousemove', (e) => {
+        // 1. Create a helper function to update mouse coordinates
+        function updateMousePos(e) {
             const rect = container.getBoundingClientRect();
-            mouse.x = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
-            mouse.y = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+            // Support both mouse and touch events
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+
+            mouse.x = ((clientX - rect.left) / container.clientWidth) * 2 - 1;
+            mouse.y = -((clientY - rect.top) / container.clientHeight) * 2 + 1;
+        }
+
+        // 2. Update hover state (Mouse only)
+        container.addEventListener('pointermove', (e) => {
+            updateMousePos(e);
             raycaster.setFromCamera(mouse, camera);
             const intersects = raycaster.intersectObjects(clickableSectors, true);
 
@@ -122,19 +132,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 const target = intersects[0].object.parent || intersects[0].object;
                 hoveredSector = target;
                 info.innerText = target.userData.name;
-                //container.style.cursor = 'pointer';
                 container.style.cursor = 'url("{{ "/assets/icons/target-2-svgrepo-com.svg" | relative_url }}") 12 12, pointer';
             } else {
                 hoveredSector = null;
-                info.innerText = null;
-                //container.style.cursor = 'default';
+                info.innerText = "";
                 container.style.cursor = 'url("{{ "/assets/icons/target-2-svgrepo-com.svg" | relative_url }}") 12 12, default';
             }
         });
 
-        container.addEventListener('click', () => {
-            if (hoveredSector) {
-                window.location.href = hoveredSector.userData.url;
+        // 3. Handle the Click/Tap (Calculates hit on the fly)
+        container.addEventListener('pointerdown', (e) => {
+            updateMousePos(e);
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(clickableSectors, true);
+
+            if (intersects.length > 0) {
+                const target = intersects[0].object.parent || intersects[0].object;
+                window.location.href = target.userData.url;
             }
         });
 

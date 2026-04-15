@@ -1,0 +1,55 @@
+/* Scripted Annotation */
+
+.annotation-container {
+    margin: 25px auto;
+    position: relative;
+    padding: 15px;
+    z-index: 1; 
+    width: 90%;
+    
+    &::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        left: 10px;
+        bottom: 10px;
+        border: 1px dashed var(--color-note);
+        z-index: -2;
+    }
+    
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-color);
+        opacity: 0.9; 
+        z-index: -1;
+        border: 1px solid var(--color-note);
+    }
+}
+
+.annotation {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--color-text);
+    letter-spacing: 0.1rem;
+}
+
+.signature {
+    padding-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    text-align: right;
+    letter-spacing: 0.1rem;
+    color: var(--accent-dim);
+    &::before {
+        content: 'Committed by: ';
+        display: contents;
+        text-transform: uppercase;
+        color: var(--color-note);
+    }
+}

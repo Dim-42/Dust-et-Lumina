@@ -43,3 +43,13 @@ details > *:not(summary) {
     overflow: hidden;   /* Forces the element to respect the sidebar boundary */
     display: flow-root; /* Modern way to ensure it stays in its own 'box' */
 }
+
+@media screen and (max-width: 768px) {
+    details summary::before {
+        content: "+";
+    }
+
+    details[open] summary::before {
+        content: "-";
+    }
+}

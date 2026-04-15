@@ -27,14 +27,25 @@ h4 {
     margin-top: -0.25rem;
 };
 
+@media screen and (max-width: 768px) {
+    h2, .h2 {
+        font-size: 22px;
+        margin-top: 30px;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-top: 25px;
+    }
+}
+
 // ---- PAGE HEADER ---- //
 
 .page-header {
     border-bottom: 1px solid var(--accent-dim);
     text-transform: uppercase;
     padding: 1rem 0 0.5rem 0;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 0.5rem 0;
     font-family: var(--font-mono);
     color: var(--accent);
 
@@ -72,6 +83,7 @@ h4 {
 
 .page-meta {
     display: flex;
+    flex-wrap: wrap;
     .meta-info {
         display: flex;
         gap: 10px;
@@ -79,9 +91,58 @@ h4 {
         letter-spacing: 0.05rem;
         color: var(--color-text);
         opacity: 0.9;
-        font-size: 0.9rem;
+        font-size: 14px;
         font-family: var(--font-mono);
         margin-right: 50px;
         .label { color: var(--color-note); margin-right: 5px; }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page-header {
+        margin-bottom: 1rem;
+
+        .header-main {
+            flex-direction: column;            
+            align-items: flex-start; 
+            justify-content: flex-start;
+            gap: 15px;
+        }
+
+        .title-text {
+            font-size: 25px; 
+            width: 100%;
+        }
+
+        .page-subtitle {
+            text-align: left;
+            width: 100%;
+            padding-bottom: 3px;
+            padding-left: 5px;
+            
+            &::after {
+                display: none;
+            }
+
+            &::before {
+                content: "";
+                display: inline-block;
+                width: 9px;
+                height: 9px;
+                background-color: var(--accent-secondary);
+                margin-right: 5px;
+                margin-left: 0;
+            }
+        }
+    }
+
+    .page-meta {
+        flex-direction: column;
+        gap: 10px;
+        .meta-info {
+            margin-right: 0;
+            font-size: 12px;
+            flex-wrap: wrap;
+        }
     }
 }

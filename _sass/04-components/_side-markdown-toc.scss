@@ -2,11 +2,10 @@
     position: fixed;
     right: 0;
     top: 50%;
-    /* Start hidden to the right (Width of content = 280px) */
     transform: translateY(-50%) translateX(240px); 
     width: 280px; /* content + 40px handle */
     height: auto;
-    z-index: 10000;
+    z-index: 9000;
     transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease;
     display: flex;
     flex-direction: row; /* Content on the right, handle on the left */
@@ -89,4 +88,69 @@
 .toc-h3 .toc-link {
     opacity: 0.7;
     font-size: 0.8rem;
+}
+
+
+.toc-toggle, .toc-btn {
+    display: none;
+}
+
+/* --- Mobile Adaptation --- */
+@media screen and (max-width: 768px) {
+    .sidebar-toc {
+        /* Reset Desktop Position */
+        position: fixed;
+        top: 15px;      /* Distance from top */
+        right: 15px;    /* Distance from right */
+        transform: none !important; /* Kill the translateY(-50%) */
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    /* Hide the side-handle bar */
+    .toc-handle {
+        display: none;
+    }
+
+    /* Show the top-right button */
+    .toc-btn {
+        display: block;
+        cursor: pointer;
+        padding: 5px 10px;
+        background: var(--color-bg);
+        border: 1px solid var(--accent);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--accent);
+        letter-spacing: 0.1rem;
+    }
+
+    /* The TOC Content Box adaptation */
+    .toc-container {
+        display: none; /* Hidden until toggled */
+        position: absolute;
+        top: 40px;    /* Sits below the TOC button */
+        right: 0;
+        width: 70vw;  /* Slightly wider for readability on small screens */
+        max-width: 300px;
+        border-right: 1px solid var(--accent-dim); /* Restore the border */
+    }
+
+    /* Toggle Logic */
+    .toc-toggle:checked ~ .toc-container {
+        display: block;
+    }
+
+    /* Keep the toggle checkbox hidden */
+    .toc-toggle {
+        display: none;
+    }
+
+    /* Ensure it's visible if the parent has the .visible class from your loader */
+    #sidebar-toc.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
