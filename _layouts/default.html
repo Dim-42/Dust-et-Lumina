@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 
+<div id="imageModal" class="system-modal" onclick="closeModal()">
+                <span class="close-modal">&times;</span>
+                <img class="modal-content" id="fullImage">
+            </div>
+
 <body>
     <!-- canvas backrgound-->
     <canvas id="network-canvas"></canvas>
@@ -641,23 +646,31 @@
         function openModal(imgElement) {
             const modal = document.getElementById("imageModal");
             const modalImg = document.getElementById("fullImage");
-            const captionText = document.getElementById("modalCaption");
-            // const storyTitle = document.getElementById("modalCaption").innerText;
+
+            if (!modal || !modalImg) return;
 
             modal.style.display = "flex";
             modalImg.src = imgElement.src;
-            captionText.innerHTML = "FILE: " + storyTitle + " // VIEWPORT_MODE_ON";
+            
+            // 1. Lock the screen scroll
+            document.body.style.overflow = 'hidden';
+            
+            // 2. Hide problematic UI elements
+            const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+            uiElements.forEach(el => el.style.visibility = 'hidden');
         }
 
         function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
+            const modal = document.getElementById("imageModal");
+            if (modal) modal.style.display = "none";
+            
+            // 1. Restore scroll
+            document.body.style.overflow = 'auto';
+            
+            // 2. Restore UI elements
+            const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+            uiElements.forEach(el => el.style.visibility = 'visible');
         }
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                closeModal();
-            }
-        });
-
         document.addEventListener("DOMContentLoaded", function() {
             function collapseMetadata() {
                 if (window.innerWidth <= 768) {
@@ -676,6 +689,5 @@
             window.addEventListener('resize', collapseMetadata);
         });
     </script>
-
 </body>
 </html>

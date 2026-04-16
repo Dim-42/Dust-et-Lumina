@@ -136,6 +136,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.85); // Deep black background
+    z-index: 10001;
     backdrop-filter: blur(5px);
     cursor: zoom-out;
     justify-content: center;
@@ -149,6 +150,7 @@
     display: block;
     max-width: 90%;
     max-height: 85%;
+    z-index: 10001;
     animation: zoomIn 0.3s ease-out;
 }
 
@@ -205,5 +207,45 @@
             margin-right: 10px;
             vertical-align: middle;
         }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .system-modal {
+        position: fixed !important;
+        /* inset: 0 is a shortcut for top/bottom/left/right: 0 */
+        inset: 0 !important; 
+        width: 100vw !important;
+        height: 100dvh !important; 
+        
+        background-color: rgba(0, 0, 0, 0.98) !important;
+        z-index: 999999 !important; /* Force it above everything */
+        display: none; /* Controlled by JS flex/none */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        width: auto !important;
+        height: auto !important;
+        max-width: 90vw !important;
+        max-height: 70dvh !important; /* Leaves room for the caption */
+        object-fit: contain !important;
+        margin: 0 !important;
+    }
+
+    .modal-caption {
+        font-size: 0.8rem;
+        margin-top: 15px;
+        width: 90%;
+        text-align: center;
+    }
+
+    .close-modal {
+        top: 15px;
+        right: 20px;
+        font-size: 30px;
     }
 }

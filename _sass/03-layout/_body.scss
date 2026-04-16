@@ -3,7 +3,6 @@
 }
 
 html, body {
-    height: 100%;
     margin: 0px;
 }
 
@@ -18,7 +17,7 @@ body {
     margin-right:auto;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Fallback for older browsers */
 }
 
 #obsidian-content {
@@ -57,4 +56,3 @@ body {
         height: auto;
     }
 }
-
