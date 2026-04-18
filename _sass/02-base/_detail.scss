@@ -1,8 +1,15 @@
+details {
+    width: 95%;
+    margin: 10px auto;
+    padding: 5px;
+}
+
 details summary::-webkit-details-marker {
     display: none;
 }
 
 details summary {
+    display: flex;
     list-style: none;
     outline: none;
     font-family: var(--font-mono);
@@ -12,7 +19,6 @@ details summary {
     margin: 0 10px;
     font-size: 20px;
     letter-spacing: 0.1rem;
-    display: flow-root;
     cursor: var(--target);
 }
 
@@ -24,13 +30,28 @@ details summary::before {
     color: var(--accent-secondary);
 }
 
-/* The 'Open' state */
 details[open] summary::before {
     content: "[ - ] ";
     margin-right: 10px;
     font-weight: bold;
-    color: var(--accent); /* Change color when active */
+    color: var(--accent);
 }
+
+details.callout-file summary::after {
+    content: "";
+    display: none;
+    width: 20px;
+    margin-left: auto;
+    margin-right: 5px;
+    background-color: var(--color-note);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    -webkit-mask-position: center;
+}
+
 
 details p{
     padding: 0 20px;
@@ -42,6 +63,28 @@ details p{
 details > *:not(summary) {
     overflow: hidden;   /* Forces the element to respect the sidebar boundary */
     display: flow-root; /* Modern way to ensure it stays in its own 'box' */
+}
+
+
+//---- FILE ----//
+
+details.callout-file {
+    border: 1px solid var(--accent-dim);
+}
+
+details.callout-file summary {
+    border-bottom: none;
+}
+
+details[open].callout-file summary {
+    border-bottom: 1px solid var(--color-note);
+}
+
+
+details.callout-file summary::after {
+    display: inline-block;
+    mask-image: url("data:image/svg+xml,%3Csvg width='100px' height='100px' viewBox='-1.6 -1.6 19.20 19.20' fill='none' xmlns='http://www.w3.org/2000/svg' stroke='%23ffffff' transform='matrix(1, 0, 0, 1, 0, 0)'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cpath d='M7 0H2V16H14V7H7V0Z' fill='%23ffffff'%3E%3C/path%3E%3Cpath d='M9 0V5H14L9 0Z' fill='%23ffffff'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='100px' height='100px' viewBox='-1.6 -1.6 19.20 19.20' fill='none' xmlns='http://www.w3.org/2000/svg' stroke='%23ffffff' transform='matrix(1, 0, 0, 1, 0, 0)'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cpath d='M7 0H2V16H14V7H7V0Z' fill='%23ffffff'%3E%3C/path%3E%3Cpath d='M9 0V5H14L9 0Z' fill='%23ffffff'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
 }
 
 @media screen and (max-width: 768px) {

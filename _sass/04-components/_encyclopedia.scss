@@ -11,7 +11,6 @@
             padding: 0.5rem 0;
             outline: none;
 
-            // Hide the default browser triangle
             &::-webkit-details-marker { display: none; } 
 
             .header-text {
@@ -41,7 +40,6 @@
             }
         }
 
-        // Arrow flips up when details is open
         &[open] .ui-arrow {
             transform: rotate(-135deg); 
         }

@@ -18,7 +18,7 @@ access-level: Top secret
 
 <br>
 
-<details markdown="1">
+<details markdown="1" class = "callout-file">
 <summary> FILE-OMEGA-001 </summary>
 <p class = "note"> 以下文字节选自一份从▇▇▇遗迹中恢复的日志。原始文件损坏严重，时间戳无法辨识，语言结构与当代通用语有显著差异，译文仅作参考。</p>
 
@@ -43,8 +43,6 @@ Record ▇▇-▇▇
 Ω。<br>就叫Ω现象吧。希腊字母最后一个。这样至少后人知道我们看见了结局——但还会有后人吗？如果有，他们会知道我们吗？会知道我们做了什么吗？
 
 <p class = "note"> 记录中断 </p>
-
----
 
 </details>
 
