@@ -107,11 +107,15 @@ del {
 blockquote {
     font-size: var(--text-size);
     border-left: solid 2px var(--accent);
-    margin: 10px 20px;
+    margin: 25px 20px;
     overflow-x: hidden;
 }
 
-
 blockquote p {
     font-family: var(--font-main) !important;
+}
+
+
+a.footnote {
+    border-bottom: none !important;
 }

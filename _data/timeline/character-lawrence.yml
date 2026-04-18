@@ -6,6 +6,7 @@
   link: 
   type: 个人档案
   class: 次要
+  url: /character/lawrence-benuowitz/
 
 - title: 劳伦斯加入AIM
   subtitle: 
@@ -56,3 +57,4 @@
   excerpts: 
   link: 
   type: 个人档案
+  class: 次要

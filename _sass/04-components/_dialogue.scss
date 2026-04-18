@@ -1,6 +1,25 @@
-// {% capture redacted_msg %}
-// <span class="redacted" onclick="this.classList.toggle('revealed')"></span>
-// {% endcapture %}
+
+/*
+<div class="comm-log" markdown = "1">
+{% capture redacted_msg %}
+守望者深空阵列探测器已上线。
+{% endcapture %}
+
+{% include dialogue.html 
+time = "1538-02-21 A.U. 00:02:11 AST"
+id="ADMIN-X-002" p="C"
+msg=redacted_msg %}
+
+<div style = "padding-left: 25px;">
+{% include dialogue.html 
+time = "1538-02-21 A.U. 00:02:13 AST"
+id="ADMIN-X-001" p="E"
+msg="请密切观察深空荒漠WN-327至WN-327区域。" %}
+</div>
+</div>
+
+*/
+
 
 
 .comm-log {

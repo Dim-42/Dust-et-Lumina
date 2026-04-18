@@ -1,22 +1,29 @@
-- title: LogiX试运行机上线。
+- title: 灰塔成立
+  subtitle: 
+  abs_time: -576
+  time: ▇▇▇
+  excerpts: 同年，LogiX试运行机上线。
+  link: LogiX系统
+  type: 组织志
+  url: /faction/turris-grisea/
+
+- title: LogiX原型机正式上线
   subtitle: 
   abs_time: -568
   time: ▇▇▇
   excerpts: 同年，灰塔成立。
   link: LogiX系统
   type: 组织志
-  url: /faction/turris-grisea
+  url: /info/logix-predictive-computational-system/
 
 - title: ReLink研究所成立
   subtitle: 
   abs_time: -521
   time: 521 B.U.
-  excerpts: 致力于研究超空间的物理性质。
+  excerpts: 在▇▇的支持下，致力于超空间研究。
   link: 
   type: 组织志
-  note: 
   url: 
-  class:
 
 - title: 星轨物流成立
   subtitle: 
@@ -26,17 +33,17 @@
   link: 
   type: 组织志
   note: 
-  url: 
+  url: /faction/startrail/
   class:
 
 - title: 星轨航线公司成立
   subtitle: 
   abs_time: -159
   time: 159 B.U.
-  excerpts: 第三代超空间引擎诞生，标志着现代超空间航行体系的形成，高效的远距离星际航行成为现实。
+  excerpts: 第三代超空间引擎正式推出，标志着现代超空间航行体系的正式形成，高效的远距离星际航行成为现实。
   link: /info/hyperspace
   type: 组织志,文明史
-  url: /faction/startrail
+  url: /faction/startrail/
 
 - title: 埃癸斯医疗成立
   subtitle: 
@@ -45,7 +52,16 @@
   excerpts: 一次地域性冲突和晶尘事故同时段爆发，事后，来自星系各地的救援小队人员成立了AIM。
   link: 
   type: 组织志
-  url: /faction/aigis
+  url: /faction/aigis/
+
+- title: 密涅瓦天文台立项
+  subtitle: 
+  abs_time: 1521
+  time: 1521 A.U.
+  excerpts: 克洛希雅在艾洛伊斯的支持下开始筹建独立的研究机构密涅瓦天文台。
+  link: 
+  type: 组织志
+  url: /faction/minerva/
 
 - title: 第三炬火成立
   subtitle: 

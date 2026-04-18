@@ -6,6 +6,7 @@
   link: 
   type: 个人档案
   class: 次要
+  url: /character/regina-collins/
 
 - title: 瑞杰娜加入拉文科尔警署
   subtitle: 
@@ -15,6 +16,17 @@
   link: 
   type: 个人档案
   note: 20岁
+  url: /character/regina-collins/
+  class: 次要
+
+- title: 瑞杰娜加入密涅瓦天文台
+  subtitle: 
+  abs_time: 1532.01
+  time: 1532-01 A.U.
+  excerpts: 
+  link: 
+  type: 个人档案
+  note: 
   url: 
   class: 次要
 

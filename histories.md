@@ -88,6 +88,11 @@ collection_type: "histories"
 </div>
 
 <aside id="timeline-filter">
+    <input type="checkbox" id="timeline-filter-toggle" class="timeline-filter-toggle">
+    <label for="timeline-filter-toggle" class="timeline-filter-btn">
+        <span class="timeline-filter-label">Event Filter</span>
+    </label>
+
     <div class="filter-handle">
         <span class="handle-text">/ / / / / / /</span>
     </div>

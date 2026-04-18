@@ -2,6 +2,8 @@ details {
     width: 95%;
     margin: 10px auto;
     padding: 5px;
+    transition: all 0.3s ease;
+    background: color-mix(in srgb, var(--bg-color),  transparent 20%);
 }
 
 details summary::-webkit-details-marker {
@@ -37,7 +39,7 @@ details[open] summary::before {
     color: var(--accent);
 }
 
-details.callout-file summary::after {
+details summary::after {
     content: "";
     display: none;
     width: 20px;
@@ -70,6 +72,7 @@ details > *:not(summary) {
 
 details.callout-file {
     border: 1px solid var(--accent-dim);
+    margin: 45px auto;
 }
 
 details.callout-file summary {

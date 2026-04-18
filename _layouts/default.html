@@ -132,7 +132,7 @@
         {% assign access = page.access-level | downcase%}
         {% if access == "top secret" or access == "classified" %}
         <div class="classified-warning">
-            <div class = "system-msg" style="text-align: left;">
+            <div class = "system-msg" style="text-align: left; padding: 0 10px;">
                 This document is the property of TURRIS GRISEA.
                 <br>
                 Any Unauthorized access, reproduction, or dissemination will result in immediate revocation of clearance and internal measures.
@@ -485,17 +485,20 @@
         });
 
         document.addEventListener('click', function(event) {
-        const tocWrapper = document.getElementById('sidebar-toc');
-        const checkbox = document.getElementById('toc-toggle');
+            const toggles = [
+                { wrapperId: 'sidebar-toc', checkboxId: 'toc-toggle' },
+                { wrapperId: 'timeline-filter', checkboxId: 'timeline-filter-toggle' }
+            ];
 
-        // Only run this logic if the checkbox exists and is checked
-        if (checkbox && checkbox.checked) {
-            // If the click happened OUTSIDE the sidebar-toc element
-            if (!tocWrapper.contains(event.target)) {
-                checkbox.checked = false;
-            }
-        }
-    });
+            toggles.forEach(({ wrapperId, checkboxId }) => {
+                const wrapper = document.getElementById(wrapperId);
+                const checkbox = document.getElementById(checkboxId);
+
+                if (wrapper && checkbox && checkbox.checked && !wrapper.contains(event.target)) {
+                    checkbox.checked = false;
+                }
+            });
+        });
 
         // --- Canvas Background---
         const canvas = document.getElementById('network-canvas');

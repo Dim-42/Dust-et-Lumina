@@ -8,7 +8,7 @@ featured: false
 
 title: Ω现象
 subtitle: Phenomenon Omega
-last-updated: 1521-08-28 A.U.
+last-updated: 1538-02-21 A.U.
 access-level: Top secret
 ---
 
@@ -16,7 +16,7 @@ access-level: Top secret
 >
 > ——《理论物理学纲要》，第十九章，北十字大学出版社
 
-<br>
+在当代学界中，真空衰变作为理论概念被物理学家熟知，被认为是现代物理学理论推导出的一种结果。但大多数研究者将其视为纯粹的理论现象，在现实中发生的概率相当于0。
 
 <details markdown="1" class = "callout-file">
 <summary> FILE-OMEGA-001 </summary>
@@ -36,7 +36,7 @@ access-level: Top secret
 
 - Record ▇▇-▇▇
 
-那道看不见的墙离我们已经不到▇▇光年，可能更近……我们已经看到了它吞噬远处的光，却不知道自己什么时候会被吞没。你问被吞没的那一刻我们会有感觉吗？等到了那时候已经不存在我们了。
+那道看不见的墙离我们已经不到▇▇光年，可能更近……我们已经看到了它吞噬远处的光，却不知道自己什么时候会被吞没。你问被吞没的那一刻我们会有感觉吗？等到那时候已经不存在我们了。
 
 Record ▇▇-▇▇
 
@@ -46,26 +46,30 @@ Record ▇▇-▇▇
 
 </details>
 
-<br>
+<div class="annotation-container">
+<div class="annotation">
+从▇▇▇▇▇等遗迹恢复的记录推测，在我们的星系之外存在——至少存在过——更多的世界。在某个远早于现有任何文字记载的未知的时间点，它们被某种物理现象吞噬。
+</div>
+<div class = "signature">[ADMIN-X-001 / ELOISE] 1421-11-09 A.U. 13:21:44 AST</div>
+</div>
 
-在当代学界中，真空衰变作为理论概念被物理学家熟知，但大多数研究者将其视为纯粹的理论，实际发生的概率相当于0。主流社会普遍认为，由于“深空荒漠”的航行障碍，我们所处的星系是人类唯一的家园，但这是完全基于已知自然现象得出的结论。
+---
 
 <div class="comm-log" markdown = "1">
-
 {% capture redacted_msg %}
-<span class="redacted" onclick="this.classList.toggle('revealed')">守望者</span>深空阵列探测器已上线。密切观察深空荒漠WN-327至WN-327区域。
+守望者深空阵列探测器已上线。
 {% endcapture %}
 
 {% include dialogue.html 
 time = "1538-02-21 A.U. 00:02:11 AST"
-id="ADMIN_002X" p="CELYSIA"
+id="ADMIN-X-002" p="CELYSIA"
 msg=redacted_msg %}
 
 <div style = "padding-left: 25px;">
 {% include dialogue.html 
 time = "1538-02-21 A.U. 00:02:13 AST"
-id="ADMIN_001X" p="ELOISE"
-msg="收到。" %}
+id="ADMIN-X-001" p="ELOISE"
+msg="请密切观察深空荒漠WN-327至WN-327区域。" %}
+</div>
 </div>
 
-</div>

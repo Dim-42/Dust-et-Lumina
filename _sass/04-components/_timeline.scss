@@ -190,6 +190,11 @@
     transform: translateY(-50%) translateX(0);
 }
 
+.timeline-filter-toggle,
+.timeline-filter-btn {
+    display: none;
+}
+
 .filter-handle { @include SIDE-HANDLE; }
 
 .filter-container::-webkit-scrollbar { @include HIDE-SCROLLBAR; }
@@ -226,6 +231,8 @@
     position: relative;
     background: transparent;
     border: 1px solid rgba(var(--accent-rgb), 0.2);
+    font-family: var(--font-mono);
+    letter-spacing: 0.1rem;
     color: var(--color-note);
     padding: 4px 15px;
     text-align: left;
@@ -238,8 +245,12 @@
     &.active {
         color: var(--accent);
         border-color: var(--accent);
-        background: rgba(var(--accent-rgb), 0.1);
+        //background: rgba(var(--accent-rgb), 0.1);
         box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.1);
+        &:hover {
+            border-color: var(--accent);
+            color: var(--color-text);
+        }
         
         .prompt { color: var(--accent); animation: flicker 2s infinite; }
     }
@@ -280,15 +291,67 @@
 }
 
 @media screen and (max-width: 768px) {
+    #timeline-filter {
+        position: fixed !important;
+        top: 15px !important;
+        right: 15px !important;
+        transform: none !important;
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        align-items: flex-end;
+        z-index: 9000 !important;
+    }
+
+    #timeline-filter:hover {
+        transform: none !important;
+    }
+
+    .filter-handle {
+        display: none;
+    }
+
+    .timeline-filter-btn {
+        display: block;
+        cursor: pointer;
+        padding: 5px 10px;
+        background: var(--bg-color);
+        border: 1px solid var(--accent);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--accent);
+        letter-spacing: 0.1rem;
+    }
+
+    .filter-container {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        width: 70vw;
+        max-width: 300px;
+        border-right: 1px solid var(--accent-dim);
+    }
+
+    .timeline-filter-toggle:checked ~ .filter-container {
+        display: block;
+    }
+
+    .timeline-filter-toggle {
+        display: none;
+    }
+
     .timeline-container {
         margin-top: 20px;
         padding: 0 0.5rem;
     }
 
     .timeline-dot {
-        left: 9px !important;
+        left: 8px !important;
         right: auto !important;
-        top: 15px !important;
+        top: 30px !important; 
+        transform: translateY(-50%);
+        
     }
 
     .timeline-line {

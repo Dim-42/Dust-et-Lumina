@@ -2,9 +2,9 @@
   subtitle: 
   abs_time: -37
   time: 37 B.U.
-  excerpts: 
+  excerpts:
   link: 
-  type: 联邦纪要
+  type: 联邦纪要, 文明史
   url: 
 
 - title: 人马-猎户联邦成立
@@ -14,14 +14,15 @@
   excerpts: 宣言“合众以安”（In Unitate Salus），定都慕洛里斯，《联邦基本法（试行）》颁布。
   link: 
   type: 联邦纪要
-  url: /faction/federation
+  url: /faction/federation/
 
 - title: 阿根蒂斯会议
   subtitle: Argentis Conference
   abs_time: 3
   time: 3 A.U.
-  excerpts: 在《晶尘贸易协定》的基础上，设立信用点为联邦统一记账单位，价值与晶尘固定挂钩，地方货币与信用点建立汇率。
+  excerpts: 《阿根蒂斯协约》通过，设立信用点为统一记账单位，价值与晶尘固定挂钩，地方货币与信用点建立汇率。信用点成为跨境结算的首选货币和星系的通用货币。
   type: 联邦纪要
+  link: /info/credit/
 
 - title: 北十字大学成立
   subtitle: 
@@ -95,7 +96,7 @@
   subtitle: "Black Tuesday"
   abs_time: 1535.0314
   time: 1535-03-14 A.U.
-  excerpts: 
+  excerpts: MID突袭SAC总部。
   link: 战略咨询委员会, 军方情报处
   type: 联邦纪要
   url: /story/intelligence-war

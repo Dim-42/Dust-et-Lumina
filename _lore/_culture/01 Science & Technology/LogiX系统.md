@@ -1,6 +1,7 @@
 ---
 layout: default
 collection: culture
+permalink: /info/logix-predictive-computational-system/
 
 draft: false
 featured: true

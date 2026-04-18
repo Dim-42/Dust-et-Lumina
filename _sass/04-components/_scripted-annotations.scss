@@ -1,11 +1,21 @@
+
+/*
+<div class="annotation-container">
+<div class="annotation">
+
+</div>
+<div class = "signature">[] 1421-11-09 A.U. 13:21:44 AST</div>
+</div>
+*/
+
 /* Scripted Annotation */
 
 .annotation-container {
-    margin: 25px auto;
+    margin: 45px auto;
     position: relative;
-    padding: 15px;
+    padding: 25px;
     z-index: 1; 
-    width: 90%;
+    width: 95%;
     
     &::before {
         content: "";
@@ -45,7 +55,7 @@
     font-size: 14px;
     text-align: right;
     letter-spacing: 0.1rem;
-    color: var(--accent-dim);
+    color: var(--accent);
     &::before {
         content: 'Committed by: ';
         display: contents;
