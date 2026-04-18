@@ -9,10 +9,21 @@ $content-width: 1000px;
 
 :root {
     --bg-color: #{$color-bg};
+    --bg-color-rgb: 12, 13, 15;
+
     --color-text: #{$color-text};
+    --color-text-rgb: 196, 204, 210;
+    
     --color-note: #{$color-note};
+    --color-note-rgb: 83, 83, 97;
+    
     --accent: #{$color-accent};
+    --accent-rgb: 0, 242, 255;
+    
     --accent-dim: #{$color-accent-dim};
+    
     --accent-secondary: #{$color-secondary};
+    --accent-secondary-rgb: 235, 19, 66;
+    
     --content-width: #{$content-width};
 }
