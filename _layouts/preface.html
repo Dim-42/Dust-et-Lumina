@@ -28,9 +28,9 @@ layout: default
 
             <div class="story-stats">
                 <div class="stat-item"><span class="label">STATUS:</span> {{ page.status | default: "ACTIVE" }}</div>
-                <div class="stat-item"><span class="label">COMMIT:</span> {{ page.commit | default: "UNKNOWN" }}</div>
-                <div class="stat-item"><span class="label">TIMESTAMP:</span> {{ page.story-time | default: "▇▇" }}</div>
-                <div class="stat-item"><span class="label">GEOPOS:</span> {{ page.story-loc | default: "▇▇" }}</div>
+                <div class="stat-item"><span class="label">COMMIT:</span> {{ page.commit | slice: 0,8 | default: "UNKNOWN" }}</div>
+                <div class="stat-item"><span class="label">TIMESTAMP:</span> {{ page.story-time | default: "▇▇" | upcase}}</div>
+                <div class="stat-item"><span class="label">GEOPOS:</span> {{ page.story-loc | default: "▇▇" | upcase }}</div>
             </div>
             
             <div class="story-description">
@@ -58,7 +58,7 @@ layout: default
                 {% for chapter in chapters %}
                     <li class="entry-item">
                         <div class="commit-main">
-                            <span class="chapter-num">CH_{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                            <span class="chapter-num">CH_{{ forloop.index0 | prepend: '0' | slice: -2, 2 }}</span>
                             <a href="{{ chapter.url | relative_url }}" class="entry-link">
                                 <span class="chapter-title">{{ chapter.title }}</span>
                             </a>
