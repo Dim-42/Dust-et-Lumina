@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        主线 | Dust et Lumina
+    </title>
+    <link rel="stylesheet" href="/Dust-et-Lumina/assets/css/style.css">
+</head>
+
+<div id="imageModal" class="system-modal" onclick="closeModal()">
+                <span class="close-modal">&times;</span>
+                <img class="modal-content" id="fullImage">
+            </div>
+
+<body>
+    <!-- canvas backrgound-->
+    <canvas id="network-canvas"></canvas>
+
+    
+
+
+
+<div id="announcementModal"
+     class="system-modal system-announcement"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     data-announcement-key="del_announcement_seen_v1">
+  <div class="announcement-panel" role="document">
+    <div class="announcement-topline">
+      <span class="announcement-tag">SYSTEM_ANNOUNCEMENT</span>
+      <button type="button" class="announcement-close" data-announcement-close aria-label="Close">&times;</button>
+    </div>
+
+    <div class="announcement-body">
+      
+<h2 id="system-notice">SYSTEM NOTICE</h2>
+
+<p>Welcome, operator.</p>
+
+<p>This site is a living archive. Pages may be revised, expanded, or reclassified over time.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">NAV</code>: Use the top bar to jump collections.</li>
+  <li><code class="language-plaintext highlighter-rouge">INDEX</code>: Use the left directory for system-wide navigation.</li>
+  <li><code class="language-plaintext highlighter-rouge">TOC</code>: Use the right panel to scan the current file.</li>
+</ul>
+
+<p>If you spot a broken link or corrupted entry, log it and return later.</p>
+
+
+    </div>
+
+    <div class="announcement-actions">
+      <button type="button" class="btn-classified" data-announcement-close>ACKNOWLEDGE</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <!-- loading screen -->
+    <div id="loading-screen">
+        <div id="phase-login" class="loader-phase">
+            <p class="main-header">LogiX Predictive Computational SYSTEM</p>
+            <p class="system-msg visible">SYSTEM_ACCESS REQUIRED</p>
+            <div class="login-input-wrapper">
+                <span class="system-msg">></span>
+                <input type="text" id="db-password" readonly autocomplete="off">
+            </div>
+            <p id="auth-status" class="system-msg-note">INITIALIZING AUTHENTICATION...</p>
+            <p class="system-msg-note" style="position:fixed; bottom: 0; padding-bottom: 1rem;">
+                PROPERTY OF TURRIS GRISEA // CONFIDENTIAL
+            </p>
+        </div>
+        
+        <div id="phase-scan" class="loader-phase" style="display: none;">
+            <p class = "main-header" style = "position: fixed; top: 0; margin-top: 50px;">LogiX Predictive Computational SYSTEM</p>
+            <div class="fui-scanner">
+                <div class="ring outer-dashed"></div>
+                <div class="ring middle-data"></div>
+                <div class="ring inner-steady"></div>
+                <div class="ring inner-notch"></div>
+                <div class="scan-sweep"></div>
+                <div class="core-point"></div>
+                <div class="fui-label top" style =  "align-items: center;">SCANNING BIO SIGNAL</div>
+                <div class="fui-label bottom" style = "color: var(--accent-secondary);">THREAT LEVEL: 0%</div>
+            </div>
+            <p class="system-msg">IDENTITY VERIFICATION IN PROGRESS...</p>
+            <p class="system-msg-note" style = "position:fixed; bottom: 0; padding-bottom: 1rem;">PROPERTY OF TURRIS GRISEA // CONFIDENTIAL</p>
+        </div>
+
+        <div id="phase-decrypt" class="loader-phase" style="display: none;">
+            <div class="loader-content">
+                <p class="system-msg" style="font-size: 22px;">ACCESS LEVEL: ■□□□□ [PUBLIC]</p>
+                <div class="scanner-line"></div>
+                <p class="system-msg" style="font-size: 18px;">ENTERING DATABASE...</p>
+                <p class="system-msg-note">DECRYPTING...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- nagivation bar-->
+    <nav class="nav-interface">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-btn">
+            <span class="icon"></span>
+        </label>
+
+        <div class="nav-links-wrapper">
+            
+                <a href="/Dust-et-Lumina/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">TERMINAL</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;首页</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/organizations/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">FACTION</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;势力</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/characters/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">PERSONNEL</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;档案</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/regions/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">ATLAS</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;地理</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/culture/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">ENCYCLOPEDIA</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;百科</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/histories/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">HISTORY</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;历史</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/stories/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">RECORD</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;故事</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/gallery/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">GALLERY</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;影像</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/about/" 
+                class="nav-link nav-right">
+                    <span class="nav-link-content">
+                        <span class="nav-title">ABOUT</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;关于</span>
+                    </span>
+                </a>
+            
+        </div>
+    </nav>
+
+    <aside class="sidebar-directory" id = "sidebar-directory">
+        <div class="sidebar-handle">
+            <span class="handle-text">/ / / / / / /</span>
+        </div>
+
+        <nav class="sidebar-content">
+            <div class="sidebar-header">SYSTEM INDEX</div>
+
+            <ul class="directory-list">
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/characters" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                PERSONNEL
+                            </span>
+                            <span class="subtitle">档案</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/culture" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                ENCYCLOPEDIA
+                            </span>
+                            <span class="subtitle">百科</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/gallery" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                GALLERY
+                            </span>
+                            <span class="subtitle">影像</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/histories" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                HISTORY
+                            </span>
+                            <span class="subtitle">历史</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/organizations" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                FACTION
+                            </span>
+                            <span class="subtitle">势力</span>
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/regions" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                ATLAS
+                            </span>
+                            <span class="subtitle">地理</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/stories" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                RECORD
+                            </span>
+                            <span class="subtitle">故事</span>
+                        </a>
+                    </li>
+                    
+                
+            </ul>
+
+            <div class = "sidebar-footer">AUTH_LEVEL: GUEST</div>
+            <div class = "sidebar-footer">
+                <a href="/Dust-et-Lumina/" class="sidebar-homelink">RETURN TO TERMINAL</a>
+            </div>
+        </nav>
+    </aside>    
+
+    <!--main content-->
+    <main id="obsidian-content">
+        <header class="page-header">
+            <div class="header-main">
+                <span class="title-text">主线</span>
+                
+                    <span class="page-subtitle">主线</span>
+                
+            </div>
+        </header>
+        <div class="page-meta">
+                
+                
+        </div>
+        <br>
+        
+        
+            <div class="preface-container layout-vertical">
+    <header class="preface-header">
+        
+
+        <div class="preface-metadata">
+            <div class="title-block">
+                <span class="story-title">主线</span>
+                <span class="story-subtitle">主线</span>
+            </div>
+
+            <div class="story-stats">
+                <div class="stat-item"><span class="label">STATUS:</span> ACTIVE</div>
+                <div class="stat-item"><span class="label">COMMIT:</span> UNKNOWN</div>
+                <div class="stat-item"><span class="label">TIMESTAMP:</span> ▇▇</div>
+                <div class="stat-item"><span class="label">GEOPOS:</span> ▇▇</div>
+            </div>
+            
+            <div class="story-description">
+                
+
+            </div>
+        </div>
+    </header>
+
+
+    <div class="culture-archive">
+        <span class="toc-header">DATA_INDEX</span>
+        <ul class="chapter-list">
+
+        
+        
+        
+
+        
+            
+            
+                <div class="chapter-empty">NO COMMIT FOR THIS EVENT FOUND</div>
+            
+        </ul>
+    </div>
+</div>
+
+<script>
+window.addEventListener('load', function() {
+    const img = document.getElementById('cover-image');
+    const wrapper = document.querySelector('.cover-wrapper');
+
+    if (img && wrapper) {
+        if (img.complete) { extractColor(); } 
+        else { img.addEventListener('load', extractColor); }
+    }
+
+    // Helper: Convert RGB to HSL
+    function rgbToHsl(r, g, b) {
+        r /= 255, g /= 255, b /= 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+
+        if (max === min) {
+            h = s = 0; // achromatic
+        } else {
+            const d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch (max) {
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+            }
+            h /= 6;
+        }
+        return [h * 360, s * 100, l * 100];
+    }
+
+    function extractColor() {
+        try {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = 1;
+            canvas.height = 1;
+
+            context.drawImage(img, 0, 0, 1, 1);
+            const d = context.getImageData(0, 0, 1, 1).data;
+
+            let [h, s, l] = rgbToHsl(d[0], d[1], d[2]);
+
+            s = Math.max(s, 30); 
+
+            l = Math.min(Math.max(l, 40), 60);
+
+            const dynamicColor = `hsl(${h}, ${s}%, ${l}%)`;
+            wrapper.style.setProperty('--dynamic-hue', dynamicColor);
+            
+            console.log(`LOGIX_SATURATION_BOOST: ${dynamicColor}`);
+        } catch (e) {
+            console.error("LOGIX_IMG_ERR: Pixel read blocked.", e);
+        }
+    }
+});
+</script>
+            
+
+
+
+
+
+        
+        
+    </main>
+
+    <aside class="sidebar-toc" id="sidebar-toc">
+        <input type="checkbox" id="toc-toggle" class="toc-toggle">
+        <label for="toc-toggle" class="toc-btn">
+            <span class="toc-label">Table of Contents</span>
+        </label>
+
+        <div class="toc-handle">
+            <span class="handle-text">/ / / / / / /</span>
+        </div>
+
+        <nav class="toc-container">
+            <div class="sidebar-header">TABLE OF CONTENT</div>
+            <div id="auto-toc" class="toc-content-body">
+                </div>
+            <div class="sidebar-footer">READ_ONLY</div>
+        </nav>
+    </aside>
+
+    <footer>
+        <div class="nav-wrapper">
+        
+            
+            
+
+            
+
+            
+            
+            
+            
+            
+            
+                
+                
+                
+                
+                
+                
+                
+
+            
+                <span class="nav-arrow disabled">&lt;</span>
+            
+                
+            <a href="/" onclick="history.back(); return false;" class="back-link">RETURN</a>
+
+            
+                <a href="/Dust-et-Lumina/story/embers-ablaze" class="nav-arrow">&gt;</a>
+            
+        
+        </div>
+
+        <div class="footer-div"></div>
+        <div class="footer-grid">
+            <div class="footer-item">
+                <span class="label">SYSTEM_TIME:</span>
+                <span class="value" id="current-time">00:00:00</span>
+            </div>
+            <div class="footer-item">
+                <span class="label">OPERATOR:</span>
+                <span class="value">GUEST_USER</span>
+            </div>
+            <div class="footer-item">
+                <span class="label">ENCRYPTION:</span>
+                <span class="value">AES-256</span>
+            </div>
+        </div>
+        <p class = "footer-credit">&copy; 2026 Dimension 42nd. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+
+        // --- Loader Logic ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const loader = document.getElementById('loading-screen');
+            const passInput = document.getElementById('db-password');
+            const p1 = document.getElementById('phase-login');
+            const p2 = document.getElementById('phase-scan');
+            const p3 = document.getElementById('phase-decrypt');
+            const canvas = document.getElementById('network-canvas');
+
+            const lastLoad = localStorage.getItem('last_boot_time');
+            const now = Date.now();
+            const refresh_threshold = 100*60*1000;
+
+            // Check if we should skip the animation
+            if (sessionStorage.getItem('hasLoaded') && (now - lastLoad) < refresh_threshold) {
+                loader.style.display = 'none';
+                canvas.classList.add('visible'); 
+                canvas.style.opacity = "0.3";
+                showDirectory();
+                return;
+            }
+            
+            // Phase 1 Logic: Password Entry
+            /** passInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    // Add a "processing" feel
+                    p1.style.opacity = '0.5';
+                    passInput.disabled = true;
+
+                    setTimeout(() => {
+                        p1.style.display = 'none';
+                        startPhase2();
+                    }, 600);
+                }
+            }); **/
+
+            startAutoLogin();
+
+            // --- Updated Auto-Login Logic ---
+            function startAutoLogin() {
+                const passInput = document.getElementById('db-password');
+                const authStatus = document.getElementById('auth-status');
+                const p1 = document.getElementById('phase-login');
+                
+                const passwordLength = 12; // How many dots to "type"
+                let typedCount = 0;
+
+                // Simulate typewriter dots
+                const typingInterval = setInterval(() => {
+                    passInput.value += "•"; 
+                    typedCount++;
+
+                    if (typedCount >= passwordLength) {
+                        clearInterval(typingInterval);
+                        
+                        // Wait a moment, then show "Granted"
+                        setTimeout(() => {
+                            authStatus.textContent = "ACCESS_GRANTED. VERIFYING IDENTITY...";
+                            authStatus.style.color = "var(--accent-secondary)"; // Assuming accent is your theme color
+                            
+                            // Transition to Phase 2
+                            setTimeout(() => {
+                                p1.style.display = 'none';
+                                startPhase2();
+                            }, 1000);
+                        }, 500);
+                    }
+                }, 150); // Speed of typing (ms per dot)
+            }
+
+            function startPhase2() {
+                p2.style.display = 'flex';
+                // Simulate a 2-second biometric scan
+                setTimeout(() => {
+                    p2.style.display = 'none';
+                    startPhase3();
+                }, 2500);
+            }
+
+            function startPhase3() {
+                p3.style.display = 'flex';
+                // Final decryption delay before entering site
+                setTimeout(() => {
+                    loader.classList.add('fade-out');
+                    showBackgroundNetwork();
+                    showDirectory();
+                    sessionStorage.setItem('hasLoaded', 'true');
+                    localStorage.setItem('last_boot_time', Date.now());
+                }, 1000);
+            }
+        });
+
+        // --- Obsidian Comment Filter ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const contentArea = document.getElementById('obsidian-content');
+            if (contentArea) {
+                const regex = /%%[\s\S]*?%%/g;
+                contentArea.innerHTML = contentArea.innerHTML.replace(regex, '');
+            }
+        });
+
+        // --- Clock Logic ---
+        function updateClock() {
+            const timeEl = document.getElementById('current-time');
+            if (timeEl) {
+                const now = new Date();
+                const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
+                                now.getMinutes().toString().padStart(2, '0') + ":" + 
+                                now.getSeconds().toString().padStart(2, '0');
+                timeEl.textContent = timeStr;
+            }
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // --- Automatic TOC Extraction ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const tocContainer = document.getElementById('auto-toc');
+            const contentArea = document.getElementById('obsidian-content');
+            const tocSidebar = document.getElementById('sidebar-toc');
+
+            if (!contentArea || !tocContainer) return;
+
+            // Grab H2 and H3 from your main content
+            const headers = contentArea.querySelectorAll('h2, h3');
+
+            // If no headers, hide the whole sidebar including handle
+            if (headers.length === 0) {
+                tocSidebar.style.display = 'none';
+                return;
+            }
+
+            const list = document.createElement('ul');
+            headers.forEach((header, index) => {
+                if (!header.id) {
+                    // Create a slug from text or use index
+                    header.id = 'sec-' + index;
+                }
+
+                const li = document.createElement('li');
+                li.className = 'toc-item ' + (header.tagName === 'H2' ? 'toc-h2' : 'toc-h3');
+
+                // Indent H3s
+                if(header.tagName === 'H3') 
+                {
+                    li.style.paddingLeft = "10px";
+                    li.setAttribute('data-no-prompt', 'true');
+                }
+
+                const a = document.createElement('a');
+                a.href = '#' + header.id;
+                a.textContent = header.textContent.toUpperCase();
+                a.className = 'toc-link';
+                
+                li.appendChild(a);
+                list.appendChild(li);
+            });
+            
+            tocContainer.appendChild(list);
+        });
+
+        document.addEventListener('click', function(event) {
+            const toggles = [
+                { wrapperId: 'sidebar-toc', checkboxId: 'toc-toggle' },
+                { wrapperId: 'timeline-filter', checkboxId: 'timeline-filter-toggle' }
+            ];
+
+            toggles.forEach(({ wrapperId, checkboxId }) => {
+                const wrapper = document.getElementById(wrapperId);
+                const checkbox = document.getElementById(checkboxId);
+
+                if (wrapper && checkbox && checkbox.checked && !wrapper.contains(event.target)) {
+                    checkbox.checked = false;
+                }
+            });
+        });
+
+        // --- Canvas Background---
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const maxDist = 150; // Distance at which lines appear
+        const pointCount = 80; // Number of dots
+
+        function initCanvas() {
+            const dpr = window.devicePixelRatio || 1; // Get the screen's pixel density
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            // 1. Scale the actual drawing surface
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+
+            // 2. Scale the CSS display size back down
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+
+            // 3. Scale all drawing operations automatically
+            ctx.scale(dpr, dpr);
+
+            points = [];
+            for (let i = 0; i < pointCount; i++) {
+                points.push({
+                    // Use width/height (not canvas.width/height) for coordinate math
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim();
+            ctx.fillStyle = accentColor;
+            ctx.strokeStyle = accentColor;
+
+            for (let i = 0; i < points.length; i++) {
+                let p = points[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Bounce off edges
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                // Draw point
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Check distances to draw lines
+                for (let j = i + 1; j < points.length; j++) {
+                    let p2 = points[j];
+                    let dx = p.x - p2.x;
+                    let dy = p.y - p2.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < maxDist) {
+                        ctx.beginPath();
+                        ctx.lineWidth = 1 - (dist / maxDist); // Lines fade as they get further
+                        ctx.globalAlpha = 1 - (dist / maxDist);
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        animate();
+        
+        function showBackgroundNetwork() {
+            canvas.classList.add('visible');
+        }
+
+        // --- Announcement Modal (first load per tab) ---
+        function initAnnouncementModal() {
+            const modal = document.getElementById('announcementModal');
+            if (!modal) return null;
+
+            const storageKey = modal.getAttribute('data-announcement-key') || 'del_announcement_seen_v1';
+            const closeButtons = modal.querySelectorAll('[data-announcement-close]');
+            const panel = modal.querySelector('.announcement-panel');
+
+            function setUiVisibility(hidden) {
+                const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+                uiElements.forEach(el => el.style.visibility = hidden ? 'hidden' : 'visible');
+            }
+
+            function openAnnouncement() {
+                modal.style.display = "flex";
+                modal.setAttribute('aria-hidden', 'false');
+
+                document.body.style.overflow = 'hidden';
+                setUiVisibility(true);
+
+                const focusTarget = modal.querySelector('[data-announcement-close]');
+                if (focusTarget) focusTarget.focus();
+            }
+
+            function closeAnnouncement(markSeen = true) {
+                modal.style.display = "none";
+                modal.setAttribute('aria-hidden', 'true');
+
+                document.body.style.overflow = 'auto';
+                setUiVisibility(false);
+
+                if (markSeen) sessionStorage.setItem(storageKey, 'true');
+            }
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeAnnouncement(true);
+            });
+
+            if (panel) {
+                panel.addEventListener('click', (e) => e.stopPropagation());
+            }
+
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', () => closeAnnouncement(true));
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeAnnouncement(true);
+                }
+            });
+
+            return { openAnnouncement, storageKey };
+        }
+
+        const announcementController = initAnnouncementModal();
+
+        function maybeShowAnnouncement() {
+            if (!announcementController) return;
+            if (sessionStorage.getItem(announcementController.storageKey)) return;
+
+            // Let the loader fade-out/UI settle before showing the overlay
+            setTimeout(() => {
+                if (sessionStorage.getItem(announcementController.storageKey)) return;
+                announcementController.openAnnouncement();
+            }, 650);
+        }
+
+        function showDirectory(){
+            const sidebar = document.getElementById('sidebar-directory');
+            sidebar.classList.add('visible');
+
+            const toc = document.getElementById('sidebar-toc');
+            if(toc) toc.classList.add('visible');
+
+            maybeShowAnnouncement();
+        }
+
+
+        // --- Smooth Horizontal Mouse Scroll for Multiple Grids ---
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select both grid classes (you can add more here separated by commas)
+            const scrollableGrids = document.querySelectorAll('.org-carousel-track, .organ-grid, .char-grid');
+            
+            // --- CUSTOMIZATION ---
+            const ease = 0.25; 
+            const scrollSpeed = 1.5; 
+
+            // Loop through every grid found on the page
+            scrollableGrids.forEach(grid => {
+                
+                // These variables are kept private for EACH grid
+                let targetScroll = grid.scrollLeft;
+                let currentScroll = targetScroll;
+                let isAnimating = false;
+
+                grid.addEventListener('wheel', function(e) {
+                    // Only take over if they are scrolling vertically
+                    if (e.deltaY !== 0) {
+                        e.preventDefault();
+                        
+                        // Update target based on wheel movement
+                        targetScroll += (e.deltaY * scrollSpeed);
+                        
+                        // Keep target within the boundaries of this specific grid
+                        const maxScroll = grid.scrollWidth - grid.clientWidth;
+                        targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+                        // Start animation loop for this grid if not already running
+                        if (!isAnimating) {
+                            isAnimating = true;
+                            requestAnimationFrame(smoothScroll);
+                        }
+                    }
+                }, { passive: false });
+
+                function smoothScroll() {
+                    currentScroll += (targetScroll - currentScroll) * ease;
+                    
+                    if (Math.abs(targetScroll - currentScroll) < 0.5) {
+                        currentScroll = targetScroll;
+                        grid.scrollLeft = currentScroll;
+                        isAnimating = false;
+                    } else {
+                        grid.scrollLeft = currentScroll;
+                        requestAnimationFrame(smoothScroll);
+                    }
+                }
+            });
+        });
+
+        // expand image
+        function openModal(imgElement) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("fullImage");
+
+            if (!modal || !modalImg) return;
+
+            modal.style.display = "flex";
+            modalImg.src = imgElement.src;
+            
+            // 1. Lock the screen scroll
+            document.body.style.overflow = 'hidden';
+            
+            // 2. Hide problematic UI elements
+            const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+            uiElements.forEach(el => el.style.visibility = 'hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            if (modal) modal.style.display = "none";
+            
+            // 1. Restore scroll
+            document.body.style.overflow = 'auto';
+            
+            // 2. Restore UI elements
+            const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+            uiElements.forEach(el => el.style.visibility = 'visible');
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            function collapseMetadata() {
+                if (window.innerWidth <= 768) {
+                    // Find all <details> elements in your hub sidebar
+                    const categories = document.querySelectorAll('.toc-category');
+                    categories.forEach(category => {
+                        category.removeAttribute('open');
+                    });
+                }
+            }
+
+            // Run on load
+            collapseMetadata();
+            
+            // Optional: Run on resize if you want it to snap shut when shrinking the window
+            window.addEventListener('resize', collapseMetadata);
+        });
+    </script>
+</body>
+</html>

@@ -18,6 +18,8 @@
     <!-- canvas backrgound-->
     <canvas id="network-canvas"></canvas>
 
+    {% include announcement-modal.html %}
+
     <!-- loading screen -->
     <div id="loading-screen">
         <div id="phase-login" class="loader-phase">
@@ -584,12 +586,83 @@
             canvas.classList.add('visible');
         }
 
+        // --- Announcement Modal (first load per tab) ---
+        function initAnnouncementModal() {
+            const modal = document.getElementById('announcementModal');
+            if (!modal) return null;
+
+            const storageKey = modal.getAttribute('data-announcement-key') || 'del_announcement_seen_v1';
+            const closeButtons = modal.querySelectorAll('[data-announcement-close]');
+            const panel = modal.querySelector('.announcement-panel');
+
+            function setUiVisibility(hidden) {
+                const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+                uiElements.forEach(el => el.style.visibility = hidden ? 'hidden' : 'visible');
+            }
+
+            function openAnnouncement() {
+                modal.style.display = "flex";
+                modal.setAttribute('aria-hidden', 'false');
+
+                document.body.style.overflow = 'hidden';
+                setUiVisibility(true);
+
+                const focusTarget = modal.querySelector('[data-announcement-close]');
+                if (focusTarget) focusTarget.focus();
+            }
+
+            function closeAnnouncement(markSeen = true) {
+                modal.style.display = "none";
+                modal.setAttribute('aria-hidden', 'true');
+
+                document.body.style.overflow = 'auto';
+                setUiVisibility(false);
+
+                if (markSeen) sessionStorage.setItem(storageKey, 'true');
+            }
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeAnnouncement(true);
+            });
+
+            if (panel) {
+                panel.addEventListener('click', (e) => e.stopPropagation());
+            }
+
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', () => closeAnnouncement(true));
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeAnnouncement(true);
+                }
+            });
+
+            return { openAnnouncement, storageKey };
+        }
+
+        const announcementController = initAnnouncementModal();
+
+        function maybeShowAnnouncement() {
+            if (!announcementController) return;
+            if (sessionStorage.getItem(announcementController.storageKey)) return;
+
+            // Let the loader fade-out/UI settle before showing the overlay
+            setTimeout(() => {
+                if (sessionStorage.getItem(announcementController.storageKey)) return;
+                announcementController.openAnnouncement();
+            }, 650);
+        }
+
         function showDirectory(){
             const sidebar = document.getElementById('sidebar-directory');
             sidebar.classList.add('visible');
 
             const toc = document.getElementById('sidebar-toc');
             if(toc) toc.classList.add('visible');
+
+            maybeShowAnnouncement();
         }
 
 

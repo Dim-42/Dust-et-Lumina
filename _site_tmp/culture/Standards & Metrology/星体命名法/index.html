@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        星体命名法 | Dust et Lumina
+    </title>
+    <link rel="stylesheet" href="/Dust-et-Lumina/assets/css/style.css">
+</head>
+
+<div id="imageModal" class="system-modal" onclick="closeModal()">
+                <span class="close-modal">&times;</span>
+                <img class="modal-content" id="fullImage">
+            </div>
+
+<body>
+    <!-- canvas backrgound-->
+    <canvas id="network-canvas"></canvas>
+
+    
+
+
+
+<div id="announcementModal"
+     class="system-modal system-announcement"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     data-announcement-key="del_announcement_seen_v1">
+  <div class="announcement-panel" role="document">
+    <div class="announcement-topline">
+      <span class="announcement-tag">SYSTEM_ANNOUNCEMENT</span>
+      <button type="button" class="announcement-close" data-announcement-close aria-label="Close">&times;</button>
+    </div>
+
+    <div class="announcement-body">
+      
+<h2 id="system-notice">SYSTEM NOTICE</h2>
+
+<p>Welcome, operator.</p>
+
+<p>This site is a living archive. Pages may be revised, expanded, or reclassified over time.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">NAV</code>: Use the top bar to jump collections.</li>
+  <li><code class="language-plaintext highlighter-rouge">INDEX</code>: Use the left directory for system-wide navigation.</li>
+  <li><code class="language-plaintext highlighter-rouge">TOC</code>: Use the right panel to scan the current file.</li>
+</ul>
+
+<p>If you spot a broken link or corrupted entry, log it and return later.</p>
+
+
+    </div>
+
+    <div class="announcement-actions">
+      <button type="button" class="btn-classified" data-announcement-close>ACKNOWLEDGE</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <!-- loading screen -->
+    <div id="loading-screen">
+        <div id="phase-login" class="loader-phase">
+            <p class="main-header">LogiX Predictive Computational SYSTEM</p>
+            <p class="system-msg visible">SYSTEM_ACCESS REQUIRED</p>
+            <div class="login-input-wrapper">
+                <span class="system-msg">></span>
+                <input type="text" id="db-password" readonly autocomplete="off">
+            </div>
+            <p id="auth-status" class="system-msg-note">INITIALIZING AUTHENTICATION...</p>
+            <p class="system-msg-note" style="position:fixed; bottom: 0; padding-bottom: 1rem;">
+                PROPERTY OF TURRIS GRISEA // CONFIDENTIAL
+            </p>
+        </div>
+        
+        <div id="phase-scan" class="loader-phase" style="display: none;">
+            <p class = "main-header" style = "position: fixed; top: 0; margin-top: 50px;">LogiX Predictive Computational SYSTEM</p>
+            <div class="fui-scanner">
+                <div class="ring outer-dashed"></div>
+                <div class="ring middle-data"></div>
+                <div class="ring inner-steady"></div>
+                <div class="ring inner-notch"></div>
+                <div class="scan-sweep"></div>
+                <div class="core-point"></div>
+                <div class="fui-label top" style =  "align-items: center;">SCANNING BIO SIGNAL</div>
+                <div class="fui-label bottom" style = "color: var(--accent-secondary);">THREAT LEVEL: 0%</div>
+            </div>
+            <p class="system-msg">IDENTITY VERIFICATION IN PROGRESS...</p>
+            <p class="system-msg-note" style = "position:fixed; bottom: 0; padding-bottom: 1rem;">PROPERTY OF TURRIS GRISEA // CONFIDENTIAL</p>
+        </div>
+
+        <div id="phase-decrypt" class="loader-phase" style="display: none;">
+            <div class="loader-content">
+                <p class="system-msg" style="font-size: 22px;">ACCESS LEVEL: ■□□□□ [PUBLIC]</p>
+                <div class="scanner-line"></div>
+                <p class="system-msg" style="font-size: 18px;">ENTERING DATABASE...</p>
+                <p class="system-msg-note">DECRYPTING...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- nagivation bar-->
+    <nav class="nav-interface">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-btn">
+            <span class="icon"></span>
+        </label>
+
+        <div class="nav-links-wrapper">
+            
+                <a href="/Dust-et-Lumina/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">TERMINAL</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;首页</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/organizations/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">FACTION</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;势力</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/characters/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">PERSONNEL</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;档案</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/regions/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">ATLAS</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;地理</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/culture/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">ENCYCLOPEDIA</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;百科</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/histories/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">HISTORY</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;历史</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/stories/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">RECORD</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;故事</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/gallery/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">GALLERY</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;影像</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/about/" 
+                class="nav-link nav-right">
+                    <span class="nav-link-content">
+                        <span class="nav-title">ABOUT</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;关于</span>
+                    </span>
+                </a>
+            
+        </div>
+    </nav>
+
+    <aside class="sidebar-directory" id = "sidebar-directory">
+        <div class="sidebar-handle">
+            <span class="handle-text">/ / / / / / /</span>
+        </div>
+
+        <nav class="sidebar-content">
+            <div class="sidebar-header">SYSTEM INDEX</div>
+
+            <ul class="directory-list">
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/characters" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                PERSONNEL
+                            </span>
+                            <span class="subtitle">档案</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/culture" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                ENCYCLOPEDIA
+                            </span>
+                            <span class="subtitle">百科</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/gallery" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                GALLERY
+                            </span>
+                            <span class="subtitle">影像</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/histories" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                HISTORY
+                            </span>
+                            <span class="subtitle">历史</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/organizations" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                FACTION
+                            </span>
+                            <span class="subtitle">势力</span>
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/regions" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                ATLAS
+                            </span>
+                            <span class="subtitle">地理</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/stories" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                RECORD
+                            </span>
+                            <span class="subtitle">故事</span>
+                        </a>
+                    </li>
+                    
+                
+            </ul>
+
+            <div class = "sidebar-footer">AUTH_LEVEL: GUEST</div>
+            <div class = "sidebar-footer">
+                <a href="/Dust-et-Lumina/" class="sidebar-homelink">RETURN TO TERMINAL</a>
+            </div>
+        </nav>
+    </aside>    
+
+    <!--main content-->
+    <main id="obsidian-content">
+        <header class="page-header">
+            <div class="header-main">
+                <span class="title-text">星体命名法</span>
+                
+                    <span class="page-subtitle">Standard Astronomical Naming Conventions</span>
+                
+            </div>
+        </header>
+        <div class="page-meta">
+                
+                
+        </div>
+        <br>
+        
+        
+            <p>星体命名法（Standard Astronomical Naming Conventions，SANC）是星系内通行的天体系统命名标准，旨在为所有已勘测恒星系统及其行星提供统一、可追溯的标识体系，兼顾科学精确性与日常使用的简洁需求。</p>
+
+<h2 id="历史沿革">历史沿革</h2>
+
+<p>现行命名法可追溯至联邦新历前约200年的“星图标准化运动”。当时，各星区采用五花八门的本地命名体系，造成导航混乱。星际天文协会（后重组为联邦科学院天文学会）整合各星区星图，制定了第一版命名规范,经过多轮修订后，形成了如今的体系，现行版本为联邦新历1274年修订版。</p>
+
+<h2 id="命名结构">命名结构</h2>
+
+<p>一个完整的天体名称按从大到小的顺序排列：[星区名称]-[亚星区名称]-[恒星系编号]-[恒星标识]-[行星编号]</p>
+
+<p>其中亚星区名称仅在设有次级行政区的星区中使用。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>组成部分</th>
+      <th>含义概述</th>
+      <th>详解</th>
+      <th>示例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>星区名称</td>
+      <td>行政或地理大区</td>
+      <td>星区登记名称</td>
+      <td>猎户大星区</td>
+    </tr>
+    <tr>
+      <td>亚星区名称</td>
+      <td>次级行政区划</td>
+      <td>亚星区登记名称；若无亚星区，默认值为NA</td>
+      <td>艾肯海恩亚星区</td>
+    </tr>
+    <tr>
+      <td>恒星系编号</td>
+      <td>第N个恒星系</td>
+      <td>使用传统数字符号编号（I, II, III, IV…）</td>
+      <td>VII</td>
+    </tr>
+    <tr>
+      <td>恒星标识</td>
+      <td>恒星编号</td>
+      <td>恒星类型[古典字母编号]（如α, β, γ）</td>
+      <td>K[α]</td>
+    </tr>
+    <tr>
+      <td>行星编号</td>
+      <td>行星编号</td>
+      <td>使用普通数字编号（1, 2, 3…）</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>示例：猎户大星区-艾肯海恩亚星区-VII-K[α]-2</p>
+
+<ul>
+  <li>猎户大星区（星区）</li>
+  <li>艾肯海恩亚星区（次级行政区）</li>
+  <li>VII（该亚星区内第七恒星系）</li>
+  <li>K[α]（该恒星系中的K型主星，序号为α）</li>
+  <li>2（该恒星的第二颗行星）</li>
+</ul>
+
+<h2 id="组成部分详解">组成部分详解</h2>
+
+<ul>
+  <li>星区名称：标准结构中的第一级，指天体所在的行政或地理大区，通常采用该星区的通用名称。例如：拉文科尔、猎户大星区、英仙星区。</li>
+  <li>亚星区名称：在幅员辽阔的星区内部（通常拥有超过50个已定居星系），常设有次级行政区划——亚星区。对于这类星区中的天体，星区名称之后需要跟随亚星区名称；在不设有亚星区的星区，学术记录中可标记为NA，实际使用时省略。</li>
+  <li>恒星系编号：使用传统数字符号（I, II, III, IV, V, VI, VII…），表示该星区（或亚星区）的第N个恒星系统。编号依据通常遵循：发现/定居/探索顺序（从先到后）、在星图中的坐标顺序（自内向外）、该系统的综合重要性。</li>
+  <li>恒星标识：恒星系可以是单星、双星、三合星或更复杂的多星系统。在同一恒星系内，用古典字母编号（α, β, γ, δ…）区分不同的恒星成员，格式为：[恒星类型字母]古典字母编号，字母编号需用<code class="language-plaintext highlighter-rouge">[]</code>框起。
+    <ul>
+      <li>例如，一个三合星系统包含两颗K型星和一颗O型星，其恒星可标识为：K[α]（K型主星）、K[β]（K型伴星）、O[γ]（O型伴星）。</li>
+      <li>在特定学术环境下，恒星类型后面还可以跟随光度型。例如，G2V[α]表示某恒星系中一颗慕洛里斯标准型恒星，且是该系统内唯一恒星或主星。</li>
+      <li>恒星类型字母采用标准光谱分类：</li>
+    </ul>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>类型</th>
+      <th>光谱型</th>
+      <th>颜色</th>
+      <th>表面温度（K）</th>
+      <th>特征</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>O</td>
+      <td>O型</td>
+      <td>蓝</td>
+      <td>&gt;30,000</td>
+      <td>大质量、高光度、短寿命</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>B型</td>
+      <td>蓝白</td>
+      <td>10,000–30,000</td>
+      <td>大质量主序星</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>A型</td>
+      <td>白</td>
+      <td>7,500–10,000</td>
+      <td>常见亮星</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>F型</td>
+      <td>黄白</td>
+      <td>6,000–7,500</td>
+      <td>质量略大于慕洛里斯标准型</td>
+    </tr>
+    <tr>
+      <td>G</td>
+      <td>G型</td>
+      <td>黄</td>
+      <td>5,200–6,000</td>
+      <td>慕洛里斯型恒星，稳定性高，适合生命</td>
+    </tr>
+    <tr>
+      <td>K</td>
+      <td>K型</td>
+      <td>橙</td>
+      <td>3,700–5,200</td>
+      <td>稳定性高，长寿</td>
+    </tr>
+    <tr>
+      <td>M</td>
+      <td>M型</td>
+      <td>红</td>
+      <td>&lt;3,700</td>
+      <td>常见，亮度低</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>行星编号：使用普通数字（1, 2, 3, 4…），表示绕行某特定恒星的行星顺序，从内到外。例如，K[α]-2表示绕行K[α]恒星的第二颗行星。
+    <ul>
+      <li>对于双星或多星系统内的行星：如果行星绕行其中一颗恒星公转，则采用常规命名，例如 IV-M3V[α]-1；如果行星绕行两颗或多颗恒星的共同质心运行，则用 [αβ…] 表示其环绕的恒星。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="完整学名示例">完整学名示例</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>完整学名</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>拉文科尔星区-III-K[α]-2</td>
+      <td>拉文科尔星区第三恒星系，K型主星α的第二行星</td>
+    </tr>
+    <tr>
+      <td>慕洛里斯特别行政星区-I-G2V[α]-1</td>
+      <td>慕洛里斯星区第一恒星系，G型主星α的第一行星（2V表示该恒星的光度值，可省略）</td>
+    </tr>
+    <tr>
+      <td>猎户大星区-艾肯海恩亚星区-VII-K[α]-1</td>
+      <td>猎户大星区艾肯海恩亚星区第七恒星系，K型主星α的第一行星</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="省略规则与日常使用">省略规则与日常使用</h2>
+
+<p>为适应不同语境，命名法允许部分省略：</p>
+
+<ol>
+  <li>省略星区简称：当星区全称在语境中明确时，可省略后缀。例如：慕洛里斯<del>特别行政星区</del>-I-G2V[α]-1</li>
+  <li>省略星区：当星区明确时，可省略星区名称。例如：<del>猎户大星区-</del>艾肯海恩亚星区-VII-K[α]-2</li>
+  <li>省略恒星类型：当恒星类型无需强调时（日常使用常用此规则）。例如：猎户大星区-艾肯海恩亚星区-VII-<del>K</del>[α]-2</li>
+  <li>省略恒星编号：在单星系统中，可直接以恒星类型标记，省略[α]。例如：拉文科尔星区-III-K[α]-2 → 拉文科尔星区-III-K-2</li>
+</ol>
+
+<h2 id="特殊命名">特殊命名</h2>
+
+<p>具有重大历史或科学意义的天体，或无星区归属的天体，可经联邦科学院天文学会批准获得专名。例如：</p>
+
+<ul>
+  <li>慕洛里斯：联邦首都，学名：慕洛里斯特别行政星区-NA-I-G2V[α]-1</li>
+  <li>深空荒漠：星系边缘不可航行区域，其内部天体仅以 [分区]-[勘测编号] 标记，如：深空荒漠-AN-17</li>
+</ul>
+
+<h2 id="争议">争议</h2>
+
+<ul>
+  <li>光谱型修正：早期勘测中，部分恒星的光谱型被误判。有人提出，应当以科学准确性优先；反对者担心修正会导致历史文献和导航记录混乱。目前采取折中方案：新勘测天体需严格按光谱定名；已有历史名称保留，但在学术环境下在[恒星标识]中的恒星类型字母后增添<code class="language-plaintext highlighter-rouge">*</code>。</li>
+  <li>恒星系编号顺序：最初，由各星区向天文协会提交本星区内的天体名称，但由于部分星区主要以发现时间排列，部分主要以空间坐标排序，部分较为无规律，导致跨星区比较时编号缺乏统一性。目前，命名标准采用：已有的历史名称保留，以各星区的提交版本为准，但新登记的天体需要从现有编号开始，按照实际发现时间排序。</li>
+  <li>边界划分：部分星区、星域划分存在历史遗留问题，边界模糊，导致少数恒星系归属仍有争议。</li>
+</ul>
+
+            
+
+
+
+
+
+        
+        
+    </main>
+
+    <aside class="sidebar-toc" id="sidebar-toc">
+        <input type="checkbox" id="toc-toggle" class="toc-toggle">
+        <label for="toc-toggle" class="toc-btn">
+            <span class="toc-label">Table of Contents</span>
+        </label>
+
+        <div class="toc-handle">
+            <span class="handle-text">/ / / / / / /</span>
+        </div>
+
+        <nav class="toc-container">
+            <div class="sidebar-header">TABLE OF CONTENT</div>
+            <div id="auto-toc" class="toc-content-body">
+                </div>
+            <div class="sidebar-footer">READ_ONLY</div>
+        </nav>
+    </aside>
+
+    <footer>
+        <div class="nav-wrapper">
+        
+            
+            
+
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                
+                
+                
+                
+                
+                
+                
+
+            
+                <a href="/Dust-et-Lumina/info/relics" class="nav-arrow">&lt;</a>
+            
+                
+            <a href="/" onclick="history.back(); return false;" class="back-link">RETURN</a>
+
+            
+                <a href="/Dust-et-Lumina/culture/Standards%20&%20Metrology/%E8%81%94%E9%82%A6%E6%96%B0%E5%8E%86/" class="nav-arrow">&gt;</a>
+            
+        
+        </div>
+
+        <div class="footer-div"></div>
+        <div class="footer-grid">
+            <div class="footer-item">
+                <span class="label">SYSTEM_TIME:</span>
+                <span class="value" id="current-time">00:00:00</span>
+            </div>
+            <div class="footer-item">
+                <span class="label">OPERATOR:</span>
+                <span class="value">GUEST_USER</span>
+            </div>
+            <div class="footer-item">
+                <span class="label">ENCRYPTION:</span>
+                <span class="value">AES-256</span>
+            </div>
+        </div>
+        <p class = "footer-credit">&copy; 2026 Dimension 42nd. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+
+        // --- Loader Logic ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const loader = document.getElementById('loading-screen');
+            const passInput = document.getElementById('db-password');
+            const p1 = document.getElementById('phase-login');
+            const p2 = document.getElementById('phase-scan');
+            const p3 = document.getElementById('phase-decrypt');
+            const canvas = document.getElementById('network-canvas');
+
+            const lastLoad = localStorage.getItem('last_boot_time');
+            const now = Date.now();
+            const refresh_threshold = 100*60*1000;
+
+            // Check if we should skip the animation
+            if (sessionStorage.getItem('hasLoaded') && (now - lastLoad) < refresh_threshold) {
+                loader.style.display = 'none';
+                canvas.classList.add('visible'); 
+                canvas.style.opacity = "0.3";
+                showDirectory();
+                return;
+            }
+            
+            // Phase 1 Logic: Password Entry
+            /** passInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    // Add a "processing" feel
+                    p1.style.opacity = '0.5';
+                    passInput.disabled = true;
+
+                    setTimeout(() => {
+                        p1.style.display = 'none';
+                        startPhase2();
+                    }, 600);
+                }
+            }); **/
+
+            startAutoLogin();
+
+            // --- Updated Auto-Login Logic ---
+            function startAutoLogin() {
+                const passInput = document.getElementById('db-password');
+                const authStatus = document.getElementById('auth-status');
+                const p1 = document.getElementById('phase-login');
+                
+                const passwordLength = 12; // How many dots to "type"
+                let typedCount = 0;
+
+                // Simulate typewriter dots
+                const typingInterval = setInterval(() => {
+                    passInput.value += "•"; 
+                    typedCount++;
+
+                    if (typedCount >= passwordLength) {
+                        clearInterval(typingInterval);
+                        
+                        // Wait a moment, then show "Granted"
+                        setTimeout(() => {
+                            authStatus.textContent = "ACCESS_GRANTED. VERIFYING IDENTITY...";
+                            authStatus.style.color = "var(--accent-secondary)"; // Assuming accent is your theme color
+                            
+                            // Transition to Phase 2
+                            setTimeout(() => {
+                                p1.style.display = 'none';
+                                startPhase2();
+                            }, 1000);
+                        }, 500);
+                    }
+                }, 150); // Speed of typing (ms per dot)
+            }
+
+            function startPhase2() {
+                p2.style.display = 'flex';
+                // Simulate a 2-second biometric scan
+                setTimeout(() => {
+                    p2.style.display = 'none';
+                    startPhase3();
+                }, 2500);
+            }
+
+            function startPhase3() {
+                p3.style.display = 'flex';
+                // Final decryption delay before entering site
+                setTimeout(() => {
+                    loader.classList.add('fade-out');
+                    showBackgroundNetwork();
+                    showDirectory();
+                    sessionStorage.setItem('hasLoaded', 'true');
+                    localStorage.setItem('last_boot_time', Date.now());
+                }, 1000);
+            }
+        });
+
+        // --- Obsidian Comment Filter ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const contentArea = document.getElementById('obsidian-content');
+            if (contentArea) {
+                const regex = /%%[\s\S]*?%%/g;
+                contentArea.innerHTML = contentArea.innerHTML.replace(regex, '');
+            }
+        });
+
+        // --- Clock Logic ---
+        function updateClock() {
+            const timeEl = document.getElementById('current-time');
+            if (timeEl) {
+                const now = new Date();
+                const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
+                                now.getMinutes().toString().padStart(2, '0') + ":" + 
+                                now.getSeconds().toString().padStart(2, '0');
+                timeEl.textContent = timeStr;
+            }
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // --- Automatic TOC Extraction ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const tocContainer = document.getElementById('auto-toc');
+            const contentArea = document.getElementById('obsidian-content');
+            const tocSidebar = document.getElementById('sidebar-toc');
+
+            if (!contentArea || !tocContainer) return;
+
+            // Grab H2 and H3 from your main content
+            const headers = contentArea.querySelectorAll('h2, h3');
+
+            // If no headers, hide the whole sidebar including handle
+            if (headers.length === 0) {
+                tocSidebar.style.display = 'none';
+                return;
+            }
+
+            const list = document.createElement('ul');
+            headers.forEach((header, index) => {
+                if (!header.id) {
+                    // Create a slug from text or use index
+                    header.id = 'sec-' + index;
+                }
+
+                const li = document.createElement('li');
+                li.className = 'toc-item ' + (header.tagName === 'H2' ? 'toc-h2' : 'toc-h3');
+
+                // Indent H3s
+                if(header.tagName === 'H3') 
+                {
+                    li.style.paddingLeft = "10px";
+                    li.setAttribute('data-no-prompt', 'true');
+                }
+
+                const a = document.createElement('a');
+                a.href = '#' + header.id;
+                a.textContent = header.textContent.toUpperCase();
+                a.className = 'toc-link';
+                
+                li.appendChild(a);
+                list.appendChild(li);
+            });
+            
+            tocContainer.appendChild(list);
+        });
+
+        document.addEventListener('click', function(event) {
+            const toggles = [
+                { wrapperId: 'sidebar-toc', checkboxId: 'toc-toggle' },
+                { wrapperId: 'timeline-filter', checkboxId: 'timeline-filter-toggle' }
+            ];
+
+            toggles.forEach(({ wrapperId, checkboxId }) => {
+                const wrapper = document.getElementById(wrapperId);
+                const checkbox = document.getElementById(checkboxId);
+
+                if (wrapper && checkbox && checkbox.checked && !wrapper.contains(event.target)) {
+                    checkbox.checked = false;
+                }
+            });
+        });
+
+        // --- Canvas Background---
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const maxDist = 150; // Distance at which lines appear
+        const pointCount = 80; // Number of dots
+
+        function initCanvas() {
+            const dpr = window.devicePixelRatio || 1; // Get the screen's pixel density
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            // 1. Scale the actual drawing surface
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+
+            // 2. Scale the CSS display size back down
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+
+            // 3. Scale all drawing operations automatically
+            ctx.scale(dpr, dpr);
+
+            points = [];
+            for (let i = 0; i < pointCount; i++) {
+                points.push({
+                    // Use width/height (not canvas.width/height) for coordinate math
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim();
+            ctx.fillStyle = accentColor;
+            ctx.strokeStyle = accentColor;
+
+            for (let i = 0; i < points.length; i++) {
+                let p = points[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Bounce off edges
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                // Draw point
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Check distances to draw lines
+                for (let j = i + 1; j < points.length; j++) {
+                    let p2 = points[j];
+                    let dx = p.x - p2.x;
+                    let dy = p.y - p2.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < maxDist) {
+                        ctx.beginPath();
+                        ctx.lineWidth = 1 - (dist / maxDist); // Lines fade as they get further
+                        ctx.globalAlpha = 1 - (dist / maxDist);
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        animate();
+        
+        function showBackgroundNetwork() {
+            canvas.classList.add('visible');
+        }
+
+        // --- Announcement Modal (first load per tab) ---
+        function initAnnouncementModal() {
+            const modal = document.getElementById('announcementModal');
+            if (!modal) return null;
+
+            const storageKey = modal.getAttribute('data-announcement-key') || 'del_announcement_seen_v1';
+            const closeButtons = modal.querySelectorAll('[data-announcement-close]');
+            const panel = modal.querySelector('.announcement-panel');
+
+            function setUiVisibility(hidden) {
+                const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+                uiElements.forEach(el => el.style.visibility = hidden ? 'hidden' : 'visible');
+            }
+
+            function openAnnouncement() {
+                modal.style.display = "flex";
+                modal.setAttribute('aria-hidden', 'false');
+
+                document.body.style.overflow = 'hidden';
+                setUiVisibility(true);
+
+                const focusTarget = modal.querySelector('[data-announcement-close]');
+                if (focusTarget) focusTarget.focus();
+            }
+
+            function closeAnnouncement(markSeen = true) {
+                modal.style.display = "none";
+                modal.setAttribute('aria-hidden', 'true');
+
+                document.body.style.overflow = 'auto';
+                setUiVisibility(false);
+
+                if (markSeen) sessionStorage.setItem(storageKey, 'true');
+            }
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeAnnouncement(true);
+            });
+
+            if (panel) {
+                panel.addEventListener('click', (e) => e.stopPropagation());
+            }
+
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', () => closeAnnouncement(true));
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeAnnouncement(true);
+                }
+            });
+
+            return { openAnnouncement, storageKey };
+        }
+
+        const announcementController = initAnnouncementModal();
+
+        function maybeShowAnnouncement() {
+            if (!announcementController) return;
+            if (sessionStorage.getItem(announcementController.storageKey)) return;
+
+            // Let the loader fade-out/UI settle before showing the overlay
+            setTimeout(() => {
+                if (sessionStorage.getItem(announcementController.storageKey)) return;
+                announcementController.openAnnouncement();
+            }, 650);
+        }
+
+        function showDirectory(){
+            const sidebar = document.getElementById('sidebar-directory');
+            sidebar.classList.add('visible');
+
+            const toc = document.getElementById('sidebar-toc');
+            if(toc) toc.classList.add('visible');
+
+            maybeShowAnnouncement();
+        }
+
+
+        // --- Smooth Horizontal Mouse Scroll for Multiple Grids ---
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select both grid classes (you can add more here separated by commas)
+            const scrollableGrids = document.querySelectorAll('.org-carousel-track, .organ-grid, .char-grid');
+            
+            // --- CUSTOMIZATION ---
+            const ease = 0.25; 
+            const scrollSpeed = 1.5; 
+
+            // Loop through every grid found on the page
+            scrollableGrids.forEach(grid => {
+                
+                // These variables are kept private for EACH grid
+                let targetScroll = grid.scrollLeft;
+                let currentScroll = targetScroll;
+                let isAnimating = false;
+
+                grid.addEventListener('wheel', function(e) {
+                    // Only take over if they are scrolling vertically
+                    if (e.deltaY !== 0) {
+                        e.preventDefault();
+                        
+                        // Update target based on wheel movement
+                        targetScroll += (e.deltaY * scrollSpeed);
+                        
+                        // Keep target within the boundaries of this specific grid
+                        const maxScroll = grid.scrollWidth - grid.clientWidth;
+                        targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+                        // Start animation loop for this grid if not already running
+                        if (!isAnimating) {
+                            isAnimating = true;
+                            requestAnimationFrame(smoothScroll);
+                        }
+                    }
+                }, { passive: false });
+
+                function smoothScroll() {
+                    currentScroll += (targetScroll - currentScroll) * ease;
+                    
+                    if (Math.abs(targetScroll - currentScroll) < 0.5) {
+                        currentScroll = targetScroll;
+                        grid.scrollLeft = currentScroll;
+                        isAnimating = false;
+                    } else {
+                        grid.scrollLeft = currentScroll;
+                        requestAnimationFrame(smoothScroll);
+                    }
+                }
+            });
+        });
+
+        // expand image
+        function openModal(imgElement) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("fullImage");
+
+            if (!modal || !modalImg) return;
+
+            modal.style.display = "flex";
+            modalImg.src = imgElement.src;
+            
+            // 1. Lock the screen scroll
+            document.body.style.overflow = 'hidden';
+            
+            // 2. Hide problematic UI elements
+            const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+            uiElements.forEach(el => el.style.visibility = 'hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            if (modal) modal.style.display = "none";
+            
+            // 1. Restore scroll
+            document.body.style.overflow = 'auto';
+            
+            // 2. Restore UI elements
+            const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+            uiElements.forEach(el => el.style.visibility = 'visible');
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            function collapseMetadata() {
+                if (window.innerWidth <= 768) {
+                    // Find all <details> elements in your hub sidebar
+                    const categories = document.querySelectorAll('.toc-category');
+                    categories.forEach(category => {
+                        category.removeAttribute('open');
+                    });
+                }
+            }
+
+            // Run on load
+            collapseMetadata();
+            
+            // Optional: Run on resize if you want it to snap shut when shrinking the window
+            window.addEventListener('resize', collapseMetadata);
+        });
+    </script>
+</body>
+</html>

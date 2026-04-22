@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        埃尔泽兰独立星区 | Dust et Lumina
+    </title>
+    <link rel="stylesheet" href="/Dust-et-Lumina/assets/css/style.css">
+</head>
+
+<div id="imageModal" class="system-modal" onclick="closeModal()">
+                <span class="close-modal">&times;</span>
+                <img class="modal-content" id="fullImage">
+            </div>
+
+<body>
+    <!-- canvas backrgound-->
+    <canvas id="network-canvas"></canvas>
+
+    
+
+
+
+<div id="announcementModal"
+     class="system-modal system-announcement"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     data-announcement-key="del_announcement_seen_v1">
+  <div class="announcement-panel" role="document">
+    <div class="announcement-topline">
+      <span class="announcement-tag">SYSTEM_ANNOUNCEMENT</span>
+      <button type="button" class="announcement-close" data-announcement-close aria-label="Close">&times;</button>
+    </div>
+
+    <div class="announcement-body">
+      
+<h2 id="system-notice">SYSTEM NOTICE</h2>
+
+<p>Welcome, operator.</p>
+
+<p>This site is a living archive. Pages may be revised, expanded, or reclassified over time.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">NAV</code>: Use the top bar to jump collections.</li>
+  <li><code class="language-plaintext highlighter-rouge">INDEX</code>: Use the left directory for system-wide navigation.</li>
+  <li><code class="language-plaintext highlighter-rouge">TOC</code>: Use the right panel to scan the current file.</li>
+</ul>
+
+<p>If you spot a broken link or corrupted entry, log it and return later.</p>
+
+
+    </div>
+
+    <div class="announcement-actions">
+      <button type="button" class="btn-classified" data-announcement-close>ACKNOWLEDGE</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <!-- loading screen -->
+    <div id="loading-screen">
+        <div id="phase-login" class="loader-phase">
+            <p class="main-header">LogiX Predictive Computational SYSTEM</p>
+            <p class="system-msg visible">SYSTEM_ACCESS REQUIRED</p>
+            <div class="login-input-wrapper">
+                <span class="system-msg">></span>
+                <input type="text" id="db-password" readonly autocomplete="off">
+            </div>
+            <p id="auth-status" class="system-msg-note">INITIALIZING AUTHENTICATION...</p>
+            <p class="system-msg-note" style="position:fixed; bottom: 0; padding-bottom: 1rem;">
+                PROPERTY OF TURRIS GRISEA // CONFIDENTIAL
+            </p>
+        </div>
+        
+        <div id="phase-scan" class="loader-phase" style="display: none;">
+            <p class = "main-header" style = "position: fixed; top: 0; margin-top: 50px;">LogiX Predictive Computational SYSTEM</p>
+            <div class="fui-scanner">
+                <div class="ring outer-dashed"></div>
+                <div class="ring middle-data"></div>
+                <div class="ring inner-steady"></div>
+                <div class="ring inner-notch"></div>
+                <div class="scan-sweep"></div>
+                <div class="core-point"></div>
+                <div class="fui-label top" style =  "align-items: center;">SCANNING BIO SIGNAL</div>
+                <div class="fui-label bottom" style = "color: var(--accent-secondary);">THREAT LEVEL: 0%</div>
+            </div>
+            <p class="system-msg">IDENTITY VERIFICATION IN PROGRESS...</p>
+            <p class="system-msg-note" style = "position:fixed; bottom: 0; padding-bottom: 1rem;">PROPERTY OF TURRIS GRISEA // CONFIDENTIAL</p>
+        </div>
+
+        <div id="phase-decrypt" class="loader-phase" style="display: none;">
+            <div class="loader-content">
+                <p class="system-msg" style="font-size: 22px;">ACCESS LEVEL: ■□□□□ [PUBLIC]</p>
+                <div class="scanner-line"></div>
+                <p class="system-msg" style="font-size: 18px;">ENTERING DATABASE...</p>
+                <p class="system-msg-note">DECRYPTING...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- nagivation bar-->
+    <nav class="nav-interface">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-btn">
+            <span class="icon"></span>
+        </label>
+
+        <div class="nav-links-wrapper">
+            
+                <a href="/Dust-et-Lumina/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">TERMINAL</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;首页</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/organizations/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">FACTION</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;势力</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/characters/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">PERSONNEL</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;档案</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/regions/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">ATLAS</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;地理</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/culture/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">ENCYCLOPEDIA</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;百科</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/histories/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">HISTORY</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;历史</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/stories/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">RECORD</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;故事</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/gallery/" 
+                class="nav-link ">
+                    <span class="nav-link-content">
+                        <span class="nav-title">GALLERY</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;影像</span>
+                    </span>
+                </a>
+            
+                <a href="/Dust-et-Lumina/about/" 
+                class="nav-link nav-right">
+                    <span class="nav-link-content">
+                        <span class="nav-title">ABOUT</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;关于</span>
+                    </span>
+                </a>
+            
+        </div>
+    </nav>
+
+    <aside class="sidebar-directory" id = "sidebar-directory">
+        <div class="sidebar-handle">
+            <span class="handle-text">/ / / / / / /</span>
+        </div>
+
+        <nav class="sidebar-content">
+            <div class="sidebar-header">SYSTEM INDEX</div>
+
+            <ul class="directory-list">
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/characters" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                PERSONNEL
+                            </span>
+                            <span class="subtitle">档案</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/culture" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                ENCYCLOPEDIA
+                            </span>
+                            <span class="subtitle">百科</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/gallery" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                GALLERY
+                            </span>
+                            <span class="subtitle">影像</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/histories" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                HISTORY
+                            </span>
+                            <span class="subtitle">历史</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/organizations" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                FACTION
+                            </span>
+                            <span class="subtitle">势力</span>
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/regions" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                ATLAS
+                            </span>
+                            <span class="subtitle">地理</span>
+                        </a>
+                    </li>
+                    
+                
+                     
+                    <li class="directory-link">
+                        <a href="/Dust-et-Lumina/stories" class = "link-text">
+                            <div class="link-text">
+                            <span class="title">
+                                RECORD
+                            </span>
+                            <span class="subtitle">故事</span>
+                        </a>
+                    </li>
+                    
+                
+            </ul>
+
+            <div class = "sidebar-footer">AUTH_LEVEL: GUEST</div>
+            <div class = "sidebar-footer">
+                <a href="/Dust-et-Lumina/" class="sidebar-homelink">RETURN TO TERMINAL</a>
+            </div>
+        </nav>
+    </aside>    
+
+    <!--main content-->
+    <main id="obsidian-content">
+        <header class="page-header">
+            <div class="header-main">
+                <span class="title-text">埃尔泽兰独立星区</span>
+                
+                    <span class="page-subtitle">Ellzerand Independent Sector</span>
+                
+            </div>
+        </header>
+        <div class="page-meta">
+                
+                
+        </div>
+        <br>
+        
+        
+            <div class="main-container">
+
+    <aside class="wiki-sidebar">
+        <div class="infobox-header">
+            埃尔泽兰独立星区
+            <br>
+            Ellzerand Independent Sector
+        </div>
+
+        
+
+        <table class="infobox-table">
+            <tr>
+                <th colspan="2" class="infobox-section">// BASIC INFO </th>
+            </tr>
+            
+            <tr>
+                <td class="label">Position</td>
+                <td class="value">▇▇▇</td>
+            </tr>
+
+            <tr>
+                <td class="label">Part of</td>
+                <td class="value">独立</td>
+            </tr>
+
+            <tr>
+                <td class="label">Type</td>
+                <td class="value">未归档</td>
+            </tr>
+
+            
+
+
+        </table>
+    </aside>
+
+    <p>埃尔泽兰（Ellzerand）是一个仅存在于古籍和传闻中的名称，指向一个从未被确认存在的“地方”。</p>
+
+<blockquote>
+  <p>有关埃尔泽兰的信息少之又少，仅仅在联邦前时代的零星文献中有只言片语的提及，且多充满了悖论与隐喻，通常伴以“星掩之地”“星海的背面”一类的模糊修饰词。时至今日，学界仍无法断定埃尔泽兰究竟是一处历史上真实存在过的版图、还是像旧时代的许多传闻一样，仅仅是早期冒险者在深空幽闭中产生的集体臆想。</p>
+
+  <p>——《星系地理志》第十五章：神话地理</p>
+</blockquote>
+
+<h2 id="命名与修饰">命名与修饰</h2>
+
+<p>“埃尔泽兰”，Ellzerand，一词的词源已经不可考，可能来自星航时代，与“星空”和“边界”等词语有关。在文献中，它常与以下修饰词一同出现：星掩之地（被星辰“掩盖”的地方）、星海背面（如果说星系是“星海”，埃尔泽兰就是这片海的“背面”或“内侧”）。</p>
+
+<div class="annotation-container">
+<div class="annotation">
+
+在我们那个时代，el-前缀常与星辰关联。
+</div>
+<div class="signature">[ADMIN-X-001 / ELOISE] 21-02-07 A.U. 03:17:39 AST</div>
+</div>
+
+<h2 id="历史记载">历史记载</h2>
+
+<p>目前所有关于“埃尔泽兰”的记载都来自联邦前时代，关于它的一切都充满悖论，没有任何可靠的一手资料能够证实其存在。学界普遍认为，这些记载更可能是早期探险者在漫长航行中产生的幻觉，或是对某种自然现象的诗意化描述。但仍有少数研究者坚持认为，这些传说背后可能隐藏着某种真实——某种被误解的物理现象，或是某种尚未被认知的空间结构。</p>
+
+<p>“埃尔泽兰”这个名字首次出现在可考文献中，是一份大约联邦前600年左右的科考日志，称一支由<a href="/Dust-et-Lumina/atlas/aldwych-concordance">奥德维克协和星区</a>的学者和探险者组成的队伍在追踪某种“超空间异常信号”时，偶然进入了一片“一片无法用星图定位的空域”的空域，并发现“非自然形成的巨大结构”，日志撰写者——队伍里的一位历史学家——以近乎困惑的笔触写道：</p>
+
+<blockquote>
+  <p>导航系统彻底失效，但眼前还有星辰。不是我们熟悉的那种排列——星座的规律完全不知所踪——是另一种秩序，仿佛从另一个角度观看星空……导航员坚持这是“星海的背面”，说我们找到了传说中的地方。但返航后，没有人能说清我们到底是怎么进去的，甚至没有人能确认自己真的进去过。</p>
+</blockquote>
+
+<p>该抄本最后一页的空白处，有用不同笔迹的两行字，字迹潦草，推测是他人所加：</p>
+
+<blockquote>
+  <p>她返航后说要算那条航线，我们都觉得她疯了，算一条根本没有记录的航线？然后呢？再跑到那个都不知道到底存不存在的地方？</p>
+
+  <p>但一年后她又说要再找找那个地方，还带上了一个搞什么抽象代数的女孩，也不知道她俩最后找到没。</p>
+</blockquote>
+
+<div class="annotation-container">
+<div class="annotation">
+实际上是拓扑。
+</div>
+<div class="signature">[ADMIN-X-001 / ELOISE] 21-02-07 A.U. 03:19:26 AST</div>
+</div>
+
+<p>这份日志的原始版本早已消失，仅存此抄本片段存于猎户大星区历史与考古研究所，部分研究者认为这是对埃尔泽兰传说的最早佐证，但更多人将其视为奥德维克人对其故乡命运的某种隐喻。</p>
+
+<h2 id="关联现象与猜测">关联现象与猜测</h2>
+
+<p>有些来自不同时期、地点的探险日志描述了一种独特的遭遇：在星系的某些地方，飞船的一切探测设备都显示“前方空无一物”，但当这些飞船试图穿越“空无一物”的区域，会像是被某种力量推开一样，沿着一个看不见的曲面滑过。</p>
+
+<p>这种异常无法用常规的空间解释，少数理论物理学家和数学家猜测，如果存在一种拓扑封闭的空间结构，它可能表现为这种状态——它存在于空间之中，却与外部空间没有拓扑连接，就像一张纸上的一个封闭的气泡，纸面上的人永远无法“进入”气泡内部。</p>
+
+</div>
+            
+
+
+
+
+
+        
+        
+    </main>
+
+    <aside class="sidebar-toc" id="sidebar-toc">
+        <input type="checkbox" id="toc-toggle" class="toc-toggle">
+        <label for="toc-toggle" class="toc-btn">
+            <span class="toc-label">Table of Contents</span>
+        </label>
+
+        <div class="toc-handle">
+            <span class="handle-text">/ / / / / / /</span>
+        </div>
+
+        <nav class="toc-container">
+            <div class="sidebar-header">TABLE OF CONTENT</div>
+            <div id="auto-toc" class="toc-content-body">
+                </div>
+            <div class="sidebar-footer">READ_ONLY</div>
+        </nav>
+    </aside>
+
+    <footer>
+        <div class="nav-wrapper">
+        
+            
+            
+
+            
+
+            
+            
+            
+            
+            
+            
+                
+                
+                
+                
+                
+                
+                
+
+            
+                <span class="nav-arrow disabled">&lt;</span>
+            
+                
+            <a href="/" onclick="history.back(); return false;" class="back-link">RETURN</a>
+
+            
+                <a href="/Dust-et-Lumina/atlas/lavencole-sector" class="nav-arrow">&gt;</a>
+            
+        
+        </div>
+
+        <div class="footer-div"></div>
+        <div class="footer-grid">
+            <div class="footer-item">
+                <span class="label">SYSTEM_TIME:</span>
+                <span class="value" id="current-time">00:00:00</span>
+            </div>
+            <div class="footer-item">
+                <span class="label">OPERATOR:</span>
+                <span class="value">GUEST_USER</span>
+            </div>
+            <div class="footer-item">
+                <span class="label">ENCRYPTION:</span>
+                <span class="value">AES-256</span>
+            </div>
+        </div>
+        <p class = "footer-credit">&copy; 2026 Dimension 42nd. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+
+        // --- Loader Logic ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const loader = document.getElementById('loading-screen');
+            const passInput = document.getElementById('db-password');
+            const p1 = document.getElementById('phase-login');
+            const p2 = document.getElementById('phase-scan');
+            const p3 = document.getElementById('phase-decrypt');
+            const canvas = document.getElementById('network-canvas');
+
+            const lastLoad = localStorage.getItem('last_boot_time');
+            const now = Date.now();
+            const refresh_threshold = 100*60*1000;
+
+            // Check if we should skip the animation
+            if (sessionStorage.getItem('hasLoaded') && (now - lastLoad) < refresh_threshold) {
+                loader.style.display = 'none';
+                canvas.classList.add('visible'); 
+                canvas.style.opacity = "0.3";
+                showDirectory();
+                return;
+            }
+            
+            // Phase 1 Logic: Password Entry
+            /** passInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    // Add a "processing" feel
+                    p1.style.opacity = '0.5';
+                    passInput.disabled = true;
+
+                    setTimeout(() => {
+                        p1.style.display = 'none';
+                        startPhase2();
+                    }, 600);
+                }
+            }); **/
+
+            startAutoLogin();
+
+            // --- Updated Auto-Login Logic ---
+            function startAutoLogin() {
+                const passInput = document.getElementById('db-password');
+                const authStatus = document.getElementById('auth-status');
+                const p1 = document.getElementById('phase-login');
+                
+                const passwordLength = 12; // How many dots to "type"
+                let typedCount = 0;
+
+                // Simulate typewriter dots
+                const typingInterval = setInterval(() => {
+                    passInput.value += "•"; 
+                    typedCount++;
+
+                    if (typedCount >= passwordLength) {
+                        clearInterval(typingInterval);
+                        
+                        // Wait a moment, then show "Granted"
+                        setTimeout(() => {
+                            authStatus.textContent = "ACCESS_GRANTED. VERIFYING IDENTITY...";
+                            authStatus.style.color = "var(--accent-secondary)"; // Assuming accent is your theme color
+                            
+                            // Transition to Phase 2
+                            setTimeout(() => {
+                                p1.style.display = 'none';
+                                startPhase2();
+                            }, 1000);
+                        }, 500);
+                    }
+                }, 150); // Speed of typing (ms per dot)
+            }
+
+            function startPhase2() {
+                p2.style.display = 'flex';
+                // Simulate a 2-second biometric scan
+                setTimeout(() => {
+                    p2.style.display = 'none';
+                    startPhase3();
+                }, 2500);
+            }
+
+            function startPhase3() {
+                p3.style.display = 'flex';
+                // Final decryption delay before entering site
+                setTimeout(() => {
+                    loader.classList.add('fade-out');
+                    showBackgroundNetwork();
+                    showDirectory();
+                    sessionStorage.setItem('hasLoaded', 'true');
+                    localStorage.setItem('last_boot_time', Date.now());
+                }, 1000);
+            }
+        });
+
+        // --- Obsidian Comment Filter ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const contentArea = document.getElementById('obsidian-content');
+            if (contentArea) {
+                const regex = /%%[\s\S]*?%%/g;
+                contentArea.innerHTML = contentArea.innerHTML.replace(regex, '');
+            }
+        });
+
+        // --- Clock Logic ---
+        function updateClock() {
+            const timeEl = document.getElementById('current-time');
+            if (timeEl) {
+                const now = new Date();
+                const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
+                                now.getMinutes().toString().padStart(2, '0') + ":" + 
+                                now.getSeconds().toString().padStart(2, '0');
+                timeEl.textContent = timeStr;
+            }
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // --- Automatic TOC Extraction ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const tocContainer = document.getElementById('auto-toc');
+            const contentArea = document.getElementById('obsidian-content');
+            const tocSidebar = document.getElementById('sidebar-toc');
+
+            if (!contentArea || !tocContainer) return;
+
+            // Grab H2 and H3 from your main content
+            const headers = contentArea.querySelectorAll('h2, h3');
+
+            // If no headers, hide the whole sidebar including handle
+            if (headers.length === 0) {
+                tocSidebar.style.display = 'none';
+                return;
+            }
+
+            const list = document.createElement('ul');
+            headers.forEach((header, index) => {
+                if (!header.id) {
+                    // Create a slug from text or use index
+                    header.id = 'sec-' + index;
+                }
+
+                const li = document.createElement('li');
+                li.className = 'toc-item ' + (header.tagName === 'H2' ? 'toc-h2' : 'toc-h3');
+
+                // Indent H3s
+                if(header.tagName === 'H3') 
+                {
+                    li.style.paddingLeft = "10px";
+                    li.setAttribute('data-no-prompt', 'true');
+                }
+
+                const a = document.createElement('a');
+                a.href = '#' + header.id;
+                a.textContent = header.textContent.toUpperCase();
+                a.className = 'toc-link';
+                
+                li.appendChild(a);
+                list.appendChild(li);
+            });
+            
+            tocContainer.appendChild(list);
+        });
+
+        document.addEventListener('click', function(event) {
+            const toggles = [
+                { wrapperId: 'sidebar-toc', checkboxId: 'toc-toggle' },
+                { wrapperId: 'timeline-filter', checkboxId: 'timeline-filter-toggle' }
+            ];
+
+            toggles.forEach(({ wrapperId, checkboxId }) => {
+                const wrapper = document.getElementById(wrapperId);
+                const checkbox = document.getElementById(checkboxId);
+
+                if (wrapper && checkbox && checkbox.checked && !wrapper.contains(event.target)) {
+                    checkbox.checked = false;
+                }
+            });
+        });
+
+        // --- Canvas Background---
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const maxDist = 150; // Distance at which lines appear
+        const pointCount = 80; // Number of dots
+
+        function initCanvas() {
+            const dpr = window.devicePixelRatio || 1; // Get the screen's pixel density
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            // 1. Scale the actual drawing surface
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+
+            // 2. Scale the CSS display size back down
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+
+            // 3. Scale all drawing operations automatically
+            ctx.scale(dpr, dpr);
+
+            points = [];
+            for (let i = 0; i < pointCount; i++) {
+                points.push({
+                    // Use width/height (not canvas.width/height) for coordinate math
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim();
+            ctx.fillStyle = accentColor;
+            ctx.strokeStyle = accentColor;
+
+            for (let i = 0; i < points.length; i++) {
+                let p = points[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Bounce off edges
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                // Draw point
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Check distances to draw lines
+                for (let j = i + 1; j < points.length; j++) {
+                    let p2 = points[j];
+                    let dx = p.x - p2.x;
+                    let dy = p.y - p2.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < maxDist) {
+                        ctx.beginPath();
+                        ctx.lineWidth = 1 - (dist / maxDist); // Lines fade as they get further
+                        ctx.globalAlpha = 1 - (dist / maxDist);
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        animate();
+        
+        function showBackgroundNetwork() {
+            canvas.classList.add('visible');
+        }
+
+        // --- Announcement Modal (first load per tab) ---
+        function initAnnouncementModal() {
+            const modal = document.getElementById('announcementModal');
+            if (!modal) return null;
+
+            const storageKey = modal.getAttribute('data-announcement-key') || 'del_announcement_seen_v1';
+            const closeButtons = modal.querySelectorAll('[data-announcement-close]');
+            const panel = modal.querySelector('.announcement-panel');
+
+            function setUiVisibility(hidden) {
+                const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+                uiElements.forEach(el => el.style.visibility = hidden ? 'hidden' : 'visible');
+            }
+
+            function openAnnouncement() {
+                modal.style.display = "flex";
+                modal.setAttribute('aria-hidden', 'false');
+
+                document.body.style.overflow = 'hidden';
+                setUiVisibility(true);
+
+                const focusTarget = modal.querySelector('[data-announcement-close]');
+                if (focusTarget) focusTarget.focus();
+            }
+
+            function closeAnnouncement(markSeen = true) {
+                modal.style.display = "none";
+                modal.setAttribute('aria-hidden', 'true');
+
+                document.body.style.overflow = 'auto';
+                setUiVisibility(false);
+
+                if (markSeen) sessionStorage.setItem(storageKey, 'true');
+            }
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeAnnouncement(true);
+            });
+
+            if (panel) {
+                panel.addEventListener('click', (e) => e.stopPropagation());
+            }
+
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', () => closeAnnouncement(true));
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeAnnouncement(true);
+                }
+            });
+
+            return { openAnnouncement, storageKey };
+        }
+
+        const announcementController = initAnnouncementModal();
+
+        function maybeShowAnnouncement() {
+            if (!announcementController) return;
+            if (sessionStorage.getItem(announcementController.storageKey)) return;
+
+            // Let the loader fade-out/UI settle before showing the overlay
+            setTimeout(() => {
+                if (sessionStorage.getItem(announcementController.storageKey)) return;
+                announcementController.openAnnouncement();
+            }, 650);
+        }
+
+        function showDirectory(){
+            const sidebar = document.getElementById('sidebar-directory');
+            sidebar.classList.add('visible');
+
+            const toc = document.getElementById('sidebar-toc');
+            if(toc) toc.classList.add('visible');
+
+            maybeShowAnnouncement();
+        }
+
+
+        // --- Smooth Horizontal Mouse Scroll for Multiple Grids ---
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select both grid classes (you can add more here separated by commas)
+            const scrollableGrids = document.querySelectorAll('.org-carousel-track, .organ-grid, .char-grid');
+            
+            // --- CUSTOMIZATION ---
+            const ease = 0.25; 
+            const scrollSpeed = 1.5; 
+
+            // Loop through every grid found on the page
+            scrollableGrids.forEach(grid => {
+                
+                // These variables are kept private for EACH grid
+                let targetScroll = grid.scrollLeft;
+                let currentScroll = targetScroll;
+                let isAnimating = false;
+
+                grid.addEventListener('wheel', function(e) {
+                    // Only take over if they are scrolling vertically
+                    if (e.deltaY !== 0) {
+                        e.preventDefault();
+                        
+                        // Update target based on wheel movement
+                        targetScroll += (e.deltaY * scrollSpeed);
+                        
+                        // Keep target within the boundaries of this specific grid
+                        const maxScroll = grid.scrollWidth - grid.clientWidth;
+                        targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+                        // Start animation loop for this grid if not already running
+                        if (!isAnimating) {
+                            isAnimating = true;
+                            requestAnimationFrame(smoothScroll);
+                        }
+                    }
+                }, { passive: false });
+
+                function smoothScroll() {
+                    currentScroll += (targetScroll - currentScroll) * ease;
+                    
+                    if (Math.abs(targetScroll - currentScroll) < 0.5) {
+                        currentScroll = targetScroll;
+                        grid.scrollLeft = currentScroll;
+                        isAnimating = false;
+                    } else {
+                        grid.scrollLeft = currentScroll;
+                        requestAnimationFrame(smoothScroll);
+                    }
+                }
+            });
+        });
+
+        // expand image
+        function openModal(imgElement) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("fullImage");
+
+            if (!modal || !modalImg) return;
+
+            modal.style.display = "flex";
+            modalImg.src = imgElement.src;
+            
+            // 1. Lock the screen scroll
+            document.body.style.overflow = 'hidden';
+            
+            // 2. Hide problematic UI elements
+            const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+            uiElements.forEach(el => el.style.visibility = 'hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            if (modal) modal.style.display = "none";
+            
+            // 1. Restore scroll
+            document.body.style.overflow = 'auto';
+            
+            // 2. Restore UI elements
+            const uiElements = document.querySelectorAll('.nav-interface, .sidebar-toc, .sidebar-directory');
+            uiElements.forEach(el => el.style.visibility = 'visible');
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            function collapseMetadata() {
+                if (window.innerWidth <= 768) {
+                    // Find all <details> elements in your hub sidebar
+                    const categories = document.querySelectorAll('.toc-category');
+                    categories.forEach(category => {
+                        category.removeAttribute('open');
+                    });
+                }
+            }
+
+            // Run on load
+            collapseMetadata();
+            
+            // Optional: Run on resize if you want it to snap shut when shrinking the window
+            window.addEventListener('resize', collapseMetadata);
+        });
+    </script>
+</body>
+</html>
