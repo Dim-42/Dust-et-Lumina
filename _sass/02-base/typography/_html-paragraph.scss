@@ -89,10 +89,16 @@ p::selection {
 
 p code, li code {
     color: var(--accent);
-    padding: 0 2px;
+    padding: 2px 5px 0px 5px;
+    margin: 2px;
+    font-size: 0.95rem;
     font-family: var(--font-mono);
     letter-spacing: 0.2rem;
     word-break: break-word;
+    box-sizing: border-box;
+    border: 1px solid var(--color-note);
+    border-radius: 1px;
+    background: rgba(0, 0, 0, 0.38);
 }
 
 /* strikethroughs */

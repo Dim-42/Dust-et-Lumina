@@ -42,6 +42,15 @@
     }
 }
 
+/* When a `.wiki-sidebar` infobox is floated to the right, make annotations size to
+   the remaining column instead of overlapping the float. */
+.main-container > .wiki-sidebar ~ .annotation-container {
+    display: flow-root;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .annotation {
     font-family: var(--font-mono);
     font-size: 16px;

@@ -6,6 +6,16 @@ details {
     background: color-mix(in srgb, var(--bg-color),  transparent 20%);
 }
 
+/* If a `.wiki-sidebar` infobox is floated to the right, size `details` to the
+   remaining column (same behavior as `.annotation-container`). */
+.main-container > .wiki-sidebar ~ details {
+    display: flow-root;
+    width: auto;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 details summary::-webkit-details-marker {
     display: none;
 }

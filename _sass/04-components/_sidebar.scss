@@ -1,4 +1,4 @@
-.wiki-sideber {
+.wiki-sidebar {
     float: right; 
     width: 35%; /* Your preferred width */
     margin-left: 2rem; /* Gap between text and sidebar */
@@ -68,11 +68,9 @@
 }
 
 @media (max-width: 768px) {
-    .main-container {
-        flex-direction: column-reverse;
-    }
-    .wiki-sideber {
+    .wiki-sidebar {
+        float: none;
         width: 100%;
-        margin: 0;
+        margin: 0 0 1rem 0;
     }
 }
