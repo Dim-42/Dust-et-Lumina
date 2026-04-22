@@ -26,9 +26,8 @@
 
 @mixin HEADERS ($font-size: 1.5rem, $color: var(--color-text), $border-width: 4px) {
     font-family: var(--font-mono);
-    text-transform: uppercase;
     color: $color;
-    font-weight: lighter;
+    font-weight: 400;
     font-size: $font-size;
     letter-spacing: 2px;
     border-left: $border-width solid var(--accent);

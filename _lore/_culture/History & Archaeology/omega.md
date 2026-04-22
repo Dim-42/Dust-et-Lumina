@@ -46,13 +46,6 @@ Record ▇▇-▇▇
 
 </details>
 
-<div class="annotation-container">
-<div class="annotation">
-从▇▇▇▇▇等遗迹恢复的记录推测，在我们的星系之外存在——至少存在过——更多的世界。在某个远早于现有任何文字记载的未知的时间点，它们被某种物理现象吞噬。
-</div>
-<div class = "signature">[ADMIN-X-001 / ELOISE] 1421-11-09 A.U. 13:21:44 AST</div>
-</div>
-
 ---
 
 <div class="comm-log" markdown = "1">

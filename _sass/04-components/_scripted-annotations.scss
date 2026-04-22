@@ -15,7 +15,7 @@
     position: relative;
     padding: 25px;
     z-index: 1; 
-    width: 95%;
+    max-width: 95%;
     
     &::before {
         content: "";
@@ -43,7 +43,7 @@
 }
 
 .annotation {
-    font-family: var(--font-serif);
+    font-family: var(--font-mono);
     font-size: 16px;
     color: var(--color-text);
     letter-spacing: 0.1rem;
