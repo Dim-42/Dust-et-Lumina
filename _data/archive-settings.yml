@@ -1,0 +1,10 @@
+story_groups:
+  - name: Main
+    description: Main process traced by the system, integrating confirmed event sequences.
+  - name: Branch
+    description: Parallel branches forked from main, logging interrelated events.
+  - name: Change Log
+    description: Immutable log of raw data commits, ordered by overall relevance.
+
+timeline_hidden_types:
+  - 次要
