@@ -1,0 +1,19 @@
+    <!-- nagivation bar-->
+    <nav class="nav-interface">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-btn">
+            <span class="icon"></span>
+        </label>
+
+        <div class="nav-links-wrapper">
+            {% for link in site.navigation %}
+                <a href="{{ link.url | relative_url }}" 
+                class="nav-link {% if link.title == 'About' %}nav-right{% endif %}">
+                    <span class="nav-link-content">
+                        <span class="nav-title">{{ link.title | upcase }}</span>
+                        <span class="nav-subtitle">&nbsp;|&nbsp;{{ link.subtitle | upcase }}</span>
+                    </span>
+                </a>
+            {% endfor %}
+        </div>
+    </nav>
