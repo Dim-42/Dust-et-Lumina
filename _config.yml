@@ -27,6 +27,11 @@ safe: false
 
 collections_dir: _lore
 
+# URL policy:
+# - Section hubs and collection fallback routes stay plural.
+# - Curated lore item URLs are explicit front matter permalinks such as
+#   /character/..., /faction/..., /atlas/..., /info/..., /story/..., and /history/....
+# - Do not add redirect or alias layers; update hardcoded internal links when a public item URL changes.
 collections:
   organizations:
     output: true
