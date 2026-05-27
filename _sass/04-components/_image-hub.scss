@@ -35,7 +35,7 @@
             }
         }
 
-        .hub-toc {
+        .gallery-index {
             flex: 1;
             overflow-y: auto;
             // border-left: 1px solid rgba(var(--color-note), 0.1);
@@ -46,7 +46,7 @@
 
             user-select: none;
 
-            .toc-category {
+            .gallery-index-category {
 
                 .category-header {
                     padding: 12px 20px;
@@ -80,7 +80,7 @@
                 }
             }
 
-            .toc-entry {
+            .gallery-index-entry {
                 display: flex;
                 padding: 0 15px;
                 margin: 10px 0;
@@ -88,12 +88,12 @@
                 color: var(--color-text);
                 transition: all 0.2s ease;
 
-                .entry-hex { 
+                .gallery-index-marker { 
                     margin-right: 12px; 
                     color: var(--color-note); 
                 }
                 
-                .entry-header { 
+                .gallery-index-title { 
                     display: block; 
                     font-family: var(--font-mono); 
                     font-size: 1rem; 
@@ -101,7 +101,7 @@
                     letter-spacing: 0.1rem;
                 }
 
-                .entry-commit { 
+                .gallery-index-commit { 
                     display: block; 
                     font-size: 0.9rem; 
                     color: var(--color-note);
@@ -116,7 +116,7 @@
                 &.active {
                     background: rgba(var(--accent-rgb), 0.1);
                     border-left: 3px solid var(--accent);
-                    .entry-hex, .entry-header { color: var(--accent); }
+                    .gallery-index-marker, .gallery-index-title { color: var(--accent); }
                 }
             }
         }
@@ -152,26 +152,39 @@
                 display: none;
             }
 
-            .hub-toc {
+            .gallery-index {
                 .category-header {
                     padding: 10px 15px;
                     font-size: 0.9rem;
                 }
 
-                .toc-entry {
+                .gallery-index-entry {
                     padding: 0 10px;
                     margin: 5px 0;
 
-                    .entry-hex {
+                    .gallery-index-marker {
                         margin-right: 8px;
                         font-size: 0.8rem;
                     }
 
-                    .entry-header {
+                    .gallery-index-title {
                         font-size: 0.9rem;
                     }
                 }
             }
         }
     }
+}
+
+.asset-meta-row {
+    display: flex;
+    gap: 30px;
+    padding: 10px 0;
+    letter-spacing: 0.05rem;
+    border-bottom: 1px solid var(--color-note);
+    color: var(--color-text);
+    opacity: 0.9;
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    .asset-meta-label { color: var(--color-note); margin-right: 8px; }
 }

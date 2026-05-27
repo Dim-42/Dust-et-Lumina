@@ -14,17 +14,17 @@ layout: default
         </div>
         {% endif %}
 
-        <div class="preface-metadata">
+        <div class="story-metadata">
             <div class="title-block">
                 <span class="story-title">{{ page.subtitle | upcase }}</span>
                 <span class="story-subtitle">{{ page.title }}</span>
             </div>
 
-            <div class="story-stats">
-                <div class="stat-item"><span class="label">STATUS:</span> {{ page.status | default: "ACTIVE" }}</div>
-                <div class="stat-item"><span class="label">COMMIT:</span> {{ page.commit | slice: 0,8 | default: "UNKNOWN" }}</div>
-                <div class="stat-item"><span class="label">TIMESTAMP:</span> {{ page.story-time | default: "▇▇" | upcase}}</div>
-                <div class="stat-item"><span class="label">GEOPOS:</span> {{ page.story-loc | default: "▇▇" | upcase }}</div>
+            <div class="story-meta-row">
+                <div class="story-meta-item"><span class="story-meta-label">STATUS:</span> {{ page.status | default: "ACTIVE" }}</div>
+                <div class="story-meta-item"><span class="story-meta-label">COMMIT:</span> {{ page.commit | slice: 0,8 | default: "UNKNOWN" }}</div>
+                <div class="story-meta-item"><span class="story-meta-label">TIMESTAMP:</span> {{ page.story-time | default: "▇▇" | upcase}}</div>
+                <div class="story-meta-item"><span class="story-meta-label">GEOPOS:</span> {{ page.story-loc | default: "▇▇" | upcase }}</div>
             </div>
             
             <div class="story-description">
@@ -34,7 +34,7 @@ layout: default
     </header>
 
 
-    <div class="culture-archive">
+    <div class="archive-list">
         <span class="toc-header">DATA_INDEX</span>
         <ul class="chapter-list">
 
@@ -50,14 +50,14 @@ layout: default
             
             {% if chapters.size > 0 %}
                 {% for chapter in chapters %}
-                    <li class="entry-item">
-                        <div class="commit-main">
+                    <li class="chapter-item">
+                        <div class="archive-entry-row">
                             <span class="chapter-num">CH_{{ forloop.index0 | prepend: '0' | slice: -2, 2 }}</span>
-                            <a href="{{ chapter.url | relative_url }}" class="entry-link">
+                            <a href="{{ chapter.url | relative_url }}" class="chapter-link">
                                 <span class="chapter-title">{{ chapter.title }}</span>
                             </a>
-                            <span class="commit-number">
-                                [COMMIT] <span class="hash">{{ chapter.commit | slice: 0, 8 | default: "UNKNOWN" }}</span>
+                            <span class="archive-entry-commit">
+                                [COMMIT] <span class="archive-entry-hash">{{ chapter.commit | slice: 0, 8 | default: "UNKNOWN" }}</span>
                             </span>
                         </div>
                     </li>

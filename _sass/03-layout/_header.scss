@@ -4,7 +4,7 @@ h1 { @include HEADERS($font-size: 30px, $color: var(--accent)); }
 
 h2, .h2 { 
     @include HEADERS($font-size: 24px); 
-    margin-top: 50px; 
+    margin-top: 40px; 
 }
 
 h3 { 
@@ -94,7 +94,7 @@ h4 {
         font-size: 14px;
         font-family: var(--font-mono);
         margin-right: 50px;
-        .label { color: var(--color-note); margin-right: 5px; }
+        .meta-label { color: var(--color-note); margin-right: 5px; }
     }
 }
 

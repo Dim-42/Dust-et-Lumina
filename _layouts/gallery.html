@@ -21,13 +21,13 @@ layout: default
             </div>
         </div>
 
-        <div class="preface-metadata">
-            <div class="story-stats" style = "padding-left: 20px;">
-                <div class="stat-item"><span class="label">TIMESTAMP:</span> {{ display_item.image-time | default: "▇▇" | upcase }}</div>
-                <div class="stat-item"><span class="label">GEOPOS:</span> {{ display_item.image-loc | default: "▇▇" | upcase }}</div>
+        <div class="asset-metadata">
+            <div class="asset-meta-row" style = "padding-left: 20px;">
+                <div class="asset-meta-item"><span class="asset-meta-label">TIMESTAMP:</span> {{ display_item.image-time | default: "▇▇" | upcase }}</div>
+                <div class="asset-meta-item"><span class="asset-meta-label">GEOPOS:</span> {{ display_item.image-loc | default: "▇▇" | upcase }}</div>
                 {% if display_item.link %}
-                <div class="stat-item">
-                    <span class="label">SOURCE:</span>
+                <div class="asset-meta-item">
+                    <span class="asset-meta-label">SOURCE:</span>
                     {% assign linked_page = site.documents | where: "permalink", display_item.link | first %}
                     <a href="{{ linked_page.url | relative_url }}" class="entry-title">
                         {{ linked_page.subtitle | upcase }}
@@ -48,7 +48,7 @@ layout: default
             <span class="header-count">[{{ site.gallery.size }}]</span>
         </div>
 
-        <nav class="hub-toc">
+        <nav class="gallery-index">
             {% comment %} 1. Group the gallery items based on the asset folder path {% endcomment %}
             {% assign grouped_gallery = site.gallery | group_by_exp: "item", "item.image | remove: '/assets/images/' | lstrip | split: '/' | first" %}
 
@@ -64,7 +64,7 @@ layout: default
                         {% if entry.url == display_item.url %}{% assign is_current_group = true %}{% endif %}
                     {% endfor %}
 
-                    <details class="toc-category" open>
+                    <details class="gallery-index-category" open>
                         <summary class="category-header">
                             {% comment %} Display the custom name from the 'display' key {% endcomment %}
                             <span class="category-name">{{ cat.display | upcase }}</span>
@@ -75,11 +75,11 @@ layout: default
                             {% assign sorted_items = current_group.items | gallery_sort %}
                             {% for entry in sorted_items %}
                                 <a href="{{ entry.url | relative_url }}" 
-                                class="toc-entry {% if entry.url == display_item.url %}active{% endif %}">
-                                    <span class="entry-hex">{% if entry.url == display_item.url %} > {% else %}⬡{% endif %}</span>
-                                    <div class="entry-info">
-                                        <span class="entry-header">{{ entry.title }}</span>
-                                        <span class="entry-commit">{{ entry.commit | slice: 0, 8 | default: "UNKNOWN" }}</span>
+                                class="gallery-index-entry {% if entry.url == display_item.url %}active{% endif %}">
+                                    <span class="gallery-index-marker">{% if entry.url == display_item.url %} > {% else %}⬡{% endif %}</span>
+                                    <div class="gallery-index-info">
+                                        <span class="gallery-index-title">{{ entry.title }}</span>
+                                        <span class="gallery-index-commit">{{ entry.commit | slice: 0, 8 | default: "UNKNOWN" }}</span>
                                     </div>
                                 </a>
                             {% endfor %}

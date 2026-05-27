@@ -1,0 +1,88 @@
+/* Shared modal backdrop */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    cursor: zoom-out;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85%;
+    z-index: 10001;
+    animation: zoomIn 0.3s ease-out;
+}
+
+.modal-caption {
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+    color: var(--color-note);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: var(--color-note);
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover { color: var(--accent); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@media screen and (max-width: 768px) {
+    .modal-backdrop {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100vw !important;
+        height: 100dvh !important;
+        background-color: rgba(0, 0, 0, 0.98) !important;
+        z-index: 999999 !important;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        width: auto !important;
+        height: auto !important;
+        max-width: 90vw !important;
+        max-height: 70dvh !important;
+        object-fit: contain !important;
+        margin: 0 !important;
+    }
+
+    .modal-caption {
+        font-size: 0.8rem;
+        margin-top: 15px;
+        width: 90%;
+        text-align: center;
+    }
+
+    .close-modal {
+        top: 15px;
+        right: 20px;
+        font-size: 30px;
+    }
+}

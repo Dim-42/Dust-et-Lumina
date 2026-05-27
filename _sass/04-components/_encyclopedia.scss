@@ -1,9 +1,9 @@
-.culture-archive {
-    .class-section {
+.archive-list {
+    .archive-section {
         margin-bottom: 2rem;
         transition: all 0.3s ease;
 
-        .class-header {
+        .archive-section-header {
             display: flex;
             align-items: center;
             cursor: pointer;
@@ -21,7 +21,7 @@
                 color: var(--color-text);
             }
 
-            .entry-count {
+            .archive-section-count {
                 font-family: var(--font-mono);
                 margin-left: 10px;
                 font-size: 1rem;
@@ -45,13 +45,13 @@
         }
     }
 
-    .subclass-container {
+    .archive-subgroup-container {
         padding: 10px 20px;
     }
 
-    .subclass-group {
+    .archive-subgroup {
         
-        .subclass-header {
+        .archive-subgroup-header {
             font-family: var(--font-mono); 
             font-size: 18px;
             letter-spacing: 0.2rem;
@@ -65,31 +65,57 @@
             padding-top: 10px;
         }
     }
-    .subclass-div {
+    .archive-subgroup-divider {
         border: none;
         margin: 1rem auto;
         background-color: var(--color-note);
         height: 0.25px;
         width: 50%;
     }
-    .entry-list {
+    .archive-entry-list {
         list-style: none;
         padding: 0 35px;
         margin: 0;
 
-        .entry-item {
-            .entry-link {
+        .archive-entry-item {
+            .archive-entry-link {
                 text-decoration: none;
                 display: flex;       // Changed to flex
                 align-items: flex-start; // Vertical centering
                 width: 100%;
                 color: var(--color-text);
             }
+
+            .archive-entry-title {
+                color: var(--color-text);
+                text-decoration: none;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 1px;
+                    bottom: -4px;
+                    left: 50%;
+                    background: var(--accent-dim);
+                    transition: all 0.2s ease;
+                    transform: translateX(-50%);
+                }
+
+                &:hover::after {
+                    width: 100%;
+                }
+
+                &:hover {
+                    color: var(--accent);
+                }
+            }
         }
     }
 }
 
-.commit-main {
+.archive-entry-row {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
@@ -100,7 +126,7 @@
             color: var(--color-note); 
             font-size: 16px;
             white-space: nowrap; // Prevents the whole block from wrapping
-            display: flex;       // Uses flex to keep [COMMIT], hash, and + aligned
+            display: flex;       // Uses flex to keep [COMMIT], archive-entry-hash, and + aligned
             align-items: center;
             margin: 0 20px;
         }
@@ -134,19 +160,19 @@
         }
     }
 
-    .commit-number {
+    .archive-entry-commit {
         font-size: 14px;
         font-family: var(--font-mono); 
         color: var(--accent-secondary);
         white-space: nowrap; // Prevents the whole block from wrapping
-        display: flex;       // Uses flex to keep [COMMIT], hash, and + aligned
+        display: flex;       // Uses flex to keep [COMMIT], archive-entry-hash, and + aligned
         align-items: center;
         margin-left: auto;
 
-        .hash {
+        .archive-entry-hash {
             display: inline-block;
             width: 55px; 
-            letter-spacing: 1px; /* This is often more reliable for short strings like hashes */
+            letter-spacing: 1px; /* This is often more reliable for short strings like archive-entry-hashes */
             text-align: center;
         }
 
@@ -159,7 +185,7 @@
     }
 }
 
-.class-description {
+.archive-section-description {
     font-family: var(--font-mono);
     color: var(--color-note); // Dimmer than the main text
     padding: 5px 10px;
@@ -170,11 +196,11 @@
     .header-text {
             font-size: 22px !important;
         }
-    .class-section {
+    .archive-section {
         margin-bottom: 1rem !important;
     }
 
-    .commit-main {
+    .archive-entry-row {
         flex-direction: column;   // Stack items vertically
         align-items: flex-start;  // Align everything to the left edge
         gap: 5px;                // Vertical spacing between elements
@@ -191,12 +217,12 @@
             }
         }
 
-        .commit-number {
+        .archive-entry-commit {
             margin-left: 0;       // OVERRIDE the 'auto' that pushes it right
             font-size: 12px;      // Slightly smaller to keep the "meta" feel
             
-            .hash {
-                text-align: left; // Align hash text within its 55px width
+            .archive-entry-hash {
+                text-align: left; // Align archive-entry-hash text within its 55px width
                 width: auto;      // Or keep 55px if you want fixed width
                 margin-left: 5px;
             }

@@ -1,4 +1,4 @@
-.wiki-sidebar {
+.wiki-infobox {
     float: right; 
     width: 35%; /* Your preferred width */
     margin-left: 2rem; /* Gap between text and sidebar */
@@ -53,7 +53,7 @@
     vertical-align: baseline;
 }
 
-.infobox-table .label {
+.infobox-table .wiki-label {
     font-family: var(--font-mono);
     letter-spacing: 0.1rem;
     color: var(--accent);
@@ -62,13 +62,13 @@
     text-transform: uppercase;
 }
 
-.infobox-table .value {
+.infobox-table .wiki-value {
     font-family: var(--font-main);
     font-size: 12px;
 }
 
 @media (max-width: 768px) {
-    .wiki-sidebar {
+    .wiki-infobox {
         float: none;
         width: 100%;
         margin: 0 0 1rem 0;

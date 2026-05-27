@@ -42,9 +42,9 @@
     }
 }
 
-/* When a `.wiki-sidebar` infobox is floated to the right, make annotations size to
+/* When a `.wiki-infobox` is floated to the right, make annotations size to
    the remaining column instead of overlapping the float. */
-.main-container > .wiki-sidebar ~ .annotation-container {
+.main-container > .wiki-infobox ~ .annotation-container {
     display: flow-root;
     max-width: 100%;
     margin-left: 0;

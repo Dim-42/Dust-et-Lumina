@@ -29,11 +29,11 @@
             
             <div class="timeline-content {% unless entry.url %}no-link{% endunless %}">
                 {% if entry.url %}
-                    <a href="{{ entry.url | relative_url }}" class="main-card-link" aria-label="Open {{ entry.title }}"></a>
+                    <a href="{{ entry.url | relative_url }}" class="timeline-card-overlay-link" aria-label="Open {{ entry.title }}"></a>
                 {% endif %}
 
                 <div class="timeline-date">
-                    <span class="label">[TIMESTAMP]</span> {{ entry.time }}
+                    <span class="timeline-date-label">[TIMESTAMP]</span> {{ entry.time }}
                 </div>
                 
                 <div class="timeline-info">

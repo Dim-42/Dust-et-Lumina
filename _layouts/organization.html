@@ -9,7 +9,7 @@ layout: default
 
 <div class="main-container">
 
-    <aside class="wiki-sidebar">
+    <aside class="wiki-infobox">
         <div class="infobox-header">
             {{page.name[0]}}
             <br>
@@ -28,21 +28,21 @@ layout: default
             </tr>
             
             <tr>
-                <td class="label">Type</td>
-                <td class="value">{{ page.type | default: "未归档" | join: "<br>" }}</td>
+                <td class="wiki-label">Type</td>
+                <td class="wiki-value">{{ page.type | default: "未归档" | join: "<br>" }}</td>
             </tr>
 
             {% if page.leader %}
             <tr>
-                <td class="label">Leader</td>
-                <td class="value">{{ page.leader | join: "<br>" }}</td>
+                <td class="wiki-label">Leader</td>
+                <td class="wiki-value">{{ page.leader | join: "<br>" }}</td>
             </tr>
             {% endif %}
 
             {% if page.hq %}
             <tr>
-                <td class="label">Headquarters</td>
-                <td class="value">{{ page.hq | join: "<br>" }}</td>
+                <td class="wiki-label">Headquarters</td>
+                <td class="wiki-value">{{ page.hq | join: "<br>" }}</td>
             </tr>
             {% endif %}
 

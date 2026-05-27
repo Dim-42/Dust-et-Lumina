@@ -6,9 +6,9 @@ details {
     background: color-mix(in srgb, var(--bg-color),  transparent 20%);
 }
 
-/* If a `.wiki-sidebar` infobox is floated to the right, size `details` to the
+/* If a `.wiki-infobox` is floated to the right, size `details` to the
    remaining column (same behavior as `.annotation-container`). */
-.main-container > .wiki-sidebar ~ details {
+.main-container > .wiki-infobox ~ details {
     display: flow-root;
     width: auto;
     max-width: 100%;

@@ -25,10 +25,10 @@
         </header>
         <div class="page-meta">
                 {% if page.last-updated %}
-                <div class="meta-info"><span class="label">Last Updated:</span>{{ page.last-updated | default: "NA" }}</div>
+                <div class="meta-info"><span class="meta-label">Last Updated:</span>{{ page.last-updated | default: "NA" }}</div>
                 {% endif %}
                 {% if page.access-level %}
-                <div class="meta-info"><span class="label">Access Level:</span>{{ page.access-level | default: "PUBLIC" }}</div>
+                <div class="meta-info"><span class="meta-label">Access Level:</span>{{ page.access-level | default: "PUBLIC" }}</div>
                 {% endif %}
         </div>
         <br>
@@ -44,7 +44,7 @@
             <div class="system-msg-warning" style="font-weight: bold;">
                 You have been warned.
             </div>
-            <button id="reveal-btn" class="btn-classified" onclick="toggleFile()">
+            <button id="reveal-btn" class="terminal-button classified-access-button" onclick="toggleFile()">
                 Access 
             </button>
         </div>

@@ -442,7 +442,7 @@ function toggleFile() {
             function collapseMetadata() {
                 if (window.innerWidth <= 768) {
                     // Find all <details> elements in your hub sidebar
-                    const categories = document.querySelectorAll('.toc-category');
+                    const categories = document.querySelectorAll('.gallery-index-category');
                     categories.forEach(category => {
                         category.removeAttribute('open');
                     });

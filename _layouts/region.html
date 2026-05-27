@@ -4,7 +4,7 @@ layout: default
 
 <div class="main-container">
 
-    <aside class="wiki-sidebar">
+    <aside class="wiki-infobox">
         <div class="infobox-header">
             {{page.name[0]}}
             <br>
@@ -23,24 +23,24 @@ layout: default
             </tr>
             
             <tr>
-                <td class="label">Position</td>
-                <td class="value">{{ page.position | default: "未归档" | join: "<br>" }}</td>
+                <td class="wiki-label">Position</td>
+                <td class="wiki-value">{{ page.position | default: "未归档" | join: "<br>" }}</td>
             </tr>
 
             <tr>
-                <td class="label">Part of</td>
-                <td class="value">{{ page.part | default: "未归档" | join: "<br>" }}</td>
+                <td class="wiki-label">Part of</td>
+                <td class="wiki-value">{{ page.part | default: "未归档" | join: "<br>" }}</td>
             </tr>
 
             <tr>
-                <td class="label">Type</td>
-                <td class="value">{{ page.type | default: "未归档" | join: "<br>" }}</td>
+                <td class="wiki-label">Type</td>
+                <td class="wiki-value">{{ page.type | default: "未归档" | join: "<br>" }}</td>
             </tr>
 
             {% if page.governance %}
             <tr>
-                <td class="label">Governance</td>
-                <td class="value">{{ page.governance | join: "<br>" }}</td>
+                <td class="wiki-label">Governance</td>
+                <td class="wiki-value">{{ page.governance | join: "<br>" }}</td>
             </tr>
             {% endif %}
 

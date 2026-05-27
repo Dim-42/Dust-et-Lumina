@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div class="main-container">
-    <aside class="wiki-sidebar">
+    <aside class="wiki-infobox">
         <div class="infobox-header">
             {{page.name[0]}}
             <br>
@@ -22,30 +22,30 @@ layout: default
             </tr>
             
             <tr>
-                <td class="label">FULL NAME</td>
-                <td class="value">{{ page.fullname | default: "▇▇▇" | join: "<br>" }}</td>
+                <td class="wiki-label">FULL NAME</td>
+                <td class="wiki-value">{{ page.fullname | default: "▇▇▇" | join: "<br>" }}</td>
             </tr>
 
             {% if page.alias %}
             <tr>
-                <td class="label">ALIAS</td>
-                <td class="value">{{ page.alias | join: "<br>"}}</td>
+                <td class="wiki-label">ALIAS</td>
+                <td class="wiki-value">{{ page.alias | join: "<br>"}}</td>
             </tr>
             {% endif %}
 
             <tr>
-                <td class="label">BIRTHDATE</td>
-                <td class="value">{{ page.birthday | default: "▇▇" }}</td>
+                <td class="wiki-label">BIRTHDATE</td>
+                <td class="wiki-value">{{ page.birthday | default: "▇▇" }}</td>
             </tr>
 
             <tr>
-                <td class="label">HOMELAND</td>
-                <td class="value">{{ page.homeland | default: "▇▇▇" }}</td>
+                <td class="wiki-label">HOMELAND</td>
+                <td class="wiki-value">{{ page.homeland | default: "▇▇▇" }}</td>
             </tr>
 
             <tr>
-                <td class="label">FACTION</td>
-                <td class="value">{{ page.faction | default: "未归档" | join: "<br>" }}</td>
+                <td class="wiki-label">FACTION</td>
+                <td class="wiki-value">{{ page.faction | default: "未归档" | join: "<br>" }}</td>
             </tr>
 
         </table>
