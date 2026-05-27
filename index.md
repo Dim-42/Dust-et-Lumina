@@ -13,12 +13,6 @@ title: Dust et Lumina
     <img src="{{ '/assets/images/titles/main.png' | relative_url }}" onclick="openModal(this)">
 </div>
 
-<div id="imageModal" class="system-modal" onclick="closeModal()">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="fullImage">
-    <!--<div id="modalCaption" class="modal-caption">{{ page.subtitle }}</div> -->
-</div>
-
 ---
 
 <div class="concept-grid">
