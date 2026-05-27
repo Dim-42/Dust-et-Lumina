@@ -1,6 +1,6 @@
-$pointer: url('/Dust-et-Lumina/assets/icons/cursor-svgrepo-com.svg'), auto;
-$zoom: url("/Dust-et-Lumina/assets/icons/plus-1469-svgrepo-com.svg") 10 10, zoom-in;
-$target: url('/Dust-et-Lumina/assets/icons/target-2-svgrepo-com.svg') 10 10, pointer;
+$pointer: url('../icons/cursor-svgrepo-com.svg'), auto;
+$zoom: url("../icons/plus-1469-svgrepo-com.svg") 10 10, zoom-in;
+$target: url('../icons/target-2-svgrepo-com.svg') 10 10, pointer;
 
 :root {
     --pointer: #{$pointer};

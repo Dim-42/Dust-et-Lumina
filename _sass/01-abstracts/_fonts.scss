@@ -1,7 +1,7 @@
 /* TEKO - Light (300) */
 @font-face {
     font-family: 'Teko';
-    src: url('/Dust-et-Lumina/assets/fonts/teko-v23-latin-300.woff2') format('woff2');
+    src: url('../fonts/teko-v23-latin-300.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -10,7 +10,7 @@
 /* CINZEL - Regular (400) */
 @font-face {
     font-family: 'Cinzel';
-    src: url('/Dust-et-Lumina/assets/fonts/cinzel-v26-latin-regular.woff2') format('woff2');
+    src: url('../fonts/cinzel-v26-latin-regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -18,7 +18,7 @@
 
 @font-face {
     font-family: 'Long Cang';
-    src: url('/Dust-et-Lumina/assets/fonts/long-cang-v21-chinese-simplified-regular.woff2') format('woff2');
+    src: url('../fonts/long-cang-v21-chinese-simplified-regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -26,7 +26,7 @@
 
 @font-face {
     font-family: 'Moon Dance';
-    src: url('/Dust-et-Lumina/assets/fonts/long-cang-v21-chinese-simplified-regular.woff2') format('woff2');
+    src: url('../fonts/long-cang-v21-chinese-simplified-regular.woff2') format('woff2');
     font-style: normal;
     font-display: swap;
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -34,21 +34,21 @@
 
 @font-face {
     font-family: 'Mr Saint Delafield';
-    src: url('/Dust-et-Lumina/assets/fonts/mrs-saint-delafield-v14-latin-regular.woff2') format('woff2');
+    src: url('../fonts/mrs-saint-delafield-v14-latin-regular.woff2') format('woff2');
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'QianTuXianMoTi';
-    src: url('/Dust-et-Lumina/assets/fonts/QianTuXianMoTi-2.ttf') format('truetype');
+    src: url('../fonts/QianTuXianMoTi-2.ttf') format('truetype');
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
     font-family: 'Source Han Serif';
-    src: url('/Dust-et-Lumina/assets/fonts/SourceHanSerifSC-VF.otf.woff2') format('woff2');
+    src: url('../fonts/SourceHanSerifSC-VF.otf.woff2') format('woff2');
     font-style: normal;
     font-display: swap;
 }
