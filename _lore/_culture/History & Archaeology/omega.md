@@ -8,6 +8,7 @@ featured: false
 
 title: Ω现象
 subtitle: Phenomenon Omega
+
 last-updated: 1538-02-21 A.U.
 access-level: Top secret
 ---

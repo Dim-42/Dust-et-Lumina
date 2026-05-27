@@ -8,6 +8,7 @@ featured: true
 
 title: LogiX演算系统
 subtitle: LogiX Predictive Computational System
+
 last-updated: 1538-12-21 A.U.
 access-level: Top Secret
 ---
