@@ -1,0 +1,12 @@
+# Production-only overlay. Arrays replace rather than append during Jekyll
+# configuration merging, so this repeats the base exclusions before adding dev.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - templates/
+  - dev/
