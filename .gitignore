@@ -9,3 +9,4 @@ hash-generator.py
 templates/
 *.draft.md
 /docs
+.codex

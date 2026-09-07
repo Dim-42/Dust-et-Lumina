@@ -38,14 +38,12 @@ details summary {
 details summary::before {
     content: "[ + ] ";
     margin-right: 10px;
-    font-weight: bold;
     color: var(--accent-secondary);
 }
 
 details[open] summary::before {
     content: "[ - ] ";
     margin-right: 10px;
-    font-weight: bold;
     color: var(--accent);
 }
 
